@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>스터디브릿지 | 전국 1:1 학습 매칭 컨설팅</title>
+<meta name="description" content="방문 과외와 비대면 화상 수업, 전국 어디서나 우리 아이에게 맞는 선생님을 매칭해드립니다.">
+<link rel="icon" href="data:,">
+
+<!-- ============================================================
+   글꼴 불러오기
+   - Jua : 제목용 둥글둥글한 친근한 폰트
+   - Pretendard : 본문/버튼/숫자용 한글 산세리프 (가독성)
+   ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
+
+<style>
+/* ============================================================
+   0. 디자인 토큰 (색상 / 폰트 / 공통 값)
+   ------------------------------------------------------------
+   ★ 색상을 바꾸고 싶으면 이 부분의 hex 코드만 수정하면
+   사이트 전체 색이 한 번에 바뀝니다.
+   ============================================================ */
+:root{
+  --color-harbor:#3457B2;     /* 메인 블루 (헤더/푸터/헤드라인) - 네이비보다 밝고 부드러움 */
+  --color-signal:#3B82F6;     /* 포인트 블루 (버튼/링크/강조) */
+  --color-signal-dark:#2563EB;/* 포인트 블루 hover */
+  --color-mist:#EAF2FF;       /* 연한 블루 배경 (섹션 구분용) */
+  --color-paper:#FFFCF7;      /* 기본 배경 (살짝 따뜻한 화이트) */
+  --color-ink:#33405A;        /* 기본 텍스트 (부드러운 차콜) */
+  --color-slate:#707E97;      /* 보조 텍스트 (설명문) */
+  --color-line:#E6E9F2;       /* 테두리/구분선 */
+  --color-white:#FFFFFF;
+  --color-warm:#FF9D4D;       /* 포인트 웜 컬러 (뱃지/포인트) */
+  --color-warm-soft:#FFEEDD;  /* 연한 웜 배경 */
+  --color-mint:#22C3A6;       /* 보조 포인트 (체크/성공) */
+
+  --font-display:'Jua','Pretendard Variable','Pretendard',sans-serif;
+  --font-body:'Pretendard Variable','Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --font-mono:'Pretendard Variable','Pretendard',sans-serif; /* 숫자도 본문 폰트로 통일 (딱딱한 느낌 줄이기) */
+
+  --radius-sm:14px;
+  --radius-md:22px;
+  --radius-lg:30px;
+  --shadow-card:0 16px 36px -18px rgba(52,87,178,.18);
+  --max-width:1140px;
+}
+
+/* ============================================================
+   1. 공통 초기화 / 기본 스타일
+   ============================================================ */
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+}
+body{
+  margin:0;
+  background:var(--color-paper);
+  color:var(--color-ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  /* 한글 텍스트가 단어 중간(예: "선생님" 사이)에서 어색하게
+     줄바꿈되지 않도록 합니다. 한글 타이포그래피 필수 설정. */
+  word-break:keep-all;
+  padding-bottom:58px; /* 하단 고정 액션바에 콘텐츠가 가려지지 않도록 */
+}
+h1,h2,h3{
+  font-family:var(--font-display);
+  color:var(--color-harbor);
+  line-height:1.3;
+  margin:0;
+}
+p{ margin:0; }
+a{ color:inherit; text-decoration:none; }
+ul{ margin:0; padding:0; list-style:none; }
+img,svg{ display:block; max-width:100%; }
+button{ font-family:inherit; cursor:pointer; }
+
+/* 키보드 포커스 표시 (접근성) */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible{
+  outline:3px solid var(--color-signal);
+  outline-offset:2px;
+  border-radius:4px;
+}
+
+.container{
+  width:100%;
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:0 24px;
+}
+
+.section{ padding:96px 0; }
+.section--mist{ background:var(--color-mist); }
+.section--harbor{ background:var(--color-harbor); color:var(--color-white); }
+.section--harbor h2{ color:var(--color-white); }
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-family:var(--font-body);
+  font-size:13.5px;
+  font-weight:700;
+  color:var(--color-signal-dark);
+  background:var(--color-mist);
+  padding:7px 14px 7px 10px;
+  border-radius:999px;
+  margin-bottom:18px;
+}
+.eyebrow::before{
+  content:"";
+  width:7px; height:7px;
+  border-radius:50%;
+  background:var(--color-warm);
+}
+
+.section-head{ max-width:640px; margin-bottom:56px; }
+.section-head h2{ font-size:clamp(26px,3vw,36px); margin-bottom:14px; }
+.section-head p{ color:var(--color-slate); font-size:17px; }
+
+/* 버튼 */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:14px 28px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:15.5px;
+  border:1px solid transparent;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  white-space:nowrap;
+}
+.btn--primary{
+  background:var(--color-signal);
+  color:var(--color-white);
+  box-shadow:0 12px 24px -8px rgba(59,130,246,.45);
+}
+.btn--primary:hover{ background:var(--color-signal-dark); transform:translateY(-1px); }
+.btn--ghost{
+  background:var(--color-white);
+  color:var(--color-harbor);
+  border-color:var(--color-line);
+}
+.btn--ghost:hover{ border-color:var(--color-signal); color:var(--color-signal); }
+.btn--on-dark{
+  background:rgba(255,255,255,.15);
+  color:var(--color-white);
+  border-color:rgba(255,255,255,.4);
+}
+.btn--on-dark:hover{ border-color:var(--color-white); background:rgba(255,255,255,.25); }
+.btn--block{ width:100%; }
+
+/* ============================================================
+   2. 헤더 / 네비게이션
+   ============================================================ */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(251,252,254,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--color-line);
+}
+.nav__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:76px;
+}
+.nav__logo{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:21px;
+  color:var(--color-harbor);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.nav__logo span{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--color-signal);
+  display:inline-block;
+}
+.nav__links{
+  display:flex;
+  align-items:center;
+  gap:36px;
+}
+.nav__link{
+  font-size:15px;
+  font-weight:500;
+  color:var(--color-ink);
+}
+.nav__link:hover{ color:var(--color-signal); }
+.nav__cta{ display:flex; align-items:center; gap:14px; }
+.nav__toggle{
+  display:none;
+  width:40px;height:40px;
+  border:1px solid var(--color-line);
+  border-radius:var(--radius-sm);
+  background:var(--color-white);
+  align-items:center;
+  justify-content:center;
+}
+.nav__toggle span,.nav__toggle span::before,.nav__toggle span::after{
+  content:"";
+  display:block;
+  width:18px;height:2px;
+  background:var(--color-harbor);
+  position:relative;
+  transition:.2s;
+}
+.nav__toggle span::before{ position:absolute; top:-6px; }
+.nav__toggle span::after{ position:absolute; top:6px; }
+
+.nav__mobile-panel{ display:none; }
+
+@media (max-width:880px){
+  .nav__links{ display:none; }
+  .nav__cta{ display:none; }
+  .nav__toggle{ display:flex; }
+  .nav.is-open .nav__mobile-panel{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    padding:12px 24px 20px;
+    border-top:1px solid var(--color-line);
+    background:var(--color-paper);
+  }
+  .nav__mobile-panel a{
+    padding:12px 4px;
+    font-size:15.5px;
+    border-bottom:1px solid var(--color-line);
+  }
+}
+
+/* ============================================================
+   3. 히어로 섹션
+   ============================================================ */
+.hero{
+  padding:72px 0 90px;
+  background:
+    radial-gradient(120% 100% at 100% 0%, var(--color-mist) 0%, var(--color-paper) 55%);
+}
+.hero__inner{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:56px;
+  align-items:center;
+}
+.hero h1{
+  font-size:clamp(30px,4.1vw,46px);
+  letter-spacing:-.01em;
+  margin-bottom:22px;
+}
+.hero h1 em{
+  color:var(--color-signal);
+  font-style:normal;
+}
+.hero__sub{
+  color:var(--color-slate);
+  font-size:17.5px;
+  max-width:480px;
+  margin-bottom:34px;
+}
+.hero__actions{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:18px; }
+.hero__note{
+  font-size:13.5px;
+  color:var(--color-slate);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.hero__note::before{
+  content:"i";
+  width:16px;height:16px;
+  border-radius:50%;
+  border:1px solid var(--color-slate);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:10px;
+  font-style:italic;
+}
+
+/* ---- 히어로 시그니처 비주얼 : 매칭 동그라미 ---- */
+.radar-wrap{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.radar-wrap svg{ width:100%; max-width:460px; height:auto; }
+.radar__ring{
+  fill:none;
+  stroke:var(--color-signal);
+  stroke-width:1.5;
+  opacity:.15;
+}
+.radar__line{
+  fill:none;
+  stroke:#CFE0FF;
+  stroke-width:2.4;
+  stroke-linecap:round;
+  opacity:.85;
+}
+.radar__node-dot{
+  stroke:rgba(255,255,255,.9);
+  stroke-width:3;
+}
+.radar__node-emoji{
+  font-size:22px;
+  text-anchor:middle;
+  dominant-baseline:middle;
+}
+.radar__node-label{
+  font-family:var(--font-body);
+  font-size:13px;
+  font-weight:700;
+  fill:var(--color-harbor);
+  text-anchor:middle;
+}
+.radar__center-dot{ fill:var(--color-signal); }
+.radar__center-label{
+  font-family:var(--font-body);
+  font-size:12.5px;
+  font-weight:800;
+  fill:var(--color-white);
+  text-anchor:middle;
+}
+.radar__tag{
+  font-family:var(--font-body);
+  font-size:11.5px;
+  font-weight:700;
+  fill:var(--color-signal-dark);
+  text-anchor:middle;
+  opacity:0;
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .radar__pulse{
+    animation:radarPulse 2.6s ease-out infinite;
+    transform-box:fill-box;
+    transform-origin:center;
+  }
+  .radar__node-dot{ animation:nodeBob 3.6s ease-in-out infinite; transform-box:fill-box; transform-origin:center; }
+  .radar__node-dot.l2, .radar__node-emoji.l2-e{ animation-delay:.4s; }
+  .radar__node-dot.l3, .radar__node-emoji.l3-e{ animation-delay:.8s; }
+  .radar__node-dot.l4, .radar__node-emoji.l4-e{ animation-delay:1.2s; }
+  .radar__node-dot.l5, .radar__node-emoji.l5-e{ animation-delay:1.6s; }
+  .radar__node-dot.l6, .radar__node-emoji.l6-e{ animation-delay:2s; }
+}
+@keyframes nodeBob{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-6px); }
+}
+@keyframes radarPulse{
+  0%{ opacity:.5; transform:scale(.3); }
+  70%{ opacity:0; transform:scale(2.6); }
+  100%{ opacity:0; transform:scale(2.6); }
+}
+
+@media (max-width:880px){
+  .hero__inner{ grid-template-columns:1fr; }
+  .radar-wrap{ order:-1; margin-bottom:8px; }
+  .radar-wrap svg{ max-width:320px; }
+}
+
+/* ============================================================
+   4. 통계 바
+   ============================================================ */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.stat{
+  background:var(--color-white);
+  border:1px solid var(--color-line);
+  border-radius:var(--radius-md);
+  padding:26px 20px;
+  text-align:center;
+  box-shadow:var(--shadow-card);
+}
+.stat__icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px; height:44px;
+  border-radius:50%;
+  font-size:20px;
+  margin-bottom:12px;
+}
+.stat__num{
+  font-family:var(--font-body);
+  font-size:clamp(20px,2.4vw,26px);
+  font-weight:800;
+  color:var(--color-harbor);
+  display:block;
+  margin-bottom:4px;
+}
+.stat__label{
+  font-size:13.5px;
+  color:var(--color-slate);
+}
+@media (max-width:720px){
+  .stats{ grid-template-columns:repeat(2,1fr); }
+}
+
+/* ============================================================
+   5. 매칭 과정 (3단계 - 실제 진행 순서이므로 번호 사용)
+   ============================================================ */
+.process{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+.process__step{
+  background:var(--color-white);
+  border:1px solid var(--color-line);
+  border-radius:var(--radius-md);
+  padding:32px 28px;
+  position:relative;
+}
+.process__num{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px; height:34px;
+  border-radius:50%;
+  background:var(--color-mist);
+  font-family:var(--font-body);
+  font-size:15px;
+  font-weight:800;
+  color:var(--color-signal-dark);
+  margin-bottom:16px;
+}
+.process__step h3{
+  font-size:19px;
+  margin-bottom:10px;
+}
+.process__step p{ color:var(--color-slate); font-size:15px; }
+.process__arrow{
+  display:none;
+}
+@media (min-width:881px){
+  .process__step:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    right:-28px;
+    top:50%;
+    width:28px;
+    height:1px;
+    background:var(--color-line);
+  }
+}
+@media (max-width:880px){
+  .process{ grid-template-columns:1fr; }
+}
+
+/* ============================================================
+   6. 수업 방식 비교
+   ============================================================ */
+.compare{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+}
+.compare__card{
+  background:var(--color-white);
+  border:1px solid var(--color-line);
+  border-radius:var(--radius-lg);
+  padding:38px 34px;
+  box-shadow:var(--shadow-card);
+}
+.compare__card--accent{
+  border-color:var(--color-signal);
+  background:linear-gradient(180deg,var(--color-white) 0%, var(--color-mist) 130%);
+}
+.compare__icon{
+  width:50px;height:50px;
+  border-radius:50%;
+  background:var(--color-mist);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;
+  font-size:24px;
+}
+.compare__card h3{ font-size:21px; margin-bottom:6px; }
+.compare__tag{
+  font-family:var(--font-mono);
+  font-size:12.5px;
+  color:var(--color-slate);
+  margin-bottom:20px;
+  display:block;
+}
+.compare__list{ display:flex; flex-direction:column; gap:12px; margin-bottom:22px; }
+.compare__list li{
+  display:flex;
+  gap:10px;
+  font-size:15px;
+  color:var(--color-ink);
+  align-items:flex-start;
+}
+.compare__list li::before{
+  content:"";
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--color-signal);
+  margin-top:8px;
+  flex-shrink:0;
+}
+.compare__for{
+  font-size:13.5px;
+  color:var(--color-slate);
+  padding-top:16px;
+  border-top:1px solid var(--color-line);
+}
+.compare__for b{ color:var(--color-harbor); }
+
+@media (max-width:880px){
+  .compare{ grid-template-columns:1fr; }
+}
+
+/* ============================================================
+   6-1. 무료 체험수업 30분
+   ============================================================ */
+.trial{
+  background:linear-gradient(135deg, #4C8DFF 0%, #3B82F6 55%, #5B6EF5 100%);
+  border-radius:var(--radius-lg);
+  padding:52px 48px;
+  color:var(--color-white);
+  position:relative;
+  overflow:hidden;
+}
+.trial::before{
+  content:"";
+  position:absolute;
+  top:-90px; right:-70px;
+  width:260px; height:260px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,184,99,.45) 0%, transparent 70%);
+}
+.trial::after{
+  content:"";
+  position:absolute;
+  bottom:-100px; left:-60px;
+  width:240px; height:240px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.18) 0%, transparent 70%);
+}
+.trial__badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,.85);
+  color:var(--color-signal-dark);
+  font-family:var(--font-body);
+  font-size:13px;
+  font-weight:800;
+  padding:7px 16px;
+  border-radius:999px;
+  margin-bottom:18px;
+  position:relative;
+}
+.trial h2{
+  color:var(--color-white);
+  font-size:clamp(24px,2.8vw,32px);
+  max-width:680px;
+  margin-bottom:14px;
+  position:relative;
+}
+.trial > p{
+  color:rgba(255,255,255,.88);
+  font-size:16px;
+  max-width:620px;
+  margin-bottom:36px;
+  position:relative;
+}
+.trial__steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  margin-bottom:36px;
+  position:relative;
+}
+.trial__step{
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:var(--radius-md);
+  padding:24px 22px;
+}
+.trial__step span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:30px; height:30px;
+  border-radius:50%;
+  background:var(--color-warm);
+  color:var(--color-white);
+  font-family:var(--font-body);
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:12px;
+}
+.trial__step h3{
+  color:var(--color-white);
+  font-size:17px;
+  font-family:var(--font-body);
+  font-weight:700;
+  margin-bottom:8px;
+}
+.trial__step p{
+  color:rgba(255,255,255,.85);
+  font-size:14px;
+  line-height:1.6;
+}
+.trial__actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  position:relative;
+}
+.btn--kakao{
+  background:#FEE500;
+  color:#391B1B;
+  border-color:#FEE500;
+}
+.btn--kakao:hover{ background:#FFD900; transform:translateY(-1px); }
+.trial .btn--primary{
+  background:var(--color-white);
+  color:var(--color-signal-dark);
+  box-shadow:0 12px 24px -8px rgba(0,0,0,.25);
+}
+.trial .btn--primary:hover{ background:#F3F7FF; transform:translateY(-1px); }
+
+@media (max-width:880px){
+  .trial{ padding:36px 26px; }
+  .trial__steps{ grid-template-columns:1fr; }
+}
+
+/* ============================================================
+   하단 고정 액션바 (전화 / 카톡 / 무료상담신청)
+   - "전화" href의 010-0000-0000 은 임시 번호입니다. 실제 번호로 교체해주세요.
+   ============================================================ */
+.action-bar{
+  position:fixed;
+  left:0; right:0; bottom:0;
+  z-index:70;
+  display:flex;
+  background:var(--color-white);
+  border-top:1px solid var(--color-line);
+  box-shadow:0 -10px 28px -14px rgba(15,42,74,.22);
+}
+.action-bar__item{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:14px 6px;
+  font-size:14px;
+  font-weight:700;
+  color:var(--color-harbor);
+  border-right:1px solid var(--color-line);
+}
+.action-bar__item:last-child{ border-right:none; }
+.action-bar__item svg{ width:19px; height:19px; flex-shrink:0; }
+.action-bar__item--kakao{ background:#FEE500; color:#391B1B; }
+.action-bar__item--primary{ background:var(--color-signal); color:var(--color-white); }
+@media (max-width:480px){
+  .action-bar__item span{ font-size:13px; }
+}
+
+/* ============================================================
+   7. 과목 / 가격 안내
+   ============================================================ */
+.price-tabs{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:28px;
+}
+.price-tab-btn{
+  padding:11px 20px;
+  border-radius:999px;
+  border:1px solid var(--color-line);
+  background:var(--color-white);
+  font-weight:600;
+  font-size:14.5px;
+  color:var(--color-slate);
+  transition:background .15s ease, color .15s ease, border-color .15s ease;
+}
+.price-tab-btn:hover{ border-color:var(--color-signal); color:var(--color-signal); }
+.price-tab-btn.is-active{
+  background:var(--color-harbor);
+  border-color:var(--color-harbor);
+  color:var(--color-white);
+}
+.price-panel{ display:none; }
+.price-panel.is-active{ display:block; }
+.price-caption{
+  font-size:14.5px;
+  color:var(--color-slate);
+  margin-bottom:18px;
+}
+.price-caption b{ color:var(--color-harbor); }
+.price-subhead{
+  font-family:var(--font-mono);
+  font-size:13px;
+  font-weight:600;
+  color:var(--color-signal-dark);
+  margin:30px 0 14px;
+  display:block;
+}
+.price-subhead:first-child{ margin-top:0; }
+.price-table{
+  width:100%;
+  border-collapse:collapse;
+  background:var(--color-white);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  box-shadow:var(--shadow-card);
+}
+.price-table th,.price-table td{
+  padding:18px 22px;
+  text-align:left;
+  border-bottom:1px solid var(--color-line);
+  font-size:15px;
+}
+.price-table thead th{
+  background:var(--color-harbor);
+  color:var(--color-white);
+  font-weight:600;
+  font-size:13.5px;
+  letter-spacing:.02em;
+}
+.price-table tbody tr:last-child td{ border-bottom:none; }
+.price-table tbody tr:hover{ background:var(--color-mist); }
+.price-table td.num, .price-table th.num{ font-family:var(--font-mono); }
+.price-table-scroll{ overflow-x:auto; margin-bottom:22px; }
+.price-table-scroll:last-child{ margin-bottom:0; }
+
+.subjects{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:36px;
+}
+.subjects span{
+  font-size:14px;
+  font-weight:500;
+  padding:9px 16px;
+  border-radius:999px;
+  background:var(--color-mist);
+  color:var(--color-harbor);
+}
+
+/* ============================================================
+   8. 상담 신청 폼
+   ============================================================ */
+.form-section__inner{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:56px;
+  align-items:start;
+}
+.form-section__side h2{ font-size:clamp(26px,3vw,34px); margin-bottom:16px; }
+.form-section__side p{ color:var(--color-slate); font-size:16px; margin-bottom:28px; }
+.form-section__points{ display:flex; flex-direction:column; gap:16px; }
+.form-section__points li{ position:relative; padding-left:24px; font-size:15px; line-height:1.6; }
+.form-section__points li::before{
+  content:"✓";
+  position:absolute;
+  left:0; top:0;
+  color:var(--color-signal);
+  font-weight:700;
+}
+.form-section__points li b{ color:var(--color-harbor); }
+
+.consult-form{
+  background:var(--color-white);
+  border:1px solid var(--color-line);
+  border-radius:var(--radius-lg);
+  padding:40px;
+  box-shadow:var(--shadow-card);
+}
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+.form-field{ display:flex; flex-direction:column; gap:8px; }
+.form-field--full{ grid-column:1 / -1; }
+.form-field label{ font-size:14px; font-weight:600; color:var(--color-harbor); }
+.form-field input,.form-field select,.form-field textarea{
+  font-family:var(--font-body);
+  font-size:15px;
+  padding:12px 14px;
+  border:1px solid var(--color-line);
+  border-radius:var(--radius-sm);
+  background:var(--color-paper);
+  color:var(--color-ink);
+  width:100%;
+}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{
+  border-color:var(--color-signal);
+  outline:none;
+  box-shadow:0 0 0 3px rgba(47,111,237,.15);
+}
+.radio-row{ display:flex; gap:18px; flex-wrap:wrap; }
+.radio-row label{
+  display:flex; align-items:center; gap:7px;
+  font-size:14.5px; font-weight:500; color:var(--color-ink);
+}
+.consult-form .btn{ margin-top:8px; }
+.form-disclaimer{
+  font-size:12.5px;
+  color:var(--color-slate);
+  margin-top:14px;
+  text-align:center;
+}
+
+.form-success{
+  display:none;
+  text-align:center;
+  padding:40px 10px;
+}
+.form-success.is-visible{ display:block; }
+.consult-form.is-submitted .form-fields-wrap{ display:none; }
+.form-success__icon{
+  width:56px;height:56px;
+  border-radius:50%;
+  background:var(--color-mist);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 18px;
+  color:var(--color-signal);
+  font-size:26px;
+}
+.form-success h3{ font-size:20px; margin-bottom:10px; }
+.form-success p{ color:var(--color-slate); font-size:15px; margin-bottom:22px; }
+
+@media (max-width:880px){
+  .form-section__inner{ grid-template-columns:1fr; }
+  .form-grid{ grid-template-columns:1fr; }
+  .consult-form{ padding:28px; }
+}
+
+/* ============================================================
+   9. 푸터
+   ============================================================ */
+.footer{
+  background:var(--color-harbor);
+  color:rgba(255,255,255,.65);
+  padding:56px 0 32px;
+}
+.footer__top{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:32px;
+  padding-bottom:32px;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  margin-bottom:24px;
+}
+.footer__logo{
+  font-family:var(--font-display);
+  color:var(--color-white);
+  font-size:19px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+.footer__contact{ font-size:14px; line-height:1.9; }
+.footer__contact b{ color:rgba(255,255,255,.9); }
+.footer__legal{
+  font-size:12.5px;
+  line-height:1.9;
+  max-width:420px;
+}
+.footer__bottom{
+  font-size:12.5px;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+/* 스크롤 등장 효과 (모션 허용 시에만) */
+@media (prefers-reduced-motion: no-preference){
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     헤더 / 네비게이션
+============================================================ -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="#top" class="nav__logo"><span></span>스터디브릿지</a>
+    <nav class="nav__links">
+      <a class="nav__link" href="#process">매칭 과정</a>
+      <a class="nav__link" href="#compare">수업 방식</a>
+      <a class="nav__link" href="#pricing">과목·가격</a>
+      <a class="nav__link" href="#apply">상담 신청</a>
+    </nav>
+    <div class="nav__cta">
+      <a href="#pricing" class="btn btn--ghost">과목·가격 보기</a>
+      <a href="#apply" class="btn btn--primary">무료 상담 신청</a>
+    </div>
+    <button class="nav__toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false">
+      <span></span>
+    </button>
+  </div>
+  <div class="nav__mobile-panel" id="navMobilePanel">
+    <a href="#process">매칭 과정</a>
+    <a href="#compare">수업 방식</a>
+    <a href="#pricing">과목·가격</a>
+    <a href="#apply">상담 신청</a>
+    <a href="#apply" class="btn btn--primary btn--block" style="margin-top:10px;">무료 상담 신청</a>
+  </div>
+</header>
+
+<!-- ============================================================
+     히어로
+============================================================ -->
+<section class="hero" id="top">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <span class="eyebrow">전국 1:1 학습 매칭 컨설팅</span>
+      <h1>사는 곳과 상관없이,<br>우리 아이에게 맞는 <em>선생님</em>을 찾아드립니다</h1>
+      <p class="hero__sub">
+        방문 과외와 비대면 화상 수업, 우리 아이에게 더 잘 맞는 방식을 함께 정하고
+        전국 선생님 네트워크에서 학년·과목·지역 조건에 맞춰 매칭해 드립니다.
+      </p>
+      <div class="hero__actions">
+        <a href="#apply" class="btn btn--primary">무료 상담 신청하기</a>
+        <a href="#pricing" class="btn btn--ghost">과목·가격 보기</a>
+      </div>
+      <p class="hero__note">상담 신청부터 매칭 제안까지, 비용 없이 진행됩니다</p>
+    </div>
+
+    <div class="radar-wrap" aria-hidden="true">
+      <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
+        <circle class="radar__ring" cx="240" cy="240" r="200"/>
+        <circle class="radar__ring" cx="240" cy="240" r="140"/>
+        <circle class="radar__ring radar__pulse" cx="240" cy="240" r="40"/>
+
+        <!-- 중심 -> 과목 노드 연결선 -->
+        <path class="radar__line" d="M240,240 Q240,140 240,68"/>
+        <path class="radar__line" d="M240,240 Q330,180 405,148"/>
+        <path class="radar__line" d="M240,240 Q330,300 405,332"/>
+        <path class="radar__line" d="M240,240 Q240,340 240,412"/>
+        <path class="radar__line" d="M240,240 Q150,300 75,332"/>
+        <path class="radar__line" d="M240,240 Q150,180 75,148"/>
+
+        <!-- 과목 노드 -->
+        <g>
+          <circle class="radar__node-dot l1" cx="240" cy="68" r="28" style="fill:#FFE3C2"/>
+          <text class="radar__node-emoji l1-e" x="240" y="70">📐</text>
+          <text class="radar__node-label" x="240" y="112">수학</text>
+        </g>
+        <g>
+          <circle class="radar__node-dot l2" cx="405" cy="148" r="28" style="fill:#D7EBFF"/>
+          <text class="radar__node-emoji l2-e" x="405" y="150">🔤</text>
+          <text class="radar__node-label" x="405" y="192">영어</text>
+        </g>
+        <g>
+          <circle class="radar__node-dot l3" cx="405" cy="332" r="28" style="fill:#FCE3F5"/>
+          <text class="radar__node-emoji l3-e" x="405" y="334">📖</text>
+          <text class="radar__node-label" x="405" y="376">국어</text>
+        </g>
+        <g>
+          <circle class="radar__node-dot l4" cx="240" cy="412" r="28" style="fill:#D9F7EC"/>
+          <text class="radar__node-emoji l4-e" x="240" y="414">🔬</text>
+          <text class="radar__node-label" x="240" y="456">과학</text>
+        </g>
+        <g>
+          <circle class="radar__node-dot l5" cx="75" cy="332" r="28" style="fill:#FFF3C4"/>
+          <text class="radar__node-emoji l5-e" x="75" y="334">🌍</text>
+          <text class="radar__node-label" x="75" y="376">사회</text>
+        </g>
+        <g>
+          <circle class="radar__node-dot l6" cx="75" cy="148" r="28" style="fill:#EAE3FC"/>
+          <text class="radar__node-emoji l6-e" x="75" y="150">✍️</text>
+          <text class="radar__node-label" x="75" y="192">논술</text>
+        </g>
+
+        <!-- 중심 = 학생 -->
+        <circle class="radar__center-dot" cx="240" cy="240" r="38"/>
+        <text class="radar__center-label" x="240" y="234">🧑‍🎓</text>
+        <text class="radar__center-label" x="240" y="254" style="font-size:11px;">우리 아이</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     통계 바
+============================================================ -->
+<section class="section" style="padding:0 0 88px;">
+  <div class="container">
+    <div class="stats reveal">
+      <div class="stat">
+        <span class="stat__icon" style="background:#FFEEDD;">🗺️</span>
+        <span class="stat__num">17</span>
+        <span class="stat__label">전국 시·도 매칭 가능</span>
+      </div>
+      <div class="stat">
+        <span class="stat__icon" style="background:#E6F4FF;">🏠</span>
+        <span class="stat__num">2</span>
+        <span class="stat__label">방문 + 비대면 수업 방식</span>
+      </div>
+      <div class="stat">
+        <span class="stat__icon" style="background:#E9FBF4;">📚</span>
+        <span class="stat__num">초~고</span>
+        <span class="stat__label">전 학년 매칭 가능</span>
+      </div>
+      <div class="stat">
+        <span class="stat__icon" style="background:#FDEFFB;">✏️</span>
+        <span class="stat__num">전 과목</span>
+        <span class="stat__label">국·영·수·사·과·논술</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     매칭 과정 3단계
+============================================================ -->
+<section class="section" id="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">매칭 과정</span>
+      <h2>상담부터 수업 시작까지, 3단계면 충분합니다</h2>
+      <p>학년·과목·지역만 알려주시면 나머지는 저희가 진행합니다.</p>
+    </div>
+    <div class="process reveal">
+      <div class="process__step">
+        <span class="process__num">1</span>
+        <h3>✋ 상담 신청</h3>
+        <p>학년, 과목, 거주 지역, 희망 수업 방식(방문/비대면)을 남겨주세요. 5분이면 충분해요.</p>
+      </div>
+      <div class="process__step">
+        <span class="process__num">2</span>
+        <h3>🤝 맞춤 매칭</h3>
+        <p>보유 선생님 데이터베이스에서 조건에 맞는 선생님을 선별해 1~2일 내로 제안드려요.</p>
+      </div>
+      <div class="process__step">
+        <span class="process__num">3</span>
+        <h3>🚀 수업 시작 &amp; 케어</h3>
+        <p>방문 또는 화상으로 첫 수업을 진행하고, 이후에도 학습 진도를 함께 점검해 드려요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     수업 방식 비교
+============================================================ -->
+<section class="section section--mist" id="compare">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">수업 방식 선택</span>
+      <h2>방문 과외, 비대면 화상 수업 — 무엇이 더 맞을까요</h2>
+      <p>두 방식 모두 운영하고 있어 우리 아이 상황에 맞게 고르거나, 상담을 통해 추천받을 수 있습니다.</p>
+    </div>
+
+    <div class="compare reveal">
+      <div class="compare__card">
+        <div class="compare__icon">🏠</div>
+        <span class="compare__tag">선생님이 우리집으로</span>
+        <h3>방문 과외</h3>
+        <ul class="compare__list">
+          <li>선생님이 집으로 직접 방문, 거주지 인근 선생님으로 매칭</li>
+          <li>바로 옆에서 봐주는 밀착 관리, 학습 습관까지 함께 케어</li>
+          <li>형제·자매 동시 수업 등 일정 조율이 비교적 자유로움</li>
+        </ul>
+        <p class="compare__for"><b>이런 분께 추천</b> · 학습 습관이 아직 자리 잡지 않은 초등~중등 저학년</p>
+      </div>
+
+      <div class="compare__card compare__card--accent">
+        <div class="compare__icon">💻</div>
+        <span class="compare__tag">화면으로 만나는 수업</span>
+        <h3>비대면 화상 수업</h3>
+        <ul class="compare__list">
+          <li>거주지 제약 없이 전국 우수 선생님 풀에서 매칭</li>
+          <li>이동 시간 없이 원하는 시간에 바로 수업 시작</li>
+          <li>화면 공유·녹화·필기 자료 공유로 복습이 편리함</li>
+        </ul>
+        <p class="compare__for"><b>이런 분께 추천</b> · 특정 과목 전문 선생님이 필요한 중·고등, 지방·소도시 거주 학생</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     무료 체험수업 30분
+============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="trial reveal">
+      <span class="trial__badge">🎁 무료 체험수업</span>
+      <h2>정식 수업 전, 30분 무료 체험수업으로 먼저 확인해요</h2>
+      <p>선생님과 30분 동안 만나 학생 실력을 확인하고 맞춤 커리큘럼과 교재를 함께 정해요. 원하시는 수업 방식이나 사용 중인 교재가 있다면 그대로 이어서 진행할 수도 있어요.</p>
+
+      <div class="trial__steps">
+        <div class="trial__step">
+          <span>1</span>
+          <h3>🔍 실력 확인</h3>
+          <p>짧은 진단을 통해 현재 학습 수준과 약한 부분을 파악해요.</p>
+        </div>
+        <div class="trial__step">
+          <span>2</span>
+          <h3>🧭 맞춤 커리큘럼 설계</h3>
+          <p>확인된 수준에 맞춰 학습 방향과 진도 계획을 함께 세워요.</p>
+        </div>
+        <div class="trial__step">
+          <span>3</span>
+          <h3>📘 교재 선택</h3>
+          <p>추천 교재로 진행하거나, 원하시는 교재·수업 방식이 있다면 그대로 진행할 수 있어요.</p>
+        </div>
+      </div>
+
+      <div class="trial__actions">
+        <a href="#apply" class="btn btn--primary">무료 체험수업 신청하기</a>
+        <a href="https://open.kakao.com/o/srpOvVci" class="btn btn--kakao" target="_blank" rel="noopener">
+          카톡으로 바로 문의하기
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     과목 / 가격 안내
+============================================================ -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">과목 &amp; 가격 안내</span>
+      <h2>학년과 수업 방식에 따른 가격 가이드</h2>
+      <p>방문(홈스쿨)과 비대면(사이버)은 횟수·시간에 따른 패키지로, 단과·검정고시반은 1회 단가로 운영됩니다. 정확한 견적은 상담을 통해 안내드립니다.</p>
+    </div>
+
+    <div class="price-tabs reveal" role="tablist">
+      <button type="button" class="price-tab-btn is-active" data-target="panel-visit">방문 패키지 (홈스쿨)</button>
+      <button type="button" class="price-tab-btn" data-target="panel-cyber">비대면 패키지 (사이버)</button>
+      <button type="button" class="price-tab-btn" data-target="panel-etc">단과 · 검정고시반</button>
+    </div>
+
+    <div class="reveal">
+      <!-- 방문(홈스쿨) 패키지 -->
+      <div class="price-panel is-active" id="panel-visit">
+        <p class="price-caption">선생님이 집으로 방문하는 정기 패키지 수업입니다. 일정에 따라 아래 구성 중에서 선택할 수 있습니다.</p>
+        <div class="price-table-scroll">
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th>수업 구성</th>
+                <th class="num">초등</th>
+                <th class="num">중등</th>
+                <th class="num">고1, 2</th>
+                <th class="num">고3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>주1회 · 1시간</td><td class="num">128,000원</td><td class="num">148,000원</td><td class="num">168,000원</td><td class="num">188,000원</td></tr>
+              <tr><td>주2회 · 1시간</td><td class="num">256,000원</td><td class="num">296,000원</td><td class="num">336,000원</td><td class="num">376,000원</td></tr>
+              <tr><td>주2회 · 1시간 30분</td><td class="num">384,000원</td><td class="num">444,000원</td><td class="num">504,000원</td><td class="num">564,000원</td></tr>
+              <tr><td>주2회 · 2시간</td><td class="num">512,000원</td><td class="num">592,000원</td><td class="num">672,000원</td><td class="num">752,000원</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 비대면(사이버) 패키지 -->
+      <div class="price-panel" id="panel-cyber">
+        <p class="price-caption">화상으로 진행하는 정기 패키지 수업입니다. 거주 지역과 무관하게 전국 어디서나 동일한 가격으로 이용할 수 있습니다.</p>
+        <div class="price-table-scroll">
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th>수업 구성</th>
+                <th class="num">초등</th>
+                <th class="num">중등</th>
+                <th class="num">고1, 2</th>
+                <th class="num">고3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>주1회 · 1시간</td><td class="num">118,000원</td><td class="num">134,000원</td><td class="num">154,000원</td><td class="num">164,000원</td></tr>
+              <tr><td>주2회 · 1시간</td><td class="num">236,000원</td><td class="num">268,000원</td><td class="num">308,000원</td><td class="num">328,000원</td></tr>
+              <tr><td>주2회 · 1시간 30분</td><td class="num">354,000원</td><td class="num">402,000원</td><td class="num">462,000원</td><td class="num">492,000원</td></tr>
+              <tr><td>주2회 · 2시간</td><td class="num">472,000원</td><td class="num">536,000원</td><td class="num">616,000원</td><td class="num">656,000원</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 단과 / 검정고시 -->
+      <div class="price-panel" id="panel-etc">
+        <p class="price-caption">정기 패키지 없이 1회 단위로 듣는 단과 수업과 검정고시 전문반 가격입니다.</p>
+
+        <span class="price-subhead">단과 수업 (1회 단가)</span>
+        <div class="price-table-scroll">
+          <table class="price-table">
+            <thead>
+              <tr><th>수업 방식</th><th class="num">초등</th><th class="num">중등</th><th class="num">고등</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>방문</td><td class="num">64,000원</td><td class="num">74,000원</td><td class="num">84,000원</td></tr>
+              <tr><td>화상</td><td class="num">59,000원</td><td class="num">67,000원</td><td class="num">77,000원</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <span class="price-subhead">검정고시반 (1회 단가)</span>
+        <div class="price-table-scroll">
+          <table class="price-table">
+            <thead>
+              <tr><th>수업 방식</th><th class="num">중등 검정고시</th><th class="num">고등 검정고시</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>방문</td><td class="num">74,000원</td><td class="num">84,000원</td></tr>
+              <tr><td>화상</td><td class="num">67,000원</td><td class="num">77,000원</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="subjects reveal">
+      <span>국어</span><span>영어</span><span>수학</span><span>사회</span>
+      <span>과학</span><span>한국사</span><span>제2외국어</span><span>논술·면접</span>
+      <span>전 과목 가능</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     상담 신청 폼
+============================================================ -->
+<section class="section section--mist" id="apply">
+  <div class="container form-section__inner">
+    <div class="form-section__side reveal">
+      <span class="eyebrow">무료 상담 신청</span>
+      <h2>지금 신청하면<br>1~2일 내로 연락드립니다</h2>
+      <p>아래 정보를 남겨주시면 조건에 맞는 선생님을 찾아 먼저 연락드립니다.</p>
+      <ul class="form-section__points">
+        <li>매칭 후 <b>30분 무료 체험수업</b>으로 먼저 확인하고 시작합니다</li>
+        <li>상담 및 매칭 제안까지 비용이 발생하지 않습니다</li>
+        <li>방문 / 비대면 중 더 적합한 방식을 함께 안내해 드립니다</li>
+        <li>매칭 후에도 학습 진도를 지속적으로 케어합니다</li>
+      </ul>
+    </div>
+
+    <form class="consult-form reveal" id="consultForm">
+      <div class="form-fields-wrap">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="grade">학년 *</label>
+            <select id="grade" name="grade" required>
+              <option value="" disabled selected>선택해주세요</option>
+              <option>초등 1~3학년</option>
+              <option>초등 4~6학년</option>
+              <option>중등 1학년</option>
+              <option>중등 2학년</option>
+              <option>중등 3학년</option>
+              <option>고등 1학년</option>
+              <option>고등 2학년</option>
+              <option>고등 3학년</option>
+              <option>재수 / 검정고시</option>
+              <option>기타</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="subject">과목 *</label>
+            <select id="subject" name="subject" required>
+              <option value="" disabled selected>선택해주세요</option>
+              <option>국어</option>
+              <option>영어</option>
+              <option>수학</option>
+              <option>사회</option>
+              <option>과학</option>
+              <option>논술 / 면접</option>
+              <option>전 과목</option>
+              <option>기타</option>
+            </select>
+          </div>
+          <div class="form-field form-field--full">
+            <label for="region">거주 지역 *</label>
+            <input type="text" id="region" name="region" placeholder="예: 서울시 강남구" required>
+          </div>
+          <div class="form-field form-field--full">
+            <label>희망 수업 방식 *</label>
+            <div class="radio-row">
+              <label><input type="radio" name="classType" value="방문 과외" required> 방문 과외</label>
+              <label><input type="radio" name="classType" value="비대면 화상 수업"> 비대면 화상 수업</label>
+              <label><input type="radio" name="classType" value="상담 후 결정"> 상담 후 결정</label>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="name">보호자 / 학생 성함 *</label>
+            <input type="text" id="name" name="name" placeholder="홍길동" required>
+          </div>
+          <div class="form-field">
+            <label for="phone">연락처 *</label>
+            <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
+          </div>
+          <div class="form-field form-field--full">
+            <label for="memo">추가로 전달하고 싶은 내용</label>
+            <textarea id="memo" name="memo" rows="3" placeholder="예: 평일 저녁 시간대 선호, 선생님 성별 선호 등"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn--primary btn--block">무료 상담 신청하기</button>
+        <p class="form-disclaimer">신청해주신 정보는 매칭 상담 목적으로만 사용됩니다.</p>
+      </div>
+
+      <div class="form-success" id="formSuccess">
+        <div class="form-success__icon">✓</div>
+        <h3>상담 신청이 접수되었습니다</h3>
+        <p>빠르면 오늘 안에, 늦어도 1~2일 내로 남겨주신 연락처로 연락드릴게요.</p>
+        <button type="button" class="btn btn--ghost" id="formResetBtn">다시 작성하기</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============================================================
+     푸터
+============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <div class="footer__logo">스터디브릿지</div>
+        <div class="footer__contact">
+          <b>전화</b> 010-2039-4111<br>
+          평일 10:00 ~ 19:00 (주말·공휴일 휴무)
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 StudyBridge. All rights reserved.</span>
+      <span>표기된 가격은 기본 패키지 기준이며, 일부 변동될 수 있습니다.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     하단 고정 액션바
+     전화번호: 010-2039-4111
+============================================================ -->
+<div class="action-bar">
+  <a href="tel:010-2039-4111" class="action-bar__item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <span>전화 상담</span>
+  </a>
+  <a href="https://open.kakao.com/o/srpOvVci" class="action-bar__item action-bar__item--kakao" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.5C6.75 3.5 2.5 6.86 2.5 11c0 2.66 1.77 5 4.44 6.35-.2.7-.71 2.5-.82 2.9-.13.5.18.5.38.36.16-.11 2.55-1.73 3.59-2.43.62.09 1.26.14 1.91.14 5.25 0 9.5-3.36 9.5-7.5S17.25 3.5 12 3.5Z"/></svg>
+    <span>카톡 상담</span>
+  </a>
+  <a href="#apply" class="action-bar__item action-bar__item--primary">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+    <span>무료 상담 신청</span>
+  </a>
+</div>
+
+<script>
+/* ============================================================
+   1) 모바일 메뉴 토글
+============================================================ */
+const navToggle = document.getElementById('navToggle');
+const navEl = document.getElementById('nav');
+navToggle.addEventListener('click', () => {
+  const isOpen = navEl.classList.toggle('is-open');
+  navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+});
+// 모바일 메뉴 링크 클릭하면 메뉴 닫기
+document.querySelectorAll('#navMobilePanel a').forEach(link => {
+  link.addEventListener('click', () => navEl.classList.remove('is-open'));
+});
+
+/* ============================================================
+   2) 스크롤 등장 효과 (prefers-reduced-motion 존중)
+============================================================ */
+if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+}
+
+/* ============================================================
+   3) 상담 신청 폼 제출 처리
+   ⚠ 중요: 현재는 백엔드(서버)가 연결되어 있지 않아서
+   실제로 어디로 데이터가 전송되지는 않습니다.
+   화면에는 "접수되었습니다"로 보이지만, 실제 운영 전에는
+   구글폼 연동 / Formspree / 자체 서버 등으로 반드시 연결해야 합니다.
+============================================================ */
+const consultForm = document.getElementById('consultForm');
+const formSuccess = document.getElementById('formSuccess');
+const formResetBtn = document.getElementById('formResetBtn');
+
+consultForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  consultForm.classList.add('is-submitted');
+  formSuccess.classList.add('is-visible');
+  formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  // TODO: 실제 서비스에서는 이 위치에서 fetch()로
+  // 구글시트 / Formspree / 자체 API 등에 데이터를 전송하면 됩니다.
+  console.log('상담 신청 데이터(데모용, 실제 전송 안됨):', Object.fromEntries(new FormData(consultForm)));
+});
+
+formResetBtn.addEventListener('click', function () {
+  consultForm.reset();
+  consultForm.classList.remove('is-submitted');
+  formSuccess.classList.remove('is-visible');
+});
+/* ============================================================
+   4) 가격표 탭 전환 (방문 / 비대면 / 단과·검정고시)
+============================================================ */
+document.querySelectorAll('.price-tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.price-tab-btn').forEach(b => b.classList.remove('is-active'));
+    document.querySelectorAll('.price-panel').forEach(p => p.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    document.getElementById(btn.dataset.target).classList.add('is-active');
+  });
+});
+</script>
+</body>
+</html>
