@@ -383,39 +383,70 @@ select:focus-visible, textarea:focus-visible{
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:16px;
+  gap:18px;
 }
 .stat{
+  position:relative;
   background:var(--color-white);
   border:1px solid var(--color-line);
   border-radius:var(--radius-md);
-  padding:26px 20px;
-  text-align:center;
+  padding:28px 22px 24px;
+  text-align:left;
   box-shadow:var(--shadow-card);
+  overflow:hidden;
 }
+.stat::before{
+  content:"";
+  position:absolute;
+  top:0; left:0; right:0;
+  height:5px;
+}
+.stat--a::before{ background:linear-gradient(90deg,#FFC178,#FF8A4C); }
+.stat--b::before{ background:linear-gradient(90deg,#7FC4FF,#3B82F6); }
+.stat--c::before{ background:linear-gradient(90deg,#7CEFCB,#22C3A6); }
+.stat--d::before{ background:linear-gradient(90deg,#F3A6FF,#B070F0); }
+
 .stat__icon{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  width:44px; height:44px;
-  border-radius:50%;
-  font-size:20px;
-  margin-bottom:12px;
+  width:58px; height:58px;
+  border-radius:18px;
+  font-size:28px;
+  margin-bottom:16px;
 }
+.stat--a .stat__icon{ background:linear-gradient(135deg,#FFD9AE,#FFB873); box-shadow:0 10px 20px -10px rgba(255,138,76,.5); }
+.stat--b .stat__icon{ background:linear-gradient(135deg,#CFE6FF,#7FC4FF); box-shadow:0 10px 20px -10px rgba(59,130,246,.5); }
+.stat--c .stat__icon{ background:linear-gradient(135deg,#C8F6E6,#7CEFCB); box-shadow:0 10px 20px -10px rgba(34,195,166,.5); }
+.stat--d .stat__icon{ background:linear-gradient(135deg,#F0D6FF,#E0A6FF); box-shadow:0 10px 20px -10px rgba(176,112,240,.5); }
+
 .stat__num{
   font-family:var(--font-body);
-  font-size:clamp(20px,2.4vw,26px);
+  font-size:clamp(20px,2.2vw,25px);
   font-weight:800;
   color:var(--color-harbor);
   display:block;
-  margin-bottom:4px;
+  margin-bottom:3px;
 }
 .stat__label{
-  font-size:13.5px;
-  color:var(--color-slate);
+  font-size:14px;
+  font-weight:700;
+  color:var(--color-ink);
+  display:block;
+  margin-bottom:10px;
 }
-@media (max-width:720px){
+.stat__desc{
+  font-size:13px;
+  color:var(--color-slate);
+  line-height:1.6;
+  padding-top:10px;
+  border-top:1px solid var(--color-line);
+}
+@media (max-width:880px){
   .stats{ grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:480px){
+  .stats{ grid-template-columns:1fr; }
 }
 
 /* ============================================================
@@ -1017,25 +1048,29 @@ select:focus-visible, textarea:focus-visible{
 <section class="section" style="padding:0 0 88px;">
   <div class="container">
     <div class="stats reveal">
-      <div class="stat">
-        <span class="stat__icon" style="background:#FFEEDD;">🗺️</span>
-        <span class="stat__num">17</span>
-        <span class="stat__label">전국 시·도 매칭 가능</span>
+      <div class="stat stat--a">
+        <span class="stat__icon">🗺️</span>
+        <span class="stat__num">17개 시·도</span>
+        <span class="stat__label">전국 어디서나 매칭 가능</span>
+        <p class="stat__desc">수도권부터 지방 소도시까지, 거주 지역 제한 없이 선생님을 연결해 드려요.</p>
       </div>
-      <div class="stat">
-        <span class="stat__icon" style="background:#E6F4FF;">🏠</span>
-        <span class="stat__num">2</span>
-        <span class="stat__label">방문 + 비대면 수업 방식</span>
+      <div class="stat stat--b">
+        <span class="stat__icon">🏠</span>
+        <span class="stat__num">2가지 방식</span>
+        <span class="stat__label">방문 + 화상 수업</span>
+        <p class="stat__desc">아이 상황에 맞게 방문 과외와 화상 수업 중 선택하거나, 두 가지를 함께 진행할 수 있어요.</p>
       </div>
-      <div class="stat">
-        <span class="stat__icon" style="background:#E9FBF4;">📚</span>
-        <span class="stat__num">초~고</span>
+      <div class="stat stat--c">
+        <span class="stat__icon">📚</span>
+        <span class="stat__num">초등 ~ 고3</span>
         <span class="stat__label">전 학년 매칭 가능</span>
+        <p class="stat__desc">초등 1학년부터 고3, 재수·검정고시 준비생까지 학년에 맞는 선생님을 보유하고 있어요.</p>
       </div>
-      <div class="stat">
-        <span class="stat__icon" style="background:#FDEFFB;">✏️</span>
+      <div class="stat stat--d">
+        <span class="stat__icon">✏️</span>
         <span class="stat__num">전 과목</span>
         <span class="stat__label">국·영·수·사·과·논술</span>
+        <p class="stat__desc">주요 과목은 물론 한국사, 제2외국어, 논술·면접까지 한 곳에서 매칭받을 수 있어요.</p>
       </div>
     </div>
   </div>
@@ -1156,19 +1191,19 @@ select:focus-visible, textarea:focus-visible{
     <div class="section-head reveal">
       <span class="eyebrow">과목 &amp; 가격 안내</span>
       <h2>학년과 수업 방식에 따른 가격 가이드</h2>
-      <p>방문(홈스쿨)과 비대면(사이버)은 횟수·시간에 따른 패키지로, 단과·검정고시반은 1회 단가로 운영됩니다. 정확한 견적은 상담을 통해 안내드립니다.</p>
+      <p>방문과 화상 수업은 횟수·시간에 따라 가격이 달라지며, 단과·검정고시반은 1회 단가로 운영됩니다. 정확한 견적은 상담을 통해 안내드립니다.</p>
     </div>
 
     <div class="price-tabs reveal" role="tablist">
-      <button type="button" class="price-tab-btn is-active" data-target="panel-visit">방문 패키지 (홈스쿨)</button>
-      <button type="button" class="price-tab-btn" data-target="panel-cyber">비대면 패키지 (사이버)</button>
+      <button type="button" class="price-tab-btn is-active" data-target="panel-visit">방문</button>
+      <button type="button" class="price-tab-btn" data-target="panel-cyber">화상</button>
       <button type="button" class="price-tab-btn" data-target="panel-etc">단과 · 검정고시반</button>
     </div>
 
     <div class="reveal">
-      <!-- 방문(홈스쿨) 패키지 -->
+      <!-- 방문 -->
       <div class="price-panel is-active" id="panel-visit">
-        <p class="price-caption">선생님이 집으로 방문하는 정기 패키지 수업입니다. 일정에 따라 아래 구성 중에서 선택할 수 있습니다.</p>
+        <p class="price-caption">선생님이 집으로 방문하는 정기 수업입니다. 일정에 따라 아래 구성 중에서 선택할 수 있습니다.</p>
         <div class="price-table-scroll">
           <table class="price-table">
             <thead>
@@ -1190,9 +1225,9 @@ select:focus-visible, textarea:focus-visible{
         </div>
       </div>
 
-      <!-- 비대면(사이버) 패키지 -->
+      <!-- 화상 -->
       <div class="price-panel" id="panel-cyber">
-        <p class="price-caption">화상으로 진행하는 정기 패키지 수업입니다. 거주 지역과 무관하게 전국 어디서나 동일한 가격으로 이용할 수 있습니다.</p>
+        <p class="price-caption">화상으로 진행하는 정기 수업입니다. 거주 지역과 무관하게 전국 어디서나 동일한 가격으로 이용할 수 있습니다.</p>
         <div class="price-table-scroll">
           <table class="price-table">
             <thead>
@@ -1216,7 +1251,7 @@ select:focus-visible, textarea:focus-visible{
 
       <!-- 단과 / 검정고시 -->
       <div class="price-panel" id="panel-etc">
-        <p class="price-caption">정기 패키지 없이 1회 단위로 듣는 단과 수업과 검정고시 전문반 가격입니다.</p>
+        <p class="price-caption">정기 수업 없이 1회 단위로 듣는 단과 수업과 검정고시 전문반 가격입니다.</p>
 
         <span class="price-subhead">단과 수업 (1회 단가)</span>
         <div class="price-table-scroll">
@@ -1261,8 +1296,8 @@ select:focus-visible, textarea:focus-visible{
   <div class="container form-section__inner">
     <div class="form-section__side reveal">
       <span class="eyebrow">무료 상담 신청</span>
-      <h2>지금 신청하면<br>1~2일 내로 연락드립니다</h2>
-      <p>아래 정보를 남겨주시면 조건에 맞는 선생님을 찾아 먼저 연락드립니다.</p>
+      <h2>지금 신청하면<br>1시간 이내 연락드립니다</h2>
+      <p>아래 정보를 남겨주시면 1시간 이내에 문자와 전화로 먼저 연락드립니다.</p>
       <ul class="form-section__points">
         <li>매칭 후 <b>30분 무료 체험수업</b>으로 먼저 확인하고 시작합니다</li>
         <li>상담 및 매칭 제안까지 비용이 발생하지 않습니다</li>
@@ -1336,7 +1371,7 @@ select:focus-visible, textarea:focus-visible{
       <div class="form-success" id="formSuccess">
         <div class="form-success__icon">✓</div>
         <h3>상담 신청이 접수되었습니다</h3>
-        <p>빠르면 오늘 안에, 늦어도 1~2일 내로 남겨주신 연락처로 연락드릴게요.</p>
+        <p>1시간 이내에 남겨주신 연락처로 문자와 전화로 연락드릴게요.</p>
         <button type="button" class="btn btn--ghost" id="formResetBtn">다시 작성하기</button>
       </div>
     </form>
@@ -1359,7 +1394,7 @@ select:focus-visible, textarea:focus-visible{
     </div>
     <div class="footer__bottom">
       <span>© 2026 StudyBridge. All rights reserved.</span>
-      <span>표기된 가격은 기본 패키지 기준이며, 일부 변동될 수 있습니다.</span>
+      <span>표기된 가격은 기본 구성 기준이며, 일부 변동될 수 있습니다.</span>
     </div>
   </div>
 </footer>
@@ -1444,7 +1479,7 @@ formResetBtn.addEventListener('click', function () {
   formSuccess.classList.remove('is-visible');
 });
 /* ============================================================
-   4) 가격표 탭 전환 (방문 / 비대면 / 단과·검정고시)
+   4) 가격표 탭 전환 (방문 / 화상 / 단과·검정고시)
 ============================================================ */
 document.querySelectorAll('.price-tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
