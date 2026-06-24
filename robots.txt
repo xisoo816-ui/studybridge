@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://studybridge.kr/sitemap.xml
