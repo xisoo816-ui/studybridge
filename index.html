@@ -411,6 +411,63 @@ select:focus-visible, textarea:focus-visible{
 }
 
 /* ============================================================
+   3-2. 선생님 소개 카드
+   ============================================================ */
+.teachers{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+.teacher-card{
+  background:var(--color-white);
+  border:1px solid var(--color-line);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  box-shadow:var(--shadow-card);
+}
+.teacher-card__top{
+  position:relative;
+  background:linear-gradient(135deg,#1C2B52,var(--color-harbor));
+  padding:18px 18px 38px;
+}
+.teacher-card__badge{
+  display:inline-block;
+  background:var(--color-warm);
+  color:#3A2300;
+  font-size:12.5px;
+  font-weight:700;
+  padding:5px 12px;
+  border-radius:999px;
+}
+.teacher-card__avatar{
+  position:absolute;
+  left:18px; bottom:-28px;
+  width:56px; height:56px;
+  border-radius:50%;
+  background:var(--color-white);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  box-shadow:0 8px 16px -6px rgba(0,0,0,.25);
+}
+.teacher-card__body{ padding:38px 18px 22px; }
+.teacher-card__body h3{ font-size:17px; margin-bottom:6px; }
+.teacher-card__school{ color:var(--color-warm); font-weight:700; font-size:14px; margin-bottom:6px; }
+.teacher-card__exp{ color:var(--color-slate); font-size:13.5px; margin-bottom:14px; }
+.teacher-card__rating{ font-size:14px; color:var(--color-warm); font-weight:700; }
+.teacher-card__rating span{ color:var(--color-ink); margin-left:4px; }
+
+.teachers-cta{ text-align:center; margin-top:40px; }
+
+@media (max-width:880px){
+  .teachers{ grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:480px){
+  .teachers{ grid-template-columns:1fr; }
+}
+
+/* ============================================================
    4. 통계 바
    ============================================================ */
 .stats{
@@ -1129,6 +1186,72 @@ select:focus-visible, textarea:focus-visible{
         <span class="stat__label">국·영·수·사·과·논술</span>
         <p class="stat__desc">주요 과목은 물론 한국사, 제2외국어, 논술·면접까지 한 곳에서 매칭받을 수 있어요.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     선생님 소개
+============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">TEACHERS</span>
+      <h2>경력 전문 선생님을 만나보세요</h2>
+      <p>스터디브릿지에는 대학생 과외가 없습니다. 모든 선생님은 명문대 전공 출신 경력 선생님입니다.</p>
+    </div>
+    <div class="teachers reveal">
+      <div class="teacher-card">
+        <div class="teacher-card__top">
+          <span class="teacher-card__badge">수학·경시</span>
+          <span class="teacher-card__avatar">👩‍🏫</span>
+        </div>
+        <div class="teacher-card__body">
+          <h3>김OO 선생님</h3>
+          <p class="teacher-card__school">서울대 수학교육과</p>
+          <p class="teacher-card__exp">수능 수학 10년 · KMO 지도 경력</p>
+          <p class="teacher-card__rating">★★★★★ <span>5.0</span></p>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-card__top">
+          <span class="teacher-card__badge">영어·수능</span>
+          <span class="teacher-card__avatar">👨‍🏫</span>
+        </div>
+        <div class="teacher-card__body">
+          <h3>이OO 선생님</h3>
+          <p class="teacher-card__school">연세대 영어영문학과</p>
+          <p class="teacher-card__exp">수능 영어 8년 · 비즈니스 영어</p>
+          <p class="teacher-card__rating">★★★★★ <span>4.9</span></p>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-card__top">
+          <span class="teacher-card__badge">국어·논술</span>
+          <span class="teacher-card__avatar">👩‍🏫</span>
+        </div>
+        <div class="teacher-card__body">
+          <h3>박OO 선생님</h3>
+          <p class="teacher-card__school">고려대 국어국문학과</p>
+          <p class="teacher-card__exp">수능 국어 12년 · 논술 전문</p>
+          <p class="teacher-card__rating">★★★★★ <span>5.0</span></p>
+        </div>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-card__top">
+          <span class="teacher-card__badge">과학·입시</span>
+          <span class="teacher-card__avatar">👨‍🏫</span>
+        </div>
+        <div class="teacher-card__body">
+          <h3>최OO 선생님</h3>
+          <p class="teacher-card__school">KAIST 물리학과</p>
+          <p class="teacher-card__exp">과학고 입시 · 물리올림피아드</p>
+          <p class="teacher-card__rating">★★★★★ <span>4.9</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="teachers-cta reveal">
+      <a href="#apply" class="btn btn--primary">우리 아이 맞춤 선생님 추천받기 →</a>
     </div>
   </div>
 </section>
