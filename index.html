@@ -380,6 +380,37 @@ select:focus-visible, textarea:focus-visible{
 }
 
 /* ============================================================
+   3-1. 신뢰 지표 바 (히어로 바로 아래, 다크 네이비 배경)
+   ============================================================ */
+.trustbar{
+  background:linear-gradient(135deg,#1C2B52,var(--color-harbor));
+  padding:40px 0;
+}
+.trustbar__inner{
+  display:flex;
+  justify-content:space-around;
+  flex-wrap:wrap;
+  gap:28px 18px;
+  text-align:center;
+}
+.trustbar__item{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  min-width:130px;
+}
+.trustbar__num{
+  font-family:var(--font-display);
+  font-size:clamp(26px,4vw,38px);
+  color:var(--color-warm);
+}
+.trustbar__label{
+  font-size:14px;
+  color:var(--color-white);
+  opacity:.85;
+}
+
+/* ============================================================
    4. 통계 바
    ============================================================ */
 .stats{
@@ -1040,6 +1071,30 @@ select:focus-visible, textarea:focus-visible{
         <text class="radar__center-label" x="240" y="234">🧑‍🎓</text>
         <text class="radar__center-label" x="240" y="254" style="font-size:11px;">우리 아이</text>
       </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     신뢰 지표 바
+============================================================ -->
+<section class="trustbar">
+  <div class="container trustbar__inner">
+    <div class="trustbar__item">
+      <span class="trustbar__num">4,000+</span>
+      <span class="trustbar__label">등록 검증 교사</span>
+    </div>
+    <div class="trustbar__item">
+      <span class="trustbar__num">12,000+</span>
+      <span class="trustbar__label">누적 매칭 건수</span>
+    </div>
+    <div class="trustbar__item">
+      <span class="trustbar__num">98%</span>
+      <span class="trustbar__label">재매칭 만족도</span>
+    </div>
+    <div class="trustbar__item">
+      <span class="trustbar__num">17개 시·도</span>
+      <span class="trustbar__label">전국 매칭 지역</span>
     </div>
   </div>
 </section>
