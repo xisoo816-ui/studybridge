@@ -470,7 +470,81 @@ select:focus-visible, textarea:focus-visible{
   grid-template-columns:repeat(4,1fr);
   gap:18px;
 }
-/* 지역별 섹션 */
+/* 지역별 섹션 새 UI */
+.rg-layout{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:36px;
+  align-items:start;
+  margin-top:40px;
+}
+.rg-map-wrap{ display:flex; flex-direction:column; align-items:center; gap:10px; }
+.rg-map-svg{ width:100%; max-width:180px; }
+.rg-dot{ cursor:pointer; transition:r .15s,opacity .15s; }
+.rg-dot:hover{ opacity:.75; }
+.rg-dot.is-active{ fill:#FF9D4D !important; }
+.rg-map-hint{ font-size:11px; color:var(--color-text-sub); text-align:center; line-height:1.5; }
+.rg-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:20px;
+}
+.rg-tab{
+  background:#fff;
+  border:1.5px solid var(--color-line);
+  border-radius:999px;
+  padding:6px 16px;
+  font-size:13px;
+  font-weight:600;
+  color:var(--color-text-sub);
+  cursor:pointer;
+  transition:all .2s;
+}
+.rg-tab.is-active,.rg-tab:hover{ background:#3457B2; border-color:#3457B2; color:#fff; }
+.rg-panel{ display:none; }
+.rg-panel.is-active{ display:block; }
+.rg-panel__desc{
+  font-size:13px;
+  color:var(--color-text-sub);
+  margin:0 0 16px;
+  padding:10px 14px;
+  background:#EAF2FF;
+  border-radius:8px;
+}
+.district-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.district-card{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  background:#fff;
+  border:1.5px solid var(--color-line);
+  border-radius:12px;
+  padding:14px 16px;
+  text-decoration:none;
+  transition:border-color .2s,box-shadow .2s,background .2s;
+}
+.district-card:hover{
+  border-color:#3457B2;
+  background:#EAF2FF;
+  box-shadow:0 4px 16px rgba(52,87,178,.1);
+}
+.district-card strong{ font-size:14px; font-weight:700; color:var(--color-navy); }
+.district-card span{ font-size:12px; color:var(--color-text-sub); line-height:1.5; }
+@media(max-width:900px){
+  .rg-layout{ grid-template-columns:1fr; }
+  .rg-map-wrap{ flex-direction:row; gap:20px; align-items:flex-start; }
+  .rg-map-svg{ max-width:120px; }
+  .district-grid{ grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:520px){
+  .district-grid{ grid-template-columns:1fr; }
+}
+/* 구형 지역 스타일 (사용 안 함) */
 .region-block{ margin-top:36px; }
 .region-block__head{
   display:flex;
@@ -1819,78 +1893,167 @@ select:focus-visible, textarea:focus-visible{
 <!-- ============================================================
      지역별 과외
 ============================================================ -->
-<section class="section section--mist" id="regions">
+<section class="section" id="regions">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">지역별 과외</span>
       <h2>우리 동네 1:1 방문·화상 과외</h2>
-      <p>대치동·목동·중계동부터 지방 소도시까지 — 전국 어디서나 맞춤 선생님을 연결해드립니다.</p>
+      <p>지역을 선택하면 세부 동 단위까지 확인할 수 있어요. 전국 어디서나 맞춤 선생님을 연결해드립니다.</p>
     </div>
 
-    <div class="region-block reveal">
-      <div class="region-block__head">
-        <span class="region-block__label">서울</span>
-        <span class="region-block__sub">강남·강서·노원·마포 등 25개 구 전체 매칭</span>
+    <!-- 지역 탭 + 지도 -->
+    <div class="rg-layout reveal">
+      <div class="rg-map-wrap">
+        <svg viewBox="0 0 220 410" xmlns="http://www.w3.org/2000/svg" class="rg-map-svg">
+          <path d="M48,18 L102,8 L158,13 L193,28 L208,68 L203,118 L212,163 L202,212 L192,257 L173,298 L153,332 L132,347 L108,342 L83,327 L67,298 L51,257 L41,207 L37,157 L44,107 L42,62 Z" fill="#EAF2FF" stroke="#3457B2" stroke-width="1.5"/>
+          <ellipse cx="100" cy="383" rx="27" ry="13" fill="#EAF2FF" stroke="#3457B2" stroke-width="1.5"/>
+          <circle class="rg-dot" data-r="seoul"    cx="96"  cy="88"  r="9"  fill="#3457B2"/>
+          <circle class="rg-dot" data-r="incheon"  cx="60"  cy="98"  r="6"  fill="#6B8DD6"/>
+          <circle class="rg-dot" data-r="gyeonggi" cx="110" cy="118" r="7"  fill="#6B8DD6"/>
+          <circle class="rg-dot" data-r="daejeon"  cx="100" cy="178" r="7"  fill="#6B8DD6"/>
+          <circle class="rg-dot" data-r="gwangju"  cx="80"  cy="288" r="7"  fill="#6B8DD6"/>
+          <circle class="rg-dot" data-r="daegu"    cx="157" cy="218" r="7"  fill="#6B8DD6"/>
+          <circle class="rg-dot" data-r="busan"    cx="170" cy="278" r="7"  fill="#6B8DD6"/>
+          <circle class="rg-dot" data-r="etc"      cx="100" cy="383" r="5"  fill="#6B8DD6"/>
+          <text x="107" y="92"  font-size="9" fill="#fff"    font-weight="bold" font-family="Pretendard,sans-serif" pointer-events="none">서울</text>
+          <text x="42"  y="112" font-size="8" fill="#33405A" font-family="Pretendard,sans-serif" pointer-events="none">인천</text>
+          <text x="116" y="122" font-size="8" fill="#33405A" font-family="Pretendard,sans-serif" pointer-events="none">경기</text>
+          <text x="108" y="182" font-size="8" fill="#33405A" font-family="Pretendard,sans-serif" pointer-events="none">대전</text>
+          <text x="88"  y="292" font-size="8" fill="#33405A" font-family="Pretendard,sans-serif" pointer-events="none">광주</text>
+          <text x="164" y="222" font-size="8" fill="#33405A" font-family="Pretendard,sans-serif" pointer-events="none">대구</text>
+          <text x="148" y="293" font-size="8" fill="#33405A" font-family="Pretendard,sans-serif" pointer-events="none">부산</text>
+          <text x="107" y="387" font-size="8" fill="#33405A" font-family="Pretendard,sans-serif" pointer-events="none">제주</text>
+        </svg>
+        <p class="rg-map-hint">지역을 클릭하면 세부 동네가 나와요</p>
       </div>
-      <div class="region-pills">
-        <a href="#apply" class="region-pill">강남구 <small>대치동·역삼동</small></a>
-        <a href="#apply" class="region-pill">서초구 <small>반포·방배동</small></a>
-        <a href="#apply" class="region-pill">송파구 <small>잠실·문정동</small></a>
-        <a href="#apply" class="region-pill">강서구 <small>목동·화곡동</small></a>
-        <a href="#apply" class="region-pill">노원구 <small>중계·상계동</small></a>
-        <a href="#apply" class="region-pill">마포구 <small>합정·홍대</small></a>
-        <a href="#apply" class="region-pill">강동구 <small>천호·길동</small></a>
-        <a href="#apply" class="region-pill">성북구 <small>길음·정릉</small></a>
-        <a href="#apply" class="region-pill">동작구 <small>사당·상도동</small></a>
-        <a href="#apply" class="region-pill">관악구 <small>신림·봉천동</small></a>
-        <a href="#apply" class="region-pill">양천구 <small>신정·목동</small></a>
-        <a href="#apply" class="region-pill">은평구 <small>불광·녹번동</small></a>
+
+      <div class="rg-right">
+        <div class="rg-tabs">
+          <button class="rg-tab is-active" data-r="seoul">서울</button>
+          <button class="rg-tab" data-r="gyeonggi">경기</button>
+          <button class="rg-tab" data-r="incheon">인천</button>
+          <button class="rg-tab" data-r="daejeon">대전·세종</button>
+          <button class="rg-tab" data-r="daegu">대구</button>
+          <button class="rg-tab" data-r="busan">부산</button>
+          <button class="rg-tab" data-r="gwangju">광주</button>
+          <button class="rg-tab" data-r="etc">전국</button>
+        </div>
+
+        <!-- 서울 -->
+        <div class="rg-panel is-active" id="rp-seoul">
+          <p class="rg-panel__desc">서울 전 구 방문 과외 매칭 가능 — 아래 동네를 클릭하면 바로 상담 신청 페이지로 이동합니다.</p>
+          <div class="district-grid">
+            <a href="#apply" class="district-card"><strong>강남구</strong><span>대치동 · 역삼동 · 청담동 · 도곡동 · 개포동</span></a>
+            <a href="#apply" class="district-card"><strong>서초구</strong><span>반포동 · 방배동 · 서초동 · 양재동 · 잠원동</span></a>
+            <a href="#apply" class="district-card"><strong>송파구</strong><span>잠실동 · 문정동 · 가락동 · 방이동 · 위례</span></a>
+            <a href="#apply" class="district-card"><strong>강서구</strong><span>목동 · 화곡동 · 등촌동 · 방화동 · 가양동</span></a>
+            <a href="#apply" class="district-card"><strong>노원구</strong><span>중계동 · 상계동 · 하계동 · 월계동</span></a>
+            <a href="#apply" class="district-card"><strong>마포구</strong><span>합정동 · 홍대 · 상암동 · 망원동 · 서교동</span></a>
+            <a href="#apply" class="district-card"><strong>강동구</strong><span>천호동 · 길동 · 암사동 · 둔촌동</span></a>
+            <a href="#apply" class="district-card"><strong>성북구</strong><span>길음동 · 정릉동 · 돈암동 · 종암동</span></a>
+            <a href="#apply" class="district-card"><strong>동작구</strong><span>사당동 · 상도동 · 노량진 · 흑석동</span></a>
+            <a href="#apply" class="district-card"><strong>관악구</strong><span>신림동 · 봉천동 · 낙성대</span></a>
+            <a href="#apply" class="district-card"><strong>양천구</strong><span>목동 · 신정동 · 신월동</span></a>
+            <a href="#apply" class="district-card"><strong>은평구</strong><span>불광동 · 녹번동 · 응암동 · 구산동</span></a>
+          </div>
+        </div>
+
+        <!-- 경기 -->
+        <div class="rg-panel" id="rp-gyeonggi">
+          <p class="rg-panel__desc">경기도 전 지역 방문 과외 매칭 가능합니다.</p>
+          <div class="district-grid">
+            <a href="#apply" class="district-card"><strong>수원</strong><span>영통구 · 팔달구 · 장안구 · 권선구</span></a>
+            <a href="#apply" class="district-card"><strong>성남·분당</strong><span>정자동 · 서현동 · 수내동 · 야탑동</span></a>
+            <a href="#apply" class="district-card"><strong>용인·수지</strong><span>풍덕천동 · 상현동 · 죽전동 · 동천동</span></a>
+            <a href="#apply" class="district-card"><strong>고양·일산</strong><span>일산동구 · 일산서구 · 마두동 · 정발산동</span></a>
+            <a href="#apply" class="district-card"><strong>화성·동탄</strong><span>동탄1신도시 · 동탄2신도시 · 반송동</span></a>
+            <a href="#apply" class="district-card"><strong>안양·평촌</strong><span>평촌동 · 범계동 · 호계동 · 비산동</span></a>
+            <a href="#apply" class="district-card"><strong>부천</strong><span>중동 · 상동 · 원미구 · 소사구</span></a>
+            <a href="#apply" class="district-card"><strong>의정부</strong><span>민락동 · 녹양동 · 금오동 · 장암동</span></a>
+            <a href="#apply" class="district-card"><strong>남양주</strong><span>별내동 · 다산동 · 진건읍 · 화도읍</span></a>
+            <a href="#apply" class="district-card"><strong>안산</strong><span>고잔동 · 선부동 · 단원구 · 상록구</span></a>
+            <a href="#apply" class="district-card"><strong>평택</strong><span>비전동 · 세교동 · 소사동 · 동삭동</span></a>
+            <a href="#apply" class="district-card"><strong>김포</strong><span>장기동 · 풍무동 · 구래동 · 통진읍</span></a>
+          </div>
+        </div>
+
+        <!-- 인천 -->
+        <div class="rg-panel" id="rp-incheon">
+          <p class="rg-panel__desc">인천 전 구 방문 과외 매칭 가능합니다.</p>
+          <div class="district-grid">
+            <a href="#apply" class="district-card"><strong>연수구</strong><span>송도동 · 연수동 · 청학동 · 옥련동</span></a>
+            <a href="#apply" class="district-card"><strong>남동구</strong><span>구월동 · 간석동 · 논현동 · 만수동</span></a>
+            <a href="#apply" class="district-card"><strong>부평구</strong><span>부평동 · 산곡동 · 청천동 · 삼산동</span></a>
+            <a href="#apply" class="district-card"><strong>서구</strong><span>검단동 · 가좌동 · 석남동 · 연희동</span></a>
+            <a href="#apply" class="district-card"><strong>미추홀구</strong><span>주안동 · 용현동 · 학익동</span></a>
+            <a href="#apply" class="district-card"><strong>중구·영종</strong><span>영종도 · 운서동 · 신포동</span></a>
+          </div>
+        </div>
+
+        <!-- 대전·세종 -->
+        <div class="rg-panel" id="rp-daejeon">
+          <p class="rg-panel__desc">대전·세종 전 지역 방문 및 화상 과외 매칭 가능합니다.</p>
+          <div class="district-grid">
+            <a href="#apply" class="district-card"><strong>유성구</strong><span>봉명동 · 구암동 · 노은동 · 죽동</span></a>
+            <a href="#apply" class="district-card"><strong>서구</strong><span>둔산동 · 탄방동 · 괴정동 · 월평동</span></a>
+            <a href="#apply" class="district-card"><strong>중구</strong><span>대흥동 · 은행동 · 태평동</span></a>
+            <a href="#apply" class="district-card"><strong>동구</strong><span>가오동 · 용운동 · 판암동</span></a>
+            <a href="#apply" class="district-card"><strong>세종시</strong><span>도담동 · 아름동 · 고운동 · 종촌동</span></a>
+          </div>
+        </div>
+
+        <!-- 대구 -->
+        <div class="rg-panel" id="rp-daegu">
+          <p class="rg-panel__desc">대구 전 구 방문 및 화상 과외 매칭 가능합니다.</p>
+          <div class="district-grid">
+            <a href="#apply" class="district-card"><strong>수성구</strong><span>범어동 · 만촌동 · 황금동 · 지산동</span></a>
+            <a href="#apply" class="district-card"><strong>달서구</strong><span>월성동 · 상인동 · 감삼동 · 죽전동</span></a>
+            <a href="#apply" class="district-card"><strong>북구</strong><span>칠성동 · 복현동 · 침산동 · 산격동</span></a>
+            <a href="#apply" class="district-card"><strong>중구</strong><span>동인동 · 삼덕동 · 봉산동</span></a>
+            <a href="#apply" class="district-card"><strong>동구</strong><span>신암동 · 효목동 · 지저동</span></a>
+          </div>
+        </div>
+
+        <!-- 부산 -->
+        <div class="rg-panel" id="rp-busan">
+          <p class="rg-panel__desc">부산 전 구 방문 및 화상 과외 매칭 가능합니다.</p>
+          <div class="district-grid">
+            <a href="#apply" class="district-card"><strong>해운대구</strong><span>좌동 · 우동 · 재송동 · 반여동</span></a>
+            <a href="#apply" class="district-card"><strong>수영구</strong><span>광안동 · 민락동 · 남천동</span></a>
+            <a href="#apply" class="district-card"><strong>동래구</strong><span>온천동 · 명륜동 · 수안동</span></a>
+            <a href="#apply" class="district-card"><strong>부산진구</strong><span>부전동 · 전포동 · 개금동</span></a>
+            <a href="#apply" class="district-card"><strong>남구</strong><span>대연동 · 용호동 · 문현동</span></a>
+            <a href="#apply" class="district-card"><strong>사상구</strong><span>덕포동 · 모라동 · 주례동</span></a>
+          </div>
+        </div>
+
+        <!-- 광주 -->
+        <div class="rg-panel" id="rp-gwangju">
+          <p class="rg-panel__desc">광주 전 구 방문 및 화상 과외 매칭 가능합니다.</p>
+          <div class="district-grid">
+            <a href="#apply" class="district-card"><strong>서구</strong><span>화정동 · 금호동 · 쌍촌동 · 치평동</span></a>
+            <a href="#apply" class="district-card"><strong>북구</strong><span>용봉동 · 각화동 · 운암동 · 오치동</span></a>
+            <a href="#apply" class="district-card"><strong>남구</strong><span>봉선동 · 주월동 · 방림동</span></a>
+            <a href="#apply" class="district-card"><strong>광산구</strong><span>수완동 · 첨단동 · 운남동</span></a>
+          </div>
+        </div>
+
+        <!-- 전국 기타 -->
+        <div class="rg-panel" id="rp-etc">
+          <p class="rg-panel__desc">전국 어디서나 비대면 화상 과외로 매칭 가능합니다.</p>
+          <div class="district-grid">
+            <a href="#apply" class="district-card"><strong>울산</strong><span>남구 · 북구 · 중구 · 동구</span></a>
+            <a href="#apply" class="district-card"><strong>경남 창원</strong><span>성산구 · 의창구 · 마산합포구</span></a>
+            <a href="#apply" class="district-card"><strong>전북 전주</strong><span>완산구 · 덕진구 · 효자동</span></a>
+            <a href="#apply" class="district-card"><strong>충북 청주</strong><span>흥덕구 · 서원구 · 청원구</span></a>
+            <a href="#apply" class="district-card"><strong>충남 천안</strong><span>서북구 · 동남구 · 불당동</span></a>
+            <a href="#apply" class="district-card"><strong>강원 춘천·강릉</strong><span>춘천시 · 강릉시 · 원주시</span></a>
+            <a href="#apply" class="district-card"><strong>제주</strong><span>제주시 · 서귀포시</span></a>
+            <a href="#apply" class="district-card"><strong>그 외 전 지역</strong><span>전국 어디서나 화상 과외 매칭</span></a>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="region-block reveal">
-      <div class="region-block__head">
-        <span class="region-block__label">경기</span>
-        <span class="region-block__sub">수원·성남·용인·일산 등 경기 전 지역</span>
-      </div>
-      <div class="region-pills">
-        <a href="#apply" class="region-pill">수원 <small>영통·팔달구</small></a>
-        <a href="#apply" class="region-pill">성남·분당 <small>정자·서현동</small></a>
-        <a href="#apply" class="region-pill">용인·수지 <small>풍덕천·상현동</small></a>
-        <a href="#apply" class="region-pill">일산 <small>마두·정발산</small></a>
-        <a href="#apply" class="region-pill">화성·동탄 <small>동탄1·2신도시</small></a>
-        <a href="#apply" class="region-pill">안양·평촌 <small>평촌·범계동</small></a>
-        <a href="#apply" class="region-pill">부천 <small>중동·상동</small></a>
-        <a href="#apply" class="region-pill">의정부 <small>민락·녹양동</small></a>
-        <a href="#apply" class="region-pill">남양주 <small>별내·다산동</small></a>
-        <a href="#apply" class="region-pill">안산 <small>고잔·선부동</small></a>
-        <a href="#apply" class="region-pill">평택 <small>비전·세교동</small></a>
-        <a href="#apply" class="region-pill">김포 <small>장기·풍무동</small></a>
-      </div>
-    </div>
-
-    <div class="region-block reveal">
-      <div class="region-block__head">
-        <span class="region-block__label">광역시 · 전국</span>
-        <span class="region-block__sub">인천·대전·대구·부산·광주·울산 및 전국 도 단위</span>
-      </div>
-      <div class="region-pills">
-        <a href="#apply" class="region-pill">인천 <small>연수·부평구</small></a>
-        <a href="#apply" class="region-pill">대전·세종 <small>유성·둔산동</small></a>
-        <a href="#apply" class="region-pill">대구 <small>수성·달서구</small></a>
-        <a href="#apply" class="region-pill">부산 <small>해운대·사상구</small></a>
-        <a href="#apply" class="region-pill">울산 <small>남구·북구</small></a>
-        <a href="#apply" class="region-pill">광주 <small>서구·북구</small></a>
-        <a href="#apply" class="region-pill">전주 <small>완산·덕진구</small></a>
-        <a href="#apply" class="region-pill">청주 <small>흥덕·서원구</small></a>
-        <a href="#apply" class="region-pill">창원 <small>성산·의창구</small></a>
-        <a href="#apply" class="region-pill">강원 <small>춘천·강릉·원주</small></a>
-        <a href="#apply" class="region-pill">충청 <small>충남·충북 전역</small></a>
-        <a href="#apply" class="region-pill">제주 <small>제주시·서귀포</small></a>
-      </div>
-    </div>
-
-    <p class="region-note reveal">위 지역 외에도 전국 어디서나 신청 가능합니다. 지방·소도시는 <b>비대면 화상 과외</b>로 전국 선생님 풀에서 매칭해드려요.</p>
   </div>
 </section>
 
@@ -2384,6 +2547,31 @@ formResetBtn.addEventListener('click', function () {
 
   render();
 })();
+/* ============================================================
+   3-1) 지역 탭 + 지도 연동
+============================================================ */
+(function () {
+  var tabs = Array.from(document.querySelectorAll('.rg-tab'));
+  var dots = Array.from(document.querySelectorAll('.rg-dot'));
+  var panels = Array.from(document.querySelectorAll('.rg-panel'));
+
+  function activate(region) {
+    tabs.forEach(function (t) { t.classList.toggle('is-active', t.getAttribute('data-r') === region); });
+    dots.forEach(function (d) { d.classList.toggle('is-active', d.getAttribute('data-r') === region); });
+    panels.forEach(function (p) { p.classList.toggle('is-active', p.id === 'rp-' + region); });
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () { activate(tab.getAttribute('data-r')); });
+  });
+  dots.forEach(function (dot) {
+    dot.addEventListener('click', function () {
+      activate(dot.getAttribute('data-r'));
+      document.getElementById('regions').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+})();
+
 /* ============================================================
    4) 가격표 탭 전환 (방문 / 화상 / 단과·검정고시)
 ============================================================ */
