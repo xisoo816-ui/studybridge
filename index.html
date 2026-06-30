@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>스터디브릿지 | 전국 방문과외·비대면 화상과외 매칭 (초등·중등·고등·재수)</title>
 <meta name="description" content="초등부터 고3·재수·검정고시까지 전 과목 방문 과외와 비대면 화상 과외를 전국 어디서나 매칭해드립니다. 전공자 출신 검증된 경력 선생님과 무료 상담으로 시작하세요.">
+<meta name="keywords" content="방문과외,화상과외,수학과외,영어과외,국어과외,과학과외,사회과외,검정고시과외,전국과외,초등과외,중등과외,고등과외,재수과외,1대1과외,개인과외,비대면과외,온라인과외,과외매칭,과외선생님,스터디브릿지,수학과외추천,영어과외추천,국어과외추천,논술과외,화학과외,물리과외,생물과외,지구과학과외,한국사과외">
 <meta name="google-site-verification" content="pw6Mc6cLt8vZWnm7gyIlW6abSWkhq5BESm5tBj1-RsA" />
 <meta name="naver-site-verification" content="2595ae9ff6c65f964f99a6f9b0357d55d6b3e147" />
 
@@ -468,6 +469,39 @@ select:focus-visible, textarea:focus-visible{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:18px;
+}
+.subject-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  margin-top:40px;
+}
+.subject-card{
+  background:var(--color-white);
+  border:1px solid var(--color-line);
+  border-radius:16px;
+  padding:28px 22px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.subject-card__icon{ font-size:28px; }
+.subject-card strong{
+  font-size:16px;
+  font-weight:700;
+  color:var(--color-navy);
+}
+.subject-card p{
+  font-size:14px;
+  color:var(--color-text-sub);
+  line-height:1.6;
+  margin:0;
+}
+@media(max-width:900px){
+  .subject-grid{ grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:520px){
+  .subject-grid{ grid-template-columns:1fr; }
 }
 .teacher-card{
   background:var(--color-white);
@@ -1461,6 +1495,61 @@ select:focus-visible, textarea:focus-visible{
         <span class="process__num">3</span>
         <h3>🚀 수업 시작 &amp; 케어</h3>
         <p>방문 또는 화상으로 첫 수업을 진행하고, 이후에도 학습 진도를 함께 점검해 드려요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     과목별 과외
+============================================================ -->
+<section class="section" id="subjects">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">전 과목 매칭</span>
+      <h2>국어·영어·수학부터 검정고시까지 전 과목 1:1 과외</h2>
+      <p>초등·중등·고등·재수 전 학년, 모든 과목의 전공자 출신 선생님을 매칭해드립니다.</p>
+    </div>
+    <div class="subject-grid reveal">
+      <div class="subject-card">
+        <span class="subject-card__icon">📐</span>
+        <strong>수학 과외</strong>
+        <p>초등 연산부터 고등 수학Ⅱ·미적분·확통까지. 수학교육과 전공 선생님이 기초부터 심화까지 1:1로 잡아드려요.</p>
+      </div>
+      <div class="subject-card">
+        <span class="subject-card__icon">📖</span>
+        <strong>영어 과외</strong>
+        <p>파닉스·기초회화부터 수능 영어·내신 대비까지. 영어영문학과·영어교육과 전공 선생님 매칭.</p>
+      </div>
+      <div class="subject-card">
+        <span class="subject-card__icon">✏️</span>
+        <strong>국어 과외</strong>
+        <p>독해·문법·비문학·고전문학 완성. 수능 국어 1등급을 목표로 하는 맞춤 커리큘럼.</p>
+      </div>
+      <div class="subject-card">
+        <span class="subject-card__icon">🔬</span>
+        <strong>과학 과외</strong>
+        <p>물리·화학·생물·지구과학 전 영역. 개념 이해부터 수능·내신 고득점 전략까지.</p>
+      </div>
+      <div class="subject-card">
+        <span class="subject-card__icon">🌏</span>
+        <strong>사회·한국사 과외</strong>
+        <p>사회탐구 전 과목(사회문화·생활과윤리·한국지리 등)과 한국사능력검정 대비까지.</p>
+      </div>
+      <div class="subject-card">
+        <span class="subject-card__icon">📝</span>
+        <strong>논술·작문 과외</strong>
+        <p>대입 논술, 자기소개서, 구술면접 준비. 인문·자연 계열 논술 전문 선생님 연결.</p>
+      </div>
+      <div class="subject-card">
+        <span class="subject-card__icon">🎓</span>
+        <strong>검정고시 과외</strong>
+        <p>중졸·고졸 검정고시 전 과목 단기 합격 과외. 기초가 부족해도 빠르게 따라갈 수 있어요.</p>
+      </div>
+      <div class="subject-card">
+        <span class="subject-card__icon">💻</span>
+        <strong>비대면 화상 과외</strong>
+        <p>지방·소도시·해외 거주자도 전국 최고 선생님과 1:1 수업. 장소 제약 없이 어디서든 가능.</p>
       </div>
     </div>
   </div>
