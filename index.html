@@ -1573,37 +1573,37 @@ select:focus-visible, textarea:focus-visible{
       </div>
 
       <!-- 더보기로 숨겨진 후기 -->
-      <div class="review-card rv-hidden" data-subject="수학" data-level="고등">
+      <div class="review-card" data-subject="수학" data-level="고등">
         <div class="review-card__meta"><span class="rv-badge">수학</span><span class="rv-location">서울 목동 · 고2</span><span class="rv-date">2026.06.05</span></div>
         <p class="review-card__rating">★★★★★</p>
         <p class="review-card__quote">"수능 수학 준비를 어디서부터 시작해야 할지 몰랐는데, 선생님이 취약 단원부터 체계적으로 정리해주셔서 방향이 잡혔어요. 6월 모의고사 3등급 → 2등급!"</p>
         <div class="review-card__who"><span class="review-card__avatar">🧑‍🎓</span><div><div class="review-card__name">윤OO 학생</div><div class="review-card__tag">고2 · 수학 방문 과외</div></div></div>
       </div>
-      <div class="review-card rv-hidden" data-subject="국어" data-level="중등">
+      <div class="review-card" data-subject="국어" data-level="중등">
         <div class="review-card__meta"><span class="rv-badge rv-badge--kor">국어</span><span class="rv-location">부산 해운대구 · 중1</span><span class="rv-date">2026.06.03</span></div>
         <p class="review-card__rating">★★★★★</p>
         <p class="review-card__quote">"부산에 있어서 서울 선생님을 만나기 힘들었는데, 화상 수업으로 너무 좋은 선생님 연결해주셔서 감사해요. 독해력이 눈에 띄게 늘었어요."</p>
         <div class="review-card__who"><span class="review-card__avatar">👩</span><div><div class="review-card__name">송OO 학부모님</div><div class="review-card__tag">중1 자녀 · 국어 비대면 수업</div></div></div>
       </div>
-      <div class="review-card rv-hidden" data-subject="수학" data-level="초등">
+      <div class="review-card" data-subject="수학" data-level="초등">
         <div class="review-card__meta"><span class="rv-badge">수학</span><span class="rv-location">경기 일산 · 초3</span><span class="rv-date">2026.05.28</span></div>
         <p class="review-card__rating">★★★★★</p>
         <p class="review-card__quote">"초등 3학년인데 수 개념이 너무 약해서 걱정했어요. 선생님이 눈높이 맞춰서 재미있게 가르쳐주시니 아이가 이제 수학이 제일 재밌대요!"</p>
         <div class="review-card__who"><span class="review-card__avatar">👩</span><div><div class="review-card__name">조OO 학부모님</div><div class="review-card__tag">초3 자녀 · 수학 방문 과외</div></div></div>
       </div>
-      <div class="review-card rv-hidden" data-subject="검정고시" data-level="기타">
+      <div class="review-card" data-subject="검정고시" data-level="기타">
         <div class="review-card__meta"><span class="rv-badge rv-badge--etc">검정고시</span><span class="rv-location">대구 수성구 · 고졸 검정고시</span><span class="rv-date">2026.05.22</span></div>
         <p class="review-card__rating">★★★★★</p>
         <p class="review-card__quote">"검정고시 준비를 혼자 하다가 막혀서 신청했어요. 선생님이 핵심만 빠르게 짚어주셔서 2개월 만에 합격했어요. 정말 감사드려요."</p>
         <div class="review-card__who"><span class="review-card__avatar">🧑‍🎓</span><div><div class="review-card__name">강OO 학생</div><div class="review-card__tag">고졸 검정고시 · 전 과목 화상</div></div></div>
       </div>
-      <div class="review-card rv-hidden" data-subject="영어" data-level="고등">
+      <div class="review-card" data-subject="영어" data-level="고등">
         <div class="review-card__meta"><span class="rv-badge rv-badge--eng">영어</span><span class="rv-location">서울 서초구 · 고3</span><span class="rv-date">2026.05.18</span></div>
         <p class="review-card__rating">★★★★★</p>
         <p class="review-card__quote">"수능 영어 절대평가인데 매번 2등급이라 속상했어요. 선생님이 독해 전략을 완전히 바꿔주셔서 모의고사에서 처음으로 1등급 받았어요!"</p>
         <div class="review-card__who"><span class="review-card__avatar">🧑‍🎓</span><div><div class="review-card__name">류OO 학생</div><div class="review-card__tag">고3 · 영어 비대면 수업</div></div></div>
       </div>
-      <div class="review-card rv-hidden" data-subject="과학" data-level="중등">
+      <div class="review-card" data-subject="과학" data-level="중등">
         <div class="review-card__meta"><span class="rv-badge rv-badge--sci">과학</span><span class="rv-location">경기 용인 · 중3</span><span class="rv-date">2026.05.14</span></div>
         <p class="review-card__rating">★★★★★</p>
         <p class="review-card__quote">"과학 시험마다 60점대였는데 지금은 90점 이상이에요. 선생님이 실험 개념을 그림으로 직접 그려서 설명해주시는데 머릿속에 너무 잘 들어와요."</p>
@@ -2226,66 +2226,50 @@ formResetBtn.addEventListener('click', function () {
 });
 
 /* 후기 필터 & 더보기 */
-const rvFilters = document.querySelectorAll('.rv-filter');
-const rvCards = document.querySelectorAll('#reviewGrid .review-card');
-const reviewMoreBtn = document.getElementById('reviewMoreBtn');
-let rvShowAll = false;
+(function () {
+  var grid = document.getElementById('reviewGrid');
+  if (!grid) return;
+  var allCards = Array.from(grid.querySelectorAll('.review-card'));
+  var filters = Array.from(document.querySelectorAll('.rv-filter'));
+  var moreBtn = document.getElementById('reviewMoreBtn');
+  var LIMIT = 6;
+  var currentFilter = 'all';
+  var showAll = false;
 
-function applyFilter(filter) {
-  rvCards.forEach(card => {
-    const subj = card.dataset.subject;
-    const match = (filter === 'all') || (subj === filter);
-    if (match) {
-      card.classList.remove('rv-hidden');
-    } else {
-      card.classList.add('rv-hidden');
+  function render() {
+    var matching = allCards.filter(function (c) {
+      return currentFilter === 'all' || c.getAttribute('data-subject') === currentFilter;
+    });
+    allCards.forEach(function (card) {
+      var idx = matching.indexOf(card);
+      var visible = idx !== -1 && (showAll || idx < LIMIT);
+      card.style.display = visible ? '' : 'none';
+    });
+    if (moreBtn) {
+      moreBtn.style.display = matching.length > LIMIT ? '' : 'none';
+      moreBtn.textContent = showAll ? '후기 접기 ↑' : '후기 더보기 ↓';
     }
-  });
-}
+  }
 
-rvFilters.forEach(btn => {
-  btn.addEventListener('click', function () {
-    rvFilters.forEach(b => b.classList.remove('is-active'));
-    this.classList.add('is-active');
-    rvShowAll = false;
-    if (reviewMoreBtn) reviewMoreBtn.textContent = '후기 더보기 ↓';
-    applyFilter(this.dataset.filter);
-    /* 처음 6개만 보이도록 숨김 초기화 */
-    let shown = 0;
-    rvCards.forEach(card => {
-      if (!card.classList.contains('rv-hidden')) {
-        shown++;
-        if (shown > 6) card.classList.add('rv-hidden');
-      }
+  filters.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      filters.forEach(function (b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      currentFilter = btn.getAttribute('data-filter');
+      showAll = false;
+      render();
     });
   });
-});
 
-if (reviewMoreBtn) {
-  reviewMoreBtn.addEventListener('click', function () {
-    rvShowAll = !rvShowAll;
-    if (rvShowAll) {
-      rvCards.forEach(card => {
-        const activeFilter = document.querySelector('.rv-filter.is-active').dataset.filter;
-        const subj = card.dataset.subject;
-        if (activeFilter === 'all' || subj === activeFilter) {
-          card.classList.remove('rv-hidden');
-        }
-      });
-      this.textContent = '후기 접기 ↑';
-    } else {
-      applyFilter(document.querySelector('.rv-filter.is-active').dataset.filter);
-      let shown = 0;
-      rvCards.forEach(card => {
-        if (!card.classList.contains('rv-hidden')) {
-          shown++;
-          if (shown > 6) card.classList.add('rv-hidden');
-        }
-      });
-      this.textContent = '후기 더보기 ↓';
-    }
-  });
-}
+  if (moreBtn) {
+    moreBtn.addEventListener('click', function () {
+      showAll = !showAll;
+      render();
+    });
+  }
+
+  render();
+})();
 /* ============================================================
    4) 가격표 탭 전환 (방문 / 화상 / 단과·검정고시)
 ============================================================ */
