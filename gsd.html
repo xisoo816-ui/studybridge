@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>스터디브릿지 | 검정고시 전문 과외 (중졸·고졸 단기합격)</title>
+<meta name="description" content="중졸·고졸 검정고시 전담 선생님과 1:1 과외. 기초가 없어도 단기 합격 가능. 당일 선생님 제안, 화상·방문 선택 가능. 무료 상담 신청.">
+<meta name="keywords" content="검정고시과외,검정고시선생님,고졸검정고시,중졸검정고시,검정고시단기합격,검정고시화상과외,검정고시방문과외,검정고시전문,스터디브릿지">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://studybridge.kr/gsd.html">
+<meta property="og:title" content="스터디브릿지 | 검정고시 전문 과외 (중졸·고졸 단기합격)">
+<meta property="og:description" content="중졸·고졸 검정고시 전담 선생님과 1:1 과외. 기초가 없어도 단기 합격 가능.">
+<meta property="og:image" content="https://studybridge.kr/og-image.png?v=4">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233457B2'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial Black,Arial' font-weight='900' font-size='13' fill='white'%3ESB%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
+
+<style>
+/* ============================================================
+   디자인 토큰
+   ============================================================ */
+:root{
+  --color-harbor:#3457B2;
+  --color-signal:#3B82F6;
+  --color-signal-dark:#2563EB;
+  --color-mist:#EAF2FF;
+  --color-paper:#FFFCF7;
+  --color-ink:#33405A;
+  --color-slate:#707E97;
+  --color-line:#E6E9F2;
+  --color-white:#FFFFFF;
+  --color-warm:#FF9D4D;
+  --color-warm-soft:#FFEEDD;
+  --color-mint:#22C3A6;
+  --font-display:'Jua','Pretendard Variable','Pretendard',sans-serif;
+  --font-body:'Pretendard Variable','Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --font-mono:'Pretendard Variable','Pretendard',sans-serif;
+  --radius-sm:14px;
+  --radius-md:22px;
+  --radius-lg:30px;
+  --shadow-card:0 16px 36px -18px rgba(52,87,178,.18);
+  --max-width:1140px;
+}
+
+/* ============================================================
+   기본 리셋
+   ============================================================ */
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+@media(prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } }
+body{
+  margin:0;
+  background:var(--color-paper);
+  color:var(--color-ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  word-break:keep-all;
+  padding-bottom:58px;
+}
+h1,h2,h3{ font-family:var(--font-display); color:var(--color-harbor); line-height:1.3; margin:0; }
+p{ margin:0; }
+a{ color:inherit; text-decoration:none; }
+ul{ margin:0; padding:0; list-style:none; }
+img,svg{ display:block; max-width:100%; }
+button{ font-family:inherit; cursor:pointer; }
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:3px solid var(--color-signal); outline-offset:2px; border-radius:4px;
+}
+.container{ width:100%; max-width:var(--max-width); margin:0 auto; padding:0 24px; }
+.section{ padding:96px 0; }
+.section--mist{ background:var(--color-mist); }
+.section--harbor{ background:var(--color-harbor); color:var(--color-white); }
+.section--harbor h2{ color:var(--color-white); }
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:7px;
+  font-family:var(--font-body); font-size:13.5px; font-weight:700;
+  color:var(--color-signal-dark); background:var(--color-mist);
+  padding:7px 14px 7px 10px; border-radius:999px; margin-bottom:18px;
+}
+.eyebrow::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--color-warm); }
+.section-head{ max-width:640px; margin-bottom:56px; }
+.section-head h2{ font-size:clamp(26px,3vw,36px); margin-bottom:14px; }
+.section-head p{ color:var(--color-slate); font-size:17px; }
+
+/* 버튼 */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:14px 28px; border-radius:999px; font-weight:700; font-size:15.5px;
+  border:1px solid transparent;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  white-space:nowrap;
+}
+.btn--primary{ background:var(--color-signal); color:var(--color-white); box-shadow:0 12px 24px -8px rgba(59,130,246,.45); }
+.btn--primary:hover{ background:var(--color-signal-dark); transform:translateY(-1px); }
+.btn--ghost{ background:var(--color-white); color:var(--color-harbor); border-color:var(--color-line); }
+.btn--ghost:hover{ border-color:var(--color-signal); color:var(--color-signal); }
+.btn--block{ width:100%; }
+
+/* ============================================================
+   헤더 / 네비게이션
+   ============================================================ */
+.nav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(251,252,254,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--color-line);
+}
+.nav__inner{ display:flex; align-items:center; justify-content:space-between; height:76px; }
+.nav__logo{
+  font-family:var(--font-display); font-weight:700; font-size:21px; color:var(--color-harbor);
+  display:flex; align-items:center; gap:8px;
+}
+.nav__logo span{ width:9px; height:9px; border-radius:50%; background:var(--color-signal); display:inline-block; }
+.nav__links{ display:flex; align-items:center; gap:36px; }
+.nav__link{ font-size:15px; font-weight:500; color:var(--color-ink); }
+.nav__link:hover{ color:var(--color-signal); }
+.nav__link.is-active{ color:var(--color-signal); font-weight:700; }
+.nav__cta{ display:flex; align-items:center; gap:14px; }
+.nav__toggle{
+  display:none; width:40px; height:40px;
+  border:1px solid var(--color-line); border-radius:var(--radius-sm);
+  background:var(--color-white); align-items:center; justify-content:center;
+}
+.nav__toggle span,.nav__toggle span::before,.nav__toggle span::after{
+  content:""; display:block; width:18px; height:2px;
+  background:var(--color-harbor); position:relative; transition:.2s;
+}
+.nav__toggle span::before{ position:absolute; top:-6px; }
+.nav__toggle span::after{ position:absolute; top:6px; }
+.nav__mobile-panel{ display:none; }
+@media(max-width:880px){
+  .nav__links{ display:none; }
+  .nav__cta{ display:none; }
+  .nav__toggle{ display:flex; }
+  .nav.is-open .nav__mobile-panel{
+    display:flex; flex-direction:column; gap:4px;
+    padding:12px 24px 20px; border-top:1px solid var(--color-line);
+    background:var(--color-paper);
+  }
+  .nav__mobile-panel a{ padding:12px 4px; font-size:15.5px; border-bottom:1px solid var(--color-line); }
+}
+
+/* ============================================================
+   히어로 (검정고시 전용)
+   ============================================================ */
+.gsd-hero{
+  background:linear-gradient(135deg, #1C2B52 0%, #3457B2 60%, #4F70D0 100%);
+  padding:72px 0 80px;
+  color:#fff;
+  text-align:center;
+}
+.gsd-hero h1{ color:#fff; font-size:clamp(28px,5vw,48px); margin-bottom:16px; }
+.gsd-hero h1 em{ color:var(--color-warm); font-style:normal; }
+.gsd-hero__sub{
+  color:rgba(255,255,255,.85); font-size:17.5px;
+  max-width:560px; margin:0 auto 32px; line-height:1.7;
+}
+.gsd-hero__badges{
+  display:flex; flex-wrap:wrap; gap:10px;
+  justify-content:center; margin-bottom:36px;
+}
+.gsd-hero__badge{
+  background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.35);
+  color:#fff; font-size:13px; font-weight:700; padding:7px 16px; border-radius:999px;
+}
+.gsd-hero__actions{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+.gsd-hero__note{ margin-top:18px; font-size:13px; color:rgba(255,255,255,.65); }
+
+/* ============================================================
+   특징 카드
+   ============================================================ */
+.gsd-features{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-bottom:0;
+}
+.gsd-feat{
+  background:var(--color-white);
+  border:1.5px solid var(--color-line);
+  border-radius:var(--radius-md);
+  padding:28px 24px;
+  text-align:center;
+  box-shadow:var(--shadow-card);
+}
+.gsd-feat__icon{ font-size:36px; display:block; margin-bottom:12px; }
+.gsd-feat strong{ display:block; font-size:16px; font-weight:700; color:var(--color-harbor); margin-bottom:8px; }
+.gsd-feat p{ font-size:14px; color:var(--color-slate); line-height:1.65; }
+
+/* ============================================================
+   선생님 카드 (검정고시 전용)
+   ============================================================ */
+.gsd-teacher-wrap{
+  display:grid;
+  grid-template-columns:1fr 1.6fr;
+  gap:36px;
+  align-items:center;
+  background:var(--color-mist);
+  border-radius:var(--radius-lg);
+  padding:40px 44px;
+}
+.gsd-teacher-card{
+  background:var(--color-white);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  box-shadow:0 20px 40px -14px rgba(52,87,178,.22);
+}
+.gsd-teacher-card__top{
+  background:linear-gradient(135deg,#374151,#6b7280);
+  padding:20px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.tc-verified{
+  background:rgba(255,255,255,.22); color:#fff; font-size:11px; font-weight:700;
+  padding:4px 11px; border-radius:999px; border:1px solid rgba(255,255,255,.4);
+  white-space:nowrap;
+}
+.tc-subj-badge{
+  background:#FF9D4D; color:#3A2300; font-size:11px; font-weight:700;
+  padding:4px 12px; border-radius:999px; white-space:nowrap;
+}
+.gsd-teacher-card__body{ padding:18px 18px 20px; }
+.tc-name{ font-size:18px; font-weight:800; color:var(--color-harbor); margin-bottom:4px; }
+.tc-univ{ font-size:13px; color:var(--color-warm); font-weight:700; margin-bottom:4px; }
+.tc-career{ font-size:13px; color:var(--color-slate); margin-bottom:14px; }
+.tc-tags{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+.tc-tags span{
+  font-size:11.5px; background:#f3f4f6; color:var(--color-ink);
+  padding:3px 10px; border-radius:999px;
+}
+.tc-levels{ display:flex; gap:6px; flex-wrap:wrap; }
+.tc-lv{
+  font-size:11px; font-weight:700; padding:3px 10px; border-radius:999px;
+}
+.tc-lv--gsd{ background:#e5e7eb; color:#374151; }
+.tc-footer{
+  margin-top:14px; padding-top:12px; border-top:1px solid var(--color-line);
+  display:flex; justify-content:space-between; align-items:center;
+}
+.tc-rate{ font-size:13px; }
+.tc-rate b{ color:var(--color-harbor); font-size:16px; }
+.tc-rating{ font-size:13px; color:var(--color-warm); }
+
+.gsd-teacher-info h3{ font-size:22px; margin-bottom:16px; }
+.gsd-teacher-info p{ font-size:15.5px; color:var(--color-slate); margin-bottom:20px; line-height:1.7; }
+.gsd-teacher-checklist{ list-style:none; margin:0 0 28px; padding:0; }
+.gsd-teacher-checklist li{
+  font-size:15px; color:var(--color-ink); padding:7px 0;
+  border-bottom:1px solid var(--color-line);
+  display:flex; align-items:flex-start; gap:10px;
+}
+.gsd-teacher-checklist li::before{ content:"✓"; color:var(--color-mint); font-weight:900; flex-shrink:0; }
+
+/* ============================================================
+   후기 카드
+   ============================================================ */
+.reviews{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.review-card{
+  background:var(--color-white);
+  border:1px solid var(--color-line);
+  border-radius:var(--radius-md);
+  padding:22px;
+  box-shadow:var(--shadow-card);
+}
+.review-card__meta{ display:flex; align-items:center; gap:8px; margin-bottom:8px; flex-wrap:wrap; }
+.rv-badge{ font-size:11px; font-weight:700; background:#666; color:#fff; padding:3px 10px; border-radius:999px; }
+.rv-location{ font-size:12px; color:var(--color-slate); }
+.rv-date{ font-size:11px; color:#aaa; margin-left:auto; }
+.review-card__rating{ font-size:16px; color:#F5A623; margin-bottom:10px; }
+.review-card__quote{ font-size:14.5px; color:var(--color-ink); line-height:1.7; margin-bottom:16px; }
+.review-card__who{ display:flex; align-items:center; gap:10px; }
+.review-card__avatar{ font-size:22px; }
+.review-card__name{ font-size:13.5px; font-weight:700; color:var(--color-harbor); }
+.review-card__tag{ font-size:12px; color:var(--color-slate); }
+
+/* ============================================================
+   가격표
+   ============================================================ */
+.price-table-scroll{ overflow-x:auto; margin-bottom:22px; }
+.price-table-scroll:last-child{ margin-bottom:0; }
+.price-table{ width:100%; border-collapse:collapse; min-width:380px; }
+.price-table th{
+  background:var(--color-harbor); color:var(--color-white);
+  font-size:13.5px; font-weight:700; padding:12px 14px; text-align:left;
+}
+.price-table th.num,.price-table td.num{ text-align:right; }
+.price-table td{
+  font-size:14.5px; padding:13px 14px;
+  border-bottom:1px solid var(--color-line);
+  color:var(--color-ink);
+}
+.price-table tbody tr:nth-child(even){ background:#f9fafb; }
+.price-table tbody tr:hover{ background:var(--color-mist); }
+.price-caption{ font-size:14.5px; color:var(--color-slate); margin-bottom:18px; }
+.price-note{
+  font-size:13.5px; color:var(--color-slate);
+  background:var(--color-mist); border-radius:10px; padding:12px 16px; margin-top:14px;
+}
+
+/* ============================================================
+   상담 신청 폼
+   ============================================================ */
+.apply-wrap{
+  display:grid;
+  grid-template-columns:1fr 1.3fr;
+  gap:60px;
+  align-items:start;
+}
+.apply-copy h2{ margin-bottom:16px; }
+.apply-copy p{ color:var(--color-slate); font-size:16px; margin-bottom:28px; }
+.apply-checklist{ list-style:none; margin:0; padding:0; }
+.apply-checklist li{
+  display:flex; align-items:flex-start; gap:10px;
+  font-size:15px; color:var(--color-ink);
+  padding:9px 0; border-bottom:1px solid var(--color-line);
+}
+.apply-checklist li::before{ content:"✓"; color:var(--color-mint); font-weight:900; flex-shrink:0; }
+.consult-form{
+  background:var(--color-white);
+  border:1.5px solid var(--color-line);
+  border-radius:var(--radius-lg);
+  padding:36px 36px;
+  box-shadow:var(--shadow-card);
+}
+.form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.form-field{ display:flex; flex-direction:column; gap:6px; }
+.form-field label{ font-size:14px; font-weight:600; color:var(--color-ink); }
+.form-field--full{ grid-column:1/-1; }
+.form-field input,.form-field select,.form-field textarea{
+  border:1.5px solid var(--color-line); border-radius:10px;
+  padding:12px 14px; font-size:15px; font-family:inherit;
+  color:var(--color-ink); background:var(--color-paper);
+  transition:border-color .2s;
+}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{
+  outline:none; border-color:var(--color-signal);
+}
+.form-field textarea{ resize:vertical; }
+.radio-row{ display:flex; gap:20px; flex-wrap:wrap; }
+.radio-row label{ display:flex; align-items:center; gap:6px; font-size:15px; cursor:pointer; }
+.form-fields-wrap{ margin-bottom:20px; }
+.form-success{
+  text-align:center; padding:40px 20px; display:none;
+}
+.form-success__icon{
+  width:56px; height:56px; border-radius:50%;
+  background:var(--color-mint); color:#fff;
+  font-size:26px; font-weight:900;
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 16px;
+}
+.form-success h3{ font-size:20px; margin-bottom:8px; }
+.form-success p{ color:var(--color-slate); font-size:14.5px; }
+.form-disclaimer{ font-size:12.5px; color:var(--color-slate); text-align:center; margin-top:14px; }
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-list{ max-width:760px; margin:0 auto; }
+.faq-item{
+  border-bottom:1px solid var(--color-line);
+}
+.faq-item summary{
+  padding:18px 4px; font-size:16px; font-weight:700;
+  color:var(--color-ink); cursor:pointer; list-style:none;
+  display:flex; justify-content:space-between; align-items:center; gap:12px;
+}
+.faq-item summary::after{ content:"+"; font-size:20px; color:var(--color-signal); flex-shrink:0; }
+.faq-item[open] summary::after{ content:"−"; }
+.faq-item p{ padding:0 4px 18px; font-size:15px; color:var(--color-slate); line-height:1.75; }
+
+/* ============================================================
+   푸터
+   ============================================================ */
+.footer{
+  background:var(--color-harbor); color:rgba(255,255,255,.8);
+  padding:48px 0 32px;
+}
+.footer__top{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; margin-bottom:32px; }
+.footer__logo{ font-family:var(--font-display); font-size:22px; color:#fff; font-weight:700; margin-bottom:10px; }
+.footer__contact{ font-size:14px; line-height:1.9; }
+.footer__contact b{ color:var(--color-warm); }
+.footer__bottom{
+  font-size:12.5px;
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+}
+
+/* ============================================================
+   하단 고정 액션바
+   ============================================================ */
+.action-bar{
+  position:fixed; bottom:0; left:0; right:0; z-index:100;
+  display:flex; height:58px;
+  background:var(--color-harbor);
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.action-bar__item{
+  flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:3px; color:#fff; font-size:10.5px; font-weight:700;
+  border-right:1px solid rgba(255,255,255,.1);
+}
+.action-bar__item svg{ width:20px; height:20px; }
+.action-bar__item--kakao{ background:#3A1D00; color:#FFE033; }
+.action-bar__item--kakao svg{ fill:#FFE033; }
+.action-bar__item--primary{ background:var(--color-signal); }
+
+/* ============================================================
+   스크롤 등장 효과
+   ============================================================ */
+@media(prefers-reduced-motion:no-preference){
+  .reveal{
+    opacity:0; transform:translateY(18px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+}
+
+/* ============================================================
+   모바일 최적화
+   ============================================================ */
+@media(max-width:860px){
+  .gsd-teacher-wrap{
+    grid-template-columns:1fr;
+  }
+  .reviews{ grid-template-columns:1fr 1fr; }
+  .gsd-features{ grid-template-columns:1fr; gap:12px; }
+  .apply-wrap{ grid-template-columns:1fr; gap:36px; }
+}
+@media(max-width:640px){
+  .section{ padding:60px 0; }
+  .section-head{ margin-bottom:32px; }
+  .container{ padding:0 16px; }
+  .gsd-hero{ padding:52px 0 60px; }
+  .reviews{ grid-template-columns:1fr; }
+  .form-grid{ grid-template-columns:1fr; }
+  .consult-form{ padding:24px 18px; }
+  .gsd-teacher-wrap{ padding:24px 18px; }
+  .price-table-scroll{ overflow-x:unset; }
+  .price-table{ min-width:0; width:100%; }
+  .price-table thead{ display:none; }
+  .price-table tbody tr{
+    display:block; margin-bottom:10px;
+    border:1px solid var(--color-line); border-radius:12px;
+    overflow:hidden; background:var(--color-white);
+    box-shadow:0 2px 8px rgba(52,87,178,.06);
+  }
+  .price-table tbody td{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:10px 14px; font-size:13.5px;
+    border-bottom:1px solid var(--color-line); border-top:none;
+  }
+  .price-table tbody td:last-child{ border-bottom:none; }
+  .price-table tbody td::before{
+    content:attr(data-label); font-size:12px; font-weight:600;
+    color:var(--color-slate); flex-shrink:0; margin-right:8px;
+  }
+  .price-table tbody td:first-child{
+    background:var(--color-mist); font-weight:700;
+    font-size:14.5px; color:var(--color-harbor);
+    justify-content:flex-start; padding:12px 14px;
+    border-bottom:2px solid var(--color-line);
+  }
+  .price-table tbody td:first-child::before{ display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     헤더
+============================================================ -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo"><span></span>스터디브릿지</a>
+    <nav class="nav__links">
+      <a class="nav__link" href="index.html#process">미팅 과정</a>
+      <a class="nav__link" href="index.html#compare">수업 방식</a>
+      <a class="nav__link" href="index.html#pricing">과외 안내</a>
+      <a class="nav__link is-active" href="gsd.html">검정고시</a>
+      <a class="nav__link" href="#apply">상담 신청</a>
+    </nav>
+    <div class="nav__cta">
+      <a href="index.html" class="btn btn--ghost">과외 안내로 가기</a>
+      <a href="#apply" class="btn btn--primary">무료 상담 신청</a>
+    </div>
+    <button class="nav__toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false">
+      <span></span>
+    </button>
+  </div>
+  <div class="nav__mobile-panel" id="navMobilePanel">
+    <a href="index.html#process">미팅 과정</a>
+    <a href="index.html#compare">수업 방식</a>
+    <a href="index.html#pricing">과외 안내</a>
+    <a href="gsd.html" style="color:var(--color-signal);font-weight:700;">검정고시 ✓</a>
+    <a href="index.html#regions">지역별 과외</a>
+    <a href="#apply">상담 신청</a>
+    <a href="#apply" class="btn btn--primary btn--block" style="margin-top:10px;">무료 상담 신청</a>
+  </div>
+</header>
+
+<!-- ============================================================
+     히어로
+============================================================ -->
+<section class="gsd-hero">
+  <div class="container">
+    <span class="eyebrow" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);">검정고시 전문</span>
+    <h1>중졸·고졸 검정고시,<br><em>단기 합격</em> 과외</h1>
+    <p class="gsd-hero__sub">
+      기초가 없어도 괜찮아요. 검정고시만 10년 지도한 전담 선생님이<br>
+      출제 경향 맞춤으로 핵심만 빠르게 정리해드립니다.
+    </p>
+    <div class="gsd-hero__badges">
+      <span class="gsd-hero__badge">📋 중졸 검정고시</span>
+      <span class="gsd-hero__badge">🎓 고졸 검정고시</span>
+      <span class="gsd-hero__badge">💻 화상 수업 가능</span>
+      <span class="gsd-hero__badge">🏠 방문 수업 가능</span>
+      <span class="gsd-hero__badge">⚡ 당일 선생님 제안</span>
+    </div>
+    <div class="gsd-hero__actions">
+      <a href="#apply" class="btn btn--primary">검정고시 무료 상담 신청 →</a>
+      <a href="#price" class="btn btn--ghost" style="color:#fff;border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.1);">수업 가격 보기</a>
+    </div>
+    <p class="gsd-hero__note">상담 신청 후 당일 조건에 맞는 선생님을 제안드립니다</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     특징 3가지
+============================================================ -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">왜 스터디브릿지인가</span>
+      <h2>검정고시, 혼자 공부하다 포기하지 마세요</h2>
+      <p>출제 경향을 꿰뚫는 전담 선생님이 핵심만 딱 짚어드립니다.</p>
+    </div>
+
+    <div class="gsd-features reveal">
+      <div class="gsd-feat">
+        <span class="gsd-feat__icon">🎯</span>
+        <strong>출제 경향 집중 공략</strong>
+        <p>검정고시 출제 패턴을 꿰뚫는 선생님이 핵심만 딱 짚어드려 시간 낭비 없이 합격을 준비합니다. 기출문제 기반 집중 학습.</p>
+      </div>
+      <div class="gsd-feat">
+        <span class="gsd-feat__icon">📋</span>
+        <strong>전 과목 단기 집중</strong>
+        <p>국어·수학·영어·사회·과학·한국사 전 과목을 한 선생님이 집중 지도하거나, 취약 과목만 집중 공략할 수 있어요.</p>
+      </div>
+      <div class="gsd-feat">
+        <span class="gsd-feat__icon">📅</span>
+        <strong>일정 맞춤 화상·방문</strong>
+        <p>직장·육아 중에도 원하는 시간에 화상으로 진행해 드려요. 방문 수업도 가능하며 주말·야간 수업도 됩니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     전담 선생님 소개
+============================================================ -->
+<section class="section section--mist" id="teacher">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">검정고시 전담 선생님</span>
+      <h2>검정고시 10년 경력 전문 선생님과 1:1로</h2>
+    </div>
+
+    <div class="gsd-teacher-wrap reveal">
+      <div class="gsd-teacher-card">
+        <div class="gsd-teacher-card__top">
+          <span class="tc-verified">✓ 인증</span>
+          <div class="tc-subj-badge">검정고시·전과목</div>
+        </div>
+        <div class="gsd-teacher-card__body">
+          <div class="tc-name">김OO 선생님</div>
+          <div class="tc-univ">한국교육과정평가원 출신</div>
+          <div class="tc-career">검정고시 전과목 지도 전문 10년</div>
+          <div class="tc-tags">
+            <span>중졸검정</span><span>고졸검정</span><span>단기합격</span>
+          </div>
+          <div class="tc-levels">
+            <span class="tc-lv tc-lv--gsd">검정고시</span>
+          </div>
+          <div class="tc-footer">
+            <span class="tc-rate">수업료 <b>67,000원~/1회</b></span>
+            <span class="tc-rating">★★★★★ 4.9</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gsd-teacher-info">
+        <h3>검정고시만 10년, 합격 전문 선생님</h3>
+        <p>한국교육과정평가원 경력을 바탕으로 검정고시 출제 경향을 가장 잘 아는 선생님입니다. 기초가 전혀 없어도 핵심 위주로 빠르게 정리해 드립니다.</p>
+        <ul class="gsd-teacher-checklist">
+          <li>기출문제 분석 기반 단기 합격 커리큘럼 제공</li>
+          <li>중졸·고졸 검정고시 전 과목 지도 가능</li>
+          <li>화상 수업으로 전국 어디서나 수업 가능</li>
+          <li>직장인·육아 중인 성인 학습자 경험 다수</li>
+          <li>첫 상담에서 현재 실력 파악 후 맞춤 플랜 제공</li>
+        </ul>
+        <a href="#apply" class="btn btn--primary">이 선생님과 상담 신청하기 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     합격 후기
+============================================================ -->
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="section-head reveal" style="text-align:center;max-width:100%;margin-bottom:40px;">
+      <span class="eyebrow">합격 후기</span>
+      <h2>검정고시 합격생 후기</h2>
+      <p>스터디브릿지를 통해 합격한 학생들의 실제 후기입니다.</p>
+    </div>
+
+    <div class="reviews reveal">
+      <div class="review-card">
+        <div class="review-card__meta">
+          <span class="rv-badge">검정고시</span>
+          <span class="rv-location">대구 수성구 범어동 · 고졸 검정고시</span>
+          <span class="rv-date">2026.05.22</span>
+        </div>
+        <p class="review-card__rating">★★★★★</p>
+        <p class="review-card__quote">"검정고시 준비를 혼자 하다가 막혀서 신청했어요. 선생님이 핵심만 빠르게 짚어주셔서 2개월 만에 합격했어요. 정말 감사드려요."</p>
+        <div class="review-card__who">
+          <span class="review-card__avatar">🧑‍🎓</span>
+          <div>
+            <div class="review-card__name">강OO 학생</div>
+            <div class="review-card__tag">고졸 검정고시 · 전 과목 화상</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card__meta">
+          <span class="rv-badge">검정고시</span>
+          <span class="rv-location">광주 북구 운암동 · 중졸 검정고시</span>
+          <span class="rv-date">2026.04.05</span>
+        </div>
+        <p class="review-card__rating">★★★★★</p>
+        <p class="review-card__quote">"학교를 오래 쉬어서 기초가 아예 없었는데 선생님이 처음부터 차근차근 가르쳐주셔서 중졸 검정고시 전 과목 합격했어요. 정말 감사해요."</p>
+        <div class="review-card__who">
+          <span class="review-card__avatar">🧑‍🎓</span>
+          <div>
+            <div class="review-card__name">전OO 학생</div>
+            <div class="review-card__tag">중졸 검정고시 · 전 과목 화상</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card__meta">
+          <span class="rv-badge">검정고시</span>
+          <span class="rv-location">경기 부천시 중동 · 고졸 검정고시</span>
+          <span class="rv-date">2026.02.28</span>
+        </div>
+        <p class="review-card__rating">★★★★★</p>
+        <p class="review-card__quote">"직장 다니면서 검정고시 준비하느라 시간이 없었는데 화상으로 원하는 시간에 맞춰 수업해주셔서 너무 편했어요. 덕분에 고졸 검정고시 합격했습니다!"</p>
+        <div class="review-card__who">
+          <span class="review-card__avatar">🧑‍🎓</span>
+          <div>
+            <div class="review-card__name">남OO 학생</div>
+            <div class="review-card__tag">고졸 검정고시 · 수학·국어 화상</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card__meta">
+          <span class="rv-badge">검정고시</span>
+          <span class="rv-location">전북 전주시 덕진구 송천동 · 고졸 검정고시</span>
+          <span class="rv-date">2025.12.20</span>
+        </div>
+        <p class="review-card__rating">★★★★★</p>
+        <p class="review-card__quote">"사정이 있어서 고등학교를 못 마쳤는데 이제 취업을 위해 검정고시가 필요했어요. 선생님이 핵심만 딱 짚어주셔서 단기간에 합격했어요. 정말 감사합니다."</p>
+        <div class="review-card__who">
+          <span class="review-card__avatar">🧑‍🎓</span>
+          <div>
+            <div class="review-card__name">가OO 학생</div>
+            <div class="review-card__tag">고졸 검정고시 · 전 과목 화상</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card__meta">
+          <span class="rv-badge">검정고시</span>
+          <span class="rv-location">경기 화성시 동탄2동 · 고졸 검정고시</span>
+          <span class="rv-date">2025.11.15</span>
+        </div>
+        <p class="review-card__rating">★★★★★</p>
+        <p class="review-card__quote">"수학이랑 영어가 너무 약해서 걱정했는데 선생님이 제 수준에 딱 맞게 가르쳐주셔서 처음으로 시험을 합격했어요. 빨리 시작할걸 그랬어요!"</p>
+        <div class="review-card__who">
+          <span class="review-card__avatar">🧑‍🎓</span>
+          <div>
+            <div class="review-card__name">서OO 학생</div>
+            <div class="review-card__tag">고졸 검정고시 · 수학·영어 화상</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card__meta">
+          <span class="rv-badge">검정고시</span>
+          <span class="rv-location">서울 강북구 미아동 · 중졸 검정고시</span>
+          <span class="rv-date">2025.10.08</span>
+        </div>
+        <p class="review-card__rating">★★★★★</p>
+        <p class="review-card__quote">"중졸 검정고시를 한 번에 합격했어요. 선생님이 기출 유형만 집중적으로 짚어주셔서 공부 시간이 확 줄었어요. 고졸 검정고시도 같은 선생님께 부탁할 예정이에요."</p>
+        <div class="review-card__who">
+          <span class="review-card__avatar">🧑‍🎓</span>
+          <div>
+            <div class="review-card__name">임OO 학생</div>
+            <div class="review-card__tag">중졸 검정고시 · 전 과목 화상</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     수업 가격
+============================================================ -->
+<section class="section section--mist" id="price">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">수업 가격</span>
+      <h2>검정고시 수업 가격 안내</h2>
+      <p>1회 단위 수업과 정기 패키지 중 선택할 수 있습니다. 정확한 견적은 상담을 통해 안내드립니다.</p>
+    </div>
+
+    <div class="reveal">
+      <h3 style="font-size:17px;font-family:var(--font-body);font-weight:700;color:var(--color-ink);margin-bottom:16px;">1회 단가</h3>
+      <div class="price-table-scroll">
+        <table class="price-table" id="priceTable1">
+          <thead>
+            <tr>
+              <th>수업 방식</th>
+              <th class="num">중졸 검정고시</th>
+              <th class="num">고졸 검정고시</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>방문 수업</td><td class="num">74,000원</td><td class="num">84,000원</td></tr>
+            <tr><td>화상 수업</td><td class="num">67,000원</td><td class="num">77,000원</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:17px;font-family:var(--font-body);font-weight:700;color:var(--color-ink);margin-bottom:16px;margin-top:32px;">정기 패키지 (주2회 기준)</h3>
+      <div class="price-table-scroll">
+        <table class="price-table" id="priceTable2">
+          <thead>
+            <tr>
+              <th>기간</th>
+              <th class="num">중졸 검정고시</th>
+              <th class="num">고졸 검정고시</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>4주 (8회)</td><td class="num">500,000원</td><td class="num">580,000원</td></tr>
+            <tr><td>8주 (16회)</td><td class="num">920,000원</td><td class="num">1,060,000원</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="price-note">※ 가격은 기본 구성 기준이며 선생님 경력 및 수업 방식에 따라 달라질 수 있습니다. 정확한 견적은 무료 상담을 통해 안내드립니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+============================================================ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head reveal" style="text-align:center;max-width:100%;margin-bottom:40px;">
+      <span class="eyebrow">FAQ</span>
+      <h2>검정고시 자주 묻는 질문</h2>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>기초가 전혀 없어도 검정고시 합격이 가능한가요?</summary>
+        <p>네, 가능합니다. 검정고시는 합격선이 100점 만점 기준 60점으로 상대적으로 낮고, 출제 범위가 정해져 있어 기출 위주로 단기간에 준비할 수 있습니다. 기초가 없어도 선생님이 처음부터 차근차근 잡아드립니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>화상으로 수업이 가능한가요? 지방이어도 괜찮나요?</summary>
+        <p>네, 전국 어디서나 화상으로 수업이 가능합니다. Zoom 또는 카카오톡 영상통화로 진행하며, 선생님과 실시간으로 소통하면서 방문 수업과 동일한 효과를 얻을 수 있습니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>직장인이라 수업 시간이 불규칙한데 맞춰주실 수 있나요?</summary>
+        <p>네, 가능합니다. 화상 수업의 경우 주말·야간 수업도 선생님과 조율하여 진행할 수 있습니다. 상담 시 희망 시간대를 알려주시면 맞는 선생님을 우선 연결해드립니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>중졸·고졸 검정고시 모두 도움받을 수 있나요?</summary>
+        <p>네, 중졸·고졸 검정고시 모두 지원 가능합니다. 전 과목(국어·수학·영어·사회·과학·한국사) 선생님을 보유하고 있으며, 필요에 따라 전 과목 한 선생님이 지도하거나 취약 과목만 집중 수업할 수 있습니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>상담 신청하면 비용이 드나요?</summary>
+        <p>상담 신청부터 선생님 제안까지 비용은 전혀 들지 않습니다. 상담 신청 후 당일 조건에 맞는 선생님을 제안드리며, 원하시면 정식 수업 전 30분 무료 체험수업으로 먼저 확인해보실 수 있습니다.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     상담 신청 폼
+============================================================ -->
+<section class="section section--mist" id="apply">
+  <div class="container">
+    <div class="apply-wrap">
+      <div class="apply-copy reveal">
+        <span class="eyebrow">무료 상담 신청</span>
+        <h2>검정고시 무료 상담 신청</h2>
+        <p>학년, 희망 과목, 지역만 알려주시면 당일 맞춤 선생님을 제안드립니다.</p>
+        <ul class="apply-checklist">
+          <li>상담·매칭 비용 없음 (완전 무료)</li>
+          <li>당일 조건에 맞는 선생님 제안</li>
+          <li>30분 무료 체험수업 가능</li>
+          <li>화상·방문 선택 가능</li>
+          <li>매칭 후에도 학습 진도를 지속 케어</li>
+        </ul>
+      </div>
+
+      <form class="consult-form reveal" id="consultForm"
+        action="https://formspree.io/f/xvzjbzaw" method="POST">
+        <div class="form-fields-wrap">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="grade">검정고시 종류 *</label>
+              <select id="grade" name="grade" required>
+                <option value="" disabled selected>선택해주세요</option>
+                <option>중졸 검정고시</option>
+                <option>고졸 검정고시</option>
+                <option>미정 (상담 후 결정)</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="subject">중점 과목 *</label>
+              <select id="subject" name="subject" required>
+                <option value="" disabled selected>선택해주세요</option>
+                <option>전 과목</option>
+                <option>국어</option>
+                <option>수학</option>
+                <option>영어</option>
+                <option>사회</option>
+                <option>과학</option>
+                <option>한국사</option>
+                <option>기타</option>
+              </select>
+            </div>
+            <div class="form-field form-field--full">
+              <label for="region">거주 지역 *</label>
+              <input type="text" id="region" name="region" placeholder="예: 서울시 강남구 역삼동" required>
+            </div>
+            <div class="form-field form-field--full">
+              <label>희망 수업 방식 *</label>
+              <div class="radio-row">
+                <label><input type="radio" name="classType" value="화상 수업" required> 화상 수업</label>
+                <label><input type="radio" name="classType" value="방문 수업"> 방문 수업</label>
+                <label><input type="radio" name="classType" value="상담 후 결정"> 상담 후 결정</label>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="name">성함 *</label>
+              <input type="text" id="name" name="name" placeholder="홍길동" required>
+            </div>
+            <div class="form-field">
+              <label for="phone">연락처 *</label>
+              <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
+            </div>
+            <div class="form-field form-field--full">
+              <label for="memo">추가로 전달하고 싶은 내용</label>
+              <textarea id="memo" name="memo" rows="3" placeholder="예: 시험 일정, 현재 수준, 학습 목표 등"></textarea>
+            </div>
+          </div>
+          <input type="hidden" name="type" value="검정고시">
+        </div>
+        <button type="submit" class="btn btn--primary btn--block">무료 상담 신청하기</button>
+        <p class="form-disclaimer">신청해주신 정보는 매칭 상담 목적으로만 사용됩니다.</p>
+
+        <div class="form-success" id="formSuccess">
+          <div class="form-success__icon">✓</div>
+          <h3>상담 신청이 접수되었습니다</h3>
+          <p>당일 남겨주신 연락처로 문자와 전화로 연락드릴게요.</p>
+          <button type="button" class="btn btn--ghost" id="formResetBtn">다시 작성하기</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     푸터
+============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <div class="footer__logo">스터디브릿지</div>
+        <div class="footer__contact">
+          <b>전화</b> 010-2039-4111<br>
+          매일 10:00 ~ 20:00
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 StudyBridge. All rights reserved.</span>
+      <span>표기된 가격은 기본 구성 기준이며, 일부 변동될 수 있습니다.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- 하단 고정 액션바 -->
+<div class="action-bar">
+  <a href="tel:010-2039-4111" class="action-bar__item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <span>전화 상담</span>
+  </a>
+  <a href="https://open.kakao.com/o/srpOvVci" class="action-bar__item action-bar__item--kakao" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.5C6.75 3.5 2.5 6.86 2.5 11c0 2.66 1.77 5 4.44 6.35-.2.7-.71 2.5-.82 2.9-.13.5.18.5.38.36.16-.11 2.55-1.73 3.59-2.43.62.09 1.26.14 1.91.14 5.25 0 9.5-3.36 9.5-7.5S17.25 3.5 12 3.5Z"/></svg>
+    <span>카톡 상담</span>
+  </a>
+  <a href="#apply" class="action-bar__item action-bar__item--primary">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+    <span>무료 상담 신청</span>
+  </a>
+</div>
+
+<script>
+/* 모바일 메뉴 토글 */
+const navToggle = document.getElementById('navToggle');
+const navEl = document.getElementById('nav');
+navToggle.addEventListener('click', () => {
+  const isOpen = navEl.classList.toggle('is-open');
+  navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+});
+document.querySelectorAll('#navMobilePanel a').forEach(link => {
+  link.addEventListener('click', () => navEl.classList.remove('is-open'));
+});
+
+/* 스크롤 등장 효과 */
+if(window.matchMedia('(prefers-reduced-motion: no-preference)').matches){
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold:.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+}
+
+/* 폼 제출 (Formspree) */
+const form = document.getElementById('consultForm');
+const success = document.getElementById('formSuccess');
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const data = new FormData(form);
+  const res = await fetch(form.action, { method:'POST', body:data, headers:{ Accept:'application/json' } });
+  if(res.ok){
+    form.querySelector('.form-fields-wrap').style.display = 'none';
+    form.querySelector('button[type=submit]').style.display = 'none';
+    form.querySelector('.form-disclaimer').style.display = 'none';
+    success.style.display = 'block';
+  }
+});
+document.getElementById('formResetBtn').addEventListener('click', () => {
+  form.reset();
+  form.querySelector('.form-fields-wrap').style.display = '';
+  form.querySelector('button[type=submit]').style.display = '';
+  form.querySelector('.form-disclaimer').style.display = '';
+  success.style.display = 'none';
+});
+
+/* 가격표 모바일 data-label 자동 설정 */
+document.querySelectorAll('.price-table').forEach(function(table){
+  var headers = Array.from(table.querySelectorAll('thead th')).map(function(th){ return th.textContent.trim(); });
+  table.querySelectorAll('tbody tr').forEach(function(tr){
+    Array.from(tr.querySelectorAll('td')).forEach(function(td, i){
+      if(headers[i]) td.setAttribute('data-label', headers[i]);
+    });
+  });
+});
+</script>
+</body>
+</html>
