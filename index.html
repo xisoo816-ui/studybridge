@@ -380,7 +380,7 @@ select:focus-visible, textarea:focus-visible{
 }
 .radar__node-label{
   font-family:var(--font-body);
-  font-size:13px;
+  font-size:15px;
   font-weight:700;
   fill:var(--color-harbor);
   text-anchor:middle;
@@ -428,7 +428,7 @@ select:focus-visible, textarea:focus-visible{
 @media (max-width:880px){
   .hero__inner{ grid-template-columns:1fr; }
   .radar-wrap{ order:-1; margin-bottom:8px; }
-  .radar-wrap svg{ max-width:320px; }
+  .radar-wrap svg{ max-width:min(460px, 94vw); }
 }
 
 /* ============================================================
@@ -1614,10 +1614,7 @@ select:focus-visible, textarea:focus-visible{
   .section-head{ margin-bottom:32px; }
   .container{ padding:0 16px; }
   /* 히어로 이모지 크게 */
-  .radar__node-emoji{ font-size:32px; }
-  .radar__node-dot{ r:32; }
-  /* 히어로 레이아웃 */
-  .radar-wrap svg{ max-width:280px; }
+  .radar__node-emoji{ font-size:46px; }
   /* 섹션 제목 크기 조정 */
   .section-head h2{ font-size:clamp(22px,5vw,30px); }
   /* gsd features 단일 열 */
@@ -1751,32 +1748,32 @@ select:focus-visible, textarea:focus-visible{
 
         <!-- 과목 노드 -->
         <g>
-          <circle class="radar__node-dot l1" cx="240" cy="68" r="28" style="fill:#FFE3C2"/>
+          <circle class="radar__node-dot l1" cx="240" cy="68" r="38" style="fill:#FFE3C2"/>
           <text class="radar__node-emoji l1-e" x="240" y="70">📐</text>
           <text class="radar__node-label" x="240" y="112">수학</text>
         </g>
         <g>
-          <circle class="radar__node-dot l2" cx="405" cy="148" r="28" style="fill:#D7EBFF"/>
+          <circle class="radar__node-dot l2" cx="405" cy="148" r="38" style="fill:#D7EBFF"/>
           <text class="radar__node-emoji l2-e" x="405" y="150">🔤</text>
           <text class="radar__node-label" x="405" y="192">영어</text>
         </g>
         <g>
-          <circle class="radar__node-dot l3" cx="405" cy="332" r="28" style="fill:#FCE3F5"/>
+          <circle class="radar__node-dot l3" cx="405" cy="332" r="38" style="fill:#FCE3F5"/>
           <text class="radar__node-emoji l3-e" x="405" y="334">📖</text>
           <text class="radar__node-label" x="405" y="376">국어</text>
         </g>
         <g>
-          <circle class="radar__node-dot l4" cx="240" cy="412" r="28" style="fill:#D9F7EC"/>
+          <circle class="radar__node-dot l4" cx="240" cy="412" r="38" style="fill:#D9F7EC"/>
           <text class="radar__node-emoji l4-e" x="240" y="414">🔬</text>
           <text class="radar__node-label" x="240" y="456">과학</text>
         </g>
         <g>
-          <circle class="radar__node-dot l5" cx="75" cy="332" r="28" style="fill:#FFF3C4"/>
+          <circle class="radar__node-dot l5" cx="75" cy="332" r="38" style="fill:#FFF3C4"/>
           <text class="radar__node-emoji l5-e" x="75" y="334">🌍</text>
           <text class="radar__node-label" x="75" y="376">사회</text>
         </g>
         <g>
-          <circle class="radar__node-dot l6" cx="75" cy="148" r="28" style="fill:#EAE3FC"/>
+          <circle class="radar__node-dot l6" cx="75" cy="148" r="38" style="fill:#EAE3FC"/>
           <text class="radar__node-emoji l6-e" x="75" y="150">✍️</text>
           <text class="radar__node-label" x="75" y="192">논술</text>
         </g>
