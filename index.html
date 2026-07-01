@@ -726,12 +726,218 @@ select:focus-visible, textarea:focus-visible{
 .teacher-card__rating span{ color:var(--color-ink); margin-left:4px; }
 
 .teachers-cta{ text-align:center; margin-top:40px; }
+.tc-cta-sub{ font-size:14px; color:var(--color-text-sub); margin-bottom:14px; }
 
 @media (max-width:880px){
   .teachers{ grid-template-columns:repeat(2,1fr); }
 }
 @media (max-width:480px){
   .teachers{ grid-template-columns:1fr; }
+}
+
+/* ============================================================
+   선생님 신뢰 지표 바
+============================================================ */
+.teacher-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  background:#F0F5FF;
+  border-radius:16px;
+  padding:24px 32px;
+  margin-bottom:32px;
+  text-align:center;
+}
+.teacher-stat strong{
+  display:block;
+  font-size:26px;
+  font-weight:900;
+  color:var(--color-blue);
+  line-height:1.1;
+}
+.teacher-stat strong span{
+  font-size:16px;
+  font-weight:700;
+}
+.teacher-stat p{
+  font-size:12px;
+  color:var(--color-text-sub);
+  margin:4px 0 0;
+}
+
+/* 과목 필터 */
+.tc-filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:28px;
+}
+.tc-filter{
+  background:#fff;
+  border:1.5px solid var(--color-line);
+  border-radius:999px;
+  padding:7px 18px;
+  font-size:13.5px;
+  font-weight:600;
+  color:var(--color-slate);
+  cursor:pointer;
+  transition:all .2s;
+}
+.tc-filter.is-active, .tc-filter:hover{
+  background:var(--color-blue);
+  border-color:var(--color-blue);
+  color:#fff;
+}
+
+/* 선생님 카드 그리드 v2 */
+.teachers2{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  margin-bottom:0;
+}
+.tc-card{
+  background:#fff;
+  border:1px solid var(--color-line);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 2px 12px rgba(52,87,178,.07);
+  transition:box-shadow .2s, transform .2s;
+}
+.tc-card:hover{
+  box-shadow:0 8px 28px rgba(52,87,178,.16);
+  transform:translateY(-3px);
+}
+.tc-card__top{
+  position:relative;
+  padding:20px 18px 44px;
+  min-height:90px;
+}
+.tc-avatar{
+  width:60px; height:60px;
+  border-radius:50%;
+  border:3px solid rgba(255,255,255,.55);
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; font-weight:900; color:#fff;
+  position:absolute;
+  bottom:-30px; left:18px;
+  box-shadow:0 6px 18px rgba(0,0,0,.22);
+}
+.tc-verified{
+  position:absolute;
+  top:14px; right:14px;
+  background:rgba(255,255,255,.22);
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  padding:3px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.4);
+  backdrop-filter:blur(4px);
+}
+.tc-subj-badge{
+  position:absolute;
+  bottom:10px; right:14px;
+  background:#FF9D4D;
+  color:#3A2300;
+  font-size:11px;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:999px;
+}
+.tc-card__body{ padding:40px 18px 20px; }
+.tc-name-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:4px;
+}
+.tc-name-row h3{ font-size:17px; font-weight:800; margin:0; color:var(--color-navy); }
+.tc-rating{
+  font-size:13px;
+  font-weight:700;
+  color:#F59E0B;
+  background:#FFFBEB;
+  border:1px solid #FDE68A;
+  padding:3px 9px;
+  border-radius:999px;
+}
+.tc-univ{
+  font-size:13px;
+  color:var(--color-blue);
+  font-weight:700;
+  margin:0 0 4px;
+}
+.tc-career{
+  font-size:12.5px;
+  color:var(--color-slate);
+  margin:0 0 10px;
+  line-height:1.5;
+}
+.tc-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-bottom:10px;
+}
+.tc-tags span{
+  background:#EAF2FF;
+  color:#2563EB;
+  font-size:11px;
+  font-weight:600;
+  padding:3px 9px;
+  border-radius:6px;
+}
+.tc-levels{
+  display:flex;
+  gap:5px;
+  margin-bottom:14px;
+}
+.tc-lv{
+  background:#F3F4F6;
+  color:#374151;
+  font-size:11px;
+  font-weight:700;
+  padding:3px 9px;
+  border-radius:6px;
+}
+.tc-lv--re{ background:#FEE2E2; color:#991B1B; }
+.tc-lv--gsd{ background:#E0E7FF; color:#3730A3; }
+.tc-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-top:1px solid var(--color-line);
+  padding-top:12px;
+  margin-top:4px;
+}
+.tc-count{
+  font-size:12px;
+  color:var(--color-text-sub);
+}
+.tc-count strong{ color:var(--color-navy); }
+.tc-btn{
+  background:var(--color-blue);
+  color:#fff !important;
+  font-size:12px;
+  font-weight:700;
+  padding:7px 14px;
+  border-radius:8px;
+  text-decoration:none;
+  transition:background .2s;
+}
+.tc-btn:hover{ background:#1e40af; }
+
+@media(max-width:1100px){
+  .teachers2{ grid-template-columns:repeat(3,1fr); }
+}
+@media(max-width:780px){
+  .teacher-stats{ grid-template-columns:repeat(2,1fr); padding:20px; }
+  .teachers2{ grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:480px){
+  .teacher-stats{ grid-template-columns:repeat(2,1fr); }
+  .teachers2{ grid-template-columns:1fr; }
 }
 
 /* ============================================================
@@ -1541,64 +1747,268 @@ select:focus-visible, textarea:focus-visible{
 <!-- ============================================================
      선생님 소개
 ============================================================ -->
-<section class="section">
+<section class="section" id="teachers">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">TEACHERS</span>
       <h2>경력 전문 선생님을 만나보세요</h2>
       <p>스터디브릿지에는 대학생 과외가 없습니다. 모든 선생님은 관련 전공 출신의 검증된 경력 선생님입니다.</p>
     </div>
-    <div class="teachers reveal">
-      <div class="teacher-card">
-        <div class="teacher-card__top">
-          <span class="teacher-card__badge">수학·경시</span>
-          <span class="teacher-card__avatar">👩‍🏫</span>
-        </div>
-        <div class="teacher-card__body">
-          <h3>김OO 선생님</h3>
-          <p class="teacher-card__school">수학교육과 전공</p>
-          <p class="teacher-card__exp">수능 수학 10년 · KMO 지도 경력</p>
-          <p class="teacher-card__rating">★★★★★ <span>5.0</span></p>
-        </div>
+
+    <!-- 신뢰 지표 바 -->
+    <div class="teacher-stats reveal">
+      <div class="teacher-stat">
+        <strong>320<span>명+</span></strong>
+        <p>등록 전문 선생님</p>
       </div>
-      <div class="teacher-card">
-        <div class="teacher-card__top">
-          <span class="teacher-card__badge">영어·수능</span>
-          <span class="teacher-card__avatar">👨‍🏫</span>
-        </div>
-        <div class="teacher-card__body">
-          <h3>이OO 선생님</h3>
-          <p class="teacher-card__school">영어영문학과 전공</p>
-          <p class="teacher-card__exp">수능 영어 8년 · 비즈니스 영어</p>
-          <p class="teacher-card__rating">★★★★★ <span>4.9</span></p>
-        </div>
+      <div class="teacher-stat">
+        <strong>8.4<span>년</span></strong>
+        <p>평균 과외 경력</p>
       </div>
-      <div class="teacher-card">
-        <div class="teacher-card__top">
-          <span class="teacher-card__badge">국어·논술</span>
-          <span class="teacher-card__avatar">👩‍🏫</span>
-        </div>
-        <div class="teacher-card__body">
-          <h3>박OO 선생님</h3>
-          <p class="teacher-card__school">국어국문학과 전공</p>
-          <p class="teacher-card__exp">수능 국어 12년 · 논술 전문</p>
-          <p class="teacher-card__rating">★★★★★ <span>5.0</span></p>
-        </div>
+      <div class="teacher-stat">
+        <strong>4.97<span>★</span></strong>
+        <p>선생님 평균 평점</p>
       </div>
-      <div class="teacher-card">
-        <div class="teacher-card__top">
-          <span class="teacher-card__badge">과학·입시</span>
-          <span class="teacher-card__avatar">👨‍🏫</span>
-        </div>
-        <div class="teacher-card__body">
-          <h3>최OO 선생님</h3>
-          <p class="teacher-card__school">물리학과 전공</p>
-          <p class="teacher-card__exp">과학고 입시 · 물리올림피아드</p>
-          <p class="teacher-card__rating">★★★★★ <span>4.9</span></p>
-        </div>
+      <div class="teacher-stat">
+        <strong>100<span>%</span></strong>
+        <p>전공자·경력자 인증</p>
       </div>
     </div>
+
+    <!-- 과목 필터 -->
+    <div class="tc-filters reveal">
+      <button class="tc-filter is-active" data-tf="all">전체</button>
+      <button class="tc-filter" data-tf="math">수학</button>
+      <button class="tc-filter" data-tf="english">영어</button>
+      <button class="tc-filter" data-tf="korean">국어·논술</button>
+      <button class="tc-filter" data-tf="science">과학</button>
+      <button class="tc-filter" data-tf="social">사회·역사</button>
+      <button class="tc-filter" data-tf="gsd">검정고시</button>
+    </div>
+
+    <!-- 선생님 카드 그리드 -->
+    <div class="teachers2 reveal" id="teacherGrid">
+
+      <!-- 1 수학 -->
+      <div class="tc-card" data-tf="math">
+        <div class="tc-card__top" style="background:linear-gradient(135deg,#1C2B52,#2a4a9c)">
+          <div class="tc-avatar" style="background:#3457B2">김</div>
+          <span class="tc-verified">✓ 인증</span>
+          <div class="tc-subj-badge">수학·경시</div>
+        </div>
+        <div class="tc-card__body">
+          <div class="tc-name-row">
+            <h3>김OO 선생님</h3>
+            <span class="tc-rating">★ 5.0</span>
+          </div>
+          <p class="tc-univ">서울대학교 수학교육과</p>
+          <p class="tc-career">수능 수학 지도 12년 · KMO 입상자 지도 경력</p>
+          <div class="tc-tags">
+            <span>수능 1등급</span><span>경시대회</span><span>심화개념</span>
+          </div>
+          <div class="tc-levels">
+            <span class="tc-lv">중등</span><span class="tc-lv">고등</span><span class="tc-lv tc-lv--re">재수</span>
+          </div>
+          <div class="tc-footer">
+            <span class="tc-count">수업 완료 <strong>284건</strong></span>
+            <a href="#apply" class="tc-btn">상담 신청</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 영어 -->
+      <div class="tc-card" data-tf="english">
+        <div class="tc-card__top" style="background:linear-gradient(135deg,#0f4c81,#1a7bbf)">
+          <div class="tc-avatar" style="background:#1a7bbf">이</div>
+          <span class="tc-verified">✓ 인증</span>
+          <div class="tc-subj-badge">영어·수능</div>
+        </div>
+        <div class="tc-card__body">
+          <div class="tc-name-row">
+            <h3>이OO 선생님</h3>
+            <span class="tc-rating">★ 4.9</span>
+          </div>
+          <p class="tc-univ">연세대학교 영어영문학과</p>
+          <p class="tc-career">수능 영어 절대평가 1등급 지도 9년</p>
+          <div class="tc-tags">
+            <span>수능독해</span><span>영어문법</span><span>내신영어</span>
+          </div>
+          <div class="tc-levels">
+            <span class="tc-lv">초등</span><span class="tc-lv">중등</span><span class="tc-lv">고등</span>
+          </div>
+          <div class="tc-footer">
+            <span class="tc-count">수업 완료 <strong>217건</strong></span>
+            <a href="#apply" class="tc-btn">상담 신청</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 국어 -->
+      <div class="tc-card" data-tf="korean">
+        <div class="tc-card__top" style="background:linear-gradient(135deg,#4a1260,#8b2fc9)">
+          <div class="tc-avatar" style="background:#8b2fc9">박</div>
+          <span class="tc-verified">✓ 인증</span>
+          <div class="tc-subj-badge">국어·논술</div>
+        </div>
+        <div class="tc-card__body">
+          <div class="tc-name-row">
+            <h3>박OO 선생님</h3>
+            <span class="tc-rating">★ 5.0</span>
+          </div>
+          <p class="tc-univ">고려대학교 국어국문학과</p>
+          <p class="tc-career">수능 국어 지도 14년 · 대입 논술 전문</p>
+          <div class="tc-tags">
+            <span>문학·독서</span><span>대입논술</span><span>언어논리</span>
+          </div>
+          <div class="tc-levels">
+            <span class="tc-lv">중등</span><span class="tc-lv">고등</span><span class="tc-lv tc-lv--re">재수</span>
+          </div>
+          <div class="tc-footer">
+            <span class="tc-count">수업 완료 <strong>331건</strong></span>
+            <a href="#apply" class="tc-btn">상담 신청</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 과학(물리) -->
+      <div class="tc-card" data-tf="science">
+        <div class="tc-card__top" style="background:linear-gradient(135deg,#0d4f3c,#1a8c69)">
+          <div class="tc-avatar" style="background:#1a8c69">최</div>
+          <span class="tc-verified">✓ 인증</span>
+          <div class="tc-subj-badge">물리·과학</div>
+        </div>
+        <div class="tc-card__body">
+          <div class="tc-name-row">
+            <h3>최OO 선생님</h3>
+            <span class="tc-rating">★ 4.9</span>
+          </div>
+          <p class="tc-univ">KAIST 물리학과</p>
+          <p class="tc-career">물리올림피아드 지도 7년 · 과학고 입시 전문</p>
+          <div class="tc-tags">
+            <span>물리올림피아드</span><span>과학고입시</span><span>수능과탐</span>
+          </div>
+          <div class="tc-levels">
+            <span class="tc-lv">중등</span><span class="tc-lv">고등</span>
+          </div>
+          <div class="tc-footer">
+            <span class="tc-count">수업 완료 <strong>198건</strong></span>
+            <a href="#apply" class="tc-btn">상담 신청</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 수학(초등·중등) -->
+      <div class="tc-card" data-tf="math">
+        <div class="tc-card__top" style="background:linear-gradient(135deg,#1C2B52,#3457B2)">
+          <div class="tc-avatar" style="background:#5374d0">정</div>
+          <span class="tc-verified">✓ 인증</span>
+          <div class="tc-subj-badge">수학·기초</div>
+        </div>
+        <div class="tc-card__body">
+          <div class="tc-name-row">
+            <h3>정OO 선생님</h3>
+            <span class="tc-rating">★ 5.0</span>
+          </div>
+          <p class="tc-univ">이화여대 수학과</p>
+          <p class="tc-career">초·중등 수학 기초개념 전문 11년</p>
+          <div class="tc-tags">
+            <span>기초개념</span><span>서술형</span><span>선행학습</span>
+          </div>
+          <div class="tc-levels">
+            <span class="tc-lv">초등</span><span class="tc-lv">중등</span>
+          </div>
+          <div class="tc-footer">
+            <span class="tc-count">수업 완료 <strong>246건</strong></span>
+            <a href="#apply" class="tc-btn">상담 신청</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 사회·역사 -->
+      <div class="tc-card" data-tf="social">
+        <div class="tc-card__top" style="background:linear-gradient(135deg,#7c2d12,#c2410c)">
+          <div class="tc-avatar" style="background:#c2410c">윤</div>
+          <span class="tc-verified">✓ 인증</span>
+          <div class="tc-subj-badge">사회·한국사</div>
+        </div>
+        <div class="tc-card__body">
+          <div class="tc-name-row">
+            <h3>윤OO 선생님</h3>
+            <span class="tc-rating">★ 4.8</span>
+          </div>
+          <p class="tc-univ">성균관대 사학과</p>
+          <p class="tc-career">사회·한국사·세계사 지도 8년 · 내신 전문</p>
+          <div class="tc-tags">
+            <span>한국사능력검정</span><span>수능사회</span><span>내신사회</span>
+          </div>
+          <div class="tc-levels">
+            <span class="tc-lv">중등</span><span class="tc-lv">고등</span>
+          </div>
+          <div class="tc-footer">
+            <span class="tc-count">수업 완료 <strong>162건</strong></span>
+            <a href="#apply" class="tc-btn">상담 신청</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 검정고시 -->
+      <div class="tc-card" data-tf="gsd">
+        <div class="tc-card__top" style="background:linear-gradient(135deg,#374151,#6b7280)">
+          <div class="tc-avatar" style="background:#6b7280">한</div>
+          <span class="tc-verified">✓ 인증</span>
+          <div class="tc-subj-badge">검정고시·전과목</div>
+        </div>
+        <div class="tc-card__body">
+          <div class="tc-name-row">
+            <h3>한OO 선생님</h3>
+            <span class="tc-rating">★ 5.0</span>
+          </div>
+          <p class="tc-univ">한국교육과정평가원 출신</p>
+          <p class="tc-career">검정고시 전과목 지도 전문 10년</p>
+          <div class="tc-tags">
+            <span>중졸검정</span><span>고졸검정</span><span>단기합격</span>
+          </div>
+          <div class="tc-levels">
+            <span class="tc-lv tc-lv--gsd">검정고시</span>
+          </div>
+          <div class="tc-footer">
+            <span class="tc-count">수업 완료 <strong>189건</strong></span>
+            <a href="#apply" class="tc-btn">상담 신청</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 과학(화학·생물) -->
+      <div class="tc-card" data-tf="science">
+        <div class="tc-card__top" style="background:linear-gradient(135deg,#134e4a,#0f766e)">
+          <div class="tc-avatar" style="background:#0f766e">강</div>
+          <span class="tc-verified">✓ 인증</span>
+          <div class="tc-subj-badge">화학·생물</div>
+        </div>
+        <div class="tc-card__body">
+          <div class="tc-name-row">
+            <h3>강OO 선생님</h3>
+            <span class="tc-rating">★ 4.9</span>
+          </div>
+          <p class="tc-univ">서울대학교 화학생물공학과</p>
+          <p class="tc-career">화학·생명과학 수능·내신 지도 9년</p>
+          <div class="tc-tags">
+            <span>수능화학</span><span>수능생물</span><span>의대입시</span>
+          </div>
+          <div class="tc-levels">
+            <span class="tc-lv">고등</span><span class="tc-lv tc-lv--re">재수</span>
+          </div>
+          <div class="tc-footer">
+            <span class="tc-count">수업 완료 <strong>223건</strong></span>
+            <a href="#apply" class="tc-btn">상담 신청</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.teachers2 -->
+
     <div class="teachers-cta reveal">
+      <p class="tc-cta-sub">지금 바로 무료 상담 신청 → 1~2일 내 맞춤 선생님 제안</p>
       <a href="#apply" class="btn btn--primary">우리 아이 맞춤 선생님 추천받기 →</a>
     </div>
   </div>
@@ -2741,6 +3151,27 @@ formResetBtn.addEventListener('click', function () {
   });
 
   activate('seoul');
+})();
+
+/* ============================================================
+   3-2) 선생님 과목 필터
+============================================================ */
+(function () {
+  var grid = document.getElementById('teacherGrid');
+  if (!grid) return;
+  var cards = Array.from(grid.querySelectorAll('.tc-card'));
+  var filters = Array.from(document.querySelectorAll('.tc-filter'));
+
+  filters.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tf = btn.getAttribute('data-tf');
+      filters.forEach(function (b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      cards.forEach(function (c) {
+        c.style.display = (tf === 'all' || c.getAttribute('data-tf') === tf) ? '' : 'none';
+      });
+    });
+  });
 })();
 
 /* ============================================================
