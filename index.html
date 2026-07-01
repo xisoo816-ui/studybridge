@@ -479,7 +479,7 @@ select:focus-visible, textarea:focus-visible{
   margin-top:40px;
 }
 .rg-map-wrap{ display:flex; flex-direction:column; align-items:center; gap:10px; }
-.rg-map-svg{ width:100%; max-width:220px; }
+.rg-map-svg{ width:100%; max-width:245px; }
 .map-zone{
   cursor:pointer;
   transition:filter .2s, opacity .2s;
@@ -2409,77 +2409,104 @@ select:focus-visible, textarea:focus-visible{
     <div class="rg-layout reveal">
       <!-- 지도 -->
       <div class="rg-map-wrap">
-        <svg viewBox="0 0 260 455" xmlns="http://www.w3.org/2000/svg" class="rg-map-svg">
+        <svg viewBox="0 0 310 535" xmlns="http://www.w3.org/2000/svg" class="rg-map-svg">
           <defs>
-            <filter id="mshadow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#3457B2" flood-opacity="0.18"/>
+            <filter id="mshadow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#1e3a8a" flood-opacity="0.3"/>
             </filter>
           </defs>
-          <!-- 서울·경기·인천 zone -->
-          <path class="map-zone" data-r="seoul" title="서울·경기·인천"
-            d="M 72,24 C 110,16 148,18 162,26 L 166,82 L 150,128 L 104,142 L 68,124 L 55,90 C 60,62 66,40 72,24 Z"
+
+          <!-- ── 도 경계 색상 zone ────────────────── -->
+          <!-- 서울·경기·인천 -->
+          <path class="map-zone" data-r="seoul"
+            d="M 55,28 C 88,20 138,18 178,20 L 208,25 L 218,58 L 220,92 L 214,132 L 204,162 L 172,182 L 140,190 L 106,182 L 76,165 L 54,140 L 40,108 L 44,72 Z"
+            fill="#BFDBFE" stroke="#3B82F6" stroke-width="1.5"/>
+
+          <!-- 강원 -->
+          <path class="map-zone" data-r="etc"
+            d="M 208,25 L 290,28 L 295,65 L 292,112 L 285,165 L 278,218 L 268,258 L 246,268 L 222,262 L 204,235 L 206,200 L 204,162 L 214,132 L 220,92 L 218,58 Z"
+            fill="#BBF7D0" stroke="#22C55E" stroke-width="1.5"/>
+
+          <!-- 충청·대전·세종 -->
+          <path class="map-zone" data-r="daejeon"
+            d="M 40,108 L 54,140 L 76,165 L 106,182 L 140,190 L 172,182 L 204,162 L 206,200 L 204,235 L 190,265 L 170,282 L 142,288 L 112,280 L 82,268 L 55,250 L 34,228 L 28,196 L 35,165 Z"
+            fill="#FDE68A" stroke="#F59E0B" stroke-width="1.5"/>
+
+          <!-- 경상북도·대구 -->
+          <path class="map-zone" data-r="daegu"
+            d="M 204,235 L 222,262 L 246,268 L 268,258 L 278,295 L 274,345 L 258,372 L 232,382 L 208,372 L 186,350 L 173,320 L 170,282 L 190,265 Z"
+            fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.5"/>
+
+          <!-- 전라남북도·광주 -->
+          <path class="map-zone" data-r="gwangju"
+            d="M 55,250 L 82,268 L 112,280 L 142,288 L 170,282 L 173,320 L 162,350 L 148,378 L 128,398 L 98,408 L 70,395 L 46,370 L 30,340 L 24,305 L 26,270 L 40,250 Z"
+            fill="#FECACA" stroke="#EF4444" stroke-width="1.5"/>
+
+          <!-- 경상남도·부산·울산 -->
+          <path class="map-zone" data-r="busan"
+            d="M 173,320 L 186,350 L 208,372 L 232,382 L 258,372 L 278,392 L 274,420 L 256,435 L 228,442 L 200,444 L 172,434 L 148,418 L 128,398 L 148,378 L 162,350 Z"
+            fill="#C7D2FE" stroke="#6366F1" stroke-width="1.5"/>
+
+          <!-- 강화도 -->
+          <ellipse class="map-zone" data-r="incheon" cx="30" cy="112" rx="11" ry="14"
             fill="#BFDBFE" stroke="#3B82F6" stroke-width="1.2"/>
-          <!-- 강원 zone -->
-          <path class="map-zone" data-r="etc" title="강원"
-            d="M 162,26 C 178,20 215,36 238,52 C 252,65 258,90 256,118 C 254,148 244,175 246,200 L 206,196 L 188,155 L 168,130 L 150,128 L 166,82 Z"
-            fill="#BBF7D0" stroke="#22C55E" stroke-width="1.2"/>
-          <!-- 충청 zone -->
-          <path class="map-zone" data-r="daejeon" title="충청·대전·세종"
-            d="M 55,90 L 68,124 L 104,142 L 150,128 L 168,130 L 188,155 L 182,205 L 155,220 L 108,224 L 75,212 L 48,188 L 42,158 L 48,125 Z"
-            fill="#FDE68A" stroke="#F59E0B" stroke-width="1.2"/>
-          <!-- 경북·대구 zone -->
-          <path class="map-zone" data-r="daegu" title="대구·경상북도"
-            d="M 108,224 L 155,220 L 182,205 L 206,196 L 246,200 L 240,258 L 222,290 L 195,305 L 172,290 L 148,268 L 140,240 Z"
-            fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.2"/>
-          <!-- 전라·광주 zone -->
-          <path class="map-zone" data-r="gwangju" title="광주·전라남북도"
-            d="M 48,188 L 75,212 L 108,224 L 140,240 L 132,295 L 118,345 L 95,368 L 65,365 L 38,335 L 24,298 L 22,258 L 28,220 Z"
-            fill="#FECACA" stroke="#EF4444" stroke-width="1.2"/>
-          <!-- 경남·부산·울산 zone -->
-          <path class="map-zone" data-r="busan" title="부산·울산·경상남도"
-            d="M 140,240 L 148,268 L 172,290 L 195,305 L 222,290 L 240,258 L 244,295 L 232,330 L 210,358 L 185,372 L 155,378 L 122,370 L 98,352 L 95,368 L 118,345 L 132,295 Z"
-            fill="#C7D2FE" stroke="#6366F1" stroke-width="1.2"/>
-          <!-- 제주 island -->
-          <ellipse class="map-zone" data-r="etc" cx="130" cy="430" rx="42" ry="16"
-            fill="#E0F2FE" stroke="#0EA5E9" stroke-width="1.2"/>
 
-          <!-- 구역 레이블 -->
-          <text x="88"  y="82"  font-size="8.5" fill="#1E40AF" font-weight="700" font-family="Pretendard,sans-serif" pointer-events="none" text-anchor="middle">서울·경기</text>
-          <text x="210" y="110" font-size="8"   fill="#15803D" font-weight="600" font-family="Pretendard,sans-serif" pointer-events="none" text-anchor="middle">강원</text>
-          <text x="118" y="185" font-size="8.5" fill="#92400E" font-weight="700" font-family="Pretendard,sans-serif" pointer-events="none" text-anchor="middle">충청·대전</text>
-          <text x="185" y="252" font-size="8.5" fill="#4C1D95" font-weight="700" font-family="Pretendard,sans-serif" pointer-events="none" text-anchor="middle">대구·경북</text>
-          <text x="82"  y="302" font-size="8.5" fill="#991B1B" font-weight="700" font-family="Pretendard,sans-serif" pointer-events="none" text-anchor="middle">광주·전라</text>
-          <text x="182" y="335" font-size="8.5" fill="#3730A3" font-weight="700" font-family="Pretendard,sans-serif" pointer-events="none" text-anchor="middle">부산·경남</text>
-          <text x="130" y="433" font-size="8"   fill="#0369A1" font-weight="600" font-family="Pretendard,sans-serif" pointer-events="none" text-anchor="middle">제주</text>
+          <!-- 진도 -->
+          <ellipse cx="40" cy="398" rx="9" ry="13"
+            fill="#FECACA" stroke="#EF4444" stroke-width="1"/>
+          <!-- 완도 -->
+          <ellipse cx="85" cy="418" rx="9" ry="6"
+            fill="#FECACA" stroke="#EF4444" stroke-width="1"/>
+          <!-- 남해도 -->
+          <ellipse cx="188" cy="454" rx="13" ry="7"
+            fill="#C7D2FE" stroke="#6366F1" stroke-width="1"/>
+          <!-- 거제도 -->
+          <ellipse cx="252" cy="450" rx="10" ry="8"
+            fill="#C7D2FE" stroke="#6366F1" stroke-width="1"/>
 
-          <!-- 주요 도시 핀 -->
+          <!-- 제주도 -->
+          <ellipse class="map-zone" data-r="etc" cx="148" cy="505" rx="55" ry="21"
+            fill="#E0F2FE" stroke="#0EA5E9" stroke-width="1.5"/>
+          <ellipse cx="200" cy="505" rx="6" ry="5"
+            fill="#E0F2FE" stroke="#0EA5E9" stroke-width="1"/>
+
+          <!-- ── 도 이름 레이블 ────────────────────── -->
+          <text x="128" y="148" font-size="9" fill="#1E40AF" font-weight="800" font-family="Pretendard,sans-serif" pointer-events="none" text-anchor="middle">서울·경기</text>
+          <text x="252" y="148" font-size="8.5" fill="#15803D" font-weight="700" font-family="Pretendard,sans-serif" pointer-events="none" text-anchor="middle">강원도</text>
+          <text x="118" y="242" font-size="9" fill="#92400E" font-weight="700" font-family="Pretendard,sans-serif" pointer-events="none" text-anchor="middle">충청·대전</text>
+          <text x="228" y="318" font-size="8.5" fill="#4C1D95" font-weight="700" font-family="Pretendard,sans-serif" pointer-events="none" text-anchor="middle">대구·경북</text>
+          <text x="88" y="345" font-size="9" fill="#991B1B" font-weight="700" font-family="Pretendard,sans-serif" pointer-events="none" text-anchor="middle">광주·전라</text>
+          <text x="198" y="415" font-size="8.5" fill="#3730A3" font-weight="700" font-family="Pretendard,sans-serif" pointer-events="none" text-anchor="middle">부산·경남</text>
+          <text x="148" y="508" font-size="8" fill="#0369A1" font-weight="600" font-family="Pretendard,sans-serif" pointer-events="none" text-anchor="middle">제주특별자치도</text>
+
+          <!-- ── 도시 핀 ─────────────────────────── -->
           <g class="map-pin" data-r="seoul" style="cursor:pointer">
-            <circle cx="108" cy="95" r="7" fill="#2563EB" filter="url(#mshadow)"/>
-            <text x="108" y="98.5" font-size="7" fill="#fff" font-weight="bold" font-family="Pretendard,sans-serif" text-anchor="middle" pointer-events="none">서울</text>
+            <circle cx="148" cy="105" r="8" fill="#2563EB" filter="url(#mshadow)"/>
+            <text x="148" y="108.5" font-size="7" fill="#fff" font-weight="bold" font-family="Pretendard,sans-serif" text-anchor="middle" pointer-events="none">서울</text>
           </g>
           <g class="map-pin" data-r="incheon" style="cursor:pointer">
-            <circle cx="58" cy="108" r="6" fill="#3B82F6" filter="url(#mshadow)"/>
-            <text x="58" y="111" font-size="6.5" fill="#fff" font-weight="bold" font-family="Pretendard,sans-serif" text-anchor="middle" pointer-events="none">인천</text>
+            <circle cx="68" cy="118" r="6.5" fill="#3B82F6" filter="url(#mshadow)"/>
+            <text x="68" y="121.5" font-size="6.5" fill="#fff" font-weight="bold" font-family="Pretendard,sans-serif" text-anchor="middle" pointer-events="none">인천</text>
           </g>
           <g class="map-pin" data-r="gyeonggi" style="cursor:pointer">
-            <circle cx="118" cy="128" r="6" fill="#60A5FA" filter="url(#mshadow)"/>
-            <text x="118" y="131" font-size="6.5" fill="#fff" font-weight="bold" font-family="Pretendard,sans-serif" text-anchor="middle" pointer-events="none">경기</text>
+            <circle cx="165" cy="155" r="6.5" fill="#60A5FA" filter="url(#mshadow)"/>
+            <text x="165" y="158.5" font-size="6.5" fill="#fff" font-weight="bold" font-family="Pretendard,sans-serif" text-anchor="middle" pointer-events="none">경기</text>
           </g>
           <g class="map-pin" data-r="daejeon" style="cursor:pointer">
-            <circle cx="112" cy="200" r="6.5" fill="#D97706" filter="url(#mshadow)"/>
-            <text x="112" y="203.5" font-size="6.5" fill="#fff" font-weight="bold" font-family="Pretendard,sans-serif" text-anchor="middle" pointer-events="none">대전</text>
+            <circle cx="145" cy="252" r="7" fill="#D97706" filter="url(#mshadow)"/>
+            <text x="145" y="255.5" font-size="6.5" fill="#fff" font-weight="bold" font-family="Pretendard,sans-serif" text-anchor="middle" pointer-events="none">대전</text>
           </g>
           <g class="map-pin" data-r="daegu" style="cursor:pointer">
-            <circle cx="185" cy="260" r="6.5" fill="#7C3AED" filter="url(#mshadow)"/>
-            <text x="185" y="263.5" font-size="6.5" fill="#fff" font-weight="bold" font-family="Pretendard,sans-serif" text-anchor="middle" pointer-events="none">대구</text>
+            <circle cx="210" cy="310" r="7" fill="#7C3AED" filter="url(#mshadow)"/>
+            <text x="210" y="313.5" font-size="6.5" fill="#fff" font-weight="bold" font-family="Pretendard,sans-serif" text-anchor="middle" pointer-events="none">대구</text>
           </g>
           <g class="map-pin" data-r="gwangju" style="cursor:pointer">
-            <circle cx="88" cy="318" r="6.5" fill="#DC2626" filter="url(#mshadow)"/>
-            <text x="88" y="321.5" font-size="6.5" fill="#fff" font-weight="bold" font-family="Pretendard,sans-serif" text-anchor="middle" pointer-events="none">광주</text>
+            <circle cx="105" cy="362" r="7" fill="#DC2626" filter="url(#mshadow)"/>
+            <text x="105" y="365.5" font-size="6.5" fill="#fff" font-weight="bold" font-family="Pretendard,sans-serif" text-anchor="middle" pointer-events="none">광주</text>
           </g>
           <g class="map-pin" data-r="busan" style="cursor:pointer">
-            <circle cx="208" cy="345" r="6.5" fill="#4F46E5" filter="url(#mshadow)"/>
-            <text x="208" y="348.5" font-size="6.5" fill="#fff" font-weight="bold" font-family="Pretendard,sans-serif" text-anchor="middle" pointer-events="none">부산</text>
+            <circle cx="252" cy="422" r="7" fill="#4F46E5" filter="url(#mshadow)"/>
+            <text x="252" y="425.5" font-size="6.5" fill="#fff" font-weight="bold" font-family="Pretendard,sans-serif" text-anchor="middle" pointer-events="none">부산</text>
           </g>
         </svg>
         <p class="rg-map-hint">🗺 지도 또는 아래 탭을 클릭하세요</p>
@@ -2501,18 +2528,18 @@ select:focus-visible, textarea:focus-visible{
         <div class="rg-panel is-active" id="rp-seoul">
           <p class="rg-panel__desc">📍 서울 전 25개 구 방문 과외 매칭 가능합니다. 원하는 지역을 확인 후 무료 상담을 신청하세요.</p>
           <div class="district-grid">
-            <div class="district-card"><strong>강남구</strong><span>대치동 · 역삼동 · 청담동 · 도곡동 · 개포동</span></div>
-            <div class="district-card"><strong>서초구</strong><span>반포동 · 방배동 · 서초동 · 양재동 · 잠원동</span></div>
-            <div class="district-card"><strong>송파구</strong><span>잠실동 · 문정동 · 가락동 · 방이동 · 위례</span></div>
-            <div class="district-card"><strong>강서구</strong><span>목동 · 화곡동 · 등촌동 · 방화동 · 가양동</span></div>
-            <div class="district-card"><strong>노원구</strong><span>중계동 · 상계동 · 하계동 · 월계동</span></div>
-            <div class="district-card"><strong>마포구</strong><span>합정동 · 홍대 · 상암동 · 망원동 · 서교동</span></div>
-            <div class="district-card"><strong>강동구</strong><span>천호동 · 길동 · 암사동 · 둔촌동</span></div>
-            <div class="district-card"><strong>성북구</strong><span>길음동 · 정릉동 · 돈암동 · 종암동</span></div>
-            <div class="district-card"><strong>동작구</strong><span>사당동 · 상도동 · 노량진 · 흑석동</span></div>
-            <div class="district-card"><strong>관악구</strong><span>신림동 · 봉천동 · 낙성대</span></div>
-            <div class="district-card"><strong>양천구</strong><span>목동 · 신정동 · 신월동</span></div>
-            <div class="district-card"><strong>은평구</strong><span>불광동 · 녹번동 · 응암동 · 구산동</span></div>
+            <div class="district-card"><strong>강남구</strong><span>대치1·2·4동 · 역삼1·2동 · 청담동 · 도곡1·2동 · 개포1·2·4동 · 일원동 · 수서동 · 세곡동 · 자곡동 · 논현1·2동 · 삼성1·2동</span></div>
+            <div class="district-card"><strong>서초구</strong><span>반포1~4동 · 방배1~4동 · 서초1~4동 · 양재1·2동 · 잠원동 · 내곡동 · 우면동 · 염곡동 · 신원동 · 원지동</span></div>
+            <div class="district-card"><strong>송파구</strong><span>잠실1~7동 · 문정1·2동 · 가락1·2동 · 방이1·2동 · 위례동 · 마천1·2동 · 거여1·2동 · 풍납1·2동 · 석촌동 · 오금동 · 송파1·2동</span></div>
+            <div class="district-card"><strong>강서구·양천구</strong><span>화곡1~8동 · 등촌1~3동 · 방화1~3동 · 가양1~3동 · 마곡동 · 공항동 · 발산동 · 목1~5동 · 신정1~7동 · 신월1~7동</span></div>
+            <div class="district-card"><strong>노원구</strong><span>중계1~4동 · 상계1~10동 · 하계1·2동 · 월계1~4동 · 공릉1·2동 · 묵1·2동 · 석계동</span></div>
+            <div class="district-card"><strong>마포구</strong><span>합정동 · 서교동(홍대) · 상암동 · 망원1·2동 · 성산1·2동 · 공덕동 · 대흥동 · 아현동 · 도화동 · 용강동 · 토정동 · 신수동</span></div>
+            <div class="district-card"><strong>강동구</strong><span>천호1~3동 · 길1·2동 · 암사1~3동 · 둔촌1·2동 · 명일1·2동 · 고덕1·2동 · 강일동 · 상일동 · 성내1~3동 · 풍납1·2동</span></div>
+            <div class="district-card"><strong>성북구·도봉구</strong><span>길음1·2동 · 정릉1~4동 · 돈암1·2동 · 종암동 · 삼선동 · 성북동 · 안암동 · 보문동 · 석관동 · 쌍문동 · 방학동 · 창동</span></div>
+            <div class="district-card"><strong>동작구·관악구</strong><span>사당1~5동 · 상도1~4동 · 노량진1·2동 · 흑석동 · 대방동 · 신대방1·2동 · 신림동 · 봉천동 · 낙성대 · 서원동 · 신사동 · 조원동</span></div>
+            <div class="district-card"><strong>용산구·중구</strong><span>이태원동 · 한남동 · 보광동 · 효창동 · 후암동 · 원효로동 · 청파동 · 동자동 · 신당동 · 황학동 · 충무로동</span></div>
+            <div class="district-card"><strong>광진구·중랑구</strong><span>구의1~3동 · 자양1~4동 · 화양동 · 중곡1~4동 · 면목1~4·7·8동 · 망우본동 · 신내1·2동</span></div>
+            <div class="district-card"><strong>은평구·서대문구</strong><span>불광1·2동 · 녹번동 · 응암1~3동 · 구산동 · 갈현1·2동 · 수색동 · 증산동 · 진관동 · 홍은1·2동 · 북아현동 · 남가좌동</span></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">서울 지역 무료 상담 신청 →</a>
         </div>
@@ -2521,18 +2548,18 @@ select:focus-visible, textarea:focus-visible{
         <div class="rg-panel" id="rp-gyeonggi">
           <p class="rg-panel__desc">📍 경기도 전 지역 방문 과외 매칭 가능합니다.</p>
           <div class="district-grid">
-            <div class="district-card"><strong>수원</strong><span>영통구 · 팔달구 · 장안구 · 권선구</span></div>
-            <div class="district-card"><strong>성남·분당</strong><span>정자동 · 서현동 · 수내동 · 야탑동</span></div>
-            <div class="district-card"><strong>용인·수지</strong><span>풍덕천동 · 상현동 · 죽전동 · 동천동</span></div>
-            <div class="district-card"><strong>고양·일산</strong><span>일산동구 · 일산서구 · 마두동 · 정발산동</span></div>
-            <div class="district-card"><strong>화성·동탄</strong><span>동탄1신도시 · 동탄2신도시 · 반송동</span></div>
-            <div class="district-card"><strong>안양·평촌</strong><span>평촌동 · 범계동 · 호계동 · 비산동</span></div>
-            <div class="district-card"><strong>부천</strong><span>중동 · 상동 · 원미구 · 소사구</span></div>
-            <div class="district-card"><strong>의정부</strong><span>민락동 · 녹양동 · 금오동 · 장암동</span></div>
-            <div class="district-card"><strong>남양주</strong><span>별내동 · 다산동 · 진건읍 · 화도읍</span></div>
-            <div class="district-card"><strong>안산</strong><span>고잔동 · 선부동 · 단원구 · 상록구</span></div>
-            <div class="district-card"><strong>평택</strong><span>비전동 · 세교동 · 소사동 · 동삭동</span></div>
-            <div class="district-card"><strong>김포</strong><span>장기동 · 풍무동 · 구래동 · 통진읍</span></div>
+            <div class="district-card"><strong>수원</strong><span>영통동 · 매탄동 · 원천동 · 이의동 · 인계동 · 화서동 · 장안동 · 조원동 · 권선동 · 팔달동 · 우만동</span></div>
+            <div class="district-card"><strong>성남·분당</strong><span>정자1·3동 · 서현1·2동 · 수내1·3동 · 야탑1·3동 · 이매동 · 구미동 · 금곡동 · 삼평동 · 백현동 · 분당동</span></div>
+            <div class="district-card"><strong>용인·수지</strong><span>풍덕천1·2동 · 상현1·2동 · 죽전1·2동 · 동천동 · 성복동 · 신봉동 · 광교동 · 보정동 · 기흥동 · 구갈동</span></div>
+            <div class="district-card"><strong>고양·일산</strong><span>마두1·2동 · 정발산동 · 장항동 · 중산동 · 화정동 · 행신동 · 능곡동 · 원당동 · 화전동 · 덕양구</span></div>
+            <div class="district-card"><strong>화성·동탄</strong><span>동탄1·2·3·4·5·6동 · 화산동 · 진안동 · 반송동 · 병점동 · 향남읍 · 봉담읍</span></div>
+            <div class="district-card"><strong>안양·평촌</strong><span>평촌동 · 범계동 · 호계1·3동 · 비산1·3동 · 부흥동 · 갈산동 · 귀인동 · 관양동 · 석수동 · 박달동</span></div>
+            <div class="district-card"><strong>부천</strong><span>중동 · 상동 · 심곡동 · 소사동 · 옥길동 · 송내동 · 괴안동 · 범박동 · 역곡동 · 오정동</span></div>
+            <div class="district-card"><strong>의정부</strong><span>민락1·2동 · 녹양동 · 금오동 · 장암동 · 신곡1·2동 · 의정부동 · 가능동 · 호원동 · 자금동</span></div>
+            <div class="district-card"><strong>남양주·구리</strong><span>별내동 · 다산1·2동 · 진건읍 · 화도읍 · 수동면 · 오남읍 · 퇴계원읍 · 구리시 수택동 · 인창동</span></div>
+            <div class="district-card"><strong>안산·시흥</strong><span>고잔동 · 선부동 · 원시동 · 초지동 · 본오동 · 사동 · 와동 · 성포동 · 정왕동 · 은행동</span></div>
+            <div class="district-card"><strong>평택·오산</strong><span>비전동 · 세교동 · 소사동 · 동삭동 · 용이동 · 신장동 · 중앙동 · 독곡동 · 오산시 원동 · 세마동</span></div>
+            <div class="district-card"><strong>김포·파주</strong><span>장기동 · 풍무동 · 구래동 · 마산동 · 걸포동 · 통진읍 · 양촌읍 · 파주시 운정동 · 야당동 · 교하동</span></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">경기 지역 무료 상담 신청 →</a>
         </div>
@@ -2541,12 +2568,14 @@ select:focus-visible, textarea:focus-visible{
         <div class="rg-panel" id="rp-incheon">
           <p class="rg-panel__desc">📍 인천 전 구 방문 과외 매칭 가능합니다.</p>
           <div class="district-grid">
-            <div class="district-card"><strong>연수구</strong><span>송도동 · 연수동 · 청학동 · 옥련동</span></div>
-            <div class="district-card"><strong>남동구</strong><span>구월동 · 간석동 · 논현동 · 만수동</span></div>
-            <div class="district-card"><strong>부평구</strong><span>부평동 · 산곡동 · 청천동 · 삼산동</span></div>
-            <div class="district-card"><strong>서구</strong><span>검단동 · 가좌동 · 석남동 · 연희동</span></div>
-            <div class="district-card"><strong>미추홀구</strong><span>주안동 · 용현동 · 학익동</span></div>
-            <div class="district-card"><strong>중구·영종</strong><span>영종도 · 운서동 · 신포동</span></div>
+            <div class="district-card"><strong>연수구</strong><span>송도1·2·3·4·5동 · 연수동 · 청학동 · 옥련동 · 동춘1·2·3동 · 선학동 · 문학동</span></div>
+            <div class="district-card"><strong>남동구</strong><span>구월1~4동 · 간석1~4동 · 논현동 · 논현고잔동 · 만수1~6동 · 장수동 · 수산동 · 소래포구동</span></div>
+            <div class="district-card"><strong>부평구</strong><span>부평1~5동 · 산곡1~4동 · 청천1·2동 · 삼산1·2동 · 갈산동 · 부개1·2·3동 · 십정1·2동 · 일신동</span></div>
+            <div class="district-card"><strong>서구</strong><span>검단동 · 마전동 · 당하동 · 원당동 · 가좌1~4동 · 석남1~3동 · 연희동 · 대곡동 · 검단사거리동</span></div>
+            <div class="district-card"><strong>미추홀구</strong><span>주안1~8동 · 용현1~5동 · 학익1·2동 · 도화1~3동 · 숭의1~4동 · 관교동 · 문학동</span></div>
+            <div class="district-card"><strong>계양구</strong><span>계산1~4동 · 작전동 · 작전서운동 · 효성동 · 병방동 · 귤현동 · 박촌동</span></div>
+            <div class="district-card"><strong>중구·동구</strong><span>영종도 · 운서동 · 신포동 · 인현동 · 답동 · 중산동 · 송림1~6동 · 금창동 · 화수화평동</span></div>
+            <div class="district-card"><strong>강화·옹진</strong><span>강화읍 · 선원면 · 불은면 · 송해면 · 길상면 · 영종도 · 용유도 인근 섬 지역</span></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">인천 지역 무료 상담 신청 →</a>
         </div>
@@ -2555,13 +2584,15 @@ select:focus-visible, textarea:focus-visible{
         <div class="rg-panel" id="rp-daejeon">
           <p class="rg-panel__desc">📍 대전·세종·충남·충북 전 지역 방문 및 화상 과외 매칭 가능합니다.</p>
           <div class="district-grid">
-            <div class="district-card"><strong>대전 유성구</strong><span>봉명동 · 구암동 · 노은동 · 죽동</span></div>
-            <div class="district-card"><strong>대전 서구</strong><span>둔산동 · 탄방동 · 괴정동 · 월평동</span></div>
-            <div class="district-card"><strong>대전 중구</strong><span>대흥동 · 은행동 · 태평동</span></div>
-            <div class="district-card"><strong>대전 동구</strong><span>가오동 · 용운동 · 판암동</span></div>
-            <div class="district-card"><strong>세종시</strong><span>도담동 · 아름동 · 고운동 · 종촌동</span></div>
-            <div class="district-card"><strong>충남 천안</strong><span>서북구 · 동남구 · 불당동</span></div>
-            <div class="district-card"><strong>충북 청주</strong><span>흥덕구 · 서원구 · 청원구</span></div>
+            <div class="district-card"><strong>대전 유성구</strong><span>봉명동 · 구암동 · 노은1~3동 · 죽동 · 신성동 · 전민동 · 학하동 · 원신흥동 · 반석동 · 하기동 · 둔산동</span></div>
+            <div class="district-card"><strong>대전 서구</strong><span>둔산1~3동 · 탄방동 · 괴정동 · 월평1~3동 · 갈마1·2동 · 복수동 · 용문동 · 내동 · 가수원동 · 관저1·2동</span></div>
+            <div class="district-card"><strong>대전 중구</strong><span>대흥동 · 은행동 · 태평1~4동 · 목동 · 유천1·2동 · 선화동 · 사정동 · 중촌동 · 문창동 · 오류동</span></div>
+            <div class="district-card"><strong>대전 동구</strong><span>가오동 · 용운동 · 판암1·2동 · 대동 · 가양동 · 성남동 · 소제동 · 천동 · 인동 · 효동 · 비래동</span></div>
+            <div class="district-card"><strong>세종시</strong><span>도담동 · 아름동 · 고운동 · 종촌동 · 한솔동 · 새롬동 · 보람동 · 대평동 · 소담동 · 나성동 · 연동면</span></div>
+            <div class="district-card"><strong>충남 천안</strong><span>불당동 · 두정동 · 부성동 · 성성동 · 신부동 · 원성동 · 신방동 · 쌍용1~3동 · 백석동 · 아산시 배방읍</span></div>
+            <div class="district-card"><strong>충남 공주·논산</strong><span>웅진동 · 금학동 · 옥룡동 · 반죽동 · 취리동 · 논산시 강산동 · 내동 · 취암동</span></div>
+            <div class="district-card"><strong>충북 청주</strong><span>복대동 · 분평동 · 가경동 · 율량동 · 성화동 · 내덕동 · 산남동 · 오창읍 · 오근장동 · 사창동</span></div>
+            <div class="district-card"><strong>충북 충주·제천</strong><span>충주시 교현동 · 연수동 · 용산동 · 호암동 · 제천시 의림동 · 동현동 · 영천동</span></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">대전·충청 지역 무료 상담 신청 →</a>
         </div>
@@ -2570,13 +2601,14 @@ select:focus-visible, textarea:focus-visible{
         <div class="rg-panel" id="rp-daegu">
           <p class="rg-panel__desc">📍 대구 전 구 및 경상북도 주요 지역 방문·화상 과외 매칭 가능합니다.</p>
           <div class="district-grid">
-            <div class="district-card"><strong>수성구</strong><span>범어동 · 만촌동 · 황금동 · 지산동</span></div>
-            <div class="district-card"><strong>달서구</strong><span>월성동 · 상인동 · 감삼동 · 죽전동</span></div>
-            <div class="district-card"><strong>북구</strong><span>칠성동 · 복현동 · 침산동 · 산격동</span></div>
-            <div class="district-card"><strong>중구</strong><span>동인동 · 삼덕동 · 봉산동</span></div>
-            <div class="district-card"><strong>동구</strong><span>신암동 · 효목동 · 지저동</span></div>
-            <div class="district-card"><strong>경북 포항</strong><span>북구 · 남구 · 효자동</span></div>
-            <div class="district-card"><strong>경북 구미</strong><span>형곡동 · 원평동 · 송정동</span></div>
+            <div class="district-card"><strong>수성구</strong><span>범어1~4동 · 만촌1~3동 · 황금1·2동 · 지산1·2동 · 수성1~4가동 · 파동 · 상동 · 매호동 · 중동 · 고모동</span></div>
+            <div class="district-card"><strong>달서구</strong><span>월성1·2동 · 상인1~3동 · 감삼동 · 죽전동 · 용산1·2동 · 호림동 · 이곡1·2동 · 신당동 · 장기동 · 대천동</span></div>
+            <div class="district-card"><strong>북구</strong><span>칠성1·2동 · 복현1·2동 · 침산1~3동 · 산격1~4동 · 동천동 · 관음동 · 검단동 · 태전동 · 구암동 · 노원동</span></div>
+            <div class="district-card"><strong>중구·남구</strong><span>동인1~4동 · 삼덕동 · 봉산동 · 남산1~4동 · 대봉1·2동 · 공평동 · 수동 · 포정동 · 이천동 · 대명동</span></div>
+            <div class="district-card"><strong>동구·서구</strong><span>신암1~5동 · 효목1·2동 · 지저동 · 방촌동 · 안심1~4동 · 각산동 · 평리1~6동 · 비산1~7동 · 원대동</span></div>
+            <div class="district-card"><strong>경북 포항</strong><span>효자1~4동 · 이동 · 두호동 · 장성동 · 양덕동 · 대신동 · 죽도1·2동 · 중앙동 · 남구 상대동 · 해도동</span></div>
+            <div class="district-card"><strong>경북 구미</strong><span>형곡1·2동 · 원평1·2동 · 송정동 · 봉곡동 · 신평1·2동 · 사곡동 · 도량동 · 지산동 · 선산읍</span></div>
+            <div class="district-card"><strong>경북 경주·안동</strong><span>경주 황성동 · 성건동 · 동천동 · 용강동 · 안동 옥동 · 용상동 · 신세동 · 태화동</span></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">대구·경북 지역 무료 상담 신청 →</a>
         </div>
@@ -2585,14 +2617,15 @@ select:focus-visible, textarea:focus-visible{
         <div class="rg-panel" id="rp-busan">
           <p class="rg-panel__desc">📍 부산·울산·경상남도 전 지역 방문·화상 과외 매칭 가능합니다.</p>
           <div class="district-grid">
-            <div class="district-card"><strong>해운대구</strong><span>좌동 · 우동 · 재송동 · 반여동</span></div>
-            <div class="district-card"><strong>수영구</strong><span>광안동 · 민락동 · 남천동</span></div>
-            <div class="district-card"><strong>동래구</strong><span>온천동 · 명륜동 · 수안동</span></div>
-            <div class="district-card"><strong>부산진구</strong><span>부전동 · 전포동 · 개금동</span></div>
-            <div class="district-card"><strong>남구</strong><span>대연동 · 용호동 · 문현동</span></div>
-            <div class="district-card"><strong>사상구</strong><span>덕포동 · 모라동 · 주례동</span></div>
-            <div class="district-card"><strong>울산 남구</strong><span>삼산동 · 달동 · 무거동</span></div>
-            <div class="district-card"><strong>경남 창원</strong><span>성산구 · 의창구 · 마산합포구</span></div>
+            <div class="district-card"><strong>해운대구</strong><span>좌1~5동 · 우1~3동 · 재송1·2동 · 반여1~4동 · 반송1·2동 · 중1동 · 송정동 · 달맞이</span></div>
+            <div class="district-card"><strong>수영구</strong><span>광안1~4동 · 민락동 · 남천1·2동 · 망미1·2동 · 수영동</span></div>
+            <div class="district-card"><strong>동래구</strong><span>온천1~4동 · 명륜동 · 수안동 · 안락1·2동 · 낙민동 · 복천동 · 칠산동</span></div>
+            <div class="district-card"><strong>부산진구</strong><span>부전1·2동 · 전포1·2동 · 개금1~3동 · 당감1~4동 · 연지동 · 범천1·2동 · 초읍동 · 범일1·2동</span></div>
+            <div class="district-card"><strong>남구·연제구</strong><span>대연1~6동 · 용호1~4동 · 문현1~4동 · 우암동 · 감만1·2동 · 연산1~9동 · 거제1~4동</span></div>
+            <div class="district-card"><strong>사상구·북구</strong><span>덕포1·2동 · 모라1~3동 · 주례1~3동 · 학장동 · 엄궁동 · 괴법동 · 구포1~3동 · 화명1~3동 · 금곡동</span></div>
+            <div class="district-card"><strong>울산 남구·중구</strong><span>삼산동 · 달동 · 무거동 · 신정1~6동 · 옥동 · 야음장생포동 · 수암동 · 성남동 · 학성동</span></div>
+            <div class="district-card"><strong>경남 창원</strong><span>성산구 상남동·중앙동 · 의창구 팔룡동·용호동 · 마산합포구 합포동·중앙동 · 진해구 석동·경화동</span></div>
+            <div class="district-card"><strong>경남 김해·양산</strong><span>김해 장유동 · 내동 · 부원동 · 삼방동 · 양산 중부동 · 물금읍 · 웅상읍</span></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">부산·경남 지역 무료 상담 신청 →</a>
         </div>
@@ -2601,12 +2634,14 @@ select:focus-visible, textarea:focus-visible{
         <div class="rg-panel" id="rp-gwangju">
           <p class="rg-panel__desc">📍 광주·전라남도·전라북도 전 지역 방문·화상 과외 매칭 가능합니다.</p>
           <div class="district-grid">
-            <div class="district-card"><strong>광주 서구</strong><span>화정동 · 금호동 · 쌍촌동 · 치평동</span></div>
-            <div class="district-card"><strong>광주 북구</strong><span>용봉동 · 각화동 · 운암동 · 오치동</span></div>
-            <div class="district-card"><strong>광주 남구</strong><span>봉선동 · 주월동 · 방림동</span></div>
-            <div class="district-card"><strong>광주 광산구</strong><span>수완동 · 첨단동 · 운남동</span></div>
-            <div class="district-card"><strong>전북 전주</strong><span>완산구 · 덕진구 · 효자동</span></div>
-            <div class="district-card"><strong>전남 순천</strong><span>조례동 · 풍덕동 · 연향동</span></div>
+            <div class="district-card"><strong>광주 서구</strong><span>화정1~4동 · 금호1·2동 · 쌍촌동 · 치평동 · 광천동 · 동천동 · 마륵동 · 풍암동 · 벽진동 · 서창동</span></div>
+            <div class="district-card"><strong>광주 북구</strong><span>용봉동 · 각화동 · 운암1~3동 · 오치1·2동 · 일곡동 · 매곡동 · 신안동 · 중흥1~3동 · 문흥1·2동 · 두암동</span></div>
+            <div class="district-card"><strong>광주 남구·동구</strong><span>봉선1·2동 · 주월1·2동 · 방림1·2동 · 사직동 · 구동 · 백운1·2동 · 월산동 · 충장동 · 동명동 · 지산동</span></div>
+            <div class="district-card"><strong>광주 광산구</strong><span>수완동 · 첨단1·2동 · 운남동 · 신가동 · 소촌동 · 우산동 · 하남동 · 월곡1·2동 · 임곡동 · 비아동</span></div>
+            <div class="district-card"><strong>전북 전주</strong><span>효자1~5동 · 중화산1·2동 · 평화1·2동 · 송천1·2동 · 인후1~3동 · 우아1·2동 · 서신동 · 삼천1~3동 · 완산동</span></div>
+            <div class="district-card"><strong>전북 익산·군산</strong><span>익산 영등동 · 동산동 · 어양동 · 모현동 · 군산 조촌동 · 수송동 · 미룡동 · 나운동</span></div>
+            <div class="district-card"><strong>전남 순천</strong><span>조례1·2동 · 풍덕동 · 연향동 · 왕지동 · 매곡동 · 덕연동 · 오천동 · 해룡면 · 서면</span></div>
+            <div class="district-card"><strong>전남 목포·여수</strong><span>목포 하당동 · 신흥동 · 옥암동 · 상동 · 여수 중앙동 · 학동 · 돌산읍 · 소라면</span></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">광주·전라 지역 무료 상담 신청 →</a>
         </div>
@@ -2615,12 +2650,13 @@ select:focus-visible, textarea:focus-visible{
         <div class="rg-panel" id="rp-etc">
           <p class="rg-panel__desc">📍 강원·제주 및 전국 기타 지역은 비대면 화상 과외로 전국 선생님 풀에서 매칭해드립니다.</p>
           <div class="district-grid">
-            <div class="district-card"><strong>강원 춘천</strong><span>효자동 · 퇴계동 · 석사동</span></div>
-            <div class="district-card"><strong>강원 강릉</strong><span>교동 · 포남동 · 입암동</span></div>
-            <div class="district-card"><strong>강원 원주</strong><span>단계동 · 무실동 · 반곡동</span></div>
-            <div class="district-card"><strong>제주시</strong><span>연동 · 노형동 · 아라동</span></div>
-            <div class="district-card"><strong>서귀포시</strong><span>서귀동 · 대정읍 · 남원읍</span></div>
-            <div class="district-card"><strong>그 외 전국</strong><span>화상 과외로 전국 어디서나 매칭</span></div>
+            <div class="district-card"><strong>강원 춘천</strong><span>효자1~3동 · 퇴계동 · 석사동 · 후평1~3동 · 소양동 · 봉의동 · 교동 · 조운동 · 강남동 · 신북읍</span></div>
+            <div class="district-card"><strong>강원 강릉</strong><span>교동 · 포남1·2동 · 입암동 · 성남동 · 홍제동 · 중앙동 · 내곡동 · 노암동 · 성덕동 · 주문진읍</span></div>
+            <div class="district-card"><strong>강원 원주</strong><span>단계동 · 무실동 · 반곡동 · 행구동 · 원동 · 평원동 · 태장1·2동 · 명륜동 · 개운동 · 혁신도시(지정면)</span></div>
+            <div class="district-card"><strong>강원 속초·동해</strong><span>속초 조양동 · 영랑동 · 교동 · 동해 천곡동 · 송정동 · 북삼동 · 묵호동</span></div>
+            <div class="district-card"><strong>제주시</strong><span>연동 · 노형동 · 아라동 · 이도1·2동 · 삼도1·2동 · 외도동 · 일도동 · 건입동 · 한림읍 · 애월읍</span></div>
+            <div class="district-card"><strong>서귀포시</strong><span>서귀동 · 대정읍 · 남원읍 · 성산읍 · 표선면 · 중문동 · 대천동 · 예래동 · 안덕면</span></div>
+            <div class="district-card"><strong>그 외 전국</strong><span>전국 어디서나 화상 과외로 매칭 가능합니다. 도서 산간 지역 포함 비대면 수업 진행</span></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">화상 과외 무료 상담 신청 →</a>
         </div>
