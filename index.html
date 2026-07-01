@@ -814,14 +814,15 @@ select:focus-visible, textarea:focus-visible{
   min-height:90px;
 }
 .tc-avatar{
-  width:60px; height:60px;
+  width:72px; height:72px;
   border-radius:50%;
-  border:3px solid rgba(255,255,255,.55);
-  display:flex; align-items:center; justify-content:center;
-  font-size:22px; font-weight:900; color:#fff;
+  border:3.5px solid #fff;
   position:absolute;
-  bottom:-30px; left:18px;
-  box-shadow:0 6px 18px rgba(0,0,0,.22);
+  bottom:-36px; left:18px;
+  box-shadow:0 6px 20px rgba(0,0,0,.28);
+  object-fit:cover;
+  background:#e5e7eb;
+  display:block;
 }
 .tc-verified{
   position:absolute;
@@ -845,7 +846,7 @@ select:focus-visible, textarea:focus-visible{
   padding:4px 10px;
   border-radius:999px;
 }
-.tc-card__body{ padding:40px 18px 20px; }
+.tc-card__body{ padding:46px 18px 20px; }
 .tc-name-row{
   display:flex;
   align-items:center;
@@ -1792,7 +1793,7 @@ select:focus-visible, textarea:focus-visible{
       <!-- 1 수학 -->
       <div class="tc-card" data-tf="math">
         <div class="tc-card__top" style="background:linear-gradient(135deg,#1C2B52,#2a4a9c)">
-          <div class="tc-avatar" style="background:#3457B2">김</div>
+          <img class="tc-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="김OO 선생님">
           <span class="tc-verified">✓ 인증</span>
           <div class="tc-subj-badge">수학·경시</div>
         </div>
@@ -1819,7 +1820,7 @@ select:focus-visible, textarea:focus-visible{
       <!-- 2 영어 -->
       <div class="tc-card" data-tf="english">
         <div class="tc-card__top" style="background:linear-gradient(135deg,#0f4c81,#1a7bbf)">
-          <div class="tc-avatar" style="background:#1a7bbf">이</div>
+          <img class="tc-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="이OO 선생님">
           <span class="tc-verified">✓ 인증</span>
           <div class="tc-subj-badge">영어·수능</div>
         </div>
@@ -1846,7 +1847,7 @@ select:focus-visible, textarea:focus-visible{
       <!-- 3 국어 -->
       <div class="tc-card" data-tf="korean">
         <div class="tc-card__top" style="background:linear-gradient(135deg,#4a1260,#8b2fc9)">
-          <div class="tc-avatar" style="background:#8b2fc9">박</div>
+          <img class="tc-avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="박OO 선생님">
           <span class="tc-verified">✓ 인증</span>
           <div class="tc-subj-badge">국어·논술</div>
         </div>
@@ -1873,7 +1874,7 @@ select:focus-visible, textarea:focus-visible{
       <!-- 4 과학(물리) -->
       <div class="tc-card" data-tf="science">
         <div class="tc-card__top" style="background:linear-gradient(135deg,#0d4f3c,#1a8c69)">
-          <div class="tc-avatar" style="background:#1a8c69">최</div>
+          <img class="tc-avatar" src="https://randomuser.me/api/portraits/men/57.jpg" alt="최OO 선생님">
           <span class="tc-verified">✓ 인증</span>
           <div class="tc-subj-badge">물리·과학</div>
         </div>
@@ -1900,7 +1901,7 @@ select:focus-visible, textarea:focus-visible{
       <!-- 5 수학(초등·중등) -->
       <div class="tc-card" data-tf="math">
         <div class="tc-card__top" style="background:linear-gradient(135deg,#1C2B52,#3457B2)">
-          <div class="tc-avatar" style="background:#5374d0">정</div>
+          <img class="tc-avatar" src="https://randomuser.me/api/portraits/women/17.jpg" alt="정OO 선생님">
           <span class="tc-verified">✓ 인증</span>
           <div class="tc-subj-badge">수학·기초</div>
         </div>
@@ -1927,7 +1928,7 @@ select:focus-visible, textarea:focus-visible{
       <!-- 6 사회·역사 -->
       <div class="tc-card" data-tf="social">
         <div class="tc-card__top" style="background:linear-gradient(135deg,#7c2d12,#c2410c)">
-          <div class="tc-avatar" style="background:#c2410c">윤</div>
+          <img class="tc-avatar" src="https://randomuser.me/api/portraits/men/22.jpg" alt="윤OO 선생님">
           <span class="tc-verified">✓ 인증</span>
           <div class="tc-subj-badge">사회·한국사</div>
         </div>
@@ -1954,7 +1955,7 @@ select:focus-visible, textarea:focus-visible{
       <!-- 7 검정고시 -->
       <div class="tc-card" data-tf="gsd">
         <div class="tc-card__top" style="background:linear-gradient(135deg,#374151,#6b7280)">
-          <div class="tc-avatar" style="background:#6b7280">한</div>
+          <img class="tc-avatar" src="https://randomuser.me/api/portraits/men/45.jpg" alt="한OO 선생님">
           <span class="tc-verified">✓ 인증</span>
           <div class="tc-subj-badge">검정고시·전과목</div>
         </div>
@@ -1981,7 +1982,7 @@ select:focus-visible, textarea:focus-visible{
       <!-- 8 과학(화학·생물) -->
       <div class="tc-card" data-tf="science">
         <div class="tc-card__top" style="background:linear-gradient(135deg,#134e4a,#0f766e)">
-          <div class="tc-avatar" style="background:#0f766e">강</div>
+          <img class="tc-avatar" src="https://randomuser.me/api/portraits/women/62.jpg" alt="강OO 선생님">
           <span class="tc-verified">✓ 인증</span>
           <div class="tc-subj-badge">화학·생물</div>
         </div>
