@@ -1777,9 +1777,112 @@ select:focus-visible, textarea:focus-visible{
   }
   .price-table tbody td:first-child::before{ display:none; }
 }
+
+/* ---- 상단 전화번호 바 ---- */
+.top-bar{
+  background:var(--color-harbor);
+  color:#fff;
+  text-align:center;
+  padding:9px 16px;
+  font-size:13.5px;
+  letter-spacing:-.01em;
+}
+.top-bar a{ color:#fff; font-weight:700; text-decoration:underline; text-underline-offset:2px; }
+.top-bar a:hover{ color:var(--color-warm); }
+@media(max-width:640px){ .top-bar{ font-size:12px; padding:8px 12px; } }
+
+/* ---- 실시간 상담 ticker ---- */
+.ticker{
+  background:#f0f5ff;
+  border-bottom:1px solid var(--color-line);
+  overflow:hidden;
+}
+.ticker__inner{
+  display:flex;
+  align-items:center;
+  height:46px;
+}
+.ticker__label{
+  background:var(--color-signal);
+  color:#fff;
+  padding:0 18px;
+  font-size:12.5px;
+  font-weight:700;
+  height:100%;
+  display:flex;
+  align-items:center;
+  white-space:nowrap;
+  gap:6px;
+  flex-shrink:0;
+}
+.ticker__track{
+  flex:1;
+  overflow:hidden;
+  position:relative;
+}
+.ticker__items{
+  display:flex;
+  animation:ticker-scroll 36s linear infinite;
+  width:max-content;
+}
+.ticker__items:hover{ animation-play-state:paused; }
+.ticker__item{
+  white-space:nowrap;
+  padding:0 48px 0 0;
+  font-size:13px;
+  color:var(--color-ink);
+}
+.ticker__item em{ color:var(--color-signal); font-style:normal; font-weight:700; }
+.ticker__item .dot{ color:var(--color-slate); margin:0 6px; }
+@keyframes ticker-scroll{
+  0%{ transform:translateX(0); }
+  100%{ transform:translateX(-50%); }
+}
+@media(max-width:640px){ .ticker__label{ padding:0 12px; font-size:11.5px; } .ticker__item{ font-size:12px; } }
+
+/* ---- 플로팅 카카오 버튼 ---- */
+.float-kakao{
+  position:fixed;
+  bottom:96px;
+  right:20px;
+  width:54px;
+  height:54px;
+  background:#FEE500;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.18);
+  z-index:90;
+  transition:transform .15s, box-shadow .15s;
+}
+.float-kakao:hover{ transform:scale(1.1); box-shadow:0 8px 28px rgba(0,0,0,.22); }
+.float-kakao svg{ width:30px; height:30px; }
+@media(max-width:640px){
+  .float-kakao{ bottom:76px; right:14px; width:48px; height:48px; }
+  .float-kakao svg{ width:26px; height:26px; }
+}
+
+/* ---- 헤더 전화번호 (데스크탑) ---- */
+.nav__phone{
+  font-size:14px;
+  font-weight:700;
+  color:var(--color-harbor);
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.nav__phone::before{ content:"📞"; font-size:13px; }
+.nav__phone:hover{ color:var(--color-signal); }
+@media(max-width:880px){ .nav__phone{ display:none; } }
 </style>
 </head>
 <body>
+
+<!-- 상단 전화번호 바 -->
+<div class="top-bar">
+  📞 전화 상담: <a href="tel:010-2039-4111">010-2039-4111</a> &nbsp;·&nbsp; 카카오톡 상담 가능 &nbsp;·&nbsp; 매일 10:00 ~ 20:00
+</div>
 
 <!-- ============================================================
      헤더 / 네비게이션
@@ -1795,6 +1898,7 @@ select:focus-visible, textarea:focus-visible{
       <a class="nav__link" href="#apply">상담 신청</a>
     </nav>
     <div class="nav__cta">
+      <a href="tel:010-2039-4111" class="nav__phone">010-2039-4111</a>
       <a href="#pricing" class="btn btn--ghost">과목·가격 보기</a>
       <a href="#apply" class="btn btn--primary">무료 상담 신청</a>
     </div>
@@ -1886,6 +1990,38 @@ select:focus-visible, textarea:focus-visible{
     </div>
   </div>
 </section>
+
+<!-- 실시간 상담 ticker -->
+<div class="ticker">
+  <div class="ticker__inner">
+    <div class="ticker__label">🔴 실시간 상담</div>
+    <div class="ticker__track">
+      <div class="ticker__items">
+        <span class="ticker__item"><em>강남구 대치동</em> · 중2 수학 방문 과외 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>수원시 영통구</em> · 초5 영어 화상 수업 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>해운대구 좌동</em> · 고3 국어 비대면 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>분당구 정자동</em> · 초3 수학 방문 과외 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>노원구 상계동</em> · 중1 영어 방문 과외 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>광주 북구 운암동</em> · 고졸 검정고시 화상 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>동탄2동</em> · 고1 수학 화상 수업 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>부평구 부개동</em> · 중3 과학 방문 과외 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>마포구 합정동</em> · 초6 국어 방문 과외 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>창원시 상남동</em> · 중2 영어 화상 수업 상담 접수<span class="dot">|</span></span>
+        <!-- 무한 루프용 복사본 -->
+        <span class="ticker__item"><em>강남구 대치동</em> · 중2 수학 방문 과외 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>수원시 영통구</em> · 초5 영어 화상 수업 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>해운대구 좌동</em> · 고3 국어 비대면 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>분당구 정자동</em> · 초3 수학 방문 과외 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>노원구 상계동</em> · 중1 영어 방문 과외 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>광주 북구 운암동</em> · 고졸 검정고시 화상 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>동탄2동</em> · 고1 수학 화상 수업 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>부평구 부개동</em> · 중3 과학 방문 과외 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>마포구 합정동</em> · 초6 국어 방문 과외 상담 접수<span class="dot">|</span></span>
+        <span class="ticker__item"><em>창원시 상남동</em> · 중2 영어 화상 수업 상담 접수<span class="dot">|</span></span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ============================================================
      신뢰 지표 바
@@ -3527,6 +3663,11 @@ select:focus-visible, textarea:focus-visible{
      하단 고정 액션바
      전화번호: 010-2039-4111
 ============================================================ -->
+<!-- 플로팅 카카오 버튼 -->
+<a href="https://open.kakao.com/o/srpOvVci" class="float-kakao" target="_blank" rel="noopener" aria-label="카카오톡 상담">
+  <svg viewBox="0 0 24 24" fill="#3C1E1E"><path d="M12 3.5C6.75 3.5 2.5 6.86 2.5 11c0 2.66 1.77 5 4.44 6.35-.2.7-.71 2.5-.82 2.9-.13.5.18.5.38.36.16-.11 2.55-1.73 3.59-2.43.62.09 1.26.14 1.91.14 5.25 0 9.5-3.36 9.5-7.5S17.25 3.5 12 3.5Z"/></svg>
+</a>
+
 <div class="action-bar">
   <a href="tel:010-2039-4111" class="action-bar__item">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
