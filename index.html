@@ -1581,7 +1581,7 @@ select:focus-visible, textarea:focus-visible{
 .form-field{ display:flex; flex-direction:column; gap:8px; }
 .form-field--full{ grid-column:1 / -1; }
 .form-field label{ font-size:14px; font-weight:600; color:var(--color-harbor); }
-.form-field input,.form-field select,.form-field textarea{
+.form-field input:not([type="radio"]),.form-field select,.form-field textarea{
   font-family:var(--font-body);
   font-size:15px;
   padding:12px 14px;
@@ -1591,10 +1591,15 @@ select:focus-visible, textarea:focus-visible{
   color:var(--color-ink);
   width:100%;
 }
-.form-field input:focus,.form-field select:focus,.form-field textarea:focus{
+.form-field input:not([type="radio"]):focus,.form-field select:focus,.form-field textarea:focus{
   border-color:var(--color-signal);
   outline:none;
   box-shadow:0 0 0 3px rgba(47,111,237,.15);
+}
+.radio-row input[type="radio"]{
+  width:17px; height:17px; min-width:17px;
+  accent-color:var(--color-signal);
+  cursor:pointer;
 }
 .radio-row{ display:flex; gap:18px; flex-wrap:wrap; }
 .radio-row label{
