@@ -338,6 +338,18 @@ select:focus-visible, textarea:focus-visible{
 .nav__toggle span::after{ position:absolute; top:6px; }
 
 .nav__mobile-panel{ display:none; }
+.nav-search-row{
+  display:flex; align-items:center; gap:8px;
+  background:var(--color-mist); border-radius:10px;
+  padding:10px 14px; margin:4px 0 8px;
+}
+.nav-search-row svg{ width:16px; height:16px; color:var(--color-slate); flex-shrink:0; }
+.nav-search-row input{
+  flex:1; border:none; outline:none; background:transparent;
+  font-size:14px; font-family:var(--font-body);
+  color:var(--color-ink);
+}
+.nav-search-row input::placeholder{ color:var(--color-slate); }
 
 @media (max-width:880px){
   .nav__links{ display:none; }
@@ -759,24 +771,25 @@ select:focus-visible, textarea:focus-visible{
 }
 .subject-card{
   background:var(--color-white);
-  border:1px solid var(--color-line);
-  border-radius:16px;
-  padding:28px 22px;
+  border:1.5px solid var(--color-line);
+  border-radius:14px;
+  padding:18px 16px;
   display:flex;
   flex-direction:column;
-  gap:8px;
+  align-items:center;
+  gap:6px;
+  text-align:center;
+  cursor:pointer;
+  transition:border-color .15s,transform .15s,box-shadow .15s;
 }
-.subject-card__icon{ font-size:28px; }
+.subject-card:hover{ border-color:var(--color-signal); transform:translateY(-2px); box-shadow:0 4px 16px rgba(52,87,178,.1); }
+.subject-card[data-subject]::after{ content:'자세히 →'; font-size:11px; color:var(--color-signal); opacity:0; transition:opacity .15s; }
+.subject-card[data-subject]:hover::after{ opacity:1; }
+.subject-card__icon{ font-size:26px; }
 .subject-card strong{
-  font-size:16px;
+  font-size:14px;
   font-weight:700;
   color:var(--color-navy);
-}
-.subject-card p{
-  font-size:14px;
-  color:var(--color-text-sub);
-  line-height:1.6;
-  margin:0;
 }
 @media(max-width:900px){
   .subject-grid{ grid-template-columns:repeat(2,1fr); }
@@ -1918,6 +1931,80 @@ select:focus-visible, textarea:focus-visible{
 .vid-placeholder__text{ font-size:16px; font-weight:700; opacity:.9; }
 .vid-placeholder__sub{ font-size:13px; opacity:.6; }
 
+/* ---- 프로모 애니메이션 ---- */
+.pa{ position:absolute; top:0; left:0; width:100%; height:100%; background:#0B1829; overflow:hidden; }
+.pa-glow{
+  position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 80% at 20% 60%,rgba(52,87,178,.38) 0%,transparent 65%),
+    radial-gradient(ellipse 50% 60% at 85% 25%,rgba(34,198,166,.18) 0%,transparent 60%);
+  animation:paGlowAnim 9s ease-in-out infinite alternate;
+}
+@keyframes paGlowAnim{ 0%{opacity:.7;transform:scale(1)} 100%{opacity:1;transform:scale(1.06) translate(2%,-1%)} }
+.pa-grain{ position:absolute; inset:0; pointer-events:none; opacity:.04; }
+.pa-slide{
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:6% 8%; text-align:center; color:#fff;
+  opacity:0; pointer-events:none; transition:opacity .55s ease;
+}
+.pa-slide.is-active{ opacity:1; pointer-events:auto; }
+/* slide 1 */
+.s1-eye{ font-size:clamp(9px,1.1vw,12px); font-weight:600; letter-spacing:.22em; color:rgba(255,255,255,.4); text-transform:uppercase; margin-bottom:clamp(8px,1.4vw,14px); opacity:0; transition:opacity .4s ease .08s; }
+.pa-slide.is-active .s1-eye{ opacity:1; }
+.s1-name{ font-size:clamp(30px,5.5vw,56px); font-weight:900; line-height:1.05; margin-bottom:clamp(12px,1.8vw,18px); }
+.s1-name .ch{ display:inline-block; opacity:0; transform:translateY(20px); transition:opacity .35s ease,transform .35s ease; }
+.pa-slide.is-active .s1-name .ch{ opacity:1; transform:none; }
+.s1-name .ch:nth-child(1){transition-delay:.10s}.s1-name .ch:nth-child(2){transition-delay:.17s}.s1-name .ch:nth-child(3){transition-delay:.24s}.s1-name .ch:nth-child(4){transition-delay:.31s}.s1-name .ch:nth-child(5){transition-delay:.38s}.s1-name .ch:nth-child(6){transition-delay:.45s}
+.s1-tagline{ font-size:clamp(13px,2vw,21px); font-weight:700; color:rgba(255,255,255,.82); line-height:1.55; opacity:0; transform:translateY(10px); transition:opacity .5s ease .62s,transform .5s ease .62s; }
+.pa-slide.is-active .s1-tagline{ opacity:1; transform:none; }
+.s1-pills{ display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:clamp(14px,2vw,22px); opacity:0; transition:opacity .45s ease 1.05s; }
+.pa-slide.is-active .s1-pills{ opacity:1; }
+.s1-pill{ padding:5px clamp(12px,1.6vw,16px); border-radius:999px; border:1.5px solid rgba(255,255,255,.2); font-size:clamp(9px,1.1vw,12px); font-weight:600; color:rgba(255,255,255,.7); white-space:nowrap; }
+/* slide 2 */
+.s2-grid{ display:flex; gap:clamp(18px,4.5vw,60px); justify-content:center; flex-wrap:wrap; margin-bottom:clamp(14px,2.2vw,24px); }
+.s2-stat{ display:flex; flex-direction:column; align-items:center; gap:3px; opacity:0; transform:translateY(16px); transition:opacity .42s ease,transform .42s ease; }
+.s2-stat:nth-child(1){transition-delay:.08s}.s2-stat:nth-child(2){transition-delay:.22s}.s2-stat:nth-child(3){transition-delay:.36s}
+.pa-slide.is-active .s2-stat{ opacity:1; transform:none; }
+.s2-icon{ font-size:clamp(20px,2.8vw,32px); margin-bottom:2px; }
+.s2-valrow{ display:flex; align-items:baseline; gap:2px; }
+.s2-num{ font-size:clamp(36px,6vw,64px); font-weight:900; color:#FFD166; line-height:1; font-variant-numeric:tabular-nums; }
+.s2-unit{ font-size:clamp(15px,2.3vw,24px); font-weight:800; color:#FFD166; }
+.s2-lbl{ font-size:clamp(9px,1.2vw,13px); color:rgba(255,255,255,.55); margin-top:2px; white-space:nowrap; }
+.s2-sub{ font-size:clamp(12px,1.8vw,18px); font-weight:700; color:rgba(255,255,255,.72); opacity:0; transition:opacity .42s ease .6s; }
+.pa-slide.is-active .s2-sub{ opacity:1; }
+/* slide 3 */
+.s3-title{ font-size:clamp(16px,2.6vw,28px); font-weight:800; line-height:1.3; margin-bottom:clamp(18px,2.8vw,30px); opacity:0; transition:opacity .4s ease .08s; }
+.pa-slide.is-active .s3-title{ opacity:1; }
+.s3-steps{ display:flex; align-items:center; justify-content:center; flex-wrap:wrap; row-gap:12px; }
+.s3-item{ display:flex; flex-direction:column; align-items:center; gap:6px; opacity:0; transform:translateX(-8px); transition:opacity .35s ease,transform .35s ease; }
+.s3-item:nth-child(1){transition-delay:.18s}.s3-item:nth-child(3){transition-delay:.34s}.s3-item:nth-child(5){transition-delay:.50s}.s3-item:nth-child(7){transition-delay:.66s}
+.pa-slide.is-active .s3-item{ opacity:1; transform:none; }
+.s3-arrow{ font-size:clamp(12px,1.8vw,20px); color:rgba(255,255,255,.25); padding:0 clamp(6px,1.3vw,16px); padding-bottom:20px; opacity:0; transition:opacity .3s ease; }
+.s3-arrow:nth-child(2){transition-delay:.26s}.s3-arrow:nth-child(4){transition-delay:.42s}.s3-arrow:nth-child(6){transition-delay:.58s}
+.pa-slide.is-active .s3-arrow{ opacity:1; }
+.s3-num{ width:clamp(34px,5vw,50px); height:clamp(34px,5vw,50px); border-radius:50%; background:rgba(34,198,166,.14); border:1.5px solid rgba(34,198,166,.45); display:flex; align-items:center; justify-content:center; font-size:clamp(13px,2vw,20px); font-weight:900; color:#22C6A6; }
+.s3-lbl{ font-size:clamp(10px,1.4vw,14px); font-weight:700; color:rgba(255,255,255,.82); white-space:nowrap; }
+.s3-sub{ font-size:clamp(9px,1.1vw,12px); color:rgba(255,255,255,.35); margin-top:clamp(12px,1.8vw,20px); opacity:0; transition:opacity .4s ease .9s; }
+.pa-slide.is-active .s3-sub{ opacity:1; }
+/* slide 4 */
+.s4-flag{ font-size:clamp(9px,1.1vw,12px); font-weight:700; color:#22C6A6; letter-spacing:.12em; text-transform:uppercase; margin-bottom:clamp(8px,1.3vw,12px); opacity:0; transition:opacity .4s ease .08s; }
+.pa-slide.is-active .s4-flag{ opacity:1; }
+.s4-title{ font-size:clamp(18px,3.3vw,38px); font-weight:900; line-height:1.3; margin-bottom:clamp(18px,2.8vw,30px); opacity:0; transform:translateY(14px); transition:opacity .5s ease .22s,transform .5s ease .22s; }
+.pa-slide.is-active .s4-title{ opacity:1; transform:none; }
+.s4-btn{ display:inline-block; padding:clamp(11px,1.5vw,16px) clamp(24px,4vw,48px); background:#fff; color:#0B1829; border-radius:999px; font-size:clamp(12px,1.6vw,17px); font-weight:800; text-decoration:none; opacity:0; transform:scale(.92); transition:opacity .4s ease .48s,transform .4s ease .48s,box-shadow .2s; }
+.pa-slide.is-active .s4-btn{ opacity:1; transform:scale(1); }
+.s4-btn:hover{ box-shadow:0 6px 28px rgba(255,255,255,.2); transform:scale(1.03); }
+.s4-note{ font-size:clamp(9px,1.1vw,12px); color:rgba(255,255,255,.35); margin-top:clamp(10px,1.6vw,16px); opacity:0; transition:opacity .4s ease .85s; }
+.pa-slide.is-active .s4-note{ opacity:1; }
+/* nav + progress */
+.pa-nav{ position:absolute; bottom:clamp(8px,1.5vw,16px); left:0; right:0; display:flex; justify-content:center; gap:6px; z-index:10; }
+.pa-dot{ height:clamp(5px,.8vw,8px); width:clamp(5px,.8vw,8px); border-radius:999px; border:none; cursor:pointer; padding:0; background:rgba(255,255,255,.22); transition:background .25s,width .3s ease; }
+.pa-dot.is-active{ background:rgba(255,255,255,.85); width:clamp(20px,2.8vw,30px); }
+.pa-prog{ position:absolute; bottom:0; left:0; right:0; height:3px; background:rgba(255,255,255,.07); z-index:9; }
+.pa-prog-fill{ height:100%; background:rgba(255,255,255,.35); width:0%; }
+@media(prefers-reduced-motion:reduce){ .pa-glow{animation:none} .pa-slide,.pa-slide *{transition-duration:.01s!important} .pa-prog-fill{transition:none!important} }
+
 /* ---- 지역 검색바 ---- */
 .region-search-wrap{ background:var(--color-mist); padding:24px 0 20px; border-bottom:1px solid var(--color-line); }
 .region-search{
@@ -1977,6 +2064,7 @@ select:focus-visible, textarea:focus-visible{
   transition:box-shadow .2s,transform .2s;
   display:flex; flex-direction:column;
 }
+.blog-card{ cursor:pointer; }
 .blog-card:hover{ box-shadow:0 8px 32px rgba(52,87,178,.12); transform:translateY(-3px); }
 .blog-card__thumb{
   height:100px; display:flex; align-items:center; justify-content:center;
@@ -1987,11 +2075,9 @@ select:focus-visible, textarea:focus-visible{
 .blog-card__date{ font-size:11.5px; color:var(--color-slate); }
 .blog-card__cat{ font-size:11.5px; font-weight:700; color:var(--color-signal); background:var(--color-mist); padding:2px 9px; border-radius:999px; }
 .blog-card__title{ font-size:15px; font-weight:800; color:var(--color-harbor); line-height:1.4; margin:0; }
-.blog-card__desc{
-  font-size:13px; color:var(--color-slate); line-height:1.65;
-  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
-}
+.blog-card__desc{ display:none; }
 .blog-card__more{ font-size:12.5px; font-weight:700; color:var(--color-signal); }
+.blog-card__readmore{ font-size:12px; color:var(--color-signal); font-weight:600; margin-top:2px; }
 .blog-more-btn{
   display:block; margin:24px auto 0;
   padding:12px 32px; border-radius:999px;
@@ -2221,6 +2307,10 @@ select:focus-visible, textarea:focus-visible{
     </button>
   </div>
   <div class="nav__mobile-panel" id="navMobilePanel">
+    <div class="nav-search-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="navSearchInput" placeholder="동·학교 이름 검색" autocomplete="off">
+    </div>
     <a href="#process">미팅 과정</a>
     <a href="#pricing">수업·가격</a>
     <a href="#regions">지역 과외</a>
@@ -2329,10 +2419,49 @@ select:focus-visible, textarea:focus-visible{
     <div class="vid-wrap reveal">
       <!-- 유튜브 영상 ID를 아래에 입력하세요. 예: https://youtu.be/[영상ID] -->
       <!-- <iframe src="https://www.youtube.com/embed/영상ID" allow="autoplay;encrypted-media" allowfullscreen></iframe> -->
-      <div class="vid-placeholder">
-        <div class="vid-placeholder__play">▶</div>
-        <p class="vid-placeholder__text">과외 소개 영상</p>
-        <p class="vid-placeholder__sub">유튜브 영상 URL을 알려주시면 바로 넣어드립니다</p>
+      <div class="pa" id="pa">
+        <div class="pa-glow"></div>
+        <svg class="pa-grain" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="gr"><feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#gr)"/></svg>
+        <div class="pa-slide is-active">
+          <div class="s1-eye">1:1 과외 연결 서비스</div>
+          <div class="s1-name"><span class="ch">스</span><span class="ch">터</span><span class="ch">디</span><span class="ch">브</span><span class="ch">릿</span><span class="ch">지</span></div>
+          <div class="s1-tagline">학생에게 딱 맞는 선생님을<br>집 앞까지 연결해드립니다</div>
+          <div class="s1-pills"><span class="s1-pill">방문 과외</span><span class="s1-pill">화상 과외</span><span class="s1-pill">초1 ~ 고3 · 재수생</span></div>
+        </div>
+        <div class="pa-slide">
+          <div class="s2-grid">
+            <div class="s2-stat"><div class="s2-icon">⭐</div><div class="s2-valrow"><span class="s2-num" data-target="97">0</span><span class="s2-unit">%</span></div><div class="s2-lbl">학부모 수업 만족도</div></div>
+            <div class="s2-stat"><div class="s2-icon">🎁</div><div class="s2-valrow"><span class="s2-num" data-target="30">0</span><span class="s2-unit">분</span></div><div class="s2-lbl">무료 체험수업</div></div>
+            <div class="s2-stat"><div class="s2-icon">⚡</div><div class="s2-valrow"><span class="s2-num" data-target="1">0</span><span class="s2-unit">시간</span></div><div class="s2-lbl">이내 첫 연락</div></div>
+          </div>
+          <div class="s2-sub">숫자로 증명하는 스터디브릿지의 차이</div>
+        </div>
+        <div class="pa-slide">
+          <div class="s3-title">4단계, 이렇게 시작됩니다</div>
+          <div class="s3-steps">
+            <div class="s3-item"><div class="s3-num">1</div><div class="s3-lbl">무료 상담</div></div>
+            <div class="s3-arrow">→</div>
+            <div class="s3-item"><div class="s3-num">2</div><div class="s3-lbl">선생님 매칭</div></div>
+            <div class="s3-arrow">→</div>
+            <div class="s3-item"><div class="s3-num">3</div><div class="s3-lbl">무료 체험</div></div>
+            <div class="s3-arrow">→</div>
+            <div class="s3-item"><div class="s3-num">4</div><div class="s3-lbl">수업 시작</div></div>
+          </div>
+          <div class="s3-sub">상담부터 체험수업까지 모두 무료입니다</div>
+        </div>
+        <div class="pa-slide">
+          <div class="s4-flag">지금 바로 시작하세요</div>
+          <div class="s4-title">지금 신청하면<br>1시간 이내 연락드립니다</div>
+          <a href="#apply" class="s4-btn">무료 상담 신청하기 →</a>
+          <div class="s4-note">상담 · 매칭 · 체험수업 전부 무료</div>
+        </div>
+        <div class="pa-nav">
+          <button class="pa-dot is-active" data-i="0" aria-label="슬라이드 1"></button>
+          <button class="pa-dot" data-i="1" aria-label="슬라이드 2"></button>
+          <button class="pa-dot" data-i="2" aria-label="슬라이드 3"></button>
+          <button class="pa-dot" data-i="3" aria-label="슬라이드 4"></button>
+        </div>
+        <div class="pa-prog"><div class="pa-prog-fill" id="paFill"></div></div>
       </div>
     </div>
   </div>
@@ -3338,46 +3467,14 @@ select:focus-visible, textarea:focus-visible{
       <p>초등·중등·고등·재수 전 학년, 모든 과목의 전공자 출신 선생님을 연결해드립니다.</p>
     </div>
     <div class="subject-grid reveal">
-      <div class="subject-card">
-        <span class="subject-card__icon">📐</span>
-        <strong>수학 과외</strong>
-        <p>초등 연산부터 고등 수학Ⅱ·미적분·확통까지. 수학교육과 전공 선생님이 기초부터 심화까지 1:1로 잡아드려요.</p>
-      </div>
-      <div class="subject-card">
-        <span class="subject-card__icon">📖</span>
-        <strong>영어 과외</strong>
-        <p>파닉스·기초회화부터 수능 영어·내신 대비까지. 영어영문학과·영어교육과 전공 선생님 연결.</p>
-      </div>
-      <div class="subject-card">
-        <span class="subject-card__icon">✏️</span>
-        <strong>국어 과외</strong>
-        <p>독해·문법·비문학·고전문학 완성. 수능 국어 1등급을 목표로 하는 맞춤 커리큘럼.</p>
-      </div>
-      <div class="subject-card">
-        <span class="subject-card__icon">🔬</span>
-        <strong>과학 과외</strong>
-        <p>물리·화학·생물·지구과학 전 영역. 개념 이해부터 수능·내신 고득점 전략까지.</p>
-      </div>
-      <div class="subject-card">
-        <span class="subject-card__icon">🌏</span>
-        <strong>사회·한국사 과외</strong>
-        <p>사회탐구 전 과목(사회문화·생활과윤리·한국지리 등)과 한국사능력검정 대비까지.</p>
-      </div>
-      <div class="subject-card">
-        <span class="subject-card__icon">📝</span>
-        <strong>논술·작문 과외</strong>
-        <p>대입 논술, 자기소개서, 구술면접 준비. 인문·자연 계열 논술 전문 선생님 연결.</p>
-      </div>
-      <div class="subject-card">
-        <span class="subject-card__icon">🎓</span>
-        <strong>검정고시 과외</strong>
-        <p>중졸·고졸 검정고시 전 과목 단기 합격 과외. 기초가 부족해도 빠르게 따라갈 수 있어요.</p>
-      </div>
-      <div class="subject-card">
-        <span class="subject-card__icon">💻</span>
-        <strong>비대면 화상 과외</strong>
-        <p>지방·소도시·해외 거주자도 전국 최고 선생님과 1:1 수업. 장소 제약 없이 어디서든 가능.</p>
-      </div>
+      <div class="subject-card" data-subject="수학"><span class="subject-card__icon">📐</span><strong>수학 과외</strong></div>
+      <div class="subject-card" data-subject="영어"><span class="subject-card__icon">📖</span><strong>영어 과외</strong></div>
+      <div class="subject-card" data-subject="국어"><span class="subject-card__icon">✏️</span><strong>국어 과외</strong></div>
+      <div class="subject-card" data-subject="과학"><span class="subject-card__icon">🔬</span><strong>과학 과외</strong></div>
+      <div class="subject-card" data-subject="사회"><span class="subject-card__icon">🌏</span><strong>사회·한국사 과외</strong></div>
+      <div class="subject-card" data-subject="논술"><span class="subject-card__icon">📝</span><strong>논술·작문 과외</strong></div>
+      <div class="subject-card" data-subject="검정고시"><span class="subject-card__icon">🎓</span><strong>검정고시 과외</strong></div>
+      <div class="subject-card" data-apply="1"><span class="subject-card__icon">💻</span><strong>비대면 화상 과외</strong></div>
     </div>
   </div>
 </section>
@@ -3389,7 +3486,7 @@ select:focus-visible, textarea:focus-visible{
   <div class="container">
     <div class="region-search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="regionSearchInput" placeholder="동·아파트·학교 이름으로 검색 (예: 대치동, 은마아파트, 휘문고)">
+      <input type="text" id="regionSearchInput" placeholder="동 이름, 학교 이름으로 검색 (예: 대치동, 휘문고)">
       <button class="region-search__clear" id="regionSearchClear" aria-label="검색 초기화">✕</button>
     </div>
     <p class="region-no-result" id="regionNoResult">검색 결과가 없어요. 다른 검색어를 입력해보세요.</p>
@@ -3958,65 +4055,55 @@ select:focus-visible, textarea:focus-visible{
       <p>스터디브릿지와 함께 성적을 바꾼 학생들의 이야기입니다.</p>
     </div>
     <div class="blog-grid reveal">
-      <article class="blog-card">
+      <article class="blog-card"
+        data-desc="대치동에 살면서 학원을 5곳 다녀봤는데 성적이 안 올랐어요. 스터디브릿지로 연결받은 선생님께서 제 풀이 과정을 보시고 &quot;이 부분에서 개념을 잘못 잡고 있다&quot;고 딱 짚어주셨어요. 3개월 만에 3등급, 8개월 후 첫 1등급 받았습니다."
+        data-author="강남구 대치동 · 재수생 김○○">
         <div class="blog-card__thumb" style="background:linear-gradient(135deg,#1A2B52,#3457B2)">📐</div>
         <div class="blog-card__body">
-          <div class="blog-card__meta">
-            <time class="blog-card__date">2026.07.14</time>
-            <span class="blog-card__cat">수학 · 고3</span>
-          </div>
+          <div class="blog-card__meta"><time class="blog-card__date">2026.07.14</time><span class="blog-card__cat">수학 · 고3</span></div>
           <h3 class="blog-card__title">수학 4등급→1등급, 수능 전 8개월의 기록</h3>
-          <p class="blog-card__desc">대치동에 살면서 학원을 5곳 다녀봤는데 성적이 안 올랐어요. 스터디브릿지로 연결받은 선생님께서 제 풀이 과정을 보시고 "이 부분에서 개념을 잘못 잡고 있다"고 딱 짚어주셨어요. 3개월 만에 3등급, 8개월 후 첫 1등급 받았습니다.</p>
-          <span class="blog-card__more">강남구 대치동 · 재수생 김○○</span>
+          <span class="blog-card__readmore">후기 읽기 →</span>
         </div>
       </article>
-      <article class="blog-card">
+      <article class="blog-card"
+        data-desc="목동에 사는데 아이가 학원 다니기 싫다고 해서 방문 과외를 시도했어요. 선생님이 우리 학교 교과서와 기출문제를 미리 분석해오셔서 딱 맞춤 대비를 해주셨어요. 6주 만에 내신이 두 단계 올랐습니다."
+        data-author="양천구 목동 · 중2 학부모 이○○">
         <div class="blog-card__thumb" style="background:linear-gradient(135deg,#0D3B5E,#0E6EA8)">🔤</div>
         <div class="blog-card__body">
-          <div class="blog-card__meta">
-            <time class="blog-card__date">2026.07.12</time>
-            <span class="blog-card__cat">영어 · 중2</span>
-          </div>
+          <div class="blog-card__meta"><time class="blog-card__date">2026.07.12</time><span class="blog-card__cat">영어 · 중2</span></div>
           <h3 class="blog-card__title">영어 내신 C → A, 중간고사 전 6주 집중</h3>
-          <p class="blog-card__desc">목동에 사는데 아이가 학원 다니기 싫다고 해서 방문 과외를 시도했어요. 선생님이 우리 학교 교과서와 기출문제를 미리 분석해오셔서 딱 맞춤 대비를 해주셨어요. 6주 만에 내신이 두 단계 올랐습니다.</p>
-          <span class="blog-card__more">양천구 목동 · 중2 학부모 이○○</span>
+          <span class="blog-card__readmore">후기 읽기 →</span>
         </div>
       </article>
-      <article class="blog-card">
+      <article class="blog-card"
+        data-desc="학교를 일찍 그만뒀는데 취업 때문에 고졸 자격이 필요했어요. 수학이 특히 자신 없었는데 선생님이 기초부터 차근차근 설명해주셔서 중학교 개념도 다시 잡고, 검정고시 수학 70점으로 합격했습니다."
+        data-author="동탄2신도시 · 20대 박○○">
         <div class="blog-card__thumb" style="background:linear-gradient(135deg,#1A6B44,#22A865)">🎓</div>
         <div class="blog-card__body">
-          <div class="blog-card__meta">
-            <time class="blog-card__date">2026.07.10</time>
-            <span class="blog-card__cat">검정고시</span>
-          </div>
+          <div class="blog-card__meta"><time class="blog-card__date">2026.07.10</time><span class="blog-card__cat">검정고시</span></div>
           <h3 class="blog-card__title">고졸 검정고시, 4개월 만에 전 과목 합격</h3>
-          <p class="blog-card__desc">학교를 일찍 그만뒀는데 취업 때문에 고졸 자격이 필요했어요. 수학이 특히 자신 없었는데 선생님이 기초부터 차근차근 설명해주셔서 중학교 개념도 다시 잡고, 검정고시 수학 70점으로 합격했습니다.</p>
-          <span class="blog-card__more">동탄2신도시 · 20대 박○○</span>
+          <span class="blog-card__readmore">후기 읽기 →</span>
         </div>
       </article>
       <div class="blog-extra" id="blogExtra">
-      <article class="blog-card">
+      <article class="blog-card"
+        data-desc="분당에 사는데 국어 비문학이 발목을 잡았어요. 선생님께서 지문 구조 파악하는 방법을 반복 훈련시켜 주셨는데, 처음엔 20분 걸리던 지문이 나중엔 8분 안에 풀리더라고요. 모의고사 국어 4등급에서 2등급으로 올랐습니다."
+        data-author="성남시 분당구 서현동 · 고2 최○○">
         <div class="blog-card__thumb" style="background:linear-gradient(135deg,#4A3000,#D08000)">📖</div>
         <div class="blog-card__body">
-          <div class="blog-card__meta">
-            <time class="blog-card__date">2026.07.08</time>
-            <span class="blog-card__cat">국어 · 고2</span>
-          </div>
+          <div class="blog-card__meta"><time class="blog-card__date">2026.07.08</time><span class="blog-card__cat">국어 · 고2</span></div>
           <h3 class="blog-card__title">비문학 매번 틀렸는데, 3개월 만에 국어 2등급</h3>
-          <p class="blog-card__desc">분당에 사는데 국어 비문학이 발목을 잡았어요. 선생님께서 지문 구조 파악하는 방법을 반복 훈련시켜 주셨는데, 처음엔 20분 걸리던 지문이 나중엔 8분 안에 풀리더라고요. 모의고사 국어 4등급에서 2등급으로 올랐습니다.</p>
-          <span class="blog-card__more">성남시 분당구 서현동 · 고2 최○○</span>
+          <span class="blog-card__readmore">후기 읽기 →</span>
         </div>
       </article>
-      <article class="blog-card">
+      <article class="blog-card"
+        data-desc="지방에 살아서 좋은 선생님 구하기 어려웠는데, 화상 과외를 통해 서울 선생님과 연결됐어요. 선생님이 실험 영상과 자료를 준비해오셔서 수업이 너무 재밌다고 하더라고요. 이제 과학자가 되고 싶다고 합니다."
+        data-author="충북 청주시 복대동 · 초6 학부모 정○○">
         <div class="blog-card__thumb" style="background:linear-gradient(135deg,#0D4030,#22C3A6)">🔬</div>
         <div class="blog-card__body">
-          <div class="blog-card__meta">
-            <time class="blog-card__date">2026.07.05</time>
-            <span class="blog-card__cat">과학 · 초6</span>
-          </div>
+          <div class="blog-card__meta"><time class="blog-card__date">2026.07.05</time><span class="blog-card__cat">과학 · 초6</span></div>
           <h3 class="blog-card__title">초6 아이가 과학이 재밌대요 — 화상 과외 5개월 후기</h3>
-          <p class="blog-card__desc">지방에 살아서 좋은 선생님 구하기 어려웠는데, 화상 과외를 통해 서울 선생님과 연결됐어요. 선생님이 실험 영상과 자료를 준비해오셔서 수업이 너무 재밌다고 하더라고요. 이제 과학자가 되고 싶다고 합니다.</p>
-          <span class="blog-card__more">충북 청주시 복대동 · 초6 학부모 정○○</span>
+          <span class="blog-card__readmore">후기 읽기 →</span>
         </div>
       </article>
       </div>
@@ -4781,6 +4868,56 @@ var SUBJ = {
   });
 })();
 
+/* ---- 블로그 카드 클릭 → 모달 ---- */
+(function(){
+  document.querySelectorAll('.blog-card[data-desc]').forEach(function(card){
+    card.addEventListener('click', function(){
+      var title = card.querySelector('.blog-card__title') ? card.querySelector('.blog-card__title').textContent : '';
+      var cat = card.querySelector('.blog-card__cat') ? card.querySelector('.blog-card__cat').textContent : '';
+      var date = card.querySelector('.blog-card__date') ? card.querySelector('.blog-card__date').textContent : '';
+      var thumbEl = card.querySelector('.blog-card__thumb');
+      var bg = thumbEl ? thumbEl.style.background : '#1A2B52';
+      var icon = thumbEl ? thumbEl.textContent : '';
+      var desc = card.dataset.desc || '';
+      var author = card.dataset.author || '';
+      var modal = document.getElementById('dongModal');
+      var content = document.getElementById('dongModalContent');
+      if (!modal || !content) return;
+      content.innerHTML =
+        '<div class="dong-modal__hero" style="background:' + bg + ';min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">' +
+          '<div style="font-size:40px;line-height:1">' + icon + '</div>' +
+          '<span class="dong-modal__badge">' + cat + '</span>' +
+          '<h3 class="dong-modal__title" style="font-size:18px">' + title + '</h3>' +
+        '</div>' +
+        '<div class="dong-modal__body">' +
+          '<div class="dong-modal__meta"><span>스터디브릿지</span><span class="dm-dot">·</span><time>' + date + '</time></div>' +
+          '<p style="font-size:15px;line-height:1.75;color:var(--color-ink);margin:20px 0;">' + desc + '</p>' +
+          '<p style="font-size:13px;font-weight:700;color:var(--color-signal);">' + author + '</p>' +
+          '<a href="#apply" class="dong-modal__cta" id="blogModalCta">무료 상담 신청하기 →</a>' +
+        '</div>';
+      document.getElementById('blogModalCta').addEventListener('click', function(){
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+      });
+      content.scrollTop = 0;
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+})();
+
+/* ---- 전과목 카드 클릭 ---- */
+(function(){
+  document.querySelectorAll('.subject-card[data-subject]').forEach(function(card){
+    card.addEventListener('click', function(){ window.openSubjectModal(card.dataset.subject); });
+  });
+  document.querySelectorAll('.subject-card[data-apply]').forEach(function(card){
+    card.addEventListener('click', function(){
+      document.getElementById('apply') && document.getElementById('apply').scrollIntoView({behavior:'smooth'});
+    });
+  });
+})();
+
 /* ---- 지역 검색 필터 ---- */
 (function(){
   var input = document.getElementById('regionSearchInput');
@@ -4788,33 +4925,37 @@ var SUBJ = {
   var noResult = document.getElementById('regionNoResult');
   if (!input) return;
 
-  function getSearchText(card){
-    var texts = [card.textContent];
-    var chip = card.querySelector('[data-dong]');
-    if (chip) {
-      var dong = chip.dataset.dong || chip.textContent.trim();
-      var info = (typeof DONG_INFO !== 'undefined') && DONG_INFO[dong];
+  function textOf(card) {
+    var parts = [card.textContent];
+    card.querySelectorAll('.dong-chip').forEach(function(chip){
+      var dong = chip.textContent.trim();
+      var base = dong.replace(/[\d·~\s]+동$/, '동').replace(/\(.*?\)/g,'').trim();
+      if (base !== dong) parts.push(base);
+      var info = (typeof DONG_INFO !== 'undefined') && (DONG_INFO[dong] || DONG_INFO[base]);
       if (info) {
         ['아파트','역','학교','교육','키워드'].forEach(function(k){
-          if (info[k]) texts = texts.concat(info[k]);
+          if (info[k]) parts = parts.concat(info[k]);
         });
       }
-    }
-    return texts.join(' ');
+    });
+    return parts.join(' ');
   }
 
   function filter(){
     var q = input.value.trim();
     clearBtn.style.display = q ? 'flex' : 'none';
     if (!q) {
+      document.querySelectorAll('.rg-panel').forEach(function(p){ p.style.display = ''; });
       document.querySelectorAll('.district-card').forEach(function(c){ c.style.display = ''; });
       noResult.style.display = 'none';
       return;
     }
+    /* 검색 중엔 모든 지역 패널 표시 */
+    document.querySelectorAll('.rg-panel').forEach(function(p){ p.style.display = 'block'; });
     var terms = q.toLowerCase().split(/\s+/);
     var visible = 0;
     document.querySelectorAll('.district-card').forEach(function(card){
-      var text = getSearchText(card).toLowerCase();
+      var text = textOf(card).toLowerCase();
       var match = terms.every(function(t){ return text.indexOf(t) >= 0; });
       card.style.display = match ? '' : 'none';
       if (match) visible++;
@@ -4829,6 +4970,79 @@ var SUBJ = {
     input.focus();
   });
   clearBtn.style.display = 'none';
+
+  /* nav 검색창 연동 */
+  var navInput = document.getElementById('navSearchInput');
+  if (navInput) {
+    navInput.addEventListener('input', function(){
+      input.value = navInput.value;
+      filter();
+      if (navInput.value.trim()) {
+        var sec = document.getElementById('regions');
+        if (sec) sec.scrollIntoView({behavior:'smooth'});
+        /* 모바일 nav 닫기 */
+        var nav = document.querySelector('.nav');
+        if (nav) nav.classList.remove('is-open');
+      }
+    });
+  }
+})();
+
+/* ---- 프로모 애니메이션 ---- */
+(function(){
+  var wrap = document.getElementById('pa');
+  if (!wrap) return;
+  var slides = wrap.querySelectorAll('.pa-slide');
+  var dots = wrap.querySelectorAll('.pa-dot');
+  var fill = document.getElementById('paFill');
+  var n = slides.length, cur = 0, dur = 4600, timer;
+  var statsRun = false;
+
+  function runStats(){
+    if (statsRun) return; statsRun = true;
+    wrap.querySelectorAll('.s2-num').forEach(function(el){
+      var tgt = parseInt(el.dataset.target, 10);
+      var v = 0, step = Math.max(1, Math.ceil(tgt / 36));
+      var iv = setInterval(function(){
+        v = Math.min(v + step, tgt); el.textContent = v;
+        if (v >= tgt) clearInterval(iv);
+      }, 32);
+    });
+  }
+
+  function bar(){
+    if (!fill) return;
+    fill.style.transition = 'none'; fill.style.width = '0%';
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      fill.style.transition = 'width ' + dur + 'ms linear'; fill.style.width = '100%';
+    }); });
+  }
+
+  function go(idx){
+    slides[cur].classList.remove('is-active');
+    dots[cur].classList.remove('is-active');
+    cur = ((idx % n) + n) % n;
+    slides[cur].classList.add('is-active');
+    dots[cur].classList.add('is-active');
+    if (cur === 1) runStats();
+    bar();
+  }
+
+  function reset(idx){ clearInterval(timer); go(idx); timer = setInterval(function(){ go(cur + 1); }, dur); }
+
+  dots.forEach(function(d){ d.addEventListener('click', function(){ reset(+d.dataset.i); }); });
+  wrap.addEventListener('mouseenter', function(){ clearInterval(timer); });
+  wrap.addEventListener('mouseleave', function(){ timer = setInterval(function(){ go(cur + 1); }, dur); });
+
+  var tx = 0;
+  wrap.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+  wrap.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 38) reset(cur + (dx < 0 ? 1 : -1));
+  }, {passive:true});
+
+  go(0);
+  timer = setInterval(function(){ go(cur + 1); }, dur);
 })();
 </script>
 </body>
