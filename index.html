@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>스터디브릿지 | 전국 방문과외·비대면 화상과외 연결 (초등·중등·고등·재수)</title>
 <meta name="description" content="초등부터 고3·재수·검정고시까지 전 과목 방문 과외와 비대면 화상 과외. 전공자 출신 검증된 경력 선생님을 전국 어디서나 연결해드립니다. 무료 상담으로 시작하세요.">
-<meta name="keywords" content="방문과외,화상과외,수학과외,영어과외,국어과외,과학과외,사회과외,검정고시과외,전국과외,초등과외,중등과외,고등과외,재수과외,1대1과외,개인과외,비대면과외,온라인과외,과외매칭,과외선생님,스터디브릿지,수학과외추천,영어과외추천,국어과외추천,논술과외,화학과외,물리과외,생물과외,지구과학과외,한국사과외">
+<meta name="keywords" content="방문과외,화상과외,수학과외,영어과외,국어과외,과학과외,사회과외,검정고시과외,전국과외,초등과외,중등과외,고등과외,재수과외,1대1과외,개인과외,비대면과외,온라인과외,과외매칭,과외선생님,스터디브릿지,수학과외추천,영어과외추천,국어과외추천,논술과외,화학과외,물리과외,생물과외,지구과학과외,한국사과외,초1과외,초2과외,초3과외,초4과외,초5과외,초6과외,중1과외,중2과외,중3과외,고1과외,고2과외,고3과외,초등1학년과외,초등2학년과외,초등3학년과외,초등4학년과외,초등5학년과외,초등6학년과외,중학교1학년과외,중학교2학년과외,중학교3학년과외,고등학교1학년과외,고등학교2학년과외,고등학교3학년과외,수능수학,수능영어,수능국어,내신수학,내신영어,내신국어,수학선행,영어선행,인근과외,주변과외,근처과외,아파트과외,학교근처과외,역근처과외,동네과외,집근처과외,초등수학과외,초등영어과외,중학수학과외,중학영어과외,고등수학과외,고등영어과외,고등국어과외,수능준비과외,내신관리과외">
 <meta name="google-site-verification" content="pw6Mc6cLt8vZWnm7gyIlW6abSWkhq5BESm5tBj1-RsA" />
 <meta name="naver-site-verification" content="2595ae9ff6c65f964f99a6f9b0357d55d6b3e147" />
 
@@ -1840,6 +1840,153 @@ select:focus-visible, textarea:focus-visible{
 }
 @media(max-width:640px){ .ticker__label{ padding:0 12px; font-size:11.5px; } .ticker__item{ font-size:12px; } }
 
+/* ---- 과목 카드 (모바일 히어로 하단) ---- */
+.subject-strip{
+  padding:14px 0 6px;
+  background:var(--color-paper);
+  border-bottom:1px solid var(--color-line);
+}
+.subject-strip__inner{
+  display:flex; gap:10px; overflow-x:auto;
+  padding:0 20px 10px; scrollbar-width:none;
+}
+.subject-strip__inner::-webkit-scrollbar{ display:none; }
+.subj-pill{
+  display:flex; flex-direction:column; align-items:center; gap:5px;
+  background:#fff; border:1.5px solid var(--color-line);
+  border-radius:14px; padding:12px 16px;
+  flex-shrink:0; cursor:pointer; transition:all .18s;
+  min-width:72px;
+}
+.subj-pill:hover{ border-color:var(--color-signal); background:var(--color-mist); transform:translateY(-2px); }
+.subj-pill__icon{ font-size:26px; line-height:1; }
+.subj-pill__name{ font-size:12.5px; font-weight:700; color:var(--color-harbor); }
+@media(min-width:900px){ .subject-strip{ display:none; } }
+
+/* ---- 레이더 노드 클릭 ---- */
+.radar-subject{ cursor:pointer; }
+.radar-subject:hover .radar__node-dot{ filter:brightness(1.1); }
+.radar__node-dot{ transition:filter .15s; }
+
+/* ---- 과목 모달 (서브젝트용) ---- */
+.sm-hero{ padding:44px 24px 32px; position:relative; flex-shrink:0; }
+.sm-hero--math{ background:linear-gradient(140deg,#1A1A3E,#2D3A8C,#4A6FE0); }
+.sm-hero--eng{  background:linear-gradient(140deg,#0D3B5E,#0E6EA8,#3BA8E0); }
+.sm-hero--kor{  background:linear-gradient(140deg,#4A1040,#8B1F72,#C04A9A); }
+.sm-hero--sci{  background:linear-gradient(140deg,#0D4030,#0E7A50,#22C3A6); }
+.sm-hero--soc{  background:linear-gradient(140deg,#4A3000,#8B5E00,#D08000); }
+.sm-hero--essay{background:linear-gradient(140deg,#2E0D4A,#5B1A8C,#8B44CC); }
+.sm-hero__badge{ display:inline-block; background:rgba(255,255,255,.15); color:rgba(255,255,255,.92); font-size:12px; font-weight:700; padding:5px 13px; border-radius:999px; margin-bottom:14px; }
+.sm-hero__icon{ font-size:48px; line-height:1; margin-bottom:12px; }
+.sm-hero__title{ font-size:clamp(24px,4vw,32px); font-weight:900; color:#fff; margin:0 0 10px; font-family:var(--font-display); }
+.sm-hero__lead{ font-size:14.5px; color:rgba(255,255,255,.80); line-height:1.75; margin:0; }
+.sm-body{ padding:26px 26px 40px; }
+.sm-meta{ display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--color-slate); margin-bottom:22px; padding-bottom:16px; border-bottom:1px solid var(--color-line); flex-wrap:wrap; }
+.sm-grade-row{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:22px; }
+.sm-grade{ font-size:12px; font-weight:700; background:var(--color-mist); color:var(--color-signal); padding:4px 11px; border-radius:999px; }
+.sm-section{ margin-bottom:24px; }
+.sm-section h4{ font-size:15px; font-weight:800; color:var(--color-harbor); margin:0 0 9px; }
+.sm-section p{ font-size:14.5px; color:var(--color-ink); line-height:1.85; margin:0; }
+.sm-section p strong{ color:var(--color-harbor); }
+.sm-divider{ height:1px; background:var(--color-line); margin:0 0 22px; }
+.sm-curr{ display:flex; flex-direction:column; gap:8px; }
+.sm-curr-row{ display:flex; gap:12px; align-items:flex-start; background:#f7f9ff; border-radius:10px; padding:12px 14px; }
+.sm-curr-lv{ font-size:11.5px; font-weight:800; color:#fff; background:var(--color-signal); padding:3px 9px; border-radius:999px; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.sm-curr-txt{ font-size:13.5px; color:var(--color-ink); line-height:1.6; }
+.sm-cta{ display:flex; align-items:center; justify-content:center; background:var(--color-signal); color:#fff; border-radius:14px; padding:16px 28px; font-size:15.5px; font-weight:800; margin-top:24px; transition:background .15s; }
+.sm-cta:hover{ background:var(--color-signal-dark); }
+@media(max-width:520px){ .sm-hero{ padding:36px 18px 26px; } .sm-body{ padding:20px 18px 36px; } }
+
+/* ---- 홍보 영상 섹션 ---- */
+.vid-section{ background:var(--color-harbor); padding:72px 0; }
+.vid-section .section-head h2{ color:#fff; }
+.vid-section .section-head p{ color:rgba(255,255,255,.7); }
+.vid-wrap{ position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:18px; box-shadow:0 24px 60px rgba(0,0,0,.4); }
+.vid-wrap iframe{ position:absolute; top:0; left:0; width:100%; height:100%; border:none; }
+.vid-placeholder{
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(135deg,#1a2b52,#2563C0);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:16px; color:#fff;
+}
+.vid-placeholder__play{
+  width:72px; height:72px; border-radius:50%;
+  background:rgba(255,255,255,.18);
+  display:flex; align-items:center; justify-content:center;
+  font-size:30px;
+}
+.vid-placeholder__text{ font-size:16px; font-weight:700; opacity:.9; }
+.vid-placeholder__sub{ font-size:13px; opacity:.6; }
+
+/* ---- 지역 검색바 ---- */
+.region-search-wrap{ background:var(--color-mist); padding:24px 0 20px; border-bottom:1px solid var(--color-line); }
+.region-search{
+  display:flex; align-items:center; gap:10px;
+  background:#fff; border:2px solid var(--color-signal);
+  border-radius:999px; padding:12px 20px;
+  box-shadow:0 4px 20px rgba(52,87,178,.12);
+  max-width:640px; margin:0 auto;
+}
+.region-search svg{ width:20px; height:20px; color:var(--color-signal); flex-shrink:0; }
+.region-search input{
+  flex:1; border:none; outline:none;
+  font-size:15px; font-family:var(--font-body);
+  color:var(--color-ink); background:transparent;
+  min-width:0;
+}
+.region-search input::placeholder{ color:var(--color-slate); }
+.region-search__clear{ background:none; border:none; color:var(--color-slate); font-size:18px; cursor:pointer; padding:0 4px; display:none; }
+.region-search__clear.is-visible{ display:block; }
+.region-no-result{ text-align:center; padding:36px 0; color:var(--color-slate); display:none; }
+.region-no-result.is-visible{ display:block; }
+
+/* ---- 현수업 근황 섹션 ---- */
+.live-section{ padding:80px 0; }
+.live-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+.live-card{
+  background:#fff; border:1.5px solid var(--color-line);
+  border-radius:14px; padding:18px 20px;
+  display:flex; flex-direction:column; gap:10px;
+  transition:box-shadow .2s,transform .2s;
+}
+.live-card:hover{ box-shadow:0 6px 24px rgba(52,87,178,.10); transform:translateY(-2px); }
+.live-card__top{ display:flex; align-items:center; justify-content:space-between; }
+.live-card__status{ display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:var(--color-mint); }
+.live-card__status::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--color-mint); animation:livePulse 1.6s ease infinite; }
+@keyframes livePulse{ 0%,100%{opacity:1}50%{opacity:.4} }
+.live-card__date{ font-size:11.5px; color:var(--color-slate); }
+.live-card__subject{ font-size:18px; font-weight:900; color:var(--color-harbor); }
+.live-card__info{ font-size:13.5px; color:var(--color-ink); line-height:1.6; }
+.live-card__info strong{ color:var(--color-signal); }
+.live-card__tag{ display:inline-block; font-size:11.5px; font-weight:700; color:var(--color-signal); background:var(--color-mist); padding:3px 10px; border-radius:999px; width:fit-content; }
+
+/* ---- 블로그 후기 섹션 ---- */
+.blog-section{ padding:80px 0; background:var(--color-mist); }
+.blog-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:22px; }
+.blog-card{
+  background:#fff; border-radius:18px;
+  overflow:hidden; border:1.5px solid var(--color-line);
+  transition:box-shadow .2s,transform .2s;
+  display:flex; flex-direction:column;
+}
+.blog-card:hover{ box-shadow:0 8px 32px rgba(52,87,178,.12); transform:translateY(-3px); }
+.blog-card__thumb{
+  height:160px; display:flex; align-items:center; justify-content:center;
+  font-size:56px; flex-shrink:0;
+}
+.blog-card__body{ padding:20px 22px 24px; display:flex; flex-direction:column; gap:10px; flex:1; }
+.blog-card__meta{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.blog-card__date{ font-size:12px; color:var(--color-slate); }
+.blog-card__cat{ font-size:12px; font-weight:700; color:var(--color-signal); background:var(--color-mist); padding:3px 10px; border-radius:999px; }
+.blog-card__title{ font-size:16px; font-weight:800; color:var(--color-harbor); line-height:1.4; margin:0; }
+.blog-card__desc{ font-size:13.5px; color:var(--color-slate); line-height:1.75; flex:1; }
+.blog-card__more{ font-size:13px; font-weight:700; color:var(--color-signal); margin-top:auto; }
+@media(max-width:640px){
+  .live-grid{ grid-template-columns:1fr; }
+  .blog-grid{ grid-template-columns:1fr; }
+  .blog-card__thumb{ height:130px; }
+}
+
 /* ---- 동 칩 + 상세 패널 ---- */
 .dong-chips{ display:flex; flex-wrap:wrap; gap:7px; padding:12px 0 6px; }
 .dong-chip{
@@ -2038,8 +2185,8 @@ select:focus-visible, textarea:focus-visible{
     <a href="#top" class="nav__logo"><span></span>스터디브릿지</a>
     <nav class="nav__links">
       <a class="nav__link" href="#process">미팅 과정</a>
-      <a class="nav__link" href="#compare">수업 방식</a>
-      <a class="nav__link" href="#pricing">과외 안내</a>
+      <a class="nav__link" href="#pricing">수업·가격</a>
+      <a class="nav__link" href="#regions">지역 과외</a>
       <a class="nav__link" href="gsd.html">검정고시</a>
       <a class="nav__link" href="news.html">뉴스</a>
       <a class="nav__link" href="#apply">상담 신청</a>
@@ -2055,11 +2202,10 @@ select:focus-visible, textarea:focus-visible{
   </div>
   <div class="nav__mobile-panel" id="navMobilePanel">
     <a href="#process">미팅 과정</a>
-    <a href="#compare">수업 방식</a>
-    <a href="#pricing">과외 안내</a>
+    <a href="#pricing">수업·가격</a>
+    <a href="#regions">지역 과외</a>
     <a href="gsd.html">검정고시</a>
     <a href="news.html">뉴스</a>
-    <a href="#regions">지역별 과외</a>
     <a href="#apply">상담 신청</a>
     <a href="#apply" class="btn btn--primary btn--block" style="margin-top:10px;">무료 상담 신청</a>
   </div>
@@ -2099,32 +2245,32 @@ select:focus-visible, textarea:focus-visible{
         <path class="radar__line" d="M240,240 Q150,180 75,148"/>
 
         <!-- 과목 노드 -->
-        <g>
+        <g class="radar-subject" data-subject="수학" role="button" tabindex="0" aria-label="수학 과외 안내">
           <circle class="radar__node-dot l1" cx="240" cy="68" r="38" style="fill:#FFE3C2"/>
           <text class="radar__node-emoji l1-e" x="240" y="70">📐</text>
           <text class="radar__node-label" x="240" y="112">수학</text>
         </g>
-        <g>
+        <g class="radar-subject" data-subject="영어" role="button" tabindex="0" aria-label="영어 과외 안내">
           <circle class="radar__node-dot l2" cx="405" cy="148" r="38" style="fill:#D7EBFF"/>
           <text class="radar__node-emoji l2-e" x="405" y="150">🔤</text>
           <text class="radar__node-label" x="405" y="192">영어</text>
         </g>
-        <g>
+        <g class="radar-subject" data-subject="국어" role="button" tabindex="0" aria-label="국어 과외 안내">
           <circle class="radar__node-dot l3" cx="405" cy="332" r="38" style="fill:#FCE3F5"/>
           <text class="radar__node-emoji l3-e" x="405" y="334">📖</text>
           <text class="radar__node-label" x="405" y="376">국어</text>
         </g>
-        <g>
+        <g class="radar-subject" data-subject="과학" role="button" tabindex="0" aria-label="과학 과외 안내">
           <circle class="radar__node-dot l4" cx="240" cy="412" r="38" style="fill:#D9F7EC"/>
           <text class="radar__node-emoji l4-e" x="240" y="414">🔬</text>
           <text class="radar__node-label" x="240" y="456">과학</text>
         </g>
-        <g>
+        <g class="radar-subject" data-subject="사회" role="button" tabindex="0" aria-label="사회 과외 안내">
           <circle class="radar__node-dot l5" cx="75" cy="332" r="38" style="fill:#FFF3C4"/>
           <text class="radar__node-emoji l5-e" x="75" y="334">🌍</text>
           <text class="radar__node-label" x="75" y="376">사회</text>
         </g>
-        <g>
+        <g class="radar-subject" data-subject="논술" role="button" tabindex="0" aria-label="논술 과외 안내">
           <circle class="radar__node-dot l6" cx="75" cy="148" r="38" style="fill:#EAE3FC"/>
           <text class="radar__node-emoji l6-e" x="75" y="150">✍️</text>
           <text class="radar__node-label" x="75" y="192">논술</text>
@@ -2135,6 +2281,39 @@ select:focus-visible, textarea:focus-visible{
         <text class="radar__center-label" x="240" y="234">🧑‍🎓</text>
         <text class="radar__center-label" x="240" y="254" style="font-size:11px;">우리 아이</text>
       </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 모바일 과목 선택 (데스크탑에서는 레이더로 대체) -->
+<div class="subject-strip">
+  <div class="subject-strip__inner">
+    <button class="subj-pill" data-subject="수학"><span class="subj-pill__icon">📐</span><span class="subj-pill__name">수학</span></button>
+    <button class="subj-pill" data-subject="영어"><span class="subj-pill__icon">🔤</span><span class="subj-pill__name">영어</span></button>
+    <button class="subj-pill" data-subject="국어"><span class="subj-pill__icon">📖</span><span class="subj-pill__name">국어</span></button>
+    <button class="subj-pill" data-subject="과학"><span class="subj-pill__icon">🔬</span><span class="subj-pill__name">과학</span></button>
+    <button class="subj-pill" data-subject="사회"><span class="subj-pill__icon">🌍</span><span class="subj-pill__name">사회·역사</span></button>
+    <button class="subj-pill" data-subject="논술"><span class="subj-pill__icon">✍️</span><span class="subj-pill__name">논술</span></button>
+    <button class="subj-pill" data-subject="검정고시"><span class="subj-pill__icon">🎓</span><span class="subj-pill__name">검정고시</span></button>
+  </div>
+</div>
+
+<!-- 과외 홍보 영상 -->
+<section class="vid-section">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:36px;">
+      <span class="eyebrow">스터디브릿지 소개</span>
+      <h2>과외 연결, 이렇게 다릅니다</h2>
+      <p>검증된 경력 선생님과 1:1 맞춤 수업으로 성적을 바꿔드립니다</p>
+    </div>
+    <div class="vid-wrap reveal">
+      <!-- 유튜브 영상 ID를 아래에 입력하세요. 예: https://youtu.be/[영상ID] -->
+      <!-- <iframe src="https://www.youtube.com/embed/영상ID" allow="autoplay;encrypted-media" allowfullscreen></iframe> -->
+      <div class="vid-placeholder">
+        <div class="vid-placeholder__play">▶</div>
+        <p class="vid-placeholder__text">과외 소개 영상</p>
+        <p class="vid-placeholder__sub">유튜브 영상 URL을 알려주시면 바로 넣어드립니다</p>
+      </div>
     </div>
   </div>
 </section>
@@ -3186,12 +3365,23 @@ select:focus-visible, textarea:focus-visible{
 <!-- ============================================================
      지역별 과외
 ============================================================ -->
+<div class="region-search-wrap">
+  <div class="container">
+    <div class="region-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="regionSearchInput" placeholder="동·아파트·학교 이름으로 검색 (예: 대치동, 은마아파트, 휘문고)">
+      <button class="region-search__clear" id="regionSearchClear" aria-label="검색 초기화">✕</button>
+    </div>
+    <p class="region-no-result" id="regionNoResult">검색 결과가 없어요. 다른 검색어를 입력해보세요.</p>
+  </div>
+</div>
+
 <section class="section regions-section" id="regions">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">지역별 과외</span>
       <h2>우리 동네 1:1 방문·화상 과외</h2>
-      <p>지역을 선택하면 세부 동 단위까지 확인할 수 있어요. 전국 어디서나 맞춤 선생님을 연결해드립니다.</p>
+      <p>지역 이름, 아파트, 학교 이름으로 검색하거나 아래에서 지역을 선택하세요. 동 이름을 누르면 상세 과외 가이드를 확인할 수 있어요.</p>
     </div>
 
     <div class="rg-layout reveal">
@@ -3678,6 +3868,140 @@ select:focus-visible, textarea:focus-visible{
 <!-- ============================================================
      상담 신청 폼
 ============================================================ -->
+<!-- 현수업 근황 -->
+<section class="live-section" id="live">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">실시간 수업 현황</span>
+      <h2>지금 이 순간, 진행 중인 수업들</h2>
+      <p>스터디브릿지를 통해 지금도 전국에서 1:1 수업이 이뤄지고 있습니다.</p>
+    </div>
+    <div class="live-grid reveal">
+      <div class="live-card">
+        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.15</span></div>
+        <div class="live-card__subject">📐 수학</div>
+        <div class="live-card__info"><strong>강남구 대치동</strong> · 중3 · 주2회 방문<br>수능 수학 1등급 목표, 취약 단원 집중 보완</div>
+        <span class="live-card__tag">방문 과외</span>
+      </div>
+      <div class="live-card">
+        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.14</span></div>
+        <div class="live-card__subject">🔤 영어</div>
+        <div class="live-card__info"><strong>수원시 영통동</strong> · 초5 · 주2회 화상<br>파닉스 졸업 후 독해·회화 병행</div>
+        <span class="live-card__tag">화상 과외</span>
+      </div>
+      <div class="live-card">
+        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.14</span></div>
+        <div class="live-card__subject">📖 국어</div>
+        <div class="live-card__info"><strong>부산 해운대구 좌동</strong> · 고2 · 주1회 화상<br>비문학 독해 + 수능 국어 고득점 전략</div>
+        <span class="live-card__tag">화상 과외</span>
+      </div>
+      <div class="live-card">
+        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.13</span></div>
+        <div class="live-card__subject">🔬 과학</div>
+        <div class="live-card__info"><strong>성남시 분당구 정자동</strong> · 중1 · 주2회 방문<br>중학교 과학 내신 대비, 개념+문제풀이</div>
+        <span class="live-card__tag">방문 과외</span>
+      </div>
+      <div class="live-card">
+        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.13</span></div>
+        <div class="live-card__subject">📐 수학</div>
+        <div class="live-card__info"><strong>화성시 동탄동</strong> · 고1 · 주2회 방문<br>수학1 개념 정리 + 내신 1등급 목표</div>
+        <span class="live-card__tag">방문 과외</span>
+      </div>
+      <div class="live-card">
+        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.12</span></div>
+        <div class="live-card__subject">✍️ 논술</div>
+        <div class="live-card__info"><strong>서울 양천구 목동</strong> · 고3 · 주1회 방문<br>연세대 논술 유형 집중 대비</div>
+        <span class="live-card__tag">방문 과외</span>
+      </div>
+      <div class="live-card">
+        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.12</span></div>
+        <div class="live-card__subject">🎓 검정고시</div>
+        <div class="live-card__info"><strong>대전 유성구 노은동</strong> · 성인 · 주3회 화상<br>고졸 검정고시 단기합격 목표, 수학·영어 집중</div>
+        <span class="live-card__tag">화상 과외</span>
+      </div>
+      <div class="live-card">
+        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.11</span></div>
+        <div class="live-card__subject">🔤 영어</div>
+        <div class="live-card__info"><strong>인천 연수구 송도동</strong> · 중2 · 주2회 방문<br>내신 영어 + 수능 독해 선행 병행</div>
+        <span class="live-card__tag">방문 과외</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 블로그 후기 -->
+<section class="blog-section" id="blog">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">학생 성공 스토리</span>
+      <h2>실제 수업 후기</h2>
+      <p>스터디브릿지와 함께 성적을 바꾼 학생들의 이야기입니다.</p>
+    </div>
+    <div class="blog-grid reveal">
+      <article class="blog-card">
+        <div class="blog-card__thumb" style="background:linear-gradient(135deg,#1A2B52,#3457B2)">📐</div>
+        <div class="blog-card__body">
+          <div class="blog-card__meta">
+            <time class="blog-card__date">2026.07.14</time>
+            <span class="blog-card__cat">수학 · 고3</span>
+          </div>
+          <h3 class="blog-card__title">수학 4등급→1등급, 수능 전 8개월의 기록</h3>
+          <p class="blog-card__desc">대치동에 살면서 학원을 5곳 다녀봤는데 성적이 안 올랐어요. 스터디브릿지로 연결받은 선생님께서 제 풀이 과정을 보시고 "이 부분에서 개념을 잘못 잡고 있다"고 딱 짚어주셨어요. 3개월 만에 3등급, 8개월 후 첫 1등급 받았습니다.</p>
+          <span class="blog-card__more">강남구 대치동 · 재수생 김○○</span>
+        </div>
+      </article>
+      <article class="blog-card">
+        <div class="blog-card__thumb" style="background:linear-gradient(135deg,#0D3B5E,#0E6EA8)">🔤</div>
+        <div class="blog-card__body">
+          <div class="blog-card__meta">
+            <time class="blog-card__date">2026.07.12</time>
+            <span class="blog-card__cat">영어 · 중2</span>
+          </div>
+          <h3 class="blog-card__title">영어 내신 C → A, 중간고사 전 6주 집중</h3>
+          <p class="blog-card__desc">목동에 사는데 아이가 학원 다니기 싫다고 해서 방문 과외를 시도했어요. 선생님이 우리 학교 교과서와 기출문제를 미리 분석해오셔서 딱 맞춤 대비를 해주셨어요. 6주 만에 내신이 두 단계 올랐습니다.</p>
+          <span class="blog-card__more">양천구 목동 · 중2 학부모 이○○</span>
+        </div>
+      </article>
+      <article class="blog-card">
+        <div class="blog-card__thumb" style="background:linear-gradient(135deg,#1A6B44,#22A865)">🎓</div>
+        <div class="blog-card__body">
+          <div class="blog-card__meta">
+            <time class="blog-card__date">2026.07.10</time>
+            <span class="blog-card__cat">검정고시</span>
+          </div>
+          <h3 class="blog-card__title">고졸 검정고시, 4개월 만에 전 과목 합격</h3>
+          <p class="blog-card__desc">학교를 일찍 그만뒀는데 취업 때문에 고졸 자격이 필요했어요. 수학이 특히 자신 없었는데 선생님이 기초부터 차근차근 설명해주셔서 중학교 개념도 다시 잡고, 검정고시 수학 70점으로 합격했습니다.</p>
+          <span class="blog-card__more">동탄2신도시 · 20대 박○○</span>
+        </div>
+      </article>
+      <article class="blog-card">
+        <div class="blog-card__thumb" style="background:linear-gradient(135deg,#4A3000,#D08000)">📖</div>
+        <div class="blog-card__body">
+          <div class="blog-card__meta">
+            <time class="blog-card__date">2026.07.08</time>
+            <span class="blog-card__cat">국어 · 고2</span>
+          </div>
+          <h3 class="blog-card__title">비문학 매번 틀렸는데, 3개월 만에 국어 2등급</h3>
+          <p class="blog-card__desc">분당에 사는데 국어 비문학이 발목을 잡았어요. 선생님께서 지문 구조 파악하는 방법을 반복 훈련시켜 주셨는데, 처음엔 20분 걸리던 지문이 나중엔 8분 안에 풀리더라고요. 모의고사 국어 4등급에서 2등급으로 올랐습니다.</p>
+          <span class="blog-card__more">성남시 분당구 서현동 · 고2 최○○</span>
+        </div>
+      </article>
+      <article class="blog-card">
+        <div class="blog-card__thumb" style="background:linear-gradient(135deg,#0D4030,#22C3A6)">🔬</div>
+        <div class="blog-card__body">
+          <div class="blog-card__meta">
+            <time class="blog-card__date">2026.07.05</time>
+            <span class="blog-card__cat">과학 · 초6</span>
+          </div>
+          <h3 class="blog-card__title">초6 아이가 과학이 재밌대요 — 화상 과외 5개월 후기</h3>
+          <p class="blog-card__desc">지방에 살아서 좋은 선생님 구하기 어려웠는데, 화상 과외를 통해 서울 선생님과 연결됐어요. 선생님이 실험 영상과 자료를 준비해오셔서 수업이 너무 재밌다고 하더라고요. 이제 과학자가 되고 싶다고 합니다.</p>
+          <span class="blog-card__more">충북 청주시 복대동 · 초6 학부모 정○○</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="section section--mist" id="apply">
   <div class="container form-section__inner">
     <div class="form-section__side reveal">
@@ -4185,6 +4509,105 @@ document.querySelectorAll('.price-tab-btn').forEach(btn => {
   });
 })();
 
+/* ---- 과목 모달 콘텐츠 ---- */
+var SUBJ = {
+  '수학':{
+    cls:'sm-hero--math', icon:'📐',
+    lead:'초1 연산부터 수능 미적분·기하까지, 학년별 맞춤 수학 과외를 연결해드립니다. 개념 이해 → 유형 숙달 → 실전 문제 풀이 3단계로 확실히 올려드립니다.',
+    grades:['초1','초2','초3','초4','초5','초6','중1','중2','중3','고1','고2','고3','재수생'],
+    curr:[
+      {lv:'초등',txt:'자연수·분수·소수 연산, 도형 감각, 문장제 해결력. 중학교 연결을 위한 개념 토대 구축'},
+      {lv:'중등',txt:'대수(방정식·부등식), 기하(피타고라스·원), 확률·통계. 내신 1등급 목표 단계별 전략'},
+      {lv:'고1',txt:'수학Ⅰ·Ⅱ 개념 정리, 내신 대비 기출 분석, 수능 유형 맛보기'},
+      {lv:'고2·3',txt:'미적분·확률과통계·기하. 수능 킬러 문항 공략, 모의고사 오답 분석 집중 관리'},
+      {lv:'재수생',txt:'전년도 오답 패턴 분석부터 수능 D-day 타임어택까지 맞춤 플랜 설계'}
+    ],
+    why:'수학은 전 학년 연결 과목 중 1위입니다. 개념을 잘못 이해한 채 진도를 나가면 중학교, 고등학교에서 무너집니다. 스터디브릿지는 전공 수학 출신 선생님이 풀이 과정을 분석해 취약 개념을 정확히 짚어드립니다.',
+    kw:['수학과외','초등수학과외','중학수학과외','고등수학과외','수능수학','내신수학','수학선행','수학1등급']
+  },
+  '영어':{
+    cls:'sm-hero--eng', icon:'🔤',
+    lead:'파닉스부터 수능 독해, 토익·토플까지. 국내 전공자부터 해외 경험 선생님까지 목적에 맞게 연결해드립니다.',
+    grades:['초1','초2','초3','초4','초5','초6','중1','중2','중3','고1','고2','고3','재수생'],
+    curr:[
+      {lv:'초등',txt:'파닉스·알파벳 → 기초 독해·회화. 영어 거부감 없애고 자연스럽게 노출'},
+      {lv:'중등',txt:'문법 체계화(시제·준동사·관계사), 내신 교과서 완벽 분석, 듣기·쓰기 병행'},
+      {lv:'고등',txt:'수능 영어 1등급 전략(빈칸·순서·삽입), EBS 연계 100% 활용법, 내신 지문 변형 대비'},
+      {lv:'재수생',txt:'영어 절대평가 1등급 확보 — 취약 유형 반복 집중으로 확실히 마무리'},
+      {lv:'성인',txt:'비즈니스 영어, 토익, 토플, 영어회화 목적별 맞춤 커리큘럼'}
+    ],
+    why:'영어는 단기간에 올리기 어렵지만, 올바른 방향으로 꾸준히 하면 가장 확실하게 유지됩니다. 학년에 맞는 어휘량과 문법 수준을 정확히 파악하는 것이 첫 번째입니다.',
+    kw:['영어과외','초등영어과외','중학영어과외','고등영어과외','수능영어','내신영어','영어선행','토익과외']
+  },
+  '국어':{
+    cls:'sm-hero--kor', icon:'📖',
+    lead:'독서·쓰기 습관부터 수능 비문학 독해, 고전문학 해석까지. 국어는 결국 이해력이고, 1:1 과외가 가장 빠릅니다.',
+    grades:['초1','초2','초3','초4','초5','초6','중1','중2','중3','고1','고2','고3','재수생'],
+    curr:[
+      {lv:'초등',txt:'독서 습관 형성, 어휘력 확장, 일기·독서록 쓰기. 읽기 능력이 모든 과목의 기초'},
+      {lv:'중등',txt:'문학(시·소설·수필) 감상법, 문법 체계(음운·형태·통사), 내신 서술형 대비'},
+      {lv:'고등',txt:'비문학 독해 지문 구조 분석, 고전문학·현대문학 정리, 수능 국어 시간 관리 전략'},
+      {lv:'재수생',txt:'전년도 오답 분석 → 취약 유형 집중 보완 → 모의고사 실전 훈련'}
+    ],
+    why:'수능 국어는 "느낌"으로 풀면 4등급, "구조"로 풀면 1등급이 됩니다. 1:1 과외에서 선생님과 지문을 함께 읽으며 오답 이유를 말로 설명하는 연습이 가장 효과적입니다.',
+    kw:['국어과외','초등국어과외','중학국어과외','고등국어과외','수능국어','비문학과외','독서논술','내신국어']
+  },
+  '과학':{
+    cls:'sm-hero--sci', icon:'🔬',
+    lead:'자연관찰 흥미 유발부터 물리·화학·생물·지구과학 내신·수능까지. 암기보다 이해 중심으로 탄탄하게.',
+    grades:['초4','초5','초6','중1','중2','중3','고1','고2','고3','재수생'],
+    curr:[
+      {lv:'초등',txt:'생물·지구과학 중심 흥미 유발, 실험 연계, 관찰·탐구 능력 키우기'},
+      {lv:'중등',txt:'물리·화학·생물·지구과학 통합 단원 내신 대비. 핵심 개념 그림으로 정리'},
+      {lv:'고1',txt:'통합과학 내신 1등급 전략, 탐구 실험 문항 대비'},
+      {lv:'고2·3',txt:'물리학Ⅰ·Ⅱ, 화학Ⅰ·Ⅱ, 생명과학Ⅰ·Ⅱ, 지구과학Ⅰ·Ⅱ 수능 선택과목 집중 관리'},
+      {lv:'재수생',txt:'사탐·과탐 조합 최적화 + 선택과목 킬러 문항 전략'}
+    ],
+    why:'과학은 암기 과목이 아닙니다. 개념이 연결되는 순간 성적이 급등합니다. 1:1 과외는 어디서 막혔는지 즉각 파악해 정확한 개념으로 수정해드립니다.',
+    kw:['과학과외','중학과학과외','고등과학과외','물리과외','화학과외','생물과외','지구과학과외','통합과학']
+  },
+  '사회':{
+    cls:'sm-hero--soc', icon:'🌍',
+    lead:'사회·역사·도덕부터 한국사능력검정, 수능 사회탐구까지. 방대한 내용을 체계적으로 정리하는 1:1 강의.',
+    grades:['초3','초4','초5','초6','중1','중2','중3','고1','고2','고3'],
+    curr:[
+      {lv:'초등',txt:'우리나라 역사·지리 흥미 유발, 교과서 핵심 개념 정리, 논술형 답안 쓰기'},
+      {lv:'중등',txt:'역사(한국사·세계사), 지리, 도덕, 일반사회 단원별 내신 집중 대비'},
+      {lv:'고등',txt:'한국사, 사회·문화, 생활과윤리, 정치와법, 한국지리, 세계지리 선택과목 수능 전략'},
+      {lv:'한국사',txt:'한국사능력검정시험 1급 단기 대비, 심화 개념 + 기출 반복 훈련'}
+    ],
+    why:'사회 과목은 범위가 넓어 혼자 공부하면 방향을 잃기 쉽습니다. 1:1 과외에서 중요도를 구분해 핵심만 빠르게 정리하면 단기간에 성적을 올릴 수 있습니다.',
+    kw:['사회과외','역사과외','한국사과외','한국사능력검정','수능사탐','사회탐구과외','지리과외','도덕과외']
+  },
+  '논술':{
+    cls:'sm-hero--essay', icon:'✍️',
+    lead:'독서논술(초등)부터 대학별 논술 전형까지. 논리적 글쓰기는 1:1 첨삭 없이는 실력이 늘지 않습니다.',
+    grades:['초1','초2','초3','초4','초5','초6','중1','중2','중3','고1','고2','고3'],
+    curr:[
+      {lv:'초등',txt:'독서 후 생각 정리하기, 주장+근거 쓰기, 독서록·일기 첨삭으로 문장력 향상'},
+      {lv:'중등',txt:'창의력 논술, 주제별 에세이, 독서 기반 의견 쓰기. 논리 구조 체화'},
+      {lv:'고등',txt:'연세대·고려대·서강대·성균관대·이화여대 등 주요 대학 논술 유형별 맞춤 대비'},
+      {lv:'의학계열',txt:'의학계열 논술(MEET·DEET 대비), 심층 면접 대비 논리적 사고 훈련'}
+    ],
+    why:'논술은 첨삭 없이 혼자 쓰면 발전이 없습니다. 선생님이 직접 한 문장씩 이유를 들어 고쳐주는 1:1 첨삭이 논술 실력을 가장 빠르게 향상시킵니다.',
+    kw:['논술과외','대학논술','독서논술','초등논술','연세대논술','고려대논술','의대논술','논술첨삭']
+  },
+  '검정고시':{
+    cls:'sm-hero--math', icon:'🎓',
+    lead:'중졸·고졸 검정고시 전 과목 단기합격. 학습 공백이 길어도, 기초부터 빠르게 잡아드립니다.',
+    grades:['중졸검정고시','고졸검정고시','성인학습자'],
+    curr:[
+      {lv:'국어',txt:'독해력 향상, 문법 핵심 정리, 쓰기 영역 대비'},
+      {lv:'수학',txt:'기초 연산부터 방정식·도형까지 검정고시 출제 범위 완벽 정리'},
+      {lv:'영어',txt:'기본 문법·어휘 → 독해 → 듣기 단계별 빠른 완성'},
+      {lv:'사회·과학',txt:'핵심 개념 위주 압축 정리, 기출 문제 반복으로 단기합격 전략'},
+      {lv:'선택과목',txt:'도덕, 기술·가정, 음악, 미술 등 선택 과목 효율적 대비'}
+    ],
+    why:'검정고시는 출제 범위가 명확해 방향만 잘 잡으면 단기합격이 가능합니다. 공백 기간이 길어도 선생님이 수준을 파악해 필요한 부분만 집중적으로 보완합니다.',
+    kw:['검정고시과외','고졸검정고시','중졸검정고시','검정고시수학','검정고시영어','검정고시단기합격']
+  }
+};
+
 /* ---- 동 아티클 모달 핸들러 ---- */
 (function(){
   var modal = document.getElementById('dongModal');
@@ -4200,6 +4623,48 @@ document.querySelectorAll('.price-tab-btn').forEach(btn => {
   closeBtn.addEventListener('click', close);
   backdrop.addEventListener('click', close);
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+
+  /* ---- 과목 모달 ---- */
+  window.openSubjectModal = function(subjectName){
+    var s = SUBJ[subjectName];
+    if (!s) return;
+    var grades = s.grades.map(function(g){ return '<span class="sm-grade">' + g + '</span>'; }).join('');
+    var curr = s.curr.map(function(c){
+      return '<div class="sm-curr-row"><span class="sm-curr-lv">' + c.lv + '</span><span class="sm-curr-txt">' + c.txt + '</span></div>';
+    }).join('');
+    var kws = s.kw.map(function(k){ return '<span class="dm-kw">' + k + '</span>'; }).join('');
+    content.innerHTML =
+      '<div class="sm-hero ' + s.cls + '">' +
+        '<div class="sm-hero__icon">' + s.icon + '</div>' +
+        '<h3 class="sm-hero__title">' + subjectName + ' 과외 가이드</h3>' +
+        '<p class="sm-hero__lead">' + s.lead + '</p>' +
+      '</div>' +
+      '<div class="sm-body">' +
+        '<div class="sm-meta"><span>스터디브릿지</span><span class="dm-dot">·</span><span>전국 1:1 과외 연결</span></div>' +
+        '<div class="sm-grade-row">' + grades + '</div>' +
+        '<div class="sm-section"><h4>📋 학년별 커리큘럼</h4><div class="sm-curr">' + curr + '</div></div>' +
+        '<div class="sm-divider"></div>' +
+        '<div class="sm-section"><h4>💡 왜 1:1 과외가 효과적인가요?</h4><p>' + s.why + '</p></div>' +
+        '<div class="sm-divider"></div>' +
+        '<div class="sm-section"><h4>🔍 관련 과외 검색어</h4><div class="dm-kw-list">' + kws + '</div></div>' +
+        '<a href="#apply" class="sm-cta" id="smCta">' + subjectName + ' 과외 무료 상담 신청하기 →</a>' +
+      '</div>';
+    document.getElementById('smCta').addEventListener('click', close);
+    content.scrollTop = 0;
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  /* ---- 레이더 노드 클릭 ---- */
+  document.querySelectorAll('.radar-subject').forEach(function(g){
+    g.addEventListener('click', function(){ window.openSubjectModal(g.dataset.subject); });
+    g.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' ') window.openSubjectModal(g.dataset.subject); });
+  });
+
+  /* ---- 모바일 과목 카드 클릭 ---- */
+  document.querySelectorAll('.subj-pill').forEach(function(btn){
+    btn.addEventListener('click', function(){ window.openSubjectModal(btn.dataset.subject); });
+  });
 
   window.openDongModal = function(dong, info){
     var eduTags = info ? (info['교육']||[]) : [];
@@ -4279,6 +4744,56 @@ document.querySelectorAll('.price-tab-btn').forEach(btn => {
     modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   };
+})();
+
+/* ---- 지역 검색 필터 ---- */
+(function(){
+  var input = document.getElementById('regionSearchInput');
+  var clearBtn = document.getElementById('regionSearchClear');
+  var noResult = document.getElementById('regionNoResult');
+  if (!input) return;
+
+  function getSearchText(card){
+    var texts = [card.textContent];
+    var chip = card.querySelector('[data-dong]');
+    if (chip) {
+      var dong = chip.dataset.dong || chip.textContent.trim();
+      var info = (typeof DONG_INFO !== 'undefined') && DONG_INFO[dong];
+      if (info) {
+        ['아파트','역','학교','교육','키워드'].forEach(function(k){
+          if (info[k]) texts = texts.concat(info[k]);
+        });
+      }
+    }
+    return texts.join(' ');
+  }
+
+  function filter(){
+    var q = input.value.trim();
+    clearBtn.style.display = q ? 'flex' : 'none';
+    if (!q) {
+      document.querySelectorAll('.district-card').forEach(function(c){ c.style.display = ''; });
+      noResult.style.display = 'none';
+      return;
+    }
+    var terms = q.toLowerCase().split(/\s+/);
+    var visible = 0;
+    document.querySelectorAll('.district-card').forEach(function(card){
+      var text = getSearchText(card).toLowerCase();
+      var match = terms.every(function(t){ return text.indexOf(t) >= 0; });
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    noResult.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  input.addEventListener('input', filter);
+  clearBtn.addEventListener('click', function(){
+    input.value = '';
+    filter();
+    input.focus();
+  });
+  clearBtn.style.display = 'none';
 })();
 </script>
 </body>
