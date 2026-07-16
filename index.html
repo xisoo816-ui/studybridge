@@ -1883,6 +1883,109 @@ select:focus-visible, textarea:focus-visible{
   .dong-detail__label{ font-size:10px; min-width:44px; }
 }
 
+/* ---- 동 아티클 모달 ---- */
+.dong-modal{
+  position:fixed; inset:0; z-index:9000;
+  display:none; align-items:flex-end; justify-content:center;
+}
+.dong-modal.is-open{ display:flex; }
+.dong-modal__backdrop{
+  position:absolute; inset:0;
+  background:rgba(10,20,40,.55);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+}
+.dong-modal__panel{
+  position:relative; z-index:1;
+  width:100%; max-width:720px;
+  max-height:92vh;
+  background:#fff;
+  border-radius:22px 22px 0 0;
+  overflow:hidden;
+  display:flex; flex-direction:column;
+  animation:modalSlideUp .32s cubic-bezier(.2,1,.3,1);
+}
+@media(min-width:720px){
+  .dong-modal{ align-items:center; }
+  .dong-modal__panel{ border-radius:22px; max-height:88vh; margin:16px; }
+}
+@keyframes modalSlideUp{
+  from{ transform:translateY(60px); opacity:0; }
+  to{ transform:none; opacity:1; }
+}
+.dong-modal__close{
+  position:absolute; top:14px; right:14px; z-index:10;
+  width:34px; height:34px; border-radius:50%;
+  background:rgba(255,255,255,.18); border:none;
+  font-size:15px; color:#fff;
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:background .15s;
+}
+.dong-modal__close:hover{ background:rgba(255,255,255,.32); }
+.dong-modal__scroll{ overflow-y:auto; flex:1; scrollbar-width:thin; }
+.dong-modal__hero{
+  background:linear-gradient(140deg,#111E3C 0%,#1A3070 45%,#2B60CC 100%);
+  padding:44px 28px 36px;
+  position:relative; flex-shrink:0;
+}
+.dong-modal__badge{
+  display:inline-block;
+  background:rgba(255,255,255,.14); color:rgba(255,255,255,.92);
+  font-size:12px; font-weight:700;
+  padding:5px 13px; border-radius:999px;
+  margin-bottom:16px;
+}
+.dong-modal__title{
+  font-size:clamp(22px,4vw,30px);
+  font-weight:900; color:#fff;
+  margin:0 0 12px; line-height:1.25;
+  font-family:var(--font-display);
+}
+.dong-modal__lead{
+  font-size:14.5px; color:rgba(255,255,255,.78);
+  line-height:1.75; margin:0; max-width:540px;
+}
+.dong-modal__body{ padding:28px 28px 40px; }
+.dong-modal__meta{
+  display:flex; align-items:center; gap:8px;
+  font-size:12.5px; color:var(--color-slate);
+  margin-bottom:24px; flex-wrap:wrap;
+  padding-bottom:18px; border-bottom:1px solid var(--color-line);
+}
+.dm-dot{ color:var(--color-line); font-size:16px; }
+.dm-section{ margin-bottom:28px; }
+.dm-section__title{
+  font-size:15.5px; font-weight:800;
+  color:var(--color-harbor);
+  margin:0 0 10px;
+  display:flex; align-items:center; gap:8px;
+}
+.dm-section__body{
+  font-size:14.5px; color:var(--color-ink);
+  line-height:1.85; margin:0;
+}
+.dm-section__body strong{ color:var(--color-harbor); }
+.dm-divider{ height:1px; background:var(--color-line); margin:0 0 24px; }
+.dm-kw-list{ display:flex; flex-wrap:wrap; gap:8px; }
+.dm-kw{
+  font-size:13px; color:#B45309;
+  background:#FFF7ED; border:1px solid #FCD8A8;
+  padding:5px 12px; border-radius:8px; font-weight:600;
+}
+.dong-modal__cta{
+  display:flex; align-items:center; justify-content:center;
+  background:var(--color-signal); color:#fff;
+  border-radius:14px; padding:16px 28px;
+  font-size:15.5px; font-weight:800;
+  margin-top:4px; transition:background .15s;
+  gap:6px;
+}
+.dong-modal__cta:hover{ background:var(--color-signal-dark); }
+@media(max-width:520px){
+  .dong-modal__hero{ padding:36px 20px 28px; }
+  .dong-modal__body{ padding:20px 20px 36px; }
+}
+
 /* ---- 플로팅 카카오 버튼 ---- */
 .float-kakao{
   position:fixed;
@@ -1938,6 +2041,7 @@ select:focus-visible, textarea:focus-visible{
       <a class="nav__link" href="#compare">수업 방식</a>
       <a class="nav__link" href="#pricing">과외 안내</a>
       <a class="nav__link" href="gsd.html">검정고시</a>
+      <a class="nav__link" href="news.html">뉴스</a>
       <a class="nav__link" href="#apply">상담 신청</a>
     </nav>
     <div class="nav__cta">
@@ -1954,6 +2058,7 @@ select:focus-visible, textarea:focus-visible{
     <a href="#compare">수업 방식</a>
     <a href="#pricing">과외 안내</a>
     <a href="gsd.html">검정고시</a>
+    <a href="news.html">뉴스</a>
     <a href="#regions">지역별 과외</a>
     <a href="#apply">상담 신청</a>
     <a href="#apply" class="btn btn--primary btn--block" style="margin-top:10px;">무료 상담 신청</a>
@@ -3706,6 +3811,15 @@ select:focus-visible, textarea:focus-visible{
      하단 고정 액션바
      전화번호: 010-2039-4111
 ============================================================ -->
+<!-- 동 아티클 모달 -->
+<div class="dong-modal" id="dongModal" role="dialog" aria-modal="true" aria-label="동 과외 가이드">
+  <div class="dong-modal__backdrop" id="dongModalBackdrop"></div>
+  <div class="dong-modal__panel">
+    <button class="dong-modal__close" id="dongModalClose" aria-label="닫기">✕</button>
+    <div class="dong-modal__scroll" id="dongModalContent"></div>
+  </div>
+</div>
+
 <!-- 플로팅 카카오 버튼 -->
 <a href="https://open.kakao.com/o/srpOvVci" class="float-kakao" target="_blank" rel="noopener" aria-label="카카오톡 상담">
   <svg viewBox="0 0 24 24" fill="#3C1E1E"><path d="M12 3.5C6.75 3.5 2.5 6.86 2.5 11c0 2.66 1.77 5 4.44 6.35-.2.7-.71 2.5-.82 2.9-.13.5.18.5.38.36.16-.11 2.55-1.73 3.59-2.43.62.09 1.26.14 1.91.14 5.25 0 9.5-3.36 9.5-7.5S17.25 3.5 12 3.5Z"/></svg>
@@ -4041,13 +4155,12 @@ document.querySelectorAll('.price-tab-btn').forEach(btn => {
         '<span class="district-card__arrow">▾</span>' +
       '</button>' +
       '<div class="district-card__detail">' +
+        '<p style="font-size:12px;color:var(--color-slate);margin:0 0 10px;">동 이름을 눌러 과외 가이드를 확인하세요</p>' +
         '<div class="dong-chips"></div>' +
-        '<div class="dong-detail"></div>' +
       '</div>';
 
     var btn = card.querySelector('.district-card__btn');
     var chipsEl = card.querySelector('.dong-chips');
-    var panelEl = card.querySelector('.dong-detail');
 
     dongList.forEach(function(dong){
       var chip = document.createElement('button');
@@ -4055,31 +4168,9 @@ document.querySelectorAll('.price-tab-btn').forEach(btn => {
       chip.textContent = dong;
       chip.addEventListener('click', function(e){
         e.stopPropagation();
-        var wasActive = chip.classList.contains('is-active');
         chipsEl.querySelectorAll('.dong-chip').forEach(function(c){ c.classList.remove('is-active'); });
-        panelEl.classList.remove('is-open');
-        if (!wasActive) {
-          chip.classList.add('is-active');
-          var info = norm(dong);
-          if (info) {
-            panelEl.innerHTML =
-              '<div class="dong-detail__title">&#128205; ' + dong + ' 과외 안내</div>' +
-              '<div class="dong-detail__rows">' +
-                row('&#127968; 아파트', info['아파트'], '') +
-                row('&#128647; 인근 역', info['역'], '') +
-                row('&#127979; 학교', info['학교'], '') +
-                row('&#128218; 교육', info['교육'], 'dong-detail__tag--edu') +
-                row('&#128269; 검색어', info['키워드'], 'dong-detail__tag--kw') +
-              '</div>' +
-              '<a href="#apply" class="dong-detail__cta">이 지역 무료 상담 신청 →</a>';
-          } else {
-            panelEl.innerHTML =
-              '<div class="dong-detail__title">&#128205; ' + dong + ' 방문·화상 과외</div>' +
-              '<p style="font-size:13px;color:#555;margin:8px 0 12px">스터디브릿지는 <strong>' + dong + '</strong>에서 방문 과외와 화상 과외 선생님을 연결해드립니다.</p>' +
-              '<a href="#apply" class="dong-detail__cta">무료 상담 신청 →</a>';
-          }
-          panelEl.classList.add('is-open');
-        }
+        chip.classList.add('is-active');
+        window.openDongModal(dong, norm(dong));
       });
       chipsEl.appendChild(chip);
     });
@@ -4089,10 +4180,105 @@ document.querySelectorAll('.price-tab-btn').forEach(btn => {
       this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       if (!isOpen) {
         chipsEl.querySelectorAll('.dong-chip').forEach(function(c){ c.classList.remove('is-active'); });
-        panelEl.classList.remove('is-open');
       }
     });
   });
+})();
+
+/* ---- 동 아티클 모달 핸들러 ---- */
+(function(){
+  var modal = document.getElementById('dongModal');
+  var content = document.getElementById('dongModalContent');
+  var closeBtn = document.getElementById('dongModalClose');
+  var backdrop = document.getElementById('dongModalBackdrop');
+
+  function close(){
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+    document.querySelectorAll('.dong-chip.is-active').forEach(function(c){ c.classList.remove('is-active'); });
+  }
+  closeBtn.addEventListener('click', close);
+  backdrop.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+
+  window.openDongModal = function(dong, info){
+    var eduTags = info ? (info['교육']||[]) : [];
+    var lead;
+    if (!info) {
+      lead = dong + '에서 방문 과외와 화상 과외 선생님을 연결해드립니다. 무료 상담으로 맞춤 선생님을 찾아보세요.';
+    } else if (eduTags.some(function(t){ return /학원가|8학군|특구|교육특구/.test(t); })) {
+      lead = dong + '은 학원가와 교육 인프라가 잘 갖춰진 명문 학군 지역입니다. 경쟁이 치열한 만큼 학생 수준에 꼭 맞는 1:1 과외가 성적 향상의 핵심입니다.';
+    } else if (eduTags.some(function(t){ return /신도시|신개발|신분당/.test(t); })) {
+      lead = dong + '은 빠르게 성장 중인 신도시 지역으로, 학령 인구 증가와 함께 방문·화상 과외 수요가 함께 높아지고 있습니다.';
+    } else if (eduTags.some(function(t){ return /대학|KAIST|서울대|인하대|충남대/.test(t); })) {
+      lead = dong + '은 대학 캠퍼스 인근 지역으로, 우수한 교육 환경과 함께 전문성 높은 선생님 수요가 높은 곳입니다.';
+    } else {
+      lead = dong + '에서 스터디브릿지가 방문 과외와 화상 과외 선생님을 연결해드립니다. 학생의 수준과 목표에 맞는 1:1 맞춤 커리큘럼으로 시작해보세요.';
+    }
+
+    var secs = '';
+
+    if (info && info['아파트'] && info['아파트'].length) {
+      var a = info['아파트'].slice(0,5);
+      secs += '<div class="dm-section">' +
+        '<h4 class="dm-section__title">&#127968;&nbsp; 주변 아파트 단지</h4>' +
+        '<p class="dm-section__body">' + dong + ' 인근에는 <strong>' + a.join('</strong>, <strong>') + '</strong> 등 주요 아파트 단지가 있습니다. 대단지 주거지 특성상 학령기 자녀를 둔 가정이 많으며, 방문 과외 진행 시 접근성이 양호합니다.</p>' +
+        '</div><div class="dm-divider"></div>';
+    }
+
+    if (info && info['역'] && info['역'].length) {
+      secs += '<div class="dm-section">' +
+        '<h4 class="dm-section__title">&#128647;&nbsp; 교통 · 접근성</h4>' +
+        '<p class="dm-section__body">인근에 <strong>' + info['역'].join('</strong>, <strong>') + '</strong> 등이 있어 선생님 방문이 편리합니다. 화상 과외를 선택하시면 거주 지역과 무관하게 전국 우수 선생님과 연결됩니다.</p>' +
+        '</div><div class="dm-divider"></div>';
+    }
+
+    if (info && info['학교'] && info['학교'].length) {
+      var s = info['학교'].slice(0,6);
+      secs += '<div class="dm-section">' +
+        '<h4 class="dm-section__title">&#127979;&nbsp; 학교 · 학군</h4>' +
+        '<p class="dm-section__body">' + dong + ' 학군 내에는 <strong>' + s.join('</strong>, <strong>') + '</strong> 등이 있습니다. 각 학교의 내신 출제 패턴과 수행평가 방식에 맞춰 맞춤 커리큘럼을 설계해드립니다.</p>' +
+        '</div><div class="dm-divider"></div>';
+    }
+
+    if (info && info['교육'] && info['교육'].length) {
+      secs += '<div class="dm-section">' +
+        '<h4 class="dm-section__title">&#128218;&nbsp; 교육 환경</h4>' +
+        '<p class="dm-section__body">' + dong + '의 교육 특성은 <strong>' + info['교육'].join('</strong>, <strong>') + '</strong>으로 요약됩니다. 스터디브릿지는 이 지역 특성에 정통한 경력 선생님을 연결해 학생 맞춤형 커리큘럼을 설계합니다.</p>' +
+        '</div><div class="dm-divider"></div>';
+    }
+
+    if (info && info['키워드'] && info['키워드'].length) {
+      secs += '<div class="dm-section">' +
+        '<h4 class="dm-section__title">&#128269;&nbsp; 이 지역 과외 검색어</h4>' +
+        '<div class="dm-kw-list">' +
+          info['키워드'].map(function(k){ return '<span class="dm-kw">' + k + '</span>'; }).join('') +
+        '</div></div>';
+    }
+
+    content.innerHTML =
+      '<div class="dong-modal__hero">' +
+        '<span class="dong-modal__badge">&#128205; 방문 · 화상 과외</span>' +
+        '<h3 class="dong-modal__title">' + dong + ' 과외 가이드</h3>' +
+        '<p class="dong-modal__lead">' + lead + '</p>' +
+      '</div>' +
+      '<div class="dong-modal__body">' +
+        '<div class="dong-modal__meta">' +
+          '<span>스터디브릿지</span>' +
+          '<span class="dm-dot">·</span>' +
+          '<time>2026.07.15</time>' +
+          '<span class="dm-dot">·</span>' +
+          '<span>방문 · 화상 과외</span>' +
+        '</div>' +
+        secs +
+        '<a href="#apply" class="dong-modal__cta" id="dmCta">이 지역 무료 상담 신청하기 &#8594;</a>' +
+      '</div>';
+
+    document.getElementById('dmCta').addEventListener('click', close);
+    content.scrollTop = 0;
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  };
 })();
 </script>
 </body>
