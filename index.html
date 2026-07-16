@@ -2093,6 +2093,21 @@ select:focus-visible, textarea:focus-visible{
   .live-card{ flex:1 1 calc(25% - 14px); min-width:220px; }
 }
 
+/* ---- 섹션 아코디언 ---- */
+.sec-fold .sec-fold__body{ display:none; }
+.sec-fold.is-open .sec-fold__body{ display:block; }
+.sec-fold__toggle{
+  display:inline-flex; align-items:center; gap:6px;
+  margin-top:18px; padding:9px 22px;
+  border:1.5px solid var(--color-signal); border-radius:999px;
+  background:none; color:var(--color-signal);
+  font-size:13.5px; font-weight:700; cursor:pointer; font-family:var(--font-body);
+  transition:background .15s,color .15s;
+}
+.sec-fold__toggle:hover{ background:var(--color-signal); color:#fff; }
+.sec-fold__arrow{ display:inline-block; transition:transform .2s; }
+.sec-fold.is-open .sec-fold__arrow{ transform:rotate(180deg); }
+
 /* ---- 동 칩 + 상세 패널 ---- */
 .dong-chips{ display:flex; flex-wrap:wrap; gap:7px; padding:12px 0 6px; }
 .dong-chip{
@@ -3429,28 +3444,31 @@ select:focus-visible, textarea:focus-visible{
 <!-- ============================================================
      미팅 과정 3단계
 ============================================================ -->
-<section class="section" id="process">
+<section class="section sec-fold" id="process">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">미팅 과정</span>
       <h2>상담부터 수업 시작까지, 3단계면 충분합니다</h2>
       <p>학년·과목·지역만 알려주시면 나머지는 저희가 진행합니다.</p>
+      <button class="sec-fold__toggle"><span class="sec-fold__label">자세히 보기</span> <span class="sec-fold__arrow">▾</span></button>
     </div>
-    <div class="process reveal">
-      <div class="process__step">
-        <span class="process__num">1</span>
-        <h3>✋ 상담 신청</h3>
-        <p>학년, 과목, 거주 지역, 희망 수업 방식(방문/비대면)을 남겨주세요. 5분이면 충분해요.</p>
-      </div>
-      <div class="process__step">
-        <span class="process__num">2</span>
-        <h3>🤝 맞춤 미팅</h3>
-        <p>보유 선생님 데이터베이스에서 조건에 맞는 선생님을 선별해 당일 제안드려요.</p>
-      </div>
-      <div class="process__step">
-        <span class="process__num">3</span>
-        <h3>🚀 수업 시작 &amp; 케어</h3>
-        <p>방문 또는 화상으로 첫 수업을 진행하고, 이후에도 학습 진도를 함께 점검해 드려요.</p>
+    <div class="sec-fold__body">
+      <div class="process">
+        <div class="process__step">
+          <span class="process__num">1</span>
+          <h3>✋ 상담 신청</h3>
+          <p>학년, 과목, 거주 지역, 희망 수업 방식(방문/비대면)을 남겨주세요. 5분이면 충분해요.</p>
+        </div>
+        <div class="process__step">
+          <span class="process__num">2</span>
+          <h3>🤝 맞춤 미팅</h3>
+          <p>보유 선생님 데이터베이스에서 조건에 맞는 선생님을 선별해 당일 제안드려요.</p>
+        </div>
+        <div class="process__step">
+          <span class="process__num">3</span>
+          <h3>🚀 수업 시작 &amp; 케어</h3>
+          <p>방문 또는 화상으로 첫 수업을 진행하고, 이후에도 학습 진도를 함께 점검해 드려요.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -3459,14 +3477,16 @@ select:focus-visible, textarea:focus-visible{
 <!-- ============================================================
      과목별 과외
 ============================================================ -->
-<section class="section" id="subjects">
+<section class="section sec-fold" id="subjects">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">전 과목 수업</span>
       <h2>국어·영어·수학부터 검정고시까지 전 과목 1:1 과외</h2>
-      <p>초등·중등·고등·재수 전 학년, 모든 과목의 전공자 출신 선생님을 연결해드립니다.</p>
+      <p>과목을 눌러 학년별 커리큘럼과 담당 선생님 정보를 확인하세요.</p>
+      <button class="sec-fold__toggle"><span class="sec-fold__label">과목 보기</span> <span class="sec-fold__arrow">▾</span></button>
     </div>
-    <div class="subject-grid reveal">
+    <div class="sec-fold__body">
+    <div class="subject-grid">
       <div class="subject-card" data-subject="수학"><span class="subject-card__icon">📐</span><strong>수학 과외</strong></div>
       <div class="subject-card" data-subject="영어"><span class="subject-card__icon">📖</span><strong>영어 과외</strong></div>
       <div class="subject-card" data-subject="국어"><span class="subject-card__icon">✏️</span><strong>국어 과외</strong></div>
@@ -3475,6 +3495,7 @@ select:focus-visible, textarea:focus-visible{
       <div class="subject-card" data-subject="논술"><span class="subject-card__icon">📝</span><strong>논술·작문 과외</strong></div>
       <div class="subject-card" data-subject="검정고시"><span class="subject-card__icon">🎓</span><strong>검정고시 과외</strong></div>
       <div class="subject-card" data-apply="1"><span class="subject-card__icon">💻</span><strong>비대면 화상 과외</strong></div>
+    </div>
     </div>
   </div>
 </section>
@@ -3609,7 +3630,7 @@ select:focus-visible, textarea:focus-visible{
 
       <div class="rg-right" style="width:100%">
         <div class="rg-tabs">
-          <button class="rg-tab is-active" data-r="seoul">서울</button>
+          <button class="rg-tab" data-r="seoul">서울</button>
           <button class="rg-tab" data-r="gyeonggi">경기</button>
           <button class="rg-tab" data-r="incheon">인천</button>
           <button class="rg-tab" data-r="daejeon">대전·세종</button>
@@ -3620,7 +3641,7 @@ select:focus-visible, textarea:focus-visible{
         </div>
 
         <!-- 서울 -->
-        <div class="rg-panel is-active" id="rp-seoul">
+        <div class="rg-panel" id="rp-seoul">
           <p class="rg-panel__desc">📍 서울 전 25개 구 방문 과외 연결 가능합니다. 원하는 지역을 확인 후 무료 상담을 신청하세요.</p>
           <div class="district-grid">
             <div class="district-card"><strong>강남구</strong><span>대치1·2·4동 · 역삼1·2동 · 청담동 · 도곡1·2동 · 개포1·2·4동 · 일원동 · 수서동 · 세곡동 · 자곡동 · 논현1·2동 · 삼성1·2동</span></div>
@@ -3840,15 +3861,16 @@ select:focus-visible, textarea:focus-visible{
 <!-- ============================================================
      과목 / 가격 안내
 ============================================================ -->
-<section class="section" id="pricing">
+<section class="section sec-fold" id="pricing">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">과목 &amp; 가격 안내</span>
       <h2>학년과 수업 방식에 따른 가격 가이드</h2>
-      <p>방문과 화상 수업은 횟수·시간에 따라 가격이 달라지며, 단과·검정고시반은 1회 단가로 운영됩니다. 정확한 견적은 상담을 통해 안내드립니다.</p>
+      <p>방문·화상·단과 가격을 확인하세요. 정확한 견적은 상담으로 안내드립니다.</p>
+      <button class="sec-fold__toggle"><span class="sec-fold__label">가격 보기</span> <span class="sec-fold__arrow">▾</span></button>
     </div>
-
-    <div class="price-tabs reveal" role="tablist">
+    <div class="sec-fold__body">
+    <div class="price-tabs" role="tablist">
       <button type="button" class="price-tab-btn is-active" data-target="panel-visit">방문</button>
       <button type="button" class="price-tab-btn" data-target="panel-cyber">화상</button>
       <button type="button" class="price-tab-btn" data-target="panel-etc">단과 · 검정고시반</button>
@@ -3935,65 +3957,26 @@ select:focus-visible, textarea:focus-visible{
       </div>
     </div>
 
-    <div class="subjects reveal">
+    <div class="subjects">
       <span>국어</span><span>영어</span><span>수학</span><span>사회</span>
       <span>과학</span><span>한국사</span><span>제2외국어</span><span>논술·면접</span>
       <span>전 과목 가능</span>
     </div>
+    </div><!-- /sec-fold__body -->
   </div>
 </section>
 
-<!-- ============================================================
-     자주 묻는 질문 (FAQ)
-============================================================ -->
-<section class="section section--mist" id="faq">
-  <div class="container">
-    <div class="section-head reveal" style="text-align:center;margin-left:auto;margin-right:auto;">
-      <span class="eyebrow">FAQ</span>
-      <h2>자주 묻는 질문</h2>
-      <p>방문 과외·비대면 화상 과외 연결에 대해 자주 궁금해하시는 내용을 모았어요.</p>
-    </div>
-    <div class="faq reveal">
-      <details class="faq-item">
-        <summary>방문 과외와 비대면 화상 과외, 어떤 방식이 더 좋나요?</summary>
-        <p>아이의 성향과 상황에 따라 달라요. 옆에서 봐주는 밀착 관리가 필요하면 방문 과외, 거주지와 무관하게 전국 우수 선생님께 배우고 싶다면 비대면 화상 과외를 추천드려요. 상담 시 학년·과목·생활 패턴을 말씀해주시면 더 잘 맞는 방식을 함께 정해드립니다.</p>
-      </details>
-      <details class="faq-item">
-        <summary>지방이나 소도시에 살아도 좋은 선생님을 연결받을 수 있나요?</summary>
-        <p>네, 가능합니다. 스터디브릿지는 전국 17개 시·도 어디서나 연결이 가능하며, 특히 비대면 화상 과외는 거주 지역과 무관하게 전국 우수 선생님 풀에서 연결받을 수 있어 지방·소도시 학생분들이 많이 이용하고 계세요.</p>
-      </details>
-      <details class="faq-item">
-        <summary>선생님들은 모두 전공자인가요? 대학생 과외도 있나요?</summary>
-        <p>스터디브릿지는 대학생 과외 없이, 모든 선생님이 관련 전공 출신의 검증된 경력 선생님으로 구성되어 있습니다. 등록 전 학력·경력 검증 절차를 거쳐 신뢰할 수 있는 선생님만 연결해드려요.</p>
-      </details>
-      <details class="faq-item">
-        <summary>초등학생부터 고3·재수생까지 모두 연결이 가능한가요?</summary>
-        <p>네, 초등 1학년부터 고3, 재수·검정고시 준비생까지 전 학년 연결이 가능합니다. 국어·영어·수학·사회·과학은 물론 논술까지 전 과목 선생님을 보유하고 있어요.</p>
-      </details>
-      <details class="faq-item">
-        <summary>상담 신청하면 비용이 드나요?</summary>
-        <p>상담 신청부터 맞춤 선생님 제안까지 비용은 전혀 들지 않습니다. 학년, 과목, 거주 지역, 희망 수업 방식만 남겨주시면 당일 조건에 맞는 선생님을 무료로 제안드려요.</p>
-      </details>
-      <details class="faq-item">
-        <summary>과외 선생님 연결까지 얼마나 걸리나요?</summary>
-        <p>상담 신청 후 당일 조건에 맞는 선생님을 제안드리며, 원하시면 정식 수업 전 30분 무료 체험수업으로 먼저 확인해보실 수 있습니다.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     상담 신청 폼
-============================================================ -->
 <!-- 현수업 근황 -->
-<section class="live-section" id="live">
+<section class="live-section sec-fold" id="live">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">실시간 수업 현황</span>
       <h2>지금 이 순간, 진행 중인 수업들</h2>
       <p>스터디브릿지를 통해 지금도 전국에서 1:1 수업이 이뤄지고 있습니다.</p>
+      <button class="sec-fold__toggle"><span class="sec-fold__label">수업 현황 보기</span> <span class="sec-fold__arrow">▾</span></button>
     </div>
-    <div class="live-grid reveal">
+    <div class="sec-fold__body">
+    <div class="live-grid">
       <div class="live-card">
         <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.15</span></div>
         <div class="live-card__subject">📐 수학</div>
@@ -4042,18 +4025,21 @@ select:focus-visible, textarea:focus-visible{
         <div class="live-card__info"><strong>인천 연수구 송도동</strong> · 중2 · 주2회 방문<br>내신 영어 + 수능 독해 선행 병행</div>
         <span class="live-card__tag">방문 과외</span>
       </div>
-    </div>
+    </div><!-- /live-grid -->
+    </div><!-- /sec-fold__body -->
   </div>
 </section>
 
 <!-- 블로그 후기 -->
-<section class="blog-section" id="blog">
+<section class="blog-section sec-fold" id="blog">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">학생 성공 스토리</span>
       <h2>실제 수업 후기</h2>
       <p>스터디브릿지와 함께 성적을 바꾼 학생들의 이야기입니다.</p>
+      <button class="sec-fold__toggle"><span class="sec-fold__label">후기 보기</span> <span class="sec-fold__arrow">▾</span></button>
     </div>
+    <div class="sec-fold__body">
     <div class="blog-grid reveal">
       <article class="blog-card"
         data-desc="대치동에 살면서 학원을 5곳 다녀봤는데 성적이 안 올랐어요. 스터디브릿지로 연결받은 선생님께서 제 풀이 과정을 보시고 &quot;이 부분에서 개념을 잘못 잡고 있다&quot;고 딱 짚어주셨어요. 3개월 만에 3등급, 8개월 후 첫 1등급 받았습니다."
@@ -4109,6 +4095,7 @@ select:focus-visible, textarea:focus-visible{
       </div>
     </div>
     <button class="blog-more-btn" id="blogMoreBtn">후기 더 보기 (2개) ▾</button>
+    </div><!-- /sec-fold__body -->
   </div>
 </section>
 
@@ -4217,6 +4204,42 @@ select:focus-visible, textarea:focus-visible{
         <button type="button" class="btn btn--ghost" id="formResetBtn">다시 작성하기</button>
       </div>
     </form>
+  </div>
+</section>
+
+<!-- 자주 묻는 질문 -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">자주 묻는 질문</span>
+      <h2>궁금한 게 있으신가요?</h2>
+    </div>
+    <div class="faq reveal">
+      <details class="faq-item">
+        <summary>방문 과외와 비대면 화상 과외, 어떤 방식이 더 좋나요?</summary>
+        <p>아이의 성향과 상황에 따라 달라요. 옆에서 봐주는 밀착 관리가 필요하면 방문 과외, 거주지와 무관하게 전국 우수 선생님께 배우고 싶다면 비대면 화상 과외를 추천드려요.</p>
+      </details>
+      <details class="faq-item">
+        <summary>지방이나 소도시에 살아도 좋은 선생님을 연결받을 수 있나요?</summary>
+        <p>네, 가능합니다. 스터디브릿지는 전국 17개 시·도 어디서나 연결이 가능하며, 비대면 화상 과외는 거주 지역과 무관하게 전국 우수 선생님 풀에서 연결받을 수 있습니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>선생님들은 모두 전공자인가요? 대학생 과외도 있나요?</summary>
+        <p>스터디브릿지는 대학생 과외 없이, 모든 선생님이 관련 전공 출신의 검증된 경력 선생님으로 구성되어 있습니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>초등학생부터 고3·재수생까지 모두 연결이 가능한가요?</summary>
+        <p>네, 초등 1학년부터 고3, 재수·검정고시 준비생까지 전 학년 연결이 가능하며 국어·영어·수학·사회·과학·논술까지 전 과목 선생님을 보유하고 있습니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>상담 신청하면 비용이 드나요?</summary>
+        <p>상담 신청부터 맞춤 선생님 제안까지 비용은 전혀 들지 않습니다.</p>
+      </details>
+      <details class="faq-item">
+        <summary>과외 선생님 연결까지 얼마나 걸리나요?</summary>
+        <p>상담 신청 후 당일 조건에 맞는 선생님을 제안드립니다.</p>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -4599,7 +4622,7 @@ document.querySelectorAll('.price-tab-btn').forEach(btn => {
     dongList.forEach(function(dong){
       var chip = document.createElement('button');
       chip.className = 'dong-chip';
-      chip.textContent = dong;
+      chip.textContent = dong.replace(/[\d·~]+동$/, '동').trim();
       chip.addEventListener('click', function(e){
         e.stopPropagation();
         chipsEl.querySelectorAll('.dong-chip').forEach(function(c){ c.classList.remove('is-active'); });
@@ -5043,6 +5066,20 @@ var SUBJ = {
 
   go(0);
   timer = setInterval(function(){ go(cur + 1); }, dur);
+})();
+
+/* ---- 섹션 아코디언 토글 ---- */
+(function(){
+  document.querySelectorAll('.sec-fold__toggle').forEach(function(btn){
+    var label = btn.querySelector('.sec-fold__label');
+    var orig = label ? label.textContent : '';
+    btn.addEventListener('click', function(){
+      var section = btn.closest('.sec-fold');
+      if (!section) return;
+      var isOpen = section.classList.toggle('is-open');
+      if (label) label.textContent = isOpen ? '접기' : orig;
+    });
+  });
 })();
 </script>
 </body>
