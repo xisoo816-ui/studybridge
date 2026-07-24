@@ -592,64 +592,59 @@ select:focus-visible, textarea:focus-visible{
   background:#EAF2FF;
   border-radius:8px;
 }
-.district-grid{
+/* ── 지역 카드 (새 디자인) ── */
+.dc-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:12px;
+  gap:14px;
 }
-/* 아코디언 지역 카드 */
-.district-card{
+.dc{
   background:#fff;
-  border:1.5px solid var(--color-line);
   border-radius:12px;
   overflow:hidden;
-  transition:border-color .2s, box-shadow .2s, background .2s;
-}
-.district-card.is-open{
-  border-color:#3457B2;
-  box-shadow:0 4px 16px rgba(52,87,178,.12);
-}
-.district-card__btn{
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
-  padding:13px 16px;
-  background:none;
-  border:none;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+  border:1.5px solid #E8EDF5;
   cursor:pointer;
-  text-align:left;
+  transition:transform .15s, box-shadow .15s, border-color .15s;
 }
-.district-card.is-open .district-card__btn{
-  background:var(--color-mist);
+.dc:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 22px rgba(0,0,0,.1);
+  border-color:var(--dc-clr,#3457B2);
 }
-.district-card__btn strong{
+.dc__top{
+  height:4px;
+  background:var(--dc-clr,#3457B2);
+}
+.dc__body{
+  padding:14px 14px 12px;
+}
+.dc__name{
   font-size:14px;
   font-weight:700;
   color:var(--color-harbor);
+  margin-bottom:5px;
 }
-.district-card__arrow{
-  font-size:13px;
-  color:var(--color-slate);
-  transition:transform .22s ease;
-  flex-shrink:0;
+.dc__dongs{
+  font-size:11.5px;
+  color:#6B7280;
+  line-height:1.65;
+  margin-bottom:10px;
 }
-.district-card.is-open .district-card__arrow{
-  transform:rotate(180deg);
-  color:var(--color-signal);
-}
-.district-card__detail{
-  display:none;
-  padding:10px 16px 14px;
-  font-size:12.5px;
-  color:var(--color-slate);
-  line-height:1.7;
-  border-top:1px solid var(--color-line);
-}
-.district-card.is-open .district-card__detail{
+.dc__btn{
   display:block;
+  width:100%;
+  padding:8px 0;
+  background:var(--dc-clr,#3457B2);
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:12.5px;
+  font-weight:700;
+  cursor:pointer;
+  transition:opacity .15s;
 }
+.dc__btn:hover{opacity:.85;}
 .rg-cta{
   display:block;
   margin-top:22px;
@@ -672,10 +667,10 @@ select:focus-visible, textarea:focus-visible{
   transform:translateY(-1px);
 }
 @media(max-width:900px){
-  .district-grid{ grid-template-columns:repeat(2,1fr); }
+  .dc-grid{ grid-template-columns:repeat(2,1fr); }
 }
 @media(max-width:520px){
-  .district-grid{ grid-template-columns:1fr; }
+  .dc-grid{ grid-template-columns:1fr; }
 }
 /* 구형 지역 스타일 (사용 안 함) */
 .region-block{ margin-top:36px; }
@@ -1739,7 +1734,7 @@ select:focus-visible, textarea:focus-visible{
   .gsd-features{ grid-template-columns:1fr; gap:12px; }
   /* region 탭 작게 */
   .rg-tab{ font-size:12px; padding:6px 10px; }
-  .district-grid{ grid-template-columns:1fr; }
+  .dc-grid{ grid-template-columns:1fr; }
   /* 선생님 카드 1열 */
   .tc-grid{ grid-template-columns:1fr !important; }
   /* 후기 카드 1열 */
@@ -2310,7 +2305,7 @@ select:focus-visible, textarea:focus-visible{
   <div class="container nav__inner">
     <a href="#top" class="nav__logo"><span></span>스터디브릿지</a>
     <nav class="nav__links">
-      <a class="nav__link" href="#process">미팅 과정</a>
+      <a class="nav__link" href="#process">진행 과정</a>
       <a class="nav__link" href="#pricing">수업·가격</a>
       <a class="nav__link" href="#regions">지역 과외</a>
       <a class="nav__link" href="gsd.html">검정고시</a>
@@ -2331,7 +2326,7 @@ select:focus-visible, textarea:focus-visible{
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input type="text" id="navSearchInput" placeholder="동·학교 이름 검색" autocomplete="off">
     </div>
-    <a href="#process">미팅 과정</a>
+    <a href="#process">진행 과정</a>
     <a href="#pricing">수업·가격</a>
     <a href="#regions">지역 과외</a>
     <a href="gsd.html">검정고시</a>
@@ -2586,9 +2581,7 @@ select:focus-visible, textarea:focus-visible{
       <span class="eyebrow">TEACHERS</span>
       <h2>경력 전문 선생님을 만나보세요</h2>
       <p>스터디브릿지에는 대학생 과외가 없습니다. 모든 선생님은 관련 전공 출신의 검증된 경력 선생님입니다.</p>
-      <button class="sec-fold__toggle"><span class="sec-fold__label">선생님 보기</span> <span class="sec-fold__arrow">▾</span></button>
     </div>
-    <div class="sec-fold__body">
 
     <!-- 신뢰 지표 바 -->
     <div class="teacher-stats reveal">
@@ -2621,7 +2614,7 @@ select:focus-visible, textarea:focus-visible{
       <button class="tc-filter" data-tf="gsd">검정고시</button>
     </div>
 
-    <!-- 선생님 카드 그리드 -->
+    <!-- 선생님 카드 그리드 (미리보기 2개) -->
     <div class="teachers2 reveal" id="teacherGrid">
 
       <!-- 1 수학 -->
@@ -2675,6 +2668,11 @@ select:focus-visible, textarea:focus-visible{
           </div>
         </div>
       </div>
+
+    </div><!-- /teachers2 preview -->
+    <button class="sec-fold__toggle"><span class="sec-fold__label">선생님 더 보기</span> <span class="sec-fold__arrow">▾</span></button>
+    <div class="sec-fold__body">
+    <div class="teachers2 reveal">
 
       <!-- 3 국어 -->
       <div class="tc-card" data-tf="korean">
@@ -2833,12 +2831,12 @@ select:focus-visible, textarea:focus-visible{
       </div>
 
     </div><!-- /.teachers2 -->
+    </div><!-- /sec-fold__body -->
 
     <div class="teachers-cta reveal">
       <p class="tc-cta-sub">지금 바로 무료 상담 신청 → 당일 맞춤 선생님 제안</p>
       <a href="#apply" class="btn btn--primary">우리 아이 맞춤 선생님 추천받기 →</a>
     </div>
-    </div><!-- /sec-fold__body -->
   </div>
 </section>
 
@@ -2858,9 +2856,6 @@ select:focus-visible, textarea:focus-visible{
       <div class="review-stats__stars">★★★★★</div>
       <div class="review-stats__count">누적 후기 <b>312건</b></div>
     </div>
-    <button class="sec-fold__toggle"><span class="sec-fold__label">후기 전체 보기</span> <span class="sec-fold__arrow">▾</span></button>
-    <div class="sec-fold__body">
-
     <div class="review-filters reveal">
       <button class="rv-filter is-active" data-filter="all">전체</button>
       <button class="rv-filter" data-filter="수학">수학</button>
@@ -2870,7 +2865,7 @@ select:focus-visible, textarea:focus-visible{
       <button class="rv-filter" data-filter="검정고시">검정고시</button>
     </div>
 
-    <div class="reviews reveal" id="reviewGrid">
+    <div class="reviews reveal">
       <div class="review-card" data-subject="수학" data-level="중등">
         <div class="review-card__meta"><span class="rv-badge">수학</span><span class="rv-location">서울 강남구 대치동 · 중2</span><span class="rv-date">2026.06.20</span></div>
         <p class="review-card__rating">★★★★★</p>
@@ -2883,6 +2878,10 @@ select:focus-visible, textarea:focus-visible{
         <p class="review-card__quote">"지방이라 좋은 선생님 구하기 힘들었는데, 화상 수업으로 전공자 선생님께 배울 수 있어서 정말 만족스러워요. 내신 영어 1등급 받았어요!"</p>
         <div class="review-card__who"><span class="review-card__avatar">👨</span><div><div class="review-card__name">한OO 학부모님</div><div class="review-card__tag">고1 자녀 · 영어 비대면 수업</div></div></div>
       </div>
+    </div>
+    <button class="sec-fold__toggle"><span class="sec-fold__label">후기 전체 보기</span> <span class="sec-fold__arrow">▾</span></button>
+    <div class="sec-fold__body">
+    <div class="reviews reveal" id="reviewGrid">
       <div class="review-card" data-subject="국어" data-level="고등">
         <div class="review-card__meta"><span class="rv-badge rv-badge--kor">국어</span><span class="rv-location">서울 노원구 중계동 · 고3</span><span class="rv-date">2026.06.15</span></div>
         <p class="review-card__rating">★★★★★</p>
@@ -3453,33 +3452,30 @@ select:focus-visible, textarea:focus-visible{
 </section>
 
 <!-- ============================================================
-     미팅 과정 3단계
+     진행 과정 3단계
 ============================================================ -->
-<section class="section sec-fold" id="process">
+<section class="section" id="process">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow">미팅 과정</span>
+      <span class="eyebrow">진행 과정</span>
       <h2>상담부터 수업 시작까지, 3단계면 충분합니다</h2>
       <p>학년·과목·지역만 알려주시면 나머지는 저희가 진행합니다.</p>
-      <button class="sec-fold__toggle"><span class="sec-fold__label">자세히 보기</span> <span class="sec-fold__arrow">▾</span></button>
     </div>
-    <div class="sec-fold__body">
-      <div class="process">
-        <div class="process__step">
-          <span class="process__num">1</span>
-          <h3>✋ 상담 신청</h3>
-          <p>학년, 과목, 거주 지역, 희망 수업 방식(방문/비대면)을 남겨주세요. 5분이면 충분해요.</p>
-        </div>
-        <div class="process__step">
-          <span class="process__num">2</span>
-          <h3>🤝 맞춤 미팅</h3>
-          <p>보유 선생님 데이터베이스에서 조건에 맞는 선생님을 선별해 당일 제안드려요.</p>
-        </div>
-        <div class="process__step">
-          <span class="process__num">3</span>
-          <h3>🚀 수업 시작 &amp; 케어</h3>
-          <p>방문 또는 화상으로 첫 수업을 진행하고, 이후에도 학습 진도를 함께 점검해 드려요.</p>
-        </div>
+    <div class="process">
+      <div class="process__step">
+        <span class="process__num">1</span>
+        <h3>✋ 상담 신청</h3>
+        <p>학년, 과목, 거주 지역, 희망 수업 방식(방문/비대면)을 남겨주세요. 5분이면 충분해요.</p>
+      </div>
+      <div class="process__step">
+        <span class="process__num">2</span>
+        <h3>🤝 맞춤 연결</h3>
+        <p>보유 선생님 데이터베이스에서 조건에 맞는 선생님을 선별해 당일 제안드려요.</p>
+      </div>
+      <div class="process__step">
+        <span class="process__num">3</span>
+        <h3>🚀 수업 시작 &amp; 케어</h3>
+        <p>방문 또는 화상으로 첫 수업을 진행하고, 이후에도 학습 진도를 함께 점검해 드려요.</p>
       </div>
     </div>
   </div>
@@ -3494,13 +3490,15 @@ select:focus-visible, textarea:focus-visible{
       <span class="eyebrow">전 과목 수업</span>
       <h2>국어·영어·수학부터 검정고시까지 전 과목 1:1 과외</h2>
       <p>과목을 눌러 학년별 커리큘럼과 담당 선생님 정보를 확인하세요.</p>
-      <button class="sec-fold__toggle"><span class="sec-fold__label">과목 보기</span> <span class="sec-fold__arrow">▾</span></button>
     </div>
-    <div class="sec-fold__body">
     <div class="subject-grid">
       <div class="subject-card" data-subject="수학"><span class="subject-card__icon">📐</span><strong>수학 과외</strong></div>
       <div class="subject-card" data-subject="영어"><span class="subject-card__icon">📖</span><strong>영어 과외</strong></div>
       <div class="subject-card" data-subject="국어"><span class="subject-card__icon">✏️</span><strong>국어 과외</strong></div>
+    </div>
+    <button class="sec-fold__toggle"><span class="sec-fold__label">과목 더 보기</span> <span class="sec-fold__arrow">▾</span></button>
+    <div class="sec-fold__body">
+    <div class="subject-grid">
       <div class="subject-card" data-subject="과학"><span class="subject-card__icon">🔬</span><strong>과학 과외</strong></div>
       <div class="subject-card" data-subject="사회"><span class="subject-card__icon">🌏</span><strong>사회·한국사 과외</strong></div>
       <div class="subject-card" data-subject="논술"><span class="subject-card__icon">📝</span><strong>논술·작문 과외</strong></div>
@@ -3652,138 +3650,126 @@ select:focus-visible, textarea:focus-visible{
         </div>
 
         <!-- 서울 -->
-        <div class="rg-panel" id="rp-seoul">
-          <p class="rg-panel__desc">📍 서울 전 25개 구 방문 과외 연결 가능합니다. 원하는 지역을 확인 후 무료 상담을 신청하세요.</p>
-          <div class="district-grid">
-            <div class="district-card"><strong>강남구</strong><span>대치1·2·4동 · 역삼1·2동 · 청담동 · 도곡1·2동 · 개포1·2·4동 · 일원동 · 수서동 · 세곡동 · 자곡동 · 논현1·2동 · 삼성1·2동</span></div>
-            <div class="district-card"><strong>서초구</strong><span>반포1~4동 · 방배1~4동 · 서초1~4동 · 양재1·2동 · 잠원동 · 내곡동 · 우면동 · 염곡동 · 신원동 · 원지동</span></div>
-            <div class="district-card"><strong>송파구</strong><span>잠실1~7동 · 문정1·2동 · 가락1·2동 · 방이1·2동 · 위례동 · 마천1·2동 · 거여1·2동 · 풍납1·2동 · 석촌동 · 오금동 · 송파1·2동</span></div>
-            <div class="district-card"><strong>강서구·양천구</strong><span>화곡1~8동 · 등촌1~3동 · 방화1~3동 · 가양1~3동 · 마곡동 · 공항동 · 발산동 · 목1~5동 · 신정1~7동 · 신월1~7동</span></div>
-            <div class="district-card"><strong>노원구</strong><span>중계1~4동 · 상계1~10동 · 하계1·2동 · 월계1~4동 · 공릉1·2동 · 묵1·2동 · 석계동</span></div>
-            <div class="district-card"><strong>마포구</strong><span>합정동 · 서교동(홍대) · 상암동 · 망원1·2동 · 성산1·2동 · 공덕동 · 대흥동 · 아현동 · 도화동 · 용강동 · 토정동 · 신수동</span></div>
-            <div class="district-card"><strong>강동구</strong><span>천호1~3동 · 길1·2동 · 암사1~3동 · 둔촌1·2동 · 명일1·2동 · 고덕1·2동 · 강일동 · 상일동 · 성내1~3동 · 풍납1·2동</span></div>
-            <div class="district-card"><strong>성북구·도봉구</strong><span>길음1·2동 · 정릉1~4동 · 돈암1·2동 · 종암동 · 삼선동 · 성북동 · 안암동 · 보문동 · 석관동 · 쌍문동 · 방학동 · 창동</span></div>
-            <div class="district-card"><strong>동작구·관악구</strong><span>사당1~5동 · 상도1~4동 · 노량진1·2동 · 흑석동 · 대방동 · 신대방1·2동 · 신림동 · 봉천동 · 낙성대 · 서원동 · 신사동 · 조원동</span></div>
-            <div class="district-card"><strong>용산구·중구</strong><span>이태원동 · 한남동 · 보광동 · 효창동 · 후암동 · 원효로동 · 청파동 · 동자동 · 신당동 · 황학동 · 충무로동</span></div>
-            <div class="district-card"><strong>광진구·중랑구</strong><span>구의1~3동 · 자양1~4동 · 화양동 · 중곡1~4동 · 면목1~4·7·8동 · 망우본동 · 신내1·2동</span></div>
-            <div class="district-card"><strong>은평구·서대문구</strong><span>불광1·2동 · 녹번동 · 응암1~3동 · 구산동 · 갈현1·2동 · 수색동 · 증산동 · 진관동 · 홍은1·2동 · 북아현동 · 남가좌동</span></div>
+        <div class="rg-panel" id="rp-seoul" style="--dc-clr:#3457B2">
+          <p class="rg-panel__desc">📍 서울 전 25개 구 방문 과외 연결 가능합니다. 지역 카드를 눌러 바로 상담 신청하세요.</p>
+          <div class="dc-grid">
+            <div class="dc" data-area="서울 강남구 대치동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">강남구</div><div class="dc__dongs">대치동 · 역삼동 · 청담동 · 도곡동 · 개포동 · 논현동 · 삼성동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="서울 서초구 반포동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">서초구</div><div class="dc__dongs">반포동 · 방배동 · 서초동 · 양재동 · 잠원동 · 내곡동 · 우면동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="서울 송파구 잠실동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">송파구</div><div class="dc__dongs">잠실동 · 문정동 · 가락동 · 방이동 · 위례동 · 거여동 · 풍납동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="서울 양천구 목동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">강서·양천구 (목동)</div><div class="dc__dongs">목동 · 신정동 · 화곡동 · 등촌동 · 마곡동 · 가양동 · 신월동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="서울 노원구 중계동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">노원구</div><div class="dc__dongs">중계동 · 상계동 · 하계동 · 월계동 · 공릉동 · 묵동 · 석계동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="서울 마포구 합정동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">마포구 (홍대)</div><div class="dc__dongs">합정동 · 서교동 · 상암동 · 망원동 · 공덕동 · 성산동 · 아현동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="서울 강동구 천호동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">강동구</div><div class="dc__dongs">천호동 · 암사동 · 둔촌동 · 명일동 · 고덕동 · 강일동 · 성내동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="서울 성북구 길음동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">성북·도봉구</div><div class="dc__dongs">길음동 · 정릉동 · 돈암동 · 종암동 · 안암동 · 쌍문동 · 방학동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="서울 동작구 사당동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">동작·관악구</div><div class="dc__dongs">사당동 · 상도동 · 노량진 · 흑석동 · 신림동 · 봉천동 · 낙성대</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="서울 용산구 한남동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">용산·중구</div><div class="dc__dongs">한남동 · 이태원동 · 후암동 · 청파동 · 신당동 · 황학동 · 충무로</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="서울 광진구 구의동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">광진·중랑구</div><div class="dc__dongs">구의동 · 자양동 · 화양동 · 중곡동 · 면목동 · 신내동 · 망우동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="서울 은평구 불광동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">은평·서대문구</div><div class="dc__dongs">불광동 · 녹번동 · 응암동 · 진관동 · 홍은동 · 북아현동 · 남가좌동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">서울 지역 무료 상담 신청 →</a>
         </div>
 
         <!-- 경기 -->
-        <div class="rg-panel" id="rp-gyeonggi">
+        <div class="rg-panel" id="rp-gyeonggi" style="--dc-clr:#059669">
           <p class="rg-panel__desc">📍 경기도 전 지역 방문 과외 연결 가능합니다.</p>
-          <div class="district-grid">
-            <div class="district-card"><strong>수원</strong><span>영통동 · 매탄동 · 원천동 · 이의동 · 인계동 · 화서동 · 장안동 · 조원동 · 권선동 · 팔달동 · 우만동</span></div>
-            <div class="district-card"><strong>성남·분당</strong><span>정자1·3동 · 서현1·2동 · 수내1·3동 · 야탑1·3동 · 이매동 · 구미동 · 금곡동 · 삼평동 · 백현동 · 분당동</span></div>
-            <div class="district-card"><strong>용인·수지</strong><span>풍덕천1·2동 · 상현1·2동 · 죽전1·2동 · 동천동 · 성복동 · 신봉동 · 광교동 · 보정동 · 기흥동 · 구갈동</span></div>
-            <div class="district-card"><strong>고양·일산</strong><span>마두1·2동 · 정발산동 · 장항동 · 중산동 · 화정동 · 행신동 · 능곡동 · 원당동 · 화전동 · 덕양구</span></div>
-            <div class="district-card"><strong>화성·동탄</strong><span>동탄1·2·3·4·5·6동 · 화산동 · 진안동 · 반송동 · 병점동 · 향남읍 · 봉담읍</span></div>
-            <div class="district-card"><strong>안양·평촌</strong><span>평촌동 · 범계동 · 호계1·3동 · 비산1·3동 · 부흥동 · 갈산동 · 귀인동 · 관양동 · 석수동 · 박달동</span></div>
-            <div class="district-card"><strong>부천</strong><span>중동 · 상동 · 심곡동 · 소사동 · 옥길동 · 송내동 · 괴안동 · 범박동 · 역곡동 · 오정동</span></div>
-            <div class="district-card"><strong>의정부</strong><span>민락1·2동 · 녹양동 · 금오동 · 장암동 · 신곡1·2동 · 의정부동 · 가능동 · 호원동 · 자금동</span></div>
-            <div class="district-card"><strong>남양주·구리</strong><span>별내동 · 다산1·2동 · 진건읍 · 화도읍 · 수동면 · 오남읍 · 퇴계원읍 · 구리시 수택동 · 인창동</span></div>
-            <div class="district-card"><strong>안산·시흥</strong><span>고잔동 · 선부동 · 원시동 · 초지동 · 본오동 · 사동 · 와동 · 성포동 · 정왕동 · 은행동</span></div>
-            <div class="district-card"><strong>평택·오산</strong><span>비전동 · 세교동 · 소사동 · 동삭동 · 용이동 · 신장동 · 중앙동 · 독곡동 · 오산시 원동 · 세마동</span></div>
-            <div class="district-card"><strong>김포·파주</strong><span>장기동 · 풍무동 · 구래동 · 마산동 · 걸포동 · 통진읍 · 양촌읍 · 파주시 운정동 · 야당동 · 교하동</span></div>
+          <div class="dc-grid">
+            <div class="dc" data-area="경기 수원시 영통동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">수원</div><div class="dc__dongs">영통동 · 매탄동 · 원천동 · 인계동 · 화서동 · 장안동 · 권선동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="경기 성남시 분당구 정자동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">성남·분당</div><div class="dc__dongs">정자동 · 서현동 · 수내동 · 야탑동 · 이매동 · 판교동 · 분당동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="경기 용인시 수지구 풍덕천동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">용인·수지</div><div class="dc__dongs">풍덕천동 · 죽전동 · 동천동 · 성복동 · 광교동 · 기흥동 · 구갈동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="경기 고양시 일산 마두동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">고양·일산</div><div class="dc__dongs">마두동 · 정발산동 · 장항동 · 중산동 · 화정동 · 행신동 · 능곡동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="경기 화성시 동탄동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">화성·동탄</div><div class="dc__dongs">동탄1동 · 동탄2동 · 병점동 · 반송동 · 향남읍 · 봉담읍 · 진안동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="경기 안양시 평촌동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">안양·평촌</div><div class="dc__dongs">평촌동 · 범계동 · 호계동 · 비산동 · 부흥동 · 관양동 · 석수동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="경기 부천시 중동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">부천</div><div class="dc__dongs">중동 · 상동 · 심곡동 · 소사동 · 역곡동 · 송내동 · 옥길동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="경기 의정부시 민락동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">의정부</div><div class="dc__dongs">민락동 · 녹양동 · 금오동 · 신곡동 · 가능동 · 호원동 · 자금동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="경기 남양주시 별내동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">남양주·구리</div><div class="dc__dongs">별내동 · 다산동 · 진건읍 · 화도읍 · 퇴계원읍 · 구리 수택동 · 인창동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="경기 안산시 고잔동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">안산·시흥</div><div class="dc__dongs">고잔동 · 선부동 · 초지동 · 본오동 · 와동 · 정왕동 · 은행동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="경기 평택시 비전동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">평택·오산</div><div class="dc__dongs">비전동 · 세교동 · 용이동 · 신장동 · 독곡동 · 오산 원동 · 세마동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="경기 김포시 장기동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">김포·파주</div><div class="dc__dongs">장기동 · 풍무동 · 구래동 · 마산동 · 파주 운정동 · 야당동 · 교하동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">경기 지역 무료 상담 신청 →</a>
         </div>
 
         <!-- 인천 -->
-        <div class="rg-panel" id="rp-incheon">
+        <div class="rg-panel" id="rp-incheon" style="--dc-clr:#0284C7">
           <p class="rg-panel__desc">📍 인천 전 구 방문 과외 연결 가능합니다.</p>
-          <div class="district-grid">
-            <div class="district-card"><strong>연수구</strong><span>송도1·2·3·4·5동 · 연수동 · 청학동 · 옥련동 · 동춘1·2·3동 · 선학동 · 문학동</span></div>
-            <div class="district-card"><strong>남동구</strong><span>구월1~4동 · 간석1~4동 · 논현동 · 논현고잔동 · 만수1~6동 · 장수동 · 수산동 · 소래포구동</span></div>
-            <div class="district-card"><strong>부평구</strong><span>부평1~5동 · 산곡1~4동 · 청천1·2동 · 삼산1·2동 · 갈산동 · 부개1·2·3동 · 십정1·2동 · 일신동</span></div>
-            <div class="district-card"><strong>서구</strong><span>검단동 · 마전동 · 당하동 · 원당동 · 가좌1~4동 · 석남1~3동 · 연희동 · 대곡동 · 검단사거리동</span></div>
-            <div class="district-card"><strong>미추홀구</strong><span>주안1~8동 · 용현1~5동 · 학익1·2동 · 도화1~3동 · 숭의1~4동 · 관교동 · 문학동</span></div>
-            <div class="district-card"><strong>계양구</strong><span>계산1~4동 · 작전동 · 작전서운동 · 효성동 · 병방동 · 귤현동 · 박촌동</span></div>
-            <div class="district-card"><strong>중구·동구</strong><span>영종도 · 운서동 · 신포동 · 인현동 · 답동 · 중산동 · 송림1~6동 · 금창동 · 화수화평동</span></div>
-            <div class="district-card"><strong>강화·옹진</strong><span>강화읍 · 선원면 · 불은면 · 송해면 · 길상면 · 영종도 · 용유도 인근 섬 지역</span></div>
+          <div class="dc-grid">
+            <div class="dc" data-area="인천 연수구 송도동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">연수구 (송도)</div><div class="dc__dongs">송도동 · 연수동 · 청학동 · 옥련동 · 동춘동 · 선학동 · 문학동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="인천 남동구 구월동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">남동구</div><div class="dc__dongs">구월동 · 간석동 · 논현동 · 만수동 · 장수동 · 소래포구동 · 수산동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="인천 부평구 부평동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">부평구</div><div class="dc__dongs">부평동 · 산곡동 · 청천동 · 삼산동 · 갈산동 · 부개동 · 십정동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="인천 서구 검단동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">서구</div><div class="dc__dongs">검단동 · 마전동 · 당하동 · 원당동 · 가좌동 · 석남동 · 연희동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="인천 미추홀구 주안동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">미추홀구</div><div class="dc__dongs">주안동 · 용현동 · 학익동 · 도화동 · 숭의동 · 관교동 · 문학동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="인천 계양구 계산동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">계양구</div><div class="dc__dongs">계산동 · 작전동 · 효성동 · 병방동 · 귤현동 · 박촌동 · 임학동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="인천 중구 영종도"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">중구·동구</div><div class="dc__dongs">영종도 · 운서동 · 신포동 · 인현동 · 답동 · 송림동 · 화수동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="인천 강화도"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">강화·옹진</div><div class="dc__dongs">강화읍 · 선원면 · 불은면 · 송해면 · 길상면 · 화도면 · 내가면</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">인천 지역 무료 상담 신청 →</a>
         </div>
 
         <!-- 대전·세종 -->
-        <div class="rg-panel" id="rp-daejeon">
+        <div class="rg-panel" id="rp-daejeon" style="--dc-clr:#D97706">
           <p class="rg-panel__desc">📍 대전·세종·충남·충북 전 지역 방문 및 화상 과외 연결 가능합니다.</p>
-          <div class="district-grid">
-            <div class="district-card"><strong>대전 유성구</strong><span>봉명동 · 구암동 · 노은1~3동 · 죽동 · 신성동 · 전민동 · 학하동 · 원신흥동 · 반석동 · 하기동 · 둔산동</span></div>
-            <div class="district-card"><strong>대전 서구</strong><span>둔산1~3동 · 탄방동 · 괴정동 · 월평1~3동 · 갈마1·2동 · 복수동 · 용문동 · 내동 · 가수원동 · 관저1·2동</span></div>
-            <div class="district-card"><strong>대전 중구</strong><span>대흥동 · 은행동 · 태평1~4동 · 목동 · 유천1·2동 · 선화동 · 사정동 · 중촌동 · 문창동 · 오류동</span></div>
-            <div class="district-card"><strong>대전 동구</strong><span>가오동 · 용운동 · 판암1·2동 · 대동 · 가양동 · 성남동 · 소제동 · 천동 · 인동 · 효동 · 비래동</span></div>
-            <div class="district-card"><strong>세종시</strong><span>도담동 · 아름동 · 고운동 · 종촌동 · 한솔동 · 새롬동 · 보람동 · 대평동 · 소담동 · 나성동 · 연동면</span></div>
-            <div class="district-card"><strong>충남 천안</strong><span>불당동 · 두정동 · 부성동 · 성성동 · 신부동 · 원성동 · 신방동 · 쌍용1~3동 · 백석동 · 아산시 배방읍</span></div>
-            <div class="district-card"><strong>충남 공주·논산</strong><span>웅진동 · 금학동 · 옥룡동 · 반죽동 · 취리동 · 논산시 강산동 · 내동 · 취암동</span></div>
-            <div class="district-card"><strong>충북 청주</strong><span>복대동 · 분평동 · 가경동 · 율량동 · 성화동 · 내덕동 · 산남동 · 오창읍 · 오근장동 · 사창동</span></div>
-            <div class="district-card"><strong>충북 충주·제천</strong><span>충주시 교현동 · 연수동 · 용산동 · 호암동 · 제천시 의림동 · 동현동 · 영천동</span></div>
+          <div class="dc-grid">
+            <div class="dc" data-area="대전 유성구 노은동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">대전 유성구</div><div class="dc__dongs">노은동 · 전민동 · 반석동 · 봉명동 · 구암동 · 신성동 · 학하동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="대전 서구 둔산동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">대전 서구</div><div class="dc__dongs">둔산동 · 탄방동 · 월평동 · 갈마동 · 관저동 · 괴정동 · 가수원동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="대전 중구 대흥동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">대전 중구·동구</div><div class="dc__dongs">대흥동 · 은행동 · 태평동 · 목동 · 유천동 · 가오동 · 판암동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="세종시 도담동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">세종시</div><div class="dc__dongs">도담동 · 아름동 · 고운동 · 종촌동 · 한솔동 · 새롬동 · 보람동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="충남 천안시 불당동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">충남 천안</div><div class="dc__dongs">불당동 · 두정동 · 성성동 · 신부동 · 원성동 · 쌍용동 · 백석동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="충북 청주시 복대동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">충북 청주</div><div class="dc__dongs">복대동 · 분평동 · 가경동 · 율량동 · 성화동 · 내덕동 · 산남동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">대전·충청 지역 무료 상담 신청 →</a>
         </div>
 
         <!-- 대구·경북 -->
-        <div class="rg-panel" id="rp-daegu">
+        <div class="rg-panel" id="rp-daegu" style="--dc-clr:#7C3AED">
           <p class="rg-panel__desc">📍 대구 전 구 및 경상북도 주요 지역 방문·화상 과외 연결 가능합니다.</p>
-          <div class="district-grid">
-            <div class="district-card"><strong>수성구</strong><span>범어1~4동 · 만촌1~3동 · 황금1·2동 · 지산1·2동 · 수성1~4가동 · 파동 · 상동 · 매호동 · 중동 · 고모동</span></div>
-            <div class="district-card"><strong>달서구</strong><span>월성1·2동 · 상인1~3동 · 감삼동 · 죽전동 · 용산1·2동 · 호림동 · 이곡1·2동 · 신당동 · 장기동 · 대천동</span></div>
-            <div class="district-card"><strong>북구</strong><span>칠성1·2동 · 복현1·2동 · 침산1~3동 · 산격1~4동 · 동천동 · 관음동 · 검단동 · 태전동 · 구암동 · 노원동</span></div>
-            <div class="district-card"><strong>중구·남구</strong><span>동인1~4동 · 삼덕동 · 봉산동 · 남산1~4동 · 대봉1·2동 · 공평동 · 수동 · 포정동 · 이천동 · 대명동</span></div>
-            <div class="district-card"><strong>동구·서구</strong><span>신암1~5동 · 효목1·2동 · 지저동 · 방촌동 · 안심1~4동 · 각산동 · 평리1~6동 · 비산1~7동 · 원대동</span></div>
-            <div class="district-card"><strong>경북 포항</strong><span>효자1~4동 · 이동 · 두호동 · 장성동 · 양덕동 · 대신동 · 죽도1·2동 · 중앙동 · 남구 상대동 · 해도동</span></div>
-            <div class="district-card"><strong>경북 구미</strong><span>형곡1·2동 · 원평1·2동 · 송정동 · 봉곡동 · 신평1·2동 · 사곡동 · 도량동 · 지산동 · 선산읍</span></div>
-            <div class="district-card"><strong>경북 경주·안동</strong><span>경주 황성동 · 성건동 · 동천동 · 용강동 · 안동 옥동 · 용상동 · 신세동 · 태화동</span></div>
+          <div class="dc-grid">
+            <div class="dc" data-area="대구 수성구 범어동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">수성구 (8학군)</div><div class="dc__dongs">범어동 · 만촌동 · 황금동 · 지산동 · 수성동 · 파동 · 매호동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="대구 달서구 월성동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">달서구</div><div class="dc__dongs">월성동 · 상인동 · 감삼동 · 죽전동 · 용산동 · 이곡동 · 장기동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="대구 북구 칠성동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">북구</div><div class="dc__dongs">칠성동 · 복현동 · 침산동 · 산격동 · 동천동 · 관음동 · 태전동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="대구 중구 동인동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">중구·남구·동구</div><div class="dc__dongs">동인동 · 삼덕동 · 봉산동 · 대봉동 · 효목동 · 안심동 · 대명동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="경북 포항시 효자동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">경북 포항</div><div class="dc__dongs">효자동 · 이동 · 두호동 · 장성동 · 양덕동 · 죽도동 · 해도동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="경북 구미시 형곡동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">경북 구미·경주</div><div class="dc__dongs">형곡동 · 원평동 · 송정동 · 봉곡동 · 경주 황성동 · 성건동 · 안동 옥동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">대구·경북 지역 무료 상담 신청 →</a>
         </div>
 
         <!-- 부산·경남 -->
-        <div class="rg-panel" id="rp-busan">
+        <div class="rg-panel" id="rp-busan" style="--dc-clr:#DC2626">
           <p class="rg-panel__desc">📍 부산·울산·경상남도 전 지역 방문·화상 과외 연결 가능합니다.</p>
-          <div class="district-grid">
-            <div class="district-card"><strong>해운대구</strong><span>좌1~5동 · 우1~3동 · 재송1·2동 · 반여1~4동 · 반송1·2동 · 중1동 · 송정동 · 달맞이</span></div>
-            <div class="district-card"><strong>수영구</strong><span>광안1~4동 · 민락동 · 남천1·2동 · 망미1·2동 · 수영동</span></div>
-            <div class="district-card"><strong>동래구</strong><span>온천1~4동 · 명륜동 · 수안동 · 안락1·2동 · 낙민동 · 복천동 · 칠산동</span></div>
-            <div class="district-card"><strong>부산진구</strong><span>부전1·2동 · 전포1·2동 · 개금1~3동 · 당감1~4동 · 연지동 · 범천1·2동 · 초읍동 · 범일1·2동</span></div>
-            <div class="district-card"><strong>남구·연제구</strong><span>대연1~6동 · 용호1~4동 · 문현1~4동 · 우암동 · 감만1·2동 · 연산1~9동 · 거제1~4동</span></div>
-            <div class="district-card"><strong>사상구·북구</strong><span>덕포1·2동 · 모라1~3동 · 주례1~3동 · 학장동 · 엄궁동 · 괴법동 · 구포1~3동 · 화명1~3동 · 금곡동</span></div>
-            <div class="district-card"><strong>울산 남구·중구</strong><span>삼산동 · 달동 · 무거동 · 신정1~6동 · 옥동 · 야음장생포동 · 수암동 · 성남동 · 학성동</span></div>
-            <div class="district-card"><strong>경남 창원</strong><span>성산구 상남동·중앙동 · 의창구 팔룡동·용호동 · 마산합포구 합포동·중앙동 · 진해구 석동·경화동</span></div>
-            <div class="district-card"><strong>경남 김해·양산</strong><span>김해 장유동 · 내동 · 부원동 · 삼방동 · 양산 중부동 · 물금읍 · 웅상읍</span></div>
+          <div class="dc-grid">
+            <div class="dc" data-area="부산 해운대구 좌동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">해운대구</div><div class="dc__dongs">좌동 · 우동 · 재송동 · 반여동 · 반송동 · 송정동 · 달맞이길</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="부산 수영구 광안동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">수영구·동래구</div><div class="dc__dongs">광안동 · 민락동 · 남천동 · 수영동 · 온천동 · 명륜동 · 안락동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="부산 부산진구 부전동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">부산진구·연제구</div><div class="dc__dongs">부전동 · 전포동 · 개금동 · 당감동 · 연산동 · 거제동 · 초읍동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="부산 남구 대연동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">남구·사상·북구</div><div class="dc__dongs">대연동 · 용호동 · 문현동 · 우암동 · 주례동 · 화명동 · 구포동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="울산 남구 삼산동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">울산</div><div class="dc__dongs">삼산동 · 달동 · 무거동 · 신정동 · 옥동 · 성남동 · 학성동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="경남 창원시 상남동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">경남 창원·김해</div><div class="dc__dongs">상남동 · 중앙동 · 팔룡동 · 합포동 · 장유동 · 물금읍 · 웅상읍</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">부산·경남 지역 무료 상담 신청 →</a>
         </div>
 
         <!-- 광주·전라 -->
-        <div class="rg-panel" id="rp-gwangju">
+        <div class="rg-panel" id="rp-gwangju" style="--dc-clr:#DB2777">
           <p class="rg-panel__desc">📍 광주·전라남도·전라북도 전 지역 방문·화상 과외 연결 가능합니다.</p>
-          <div class="district-grid">
-            <div class="district-card"><strong>광주 서구</strong><span>화정1~4동 · 금호1·2동 · 쌍촌동 · 치평동 · 광천동 · 동천동 · 마륵동 · 풍암동 · 벽진동 · 서창동</span></div>
-            <div class="district-card"><strong>광주 북구</strong><span>용봉동 · 각화동 · 운암1~3동 · 오치1·2동 · 일곡동 · 매곡동 · 신안동 · 중흥1~3동 · 문흥1·2동 · 두암동</span></div>
-            <div class="district-card"><strong>광주 남구·동구</strong><span>봉선1·2동 · 주월1·2동 · 방림1·2동 · 사직동 · 구동 · 백운1·2동 · 월산동 · 충장동 · 동명동 · 지산동</span></div>
-            <div class="district-card"><strong>광주 광산구</strong><span>수완동 · 첨단1·2동 · 운남동 · 신가동 · 소촌동 · 우산동 · 하남동 · 월곡1·2동 · 임곡동 · 비아동</span></div>
-            <div class="district-card"><strong>전북 전주</strong><span>효자1~5동 · 중화산1·2동 · 평화1·2동 · 송천1·2동 · 인후1~3동 · 우아1·2동 · 서신동 · 삼천1~3동 · 완산동</span></div>
-            <div class="district-card"><strong>전북 익산·군산</strong><span>익산 영등동 · 동산동 · 어양동 · 모현동 · 군산 조촌동 · 수송동 · 미룡동 · 나운동</span></div>
-            <div class="district-card"><strong>전남 순천</strong><span>조례1·2동 · 풍덕동 · 연향동 · 왕지동 · 매곡동 · 덕연동 · 오천동 · 해룡면 · 서면</span></div>
-            <div class="district-card"><strong>전남 목포·여수</strong><span>목포 하당동 · 신흥동 · 옥암동 · 상동 · 여수 중앙동 · 학동 · 돌산읍 · 소라면</span></div>
+          <div class="dc-grid">
+            <div class="dc" data-area="광주 서구 화정동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">광주 서구</div><div class="dc__dongs">화정동 · 금호동 · 쌍촌동 · 치평동 · 광천동 · 풍암동 · 마륵동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="광주 북구 용봉동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">광주 북구</div><div class="dc__dongs">용봉동 · 각화동 · 운암동 · 오치동 · 일곡동 · 문흥동 · 두암동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="광주 남구 봉선동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">광주 남구·동구</div><div class="dc__dongs">봉선동 · 주월동 · 방림동 · 백운동 · 사직동 · 충장동 · 동명동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="광주 광산구 수완동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">광주 광산구</div><div class="dc__dongs">수완동 · 첨단동 · 운남동 · 신가동 · 소촌동 · 하남동 · 월곡동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="전북 전주시 효자동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">전북 전주</div><div class="dc__dongs">효자동 · 중화산동 · 평화동 · 송천동 · 인후동 · 서신동 · 삼천동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="전남 순천시 조례동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">전남 순천·목포</div><div class="dc__dongs">조례동 · 풍덕동 · 연향동 · 매곡동 · 하당동 · 신흥동 · 옥암동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">광주·전라 지역 무료 상담 신청 →</a>
         </div>
 
         <!-- 강원·제주·기타 -->
-        <div class="rg-panel" id="rp-etc">
+        <div class="rg-panel" id="rp-etc" style="--dc-clr:#64748B">
           <p class="rg-panel__desc">📍 강원·제주 및 전국 기타 지역은 비대면 화상 과외로 전국 선생님 풀에서 연결해드립니다.</p>
-          <div class="district-grid">
-            <div class="district-card"><strong>강원 춘천</strong><span>효자1~3동 · 퇴계동 · 석사동 · 후평1~3동 · 소양동 · 봉의동 · 교동 · 조운동 · 강남동 · 신북읍</span></div>
-            <div class="district-card"><strong>강원 강릉</strong><span>교동 · 포남1·2동 · 입암동 · 성남동 · 홍제동 · 중앙동 · 내곡동 · 노암동 · 성덕동 · 주문진읍</span></div>
-            <div class="district-card"><strong>강원 원주</strong><span>단계동 · 무실동 · 반곡동 · 행구동 · 원동 · 평원동 · 태장1·2동 · 명륜동 · 개운동 · 혁신도시(지정면)</span></div>
-            <div class="district-card"><strong>강원 속초·동해</strong><span>속초 조양동 · 영랑동 · 교동 · 동해 천곡동 · 송정동 · 북삼동 · 묵호동</span></div>
-            <div class="district-card"><strong>제주시</strong><span>연동 · 노형동 · 아라동 · 이도1·2동 · 삼도1·2동 · 외도동 · 일도동 · 건입동 · 한림읍 · 애월읍</span></div>
-            <div class="district-card"><strong>서귀포시</strong><span>서귀동 · 대정읍 · 남원읍 · 성산읍 · 표선면 · 중문동 · 대천동 · 예래동 · 안덕면</span></div>
-            <div class="district-card"><strong>그 외 전국</strong><span>전국 어디서나 화상 과외로 연결 가능합니다. 도서 산간 지역 포함 비대면 수업 진행</span></div>
+          <div class="dc-grid">
+            <div class="dc" data-area="강원 춘천시 효자동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">강원 춘천</div><div class="dc__dongs">효자동 · 퇴계동 · 석사동 · 후평동 · 소양동 · 봉의동 · 교동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="강원 강릉시 교동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">강원 강릉·원주</div><div class="dc__dongs">교동 · 포남동 · 입암동 · 성남동 · 단계동 · 무실동 · 반곡동</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="제주시 연동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">제주시</div><div class="dc__dongs">연동 · 노형동 · 아라동 · 이도동 · 삼도동 · 외도동 · 애월읍</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="서귀포시 서귀동"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">서귀포시</div><div class="dc__dongs">서귀동 · 대정읍 · 남원읍 · 성산읍 · 표선면 · 중문동 · 안덕면</div><button class="dc__btn">이 지역 상담 신청 →</button></div></div>
+            <div class="dc" data-area="전국 화상 과외"><div class="dc__top"></div><div class="dc__body"><div class="dc__name">그 외 전국</div><div class="dc__dongs">전국 어디서나 화상 과외로 연결 가능 · 도서 산간 지역 포함 · 비대면 수업 진행</div><button class="dc__btn">화상 과외 신청 →</button></div></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">화상 과외 무료 상담 신청 →</a>
         </div>
@@ -3872,15 +3858,13 @@ select:focus-visible, textarea:focus-visible{
 <!-- ============================================================
      과목 / 가격 안내
 ============================================================ -->
-<section class="section sec-fold" id="pricing">
+<section class="section" id="pricing">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">과목 &amp; 가격 안내</span>
       <h2>학년과 수업 방식에 따른 가격 가이드</h2>
       <p>방문·화상·단과 가격을 확인하세요. 정확한 견적은 상담으로 안내드립니다.</p>
-      <button class="sec-fold__toggle"><span class="sec-fold__label">가격 보기</span> <span class="sec-fold__arrow">▾</span></button>
     </div>
-    <div class="sec-fold__body">
     <div class="price-tabs" role="tablist">
       <button type="button" class="price-tab-btn is-active" data-target="panel-visit">방문</button>
       <button type="button" class="price-tab-btn" data-target="panel-cyber">화상</button>
@@ -3973,7 +3957,6 @@ select:focus-visible, textarea:focus-visible{
       <span>과학</span><span>한국사</span><span>제2외국어</span><span>논술·면접</span>
       <span>전 과목 가능</span>
     </div>
-    </div><!-- /sec-fold__body -->
   </div>
 </section>
 
@@ -3984,9 +3967,7 @@ select:focus-visible, textarea:focus-visible{
       <span class="eyebrow">실시간 수업 현황</span>
       <h2>지금 이 순간, 진행 중인 수업들</h2>
       <p>스터디브릿지를 통해 지금도 전국에서 1:1 수업이 이뤄지고 있습니다.</p>
-      <button class="sec-fold__toggle"><span class="sec-fold__label">수업 현황 보기</span> <span class="sec-fold__arrow">▾</span></button>
     </div>
-    <div class="sec-fold__body">
     <div class="live-grid">
       <div class="live-card">
         <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.15</span></div>
@@ -4000,6 +3981,10 @@ select:focus-visible, textarea:focus-visible{
         <div class="live-card__info"><strong>수원시 영통동</strong> · 초5 · 주2회 화상<br>파닉스 졸업 후 독해·회화 병행</div>
         <span class="live-card__tag">화상 과외</span>
       </div>
+    </div>
+    <button class="sec-fold__toggle"><span class="sec-fold__label">수업 현황 더 보기</span> <span class="sec-fold__arrow">▾</span></button>
+    <div class="sec-fold__body">
+    <div class="live-grid">
       <div class="live-card">
         <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.14</span></div>
         <div class="live-card__subject">📖 국어</div>
@@ -4048,9 +4033,7 @@ select:focus-visible, textarea:focus-visible{
       <span class="eyebrow">학생 성공 스토리</span>
       <h2>실제 수업 후기</h2>
       <p>스터디브릿지와 함께 성적을 바꾼 학생들의 이야기입니다.</p>
-      <button class="sec-fold__toggle"><span class="sec-fold__label">후기 보기</span> <span class="sec-fold__arrow">▾</span></button>
     </div>
-    <div class="sec-fold__body">
     <div class="blog-grid reveal">
       <article class="blog-card"
         data-desc="대치동에 살면서 학원을 5곳 다녀봤는데 성적이 안 올랐어요. 스터디브릿지로 연결받은 선생님께서 제 풀이 과정을 보시고 &quot;이 부분에서 개념을 잘못 잡고 있다&quot;고 딱 짚어주셨어요. 3개월 만에 3등급, 8개월 후 첫 1등급 받았습니다."
@@ -4072,6 +4055,10 @@ select:focus-visible, textarea:focus-visible{
           <span class="blog-card__readmore">후기 읽기 →</span>
         </div>
       </article>
+    </div>
+    <button class="sec-fold__toggle"><span class="sec-fold__label">후기 더 보기</span> <span class="sec-fold__arrow">▾</span></button>
+    <div class="sec-fold__body">
+    <div class="blog-grid reveal">
       <article class="blog-card"
         data-desc="학교를 일찍 그만뒀는데 취업 때문에 고졸 자격이 필요했어요. 수학이 특히 자신 없었는데 선생님이 기초부터 차근차근 설명해주셔서 중학교 개념도 다시 잡고, 검정고시 수학 70점으로 합격했습니다."
         data-author="동탄2신도시 · 20대 박○○">
@@ -4464,9 +4451,9 @@ formResetBtn.addEventListener('click', function () {
    3-2) 선생님 과목 필터
 ============================================================ */
 (function () {
-  var grid = document.getElementById('teacherGrid');
-  if (!grid) return;
-  var cards = Array.from(grid.querySelectorAll('.tc-card'));
+  var section = document.getElementById('teachers');
+  if (!section) return;
+  var cards = Array.from(section.querySelectorAll('.tc-card'));
   var filters = Array.from(document.querySelectorAll('.tc-filter'));
 
   filters.forEach(function (btn) {
@@ -4610,45 +4597,14 @@ document.querySelectorAll('.price-tab-btn').forEach(btn => {
     return '<div class="dong-detail__row"><span class="dong-detail__label">' + label + '</span><div class="dong-detail__tags">' + tags(arr, cls || '') + '</div></div>';
   }
 
-  document.querySelectorAll('.district-card').forEach(function(card){
-    var nameEl = card.querySelector('strong');
-    var spanEl = card.querySelector('span');
-    if (!nameEl || !spanEl) return;
-    var nameText = nameEl.innerHTML;
-    var dongList = spanEl.textContent.split(' · ').map(function(s){ return s.trim(); }).filter(Boolean);
-
-    card.innerHTML =
-      '<button class="district-card__btn" aria-expanded="false">' +
-        '<strong>' + nameText + '</strong>' +
-        '<span class="district-card__arrow">▾</span>' +
-      '</button>' +
-      '<div class="district-card__detail">' +
-        '<p style="font-size:12px;color:var(--color-slate);margin:0 0 10px;">동 이름을 눌러 과외 가이드를 확인하세요</p>' +
-        '<div class="dong-chips"></div>' +
-      '</div>';
-
-    var btn = card.querySelector('.district-card__btn');
-    var chipsEl = card.querySelector('.dong-chips');
-
-    dongList.forEach(function(dong){
-      var chip = document.createElement('button');
-      chip.className = 'dong-chip';
-      chip.textContent = dong.replace(/[\d·~]+동$/, '동').trim();
-      chip.addEventListener('click', function(e){
-        e.stopPropagation();
-        chipsEl.querySelectorAll('.dong-chip').forEach(function(c){ c.classList.remove('is-active'); });
-        chip.classList.add('is-active');
-        window.openDongModal(dong, norm(dong));
-      });
-      chipsEl.appendChild(chip);
-    });
-
-    btn.addEventListener('click', function(){
-      var isOpen = card.classList.toggle('is-open');
-      this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      if (!isOpen) {
-        chipsEl.querySelectorAll('.dong-chip').forEach(function(c){ c.classList.remove('is-active'); });
-      }
+  /* 지역 카드 클릭 → 상담 폼 지역 입력 + 스크롤 */
+  document.querySelectorAll('.dc').forEach(function(card){
+    card.addEventListener('click', function(){
+      var area = card.getAttribute('data-area');
+      var regionInput = document.getElementById('region');
+      if (regionInput && area) regionInput.value = area;
+      var applyEl = document.getElementById('apply');
+      if (applyEl) applyEl.scrollIntoView({behavior:'smooth', block:'start'});
     });
   });
 })();
