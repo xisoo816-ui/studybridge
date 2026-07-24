@@ -2034,69 +2034,73 @@ select:focus-visible, textarea:focus-visible{
 
 /* ---- 현수업 근황 섹션 ---- */
 .live-section{ padding:60px 0; }
-.live-grid{
-  display:flex; gap:14px;
-  overflow-x:auto; padding:4px 2px 14px;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-}
-.live-grid::-webkit-scrollbar{ height:4px; }
-.live-grid::-webkit-scrollbar-thumb{ background:var(--color-line); border-radius:4px; }
-.live-card{
-  flex:0 0 260px; scroll-snap-align:start;
-  background:#fff; border:1.5px solid var(--color-line);
-  border-radius:14px; padding:18px 20px;
-  display:flex; flex-direction:column; gap:10px;
-  transition:box-shadow .2s,transform .2s;
-}
-.live-card:hover{ box-shadow:0 6px 24px rgba(52,87,178,.10); transform:translateY(-2px); }
-.live-card__top{ display:flex; align-items:center; justify-content:space-between; }
-.live-card__status{ display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:var(--color-mint); }
-.live-card__status::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--color-mint); animation:livePulse 1.6s ease infinite; }
+/* ── 실시간 수업 현황 피드 ── */
 @keyframes livePulse{ 0%,100%{opacity:1}50%{opacity:.4} }
-.live-card__date{ font-size:11.5px; color:var(--color-slate); }
-.live-card__subject{ font-size:17px; font-weight:900; color:var(--color-harbor); }
-.live-card__info{ font-size:13px; color:var(--color-ink); line-height:1.6; }
-.live-card__info strong{ color:var(--color-signal); }
-.live-card__tag{ display:inline-block; font-size:11.5px; font-weight:700; color:var(--color-signal); background:var(--color-mist); padding:3px 10px; border-radius:999px; width:fit-content; }
+.lf-feed{
+  border:1.5px solid #E5E7EB;
+  border-radius:14px; overflow:hidden; background:#fff;
+}
+.lf-row{
+  display:flex; align-items:center; gap:14px;
+  padding:13px 20px; border-bottom:1px solid #F3F4F6;
+  transition:background .15s;
+}
+.lf-row:last-child{ border-bottom:none; }
+.lf-row:hover{ background:#F8FAFF; }
+.lf-dot{
+  width:8px; height:8px; border-radius:50%;
+  background:#22C55E; flex-shrink:0;
+  animation:livePulse 1.8s ease infinite;
+}
+.lf-subj{
+  font-size:14px; font-weight:800; color:#1A2B52;
+  white-space:nowrap; min-width:72px; flex-shrink:0;
+}
+.lf-mid{ flex:1; min-width:0; }
+.lf-loc{ font-size:13px; font-weight:700; color:#1A2B52; margin-right:5px; }
+.lf-detail{ font-size:12px; color:#6B7280; }
+.lf-right{
+  display:flex; flex-direction:column; align-items:flex-end;
+  gap:4px; flex-shrink:0;
+}
+.lf-type{
+  font-size:11px; font-weight:700;
+  color:#3457B2; background:#EAF2FF;
+  padding:3px 9px; border-radius:999px; white-space:nowrap;
+}
+.lf-date{ font-size:11px; color:#9CA3AF; }
+@media(max-width:560px){
+  .lf-row{ padding:11px 14px; gap:10px; }
+  .lf-detail{ display:none; }
+}
 
-/* ---- 블로그 후기 섹션 ---- */
+/* ── 블로그 후기 섹션 ── */
 .blog-section{ padding:60px 0; background:var(--color-mist); }
-.blog-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; }
-.blog-card{
-  background:#fff; border-radius:16px;
-  overflow:hidden; border:1.5px solid var(--color-line);
-  transition:box-shadow .2s,transform .2s;
-  display:flex; flex-direction:column;
+.rvw-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.rvw-card{
+  background:#fff; border:1.5px solid #E5E7EB;
+  border-radius:14px; padding:22px 22px 18px;
+  display:flex; flex-direction:column; gap:10px;
+  cursor:pointer; transition:box-shadow .2s,transform .2s;
 }
-.blog-card{ cursor:pointer; }
-.blog-card:hover{ box-shadow:0 8px 32px rgba(52,87,178,.12); transform:translateY(-3px); }
-.blog-card__thumb{
-  height:100px; display:flex; align-items:center; justify-content:center;
-  font-size:42px; flex-shrink:0;
+.rvw-card:hover{ box-shadow:0 6px 24px rgba(52,87,178,.1); transform:translateY(-2px); }
+.rvw-stars{ font-size:14px; color:#FBBF24; letter-spacing:2px; }
+.rvw-cat{
+  font-size:11.5px; font-weight:700; color:#3457B2;
+  background:#EAF2FF; padding:3px 10px; border-radius:999px; width:fit-content;
 }
-.blog-card__body{ padding:16px 18px 18px; display:flex; flex-direction:column; gap:8px; flex:1; }
-.blog-card__meta{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-.blog-card__date{ font-size:11.5px; color:var(--color-slate); }
-.blog-card__cat{ font-size:11.5px; font-weight:700; color:var(--color-signal); background:var(--color-mist); padding:2px 9px; border-radius:999px; }
-.blog-card__title{ font-size:15px; font-weight:800; color:var(--color-harbor); line-height:1.4; margin:0; }
-.blog-card__desc{ display:none; }
-.blog-card__more{ font-size:12.5px; font-weight:700; color:var(--color-signal); }
-.blog-card__readmore{ font-size:12px; color:var(--color-signal); font-weight:600; margin-top:2px; }
-.blog-more-btn{
-  display:block; margin:24px auto 0;
-  padding:12px 32px; border-radius:999px;
-  border:2px solid var(--color-signal); background:#fff;
-  color:var(--color-signal); font-size:14px; font-weight:700;
-  cursor:pointer; transition:background .15s,color .15s;
+.rvw-title{ font-size:15px; font-weight:800; color:#1A2B52; line-height:1.4; margin:0; }
+.rvw-text{
+  font-size:13.5px; color:#4B5563; line-height:1.7;
+  flex:1; margin:0;
 }
-.blog-more-btn:hover{ background:var(--color-signal); color:#fff; }
-.blog-extra{ display:none; }
-.blog-extra.is-open{ display:contents; }
-@media(min-width:900px){
-  .live-grid{ flex-wrap:wrap; overflow-x:visible; }
-  .live-card{ flex:1 1 calc(25% - 14px); min-width:220px; }
+.rvw-footer{
+  border-top:1px solid #F3F4F6; padding-top:12px;
+  display:flex; align-items:center; justify-content:space-between; gap:6px; flex-wrap:wrap;
 }
+.rvw-author{ font-size:12px; color:#6B7280; }
+.rvw-date{ font-size:11.5px; color:#9CA3AF; }
+@media(max-width:640px){ .rvw-grid{ grid-template-columns:1fr; } }
 
 /* ---- 섹션 아코디언 ---- */
 .sec-fold .sec-fold__body{ display:none; }
@@ -3974,60 +3978,84 @@ select:focus-visible, textarea:focus-visible{
       <h2>지금 이 순간, 진행 중인 수업들</h2>
       <p>스터디브릿지를 통해 지금도 전국에서 1:1 수업이 이뤄지고 있습니다.</p>
     </div>
-    <div class="live-grid">
-      <div class="live-card">
-        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.15</span></div>
-        <div class="live-card__subject">📐 수학</div>
-        <div class="live-card__info"><strong>강남구 대치동</strong> · 중3 · 주2회 방문<br>수능 수학 1등급 목표, 취약 단원 집중 보완</div>
-        <span class="live-card__tag">방문 과외</span>
+    <div class="lf-feed reveal">
+      <div class="lf-row">
+        <span class="lf-dot"></span>
+        <span class="lf-subj">📐 수학</span>
+        <div class="lf-mid">
+          <span class="lf-loc">강남구 대치동</span>
+          <span class="lf-detail">중3 · 주2회 방문 · 수능 1등급 목표</span>
+        </div>
+        <div class="lf-right"><span class="lf-type">방문 과외</span><span class="lf-date">07.15</span></div>
       </div>
-      <div class="live-card">
-        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.14</span></div>
-        <div class="live-card__subject">🔤 영어</div>
-        <div class="live-card__info"><strong>수원시 영통동</strong> · 초5 · 주2회 화상<br>파닉스 졸업 후 독해·회화 병행</div>
-        <span class="live-card__tag">화상 과외</span>
+      <div class="lf-row">
+        <span class="lf-dot"></span>
+        <span class="lf-subj">🔤 영어</span>
+        <div class="lf-mid">
+          <span class="lf-loc">수원시 영통동</span>
+          <span class="lf-detail">초5 · 주2회 화상 · 독해·회화 병행</span>
+        </div>
+        <div class="lf-right"><span class="lf-type">화상 과외</span><span class="lf-date">07.14</span></div>
+      </div>
+      <div class="lf-row">
+        <span class="lf-dot"></span>
+        <span class="lf-subj">📖 국어</span>
+        <div class="lf-mid">
+          <span class="lf-loc">부산 해운대구</span>
+          <span class="lf-detail">고2 · 주1회 화상 · 비문학 + 수능 고득점</span>
+        </div>
+        <div class="lf-right"><span class="lf-type">화상 과외</span><span class="lf-date">07.14</span></div>
       </div>
     </div>
     <button class="sec-fold__toggle"><span class="sec-fold__label">수업 현황 더 보기</span> <span class="sec-fold__arrow">▾</span></button>
     <div class="sec-fold__body">
-    <div class="live-grid">
-      <div class="live-card">
-        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.14</span></div>
-        <div class="live-card__subject">📖 국어</div>
-        <div class="live-card__info"><strong>부산 해운대구 좌동</strong> · 고2 · 주1회 화상<br>비문학 독해 + 수능 국어 고득점 전략</div>
-        <span class="live-card__tag">화상 과외</span>
+      <div class="lf-feed">
+        <div class="lf-row">
+          <span class="lf-dot"></span>
+          <span class="lf-subj">🔬 과학</span>
+          <div class="lf-mid">
+            <span class="lf-loc">성남시 분당구</span>
+            <span class="lf-detail">중1 · 주2회 방문 · 내신 대비 개념+문제풀이</span>
+          </div>
+          <div class="lf-right"><span class="lf-type">방문 과외</span><span class="lf-date">07.13</span></div>
+        </div>
+        <div class="lf-row">
+          <span class="lf-dot"></span>
+          <span class="lf-subj">📐 수학</span>
+          <div class="lf-mid">
+            <span class="lf-loc">화성시 동탄</span>
+            <span class="lf-detail">고1 · 주2회 방문 · 수학1 개념 + 내신 1등급</span>
+          </div>
+          <div class="lf-right"><span class="lf-type">방문 과외</span><span class="lf-date">07.13</span></div>
+        </div>
+        <div class="lf-row">
+          <span class="lf-dot"></span>
+          <span class="lf-subj">✍️ 논술</span>
+          <div class="lf-mid">
+            <span class="lf-loc">서울 양천구 목동</span>
+            <span class="lf-detail">고3 · 주1회 방문 · 연세대 논술 집중 대비</span>
+          </div>
+          <div class="lf-right"><span class="lf-type">방문 과외</span><span class="lf-date">07.12</span></div>
+        </div>
+        <div class="lf-row">
+          <span class="lf-dot"></span>
+          <span class="lf-subj">🎓 검정고시</span>
+          <div class="lf-mid">
+            <span class="lf-loc">대전 유성구</span>
+            <span class="lf-detail">성인 · 주3회 화상 · 수학·영어 단기합격 목표</span>
+          </div>
+          <div class="lf-right"><span class="lf-type">화상 과외</span><span class="lf-date">07.12</span></div>
+        </div>
+        <div class="lf-row">
+          <span class="lf-dot"></span>
+          <span class="lf-subj">🔤 영어</span>
+          <div class="lf-mid">
+            <span class="lf-loc">인천 연수구 송도</span>
+            <span class="lf-detail">중2 · 주2회 방문 · 내신 + 수능 독해 선행</span>
+          </div>
+          <div class="lf-right"><span class="lf-type">방문 과외</span><span class="lf-date">07.11</span></div>
+        </div>
       </div>
-      <div class="live-card">
-        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.13</span></div>
-        <div class="live-card__subject">🔬 과학</div>
-        <div class="live-card__info"><strong>성남시 분당구 정자동</strong> · 중1 · 주2회 방문<br>중학교 과학 내신 대비, 개념+문제풀이</div>
-        <span class="live-card__tag">방문 과외</span>
-      </div>
-      <div class="live-card">
-        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.13</span></div>
-        <div class="live-card__subject">📐 수학</div>
-        <div class="live-card__info"><strong>화성시 동탄동</strong> · 고1 · 주2회 방문<br>수학1 개념 정리 + 내신 1등급 목표</div>
-        <span class="live-card__tag">방문 과외</span>
-      </div>
-      <div class="live-card">
-        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.12</span></div>
-        <div class="live-card__subject">✍️ 논술</div>
-        <div class="live-card__info"><strong>서울 양천구 목동</strong> · 고3 · 주1회 방문<br>연세대 논술 유형 집중 대비</div>
-        <span class="live-card__tag">방문 과외</span>
-      </div>
-      <div class="live-card">
-        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.12</span></div>
-        <div class="live-card__subject">🎓 검정고시</div>
-        <div class="live-card__info"><strong>대전 유성구 노은동</strong> · 성인 · 주3회 화상<br>고졸 검정고시 단기합격 목표, 수학·영어 집중</div>
-        <span class="live-card__tag">화상 과외</span>
-      </div>
-      <div class="live-card">
-        <div class="live-card__top"><span class="live-card__status">진행 중</span><span class="live-card__date">2026.07.11</span></div>
-        <div class="live-card__subject">🔤 영어</div>
-        <div class="live-card__info"><strong>인천 연수구 송도동</strong> · 중2 · 주2회 방문<br>내신 영어 + 수능 독해 선행 병행</div>
-        <span class="live-card__tag">방문 과외</span>
-      </div>
-    </div><!-- /live-grid -->
     </div><!-- /sec-fold__body -->
   </div>
 </section>
@@ -4040,65 +4068,67 @@ select:focus-visible, textarea:focus-visible{
       <h2>실제 수업 후기</h2>
       <p>스터디브릿지와 함께 성적을 바꾼 학생들의 이야기입니다.</p>
     </div>
-    <div class="blog-grid reveal">
-      <article class="blog-card"
+    <div class="rvw-grid reveal">
+      <div class="rvw-card"
+        data-title="수학 4등급→1등급, 수능 전 8개월의 기록"
+        data-cat="수학 · 고3" data-date="2026.07.14"
         data-desc="대치동에 살면서 학원을 5곳 다녀봤는데 성적이 안 올랐어요. 스터디브릿지로 연결받은 선생님께서 제 풀이 과정을 보시고 &quot;이 부분에서 개념을 잘못 잡고 있다&quot;고 딱 짚어주셨어요. 3개월 만에 3등급, 8개월 후 첫 1등급 받았습니다."
         data-author="강남구 대치동 · 재수생 김○○">
-        <div class="blog-card__thumb" style="background:linear-gradient(135deg,#1A2B52,#3457B2)">📐</div>
-        <div class="blog-card__body">
-          <div class="blog-card__meta"><time class="blog-card__date">2026.07.14</time><span class="blog-card__cat">수학 · 고3</span></div>
-          <h3 class="blog-card__title">수학 4등급→1등급, 수능 전 8개월의 기록</h3>
-          <span class="blog-card__readmore">후기 읽기 →</span>
-        </div>
-      </article>
-      <article class="blog-card"
+        <div class="rvw-stars">★★★★★</div>
+        <span class="rvw-cat">수학 · 고3</span>
+        <h3 class="rvw-title">수학 4등급→1등급, 수능 전 8개월의 기록</h3>
+        <p class="rvw-text">"대치동에서 학원 5곳 다녔는데 성적이 안 올랐어요. 선생님이 제 풀이 과정에서 개념을 잘못 잡은 부분을 딱 짚어주셨어요. 3개월 만에 3등급, 8개월 후 첫 1등급 받았습니다."</p>
+        <div class="rvw-footer"><span class="rvw-author">강남구 대치동 · 재수생 김○○</span><time class="rvw-date">2026.07.14</time></div>
+      </div>
+      <div class="rvw-card"
+        data-title="영어 내신 C → A, 중간고사 전 6주 집중"
+        data-cat="영어 · 중2" data-date="2026.07.12"
         data-desc="목동에 사는데 아이가 학원 다니기 싫다고 해서 방문 과외를 시도했어요. 선생님이 우리 학교 교과서와 기출문제를 미리 분석해오셔서 딱 맞춤 대비를 해주셨어요. 6주 만에 내신이 두 단계 올랐습니다."
         data-author="양천구 목동 · 중2 학부모 이○○">
-        <div class="blog-card__thumb" style="background:linear-gradient(135deg,#0D3B5E,#0E6EA8)">🔤</div>
-        <div class="blog-card__body">
-          <div class="blog-card__meta"><time class="blog-card__date">2026.07.12</time><span class="blog-card__cat">영어 · 중2</span></div>
-          <h3 class="blog-card__title">영어 내신 C → A, 중간고사 전 6주 집중</h3>
-          <span class="blog-card__readmore">후기 읽기 →</span>
-        </div>
-      </article>
+        <div class="rvw-stars">★★★★★</div>
+        <span class="rvw-cat">영어 · 중2</span>
+        <h3 class="rvw-title">영어 내신 C → A, 중간고사 전 6주 집중</h3>
+        <p class="rvw-text">"아이가 학원 가기 싫다고 해서 방문 과외를 시도했어요. 선생님이 우리 학교 기출문제를 미리 분석해오셔서 맞춤 대비를 해주셨어요. 6주 만에 내신이 두 단계 올랐습니다."</p>
+        <div class="rvw-footer"><span class="rvw-author">양천구 목동 · 중2 학부모 이○○</span><time class="rvw-date">2026.07.12</time></div>
+      </div>
     </div>
     <button class="sec-fold__toggle"><span class="sec-fold__label">후기 더 보기</span> <span class="sec-fold__arrow">▾</span></button>
     <div class="sec-fold__body">
-    <div class="blog-grid reveal">
-      <article class="blog-card"
-        data-desc="학교를 일찍 그만뒀는데 취업 때문에 고졸 자격이 필요했어요. 수학이 특히 자신 없었는데 선생님이 기초부터 차근차근 설명해주셔서 중학교 개념도 다시 잡고, 검정고시 수학 70점으로 합격했습니다."
-        data-author="동탄2신도시 · 20대 박○○">
-        <div class="blog-card__thumb" style="background:linear-gradient(135deg,#1A6B44,#22A865)">🎓</div>
-        <div class="blog-card__body">
-          <div class="blog-card__meta"><time class="blog-card__date">2026.07.10</time><span class="blog-card__cat">검정고시</span></div>
-          <h3 class="blog-card__title">고졸 검정고시, 4개월 만에 전 과목 합격</h3>
-          <span class="blog-card__readmore">후기 읽기 →</span>
+      <div class="rvw-grid reveal">
+        <div class="rvw-card"
+          data-title="고졸 검정고시, 4개월 만에 전 과목 합격"
+          data-cat="검정고시" data-date="2026.07.10"
+          data-desc="학교를 일찍 그만뒀는데 취업 때문에 고졸 자격이 필요했어요. 수학이 특히 자신 없었는데 선생님이 기초부터 차근차근 설명해주셔서 중학교 개념도 다시 잡고, 검정고시 수학 70점으로 합격했습니다."
+          data-author="동탄2신도시 · 20대 박○○">
+          <div class="rvw-stars">★★★★★</div>
+          <span class="rvw-cat">검정고시</span>
+          <h3 class="rvw-title">고졸 검정고시, 4개월 만에 전 과목 합격</h3>
+          <p class="rvw-text">"수학이 너무 자신 없었는데 선생님이 기초부터 차근차근 설명해주셨어요. 중학교 개념도 다시 잡고 검정고시 수학 70점으로 합격했습니다."</p>
+          <div class="rvw-footer"><span class="rvw-author">동탄2신도시 · 20대 박○○</span><time class="rvw-date">2026.07.10</time></div>
         </div>
-      </article>
-      <div class="blog-extra" id="blogExtra">
-      <article class="blog-card"
-        data-desc="분당에 사는데 국어 비문학이 발목을 잡았어요. 선생님께서 지문 구조 파악하는 방법을 반복 훈련시켜 주셨는데, 처음엔 20분 걸리던 지문이 나중엔 8분 안에 풀리더라고요. 모의고사 국어 4등급에서 2등급으로 올랐습니다."
-        data-author="성남시 분당구 서현동 · 고2 최○○">
-        <div class="blog-card__thumb" style="background:linear-gradient(135deg,#4A3000,#D08000)">📖</div>
-        <div class="blog-card__body">
-          <div class="blog-card__meta"><time class="blog-card__date">2026.07.08</time><span class="blog-card__cat">국어 · 고2</span></div>
-          <h3 class="blog-card__title">비문학 매번 틀렸는데, 3개월 만에 국어 2등급</h3>
-          <span class="blog-card__readmore">후기 읽기 →</span>
+        <div class="rvw-card"
+          data-title="비문학 매번 틀렸는데, 3개월 만에 국어 2등급"
+          data-cat="국어 · 고2" data-date="2026.07.08"
+          data-desc="분당에 사는데 국어 비문학이 발목을 잡았어요. 선생님께서 지문 구조 파악하는 방법을 반복 훈련시켜 주셨는데, 처음엔 20분 걸리던 지문이 나중엔 8분 안에 풀리더라고요. 모의고사 국어 4등급에서 2등급으로 올랐습니다."
+          data-author="성남시 분당구 서현동 · 고2 최○○">
+          <div class="rvw-stars">★★★★★</div>
+          <span class="rvw-cat">국어 · 고2</span>
+          <h3 class="rvw-title">비문학 매번 틀렸는데, 3개월 만에 국어 2등급</h3>
+          <p class="rvw-text">"처음엔 비문학 지문 하나 푸는 데 20분 걸렸어요. 선생님이 지문 구조 파악법을 반복 훈련시켜주셨고, 3개월 후엔 8분 안에 풀리더라고요."</p>
+          <div class="rvw-footer"><span class="rvw-author">성남시 분당구 서현동 · 고2 최○○</span><time class="rvw-date">2026.07.08</time></div>
         </div>
-      </article>
-      <article class="blog-card"
-        data-desc="지방에 살아서 좋은 선생님 구하기 어려웠는데, 화상 과외를 통해 서울 선생님과 연결됐어요. 선생님이 실험 영상과 자료를 준비해오셔서 수업이 너무 재밌다고 하더라고요. 이제 과학자가 되고 싶다고 합니다."
-        data-author="충북 청주시 복대동 · 초6 학부모 정○○">
-        <div class="blog-card__thumb" style="background:linear-gradient(135deg,#0D4030,#22C3A6)">🔬</div>
-        <div class="blog-card__body">
-          <div class="blog-card__meta"><time class="blog-card__date">2026.07.05</time><span class="blog-card__cat">과학 · 초6</span></div>
-          <h3 class="blog-card__title">초6 아이가 과학이 재밌대요 — 화상 과외 5개월 후기</h3>
-          <span class="blog-card__readmore">후기 읽기 →</span>
+        <div class="rvw-card"
+          data-title="초6 아이가 과학이 재밌대요 — 화상 과외 5개월 후기"
+          data-cat="과학 · 초6" data-date="2026.07.05"
+          data-desc="지방에 살아서 좋은 선생님 구하기 어려웠는데, 화상 과외를 통해 서울 선생님과 연결됐어요. 선생님이 실험 영상과 자료를 준비해오셔서 수업이 너무 재밌다고 하더라고요. 이제 과학자가 되고 싶다고 합니다."
+          data-author="충북 청주시 복대동 · 초6 학부모 정○○">
+          <div class="rvw-stars">★★★★★</div>
+          <span class="rvw-cat">과학 · 초6</span>
+          <h3 class="rvw-title">초6 아이가 과학이 재밌대요 — 화상 과외 5개월 후기</h3>
+          <p class="rvw-text">"지방이라 좋은 선생님 구하기 어려웠는데 화상 과외로 서울 선생님과 연결됐어요. 실험 영상과 자료를 준비해오셔서 아이가 너무 재밌다고 해요."</p>
+          <div class="rvw-footer"><span class="rvw-author">충북 청주시 복대동 · 초6 학부모 정○○</span><time class="rvw-date">2026.07.05</time></div>
         </div>
-      </article>
       </div>
-    </div>
-    <button class="blog-more-btn" id="blogMoreBtn">후기 더 보기 (2개) ▾</button>
     </div><!-- /sec-fold__body -->
   </div>
 </section>
@@ -4864,30 +4894,26 @@ var SUBJ = {
   });
 })();
 
-/* ---- 블로그 카드 클릭 → 모달 ---- */
+/* ---- 후기 카드 클릭 → 모달 ---- */
 (function(){
-  document.querySelectorAll('.blog-card[data-desc]').forEach(function(card){
+  document.querySelectorAll('.rvw-card[data-desc]').forEach(function(card){
     card.addEventListener('click', function(){
-      var title = card.querySelector('.blog-card__title') ? card.querySelector('.blog-card__title').textContent : '';
-      var cat = card.querySelector('.blog-card__cat') ? card.querySelector('.blog-card__cat').textContent : '';
-      var date = card.querySelector('.blog-card__date') ? card.querySelector('.blog-card__date').textContent : '';
-      var thumbEl = card.querySelector('.blog-card__thumb');
-      var bg = thumbEl ? thumbEl.style.background : '#1A2B52';
-      var icon = thumbEl ? thumbEl.textContent : '';
+      var title = card.dataset.title || '';
+      var cat = card.dataset.cat || '';
+      var date = card.dataset.date || '';
       var desc = card.dataset.desc || '';
       var author = card.dataset.author || '';
       var modal = document.getElementById('dongModal');
       var content = document.getElementById('dongModalContent');
       if (!modal || !content) return;
       content.innerHTML =
-        '<div class="dong-modal__hero" style="background:' + bg + ';min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">' +
-          '<div style="font-size:40px;line-height:1">' + icon + '</div>' +
+        '<div class="dong-modal__hero" style="background:#1A2B52;min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:24px;">' +
           '<span class="dong-modal__badge">' + cat + '</span>' +
-          '<h3 class="dong-modal__title" style="font-size:18px">' + title + '</h3>' +
+          '<h3 class="dong-modal__title" style="font-size:17px;text-align:center;">' + title + '</h3>' +
         '</div>' +
         '<div class="dong-modal__body">' +
           '<div class="dong-modal__meta"><span>스터디브릿지</span><span class="dm-dot">·</span><time>' + date + '</time></div>' +
-          '<p style="font-size:15px;line-height:1.75;color:var(--color-ink);margin:20px 0;">' + desc + '</p>' +
+          '<p style="font-size:15px;line-height:1.8;color:var(--color-ink);margin:20px 0;">' + desc + '</p>' +
           '<p style="font-size:13px;font-weight:700;color:var(--color-signal);">' + author + '</p>' +
           '<a href="#apply" class="dong-modal__cta" id="blogModalCta">무료 상담 신청하기 →</a>' +
         '</div>';
