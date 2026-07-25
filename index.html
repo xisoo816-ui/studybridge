@@ -4227,6 +4227,10 @@ select:focus-visible, textarea:focus-visible{
             <textarea id="memo" name="memo" rows="3" placeholder="예: 원하는 수업 방향성, 학생 성향, 선호하는 선생님 스타일 등"></textarea>
           </div>
         </div>
+        <!-- 허니팟: 봇 차단용 — 사람에게는 보이지 않음 -->
+        <div style="position:absolute;left:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" value="">
+        </div>
         <button type="submit" class="btn btn--primary btn--block">무료 상담 신청하기</button>
         <p class="form-disclaimer">신청해주신 정보는 연결 상담 목적으로만 사용됩니다.</p>
       </div>
@@ -4371,8 +4375,32 @@ const consultForm = document.getElementById('consultForm');
 const formSuccess = document.getElementById('formSuccess');
 const formResetBtn = document.getElementById('formResetBtn');
 
+/* 마지막 제출 시각 — 60초 쿨다운 */
+let lastSubmitTime = 0;
+
 consultForm.addEventListener('submit', async function (e) {
   e.preventDefault();
+
+  /* 60초 이내 재제출 차단 */
+  const now = Date.now();
+  if (now - lastSubmitTime < 60000) {
+    alert('잠시 후 다시 시도해주세요.');
+    return;
+  }
+
+  /* 전화번호 기본 검증 */
+  const phoneVal = (consultForm.querySelector('#phone') || {}).value || '';
+  if (!/^01[0-9][-\s]?\d{3,4}[-\s]?\d{4}$/.test(phoneVal.trim())) {
+    alert('올바른 전화번호를 입력해주세요. (예: 010-1234-5678)');
+    return;
+  }
+
+  /* memo 필드 HTML 태그 제거 */
+  const memoEl = consultForm.querySelector('#memo');
+  if (memoEl) {
+    memoEl.value = memoEl.value.replace(/<[^>]*>/g, '').trim();
+  }
+
   const submitBtn = consultForm.querySelector('button[type="submit"]');
   if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = '전송 중…'; }
 
@@ -4384,6 +4412,7 @@ consultForm.addEventListener('submit', async function (e) {
     });
 
     if (response.ok) {
+      lastSubmitTime = Date.now();
       consultForm.classList.add('is-submitted');
       formSuccess.classList.add('is-visible');
       formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
