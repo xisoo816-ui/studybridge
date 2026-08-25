@@ -2012,12 +2012,13 @@ select:focus-visible, textarea:focus-visible{
 .pa-prog-fill{ height:100%; background:rgba(255,255,255,.35); width:0%; }
 @media(prefers-reduced-motion:reduce){ .pa-glow{animation:none} .pa-slide,.pa-slide *{transition-duration:.01s!important} .pa-prog-fill{transition:none!important} }
 
-/* ---- 신뢰 배지 4개 ---- */
+/* ---- 신뢰 배지 4개 (다크 밴드) ---- */
+.trust-band{ background:linear-gradient(135deg,var(--color-harbor) 0%,#233a6b 100%); padding:34px 0; }
 .trust-badges{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; }
-.trust-badge{ display:flex; align-items:flex-start; gap:14px; background:var(--color-white); border:1px solid var(--color-line); border-radius:14px; padding:18px 20px; }
+.trust-badge{ display:flex; align-items:flex-start; gap:14px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:14px; padding:18px 20px; }
 .trust-badge__icon{ font-size:26px; flex-shrink:0; }
-.trust-badge h4{ font-family:var(--font-display); font-size:15px; color:var(--color-harbor); margin:0 0 4px; }
-.trust-badge p{ font-size:13px; color:var(--color-slate); margin:0; line-height:1.6; }
+.trust-badge h4{ font-family:var(--font-display); font-size:15px; color:#fff; margin:0 0 4px; }
+.trust-badge p{ font-size:13px; color:rgba(255,255,255,.68); margin:0; line-height:1.6; }
 
 /* ---- 과외 서비스 3카드 ---- */
 .svc-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; }
@@ -2360,7 +2361,6 @@ select:focus-visible, textarea:focus-visible{
     <nav class="nav__links">
       <a class="nav__link" href="#process">진행 과정</a>
       <a class="nav__link" href="#pricing">수업·가격</a>
-      <a class="nav__link" href="#regions">지역 과외</a>
       <a class="nav__link" href="schools.html">학교 찾기</a>
       <a class="nav__link" href="teachers.html">선생님</a>
       <a class="nav__link" href="reviews.html">후기</a>
@@ -2382,7 +2382,6 @@ select:focus-visible, textarea:focus-visible{
     </div>
     <a href="#process">진행 과정</a>
     <a href="#pricing">수업·가격</a>
-    <a href="#regions">지역 과외</a>
     <a href="schools.html">학교 찾기</a>
     <a href="teachers.html">선생님</a>
     <a href="reviews.html">후기</a>
@@ -2687,13 +2686,35 @@ select:focus-visible, textarea:focus-visible{
 <!-- ============================================================
      신뢰 배지 4개
 ============================================================ -->
-<section class="section" style="padding:36px 0;">
+<section class="trust-band">
   <div class="container">
     <div class="trust-badges reveal">
       <div class="trust-badge"><span class="trust-badge__icon">🛡️</span><div><h4>학력·경력 사전 검증</h4><p>선생님 전공·경력을 미리 확인한 뒤 연결해 드려요.</p></div></div>
       <div class="trust-badge"><span class="trust-badge__icon">💸</span><div><h4>상담·매칭 완전 무료</h4><p>상담부터 선생님 연결까지 수수료가 전혀 없어요.</p></div></div>
       <div class="trust-badge"><span class="trust-badge__icon">📍</span><div><h4>전국 방문 + 전국 비대면</h4><p>거주 지역과 상관없이 방문·화상 모두 가능해요.</p></div></div>
       <div class="trust-badge"><span class="trust-badge__icon">⭐</span><div><h4>평균 만족도 4.97점</h4><p>실제 학부모·학생 후기 346건 기준 평점이에요.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     바로가기 6개
+============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">SHORTCUTS</span>
+      <h2>더 자세히 둘러보세요</h2>
+      <p>궁금한 메뉴를 눌러 자세한 내용을 확인해 보세요.</p>
+    </div>
+    <div class="shortcut-grid reveal">
+      <a href="schools.html" class="shortcut-card"><span class="shortcut-card__icon">📌</span><h4>학교 찾기</h4><p>전국 12,000여 개 학교 검색</p></a>
+      <a href="teachers.html" class="shortcut-card"><span class="shortcut-card__icon">👩‍🏫</span><h4>선생님 찾기</h4><p>과목·경력별 선생님 소개</p></a>
+      <a href="#compare" class="shortcut-card"><span class="shortcut-card__icon">🧭</span><h4>수업 방식</h4><p>방문·화상 중 나에게 맞는 선택</p></a>
+      <a href="#pricing" class="shortcut-card"><span class="shortcut-card__icon">💰</span><h4>가격 안내</h4><p>학년·방식별 정확한 가격표</p></a>
+      <a href="reviews.html" class="shortcut-card"><span class="shortcut-card__icon">⭐</span><h4>학부모 후기</h4><p>실제 성적 향상 후기 346건</p></a>
+      <a href="gangnam.html" class="shortcut-card"><span class="shortcut-card__icon">📍</span><h4>지역별 과외</h4><p>강남·분당·수원 등 13개 지역 가이드</p></a>
+      <a href="news.html" class="shortcut-card"><span class="shortcut-card__icon">📝</span><h4>뉴스</h4><p>과외 가이드·입시 정보</p></a>
     </div>
   </div>
 </section>
@@ -2730,27 +2751,6 @@ select:focus-visible, textarea:focus-visible{
         <div class="svc-card__tags"><span>중졸검정</span><span>고졸검정</span><span>단기합격</span></div>
         <a href="gsd.html" class="btn btn--primary svc-card__btn">자세히 보기</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     바로가기 6개
-============================================================ -->
-<section class="section">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">SHORTCUTS</span>
-      <h2>더 자세히 둘러보세요</h2>
-      <p>궁금한 메뉴를 눌러 자세한 내용을 확인해 보세요.</p>
-    </div>
-    <div class="shortcut-grid reveal">
-      <a href="schools.html" class="shortcut-card"><span class="shortcut-card__icon">📌</span><h4>학교 찾기</h4><p>전국 12,000여 개 학교 검색</p></a>
-      <a href="teachers.html" class="shortcut-card"><span class="shortcut-card__icon">👩‍🏫</span><h4>선생님 찾기</h4><p>과목·경력별 선생님 소개</p></a>
-      <a href="#compare" class="shortcut-card"><span class="shortcut-card__icon">🧭</span><h4>수업 방식</h4><p>방문·화상 중 나에게 맞는 선택</p></a>
-      <a href="#pricing" class="shortcut-card"><span class="shortcut-card__icon">💰</span><h4>가격 안내</h4><p>학년·방식별 정확한 가격표</p></a>
-      <a href="reviews.html" class="shortcut-card"><span class="shortcut-card__icon">⭐</span><h4>학부모 후기</h4><p>실제 성적 향상 후기 346건</p></a>
-      <a href="news.html" class="shortcut-card"><span class="shortcut-card__icon">📝</span><h4>뉴스</h4><p>과외 가이드·입시 정보</p></a>
     </div>
   </div>
 </section>
@@ -2874,32 +2874,6 @@ select:focus-visible, textarea:focus-visible{
       <div class="subject-card" data-apply="1"><span class="subject-card__icon">💻</span><strong>비대면 화상 과외</strong></div>
     </div>
     </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     지역·학교별 과외 찾기
-============================================================ -->
-<section class="section section--mist" id="regions">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">지역 · 학교</span>
-      <h2>우리 동네, 우리 학교 맞춤 과외 찾기</h2>
-      <p>학교 이름이나 지역을 검색하면 학년별 학습 안내와 정확한 가격을 바로 확인할 수 있어요.</p>
-    </div>
-    <div class="region-shortcut reveal">
-      <a href="schools.html" class="region-shortcut__card">
-        <span class="region-shortcut__icon">🏫</span>
-        <h3>학교 찾기</h3>
-        <p>전국 12,000여 개 학교 이름으로 검색하고 학년별 학습 안내를 확인하세요</p>
-      </a>
-      <a href="gangnam.html" class="region-shortcut__card">
-        <span class="region-shortcut__icon">📍</span>
-        <h3>지역별 과외 가이드</h3>
-        <p>강남·서초·송파·목동·노원·마포·용산·동작·분당·수원·일산·인천·대전 상세 안내</p>
-      </a>
-    </div>
-    <a href="#apply" class="btn btn--primary" style="margin-top:24px;">우리 지역 무료 상담 신청 →</a>
   </div>
 </section>
 
