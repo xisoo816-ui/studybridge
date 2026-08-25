@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>우리 아이 학교 찾기 — 학교별 과외 정보 | 스터디브릿지</title>
-<meta name="description" content="휘문고·반포고·잠실고·분당중앙고 등 학교 이름으로 검색해 내신 특징과 맞춤 과외 정보를 확인하세요. 중학교·고등학교 검색 지원.">
-<meta name="keywords" content="학교 찾기,학교별 과외,휘문고 과외,반포고 과외,잠실고 과외,분당중앙고 과외,수원고 과외,일산고 과외,인천고 과외,대전과학고 과외,용산고 과외,중학교 과외,고등학교 과외,내신 대비 과외">
+<meta name="description" content="전국 초·중·고 학교 이름으로 검색해 내신 특징과 맞춤 과외 정보를 확인하세요. 12,000여 개 학교 검색 지원.">
+<meta name="keywords" content="학교 찾기,학교별 과외,전국 학교 검색,초등학교 과외,중학교 과외,고등학교 과외,휘문고 과외,반포고 과외,잠실고 과외,분당중앙고 과외,수원고 과외,일산고 과외,인천고 과외,대전과학고 과외,용산고 과외,내신 대비 과외">
 <link rel="canonical" href="https://studybridge.kr/schools.html">
 <meta property="og:title" content="우리 아이 학교 찾기 — 학교별 과외 정보 | 스터디브릿지">
 <meta property="og:description" content="학교 이름으로 검색해 내신 특징과 맞춤 과외 정보를 확인하세요.">
@@ -40,26 +40,34 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--s);outline-offset:2
 .mp a{padding:10px 12px;border-radius:8px;font-size:15px;color:var(--i);}
 .mp.on{display:flex;}
 @media(max-width:900px){.nls,.ph{display:none;}.tg{display:block;}}
-.hero{background:linear-gradient(135deg,#1A2B52 0%,#3457B2 100%);padding:56px 0 40px;color:#fff;text-align:center;}
-.hero h1{font-size:clamp(22px,4vw,32px);color:#fff;margin-bottom:10px;}
-.hero p{font-size:15px;color:rgba(255,255,255,.8);}
-.sc-wrap{padding:36px 0 80px;}
-.sc-search{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--l);border-radius:14px;padding:12px 18px;margin-bottom:18px;}
-.sc-search svg{flex-shrink:0;color:var(--sl);width:20px;height:20px;}
-.sc-search input{flex:1;border:none;outline:none;font-size:15.5px;font-family:inherit;color:var(--i);background:none;}
-.sc-tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;}
-.sc-tab{padding:8px 18px;border-radius:999px;border:2px solid var(--l);background:#fff;font-size:14px;font-weight:700;color:var(--sl);}
-.sc-tab.on{background:var(--s);border-color:var(--s);color:#fff;}
-.sc-count{font-size:13.5px;color:var(--sl);margin-bottom:14px;}
-.sc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;}
-.sc-card{display:block;background:#fff;border:1px solid var(--l);border-radius:14px;padding:16px 18px;transition:all .15s;}
-.sc-card:hover{border-color:var(--s);box-shadow:0 4px 14px rgba(52,87,178,.1);transform:translateY(-1px);}
-.sc-card__lv{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--m);color:var(--sd);margin-bottom:8px;}
-.sc-card__name{font-family:var(--fd);font-size:16px;color:var(--h);margin-bottom:4px;}
-.sc-card__region{font-size:13px;color:var(--sl);}
-.sc-card__cta{font-size:12.5px;color:var(--s);font-weight:700;margin-top:8px;}
-.sc-empty{display:none;text-align:center;padding:50px 20px;color:var(--sl);font-size:14.5px;}
-.sc-note{background:var(--m);border-left:4px solid var(--s);border-radius:0 10px 10px 0;padding:16px 20px;margin-top:32px;font-size:14px;color:var(--i);}
+.hero{background:linear-gradient(135deg,#1A2B52 0%,#3457B2 100%);padding:60px 0 44px;color:#fff;text-align:center;}
+.hero h1{font-size:clamp(24px,4vw,34px);color:#fff;margin-bottom:12px;}
+.hero p{font-size:15.5px;color:rgba(255,255,255,.85);}
+.sc-wrap{padding:40px 0 80px;}
+.sc-search{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid var(--l);border-radius:16px;padding:15px 20px;margin-bottom:16px;box-shadow:0 2px 10px rgba(26,43,82,.05);transition:border-color .15s,box-shadow .15s;}
+.sc-search:focus-within{border-color:var(--s);box-shadow:0 4px 16px rgba(52,87,178,.12);}
+.sc-search svg{flex-shrink:0;color:var(--h);width:21px;height:21px;}
+.sc-search input{flex:1;border:none;outline:none;font-size:16px;font-family:inherit;color:var(--h);background:none;}
+.sc-search input::placeholder{color:var(--sl);}
+.sc-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.sc-tab{padding:9px 20px;border-radius:999px;border:2px solid var(--l);background:#fff;font-size:14.5px;font-weight:700;color:var(--i);transition:all .15s;}
+.sc-tab:hover{border-color:var(--s);color:var(--s);}
+.sc-tab.on{background:var(--h);border-color:var(--h);color:#fff;}
+.sc-count{font-size:14px;font-weight:600;color:var(--i);margin:0 0 16px;padding-bottom:14px;border-bottom:1px solid var(--l);}
+.sc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
+.sc-card{display:block;background:#fff;border:1px solid var(--l);border-left:4px solid var(--s);border-radius:12px;padding:18px 20px;transition:all .15s;}
+.sc-card:hover{box-shadow:0 6px 18px rgba(26,43,82,.12);transform:translateY(-2px);}
+.sc-card.lv-el{border-left-color:#1A8F5C;}
+.sc-card.lv-mid{border-left-color:var(--s);}
+.sc-card.lv-hi{border-left-color:#7C3AED;}
+.sc-card__lv{display:inline-block;font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;background:var(--m);color:var(--sd);margin-bottom:10px;}
+.sc-card.lv-el .sc-card__lv{background:#E6F7EE;color:#166A44;}
+.sc-card.lv-hi .sc-card__lv{background:#F1E9FB;color:#5B2E96;}
+.sc-card__name{font-family:var(--fb);font-weight:800;font-size:16.5px;color:var(--h);margin-bottom:6px;line-height:1.4;}
+.sc-card__region{font-size:13.5px;color:var(--i);}
+.sc-card__cta{font-size:13px;color:var(--s);font-weight:700;margin-top:10px;}
+.sc-empty{display:none;text-align:center;padding:60px 20px;color:var(--i);font-size:15px;font-weight:600;}
+.sc-note{background:var(--m);border-left:4px solid var(--s);border-radius:0 10px 10px 0;padding:16px 20px;margin-top:32px;font-size:14px;line-height:1.7;color:var(--i);}
 .ft{background:var(--h);color:rgba(255,255,255,.65);padding:38px 0 26px;font-size:13.5px;line-height:1.8;}
 .fl{font-family:var(--fd);font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;}
 .fb{border-top:1px solid rgba(255,255,255,.1);margin-top:18px;padding-top:14px;font-size:12px;}
@@ -106,6 +114,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--s);outline-offset:2
   </div>
   <div class="sc-tabs" id="schoolTabs">
     <button class="sc-tab on" data-lv="전체">전체</button>
+    <button class="sc-tab" data-lv="초등학교">초등학교</button>
     <button class="sc-tab" data-lv="중학교">중학교</button>
     <button class="sc-tab" data-lv="고등학교">고등학교</button>
   </div>
@@ -113,7 +122,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--s);outline-offset:2
   <div class="sc-grid" id="schoolGrid"></div>
   <p class="sc-empty" id="schoolEmpty">검색 결과가 없어요. 다른 학교 이름이나 지역으로 검색해보세요.</p>
 
-  <div class="sc-note"><strong>안내</strong> — 현재 스터디브릿지가 상세 지역 가이드를 운영 중인 학교 목록입니다. 목록에 없는 학교라도 전국 방문·화상 과외 연결이 가능하니, 무료 상담으로 문의해 주세요. 학교 목록은 계속 추가되고 있습니다.</div>
+  <div class="sc-note"><strong>안내</strong> — 전국 초·중·고 12,000여 개 학교 데이터를 기반으로 검색을 지원합니다(공공데이터포털 제공). 학교를 선택하면 학년별 학습 안내와 정가표를 볼 수 있고, 강남·서초·송파·목동·노원·마포·용산·동작·분당·수원·일산·인천·대전 지역 학교는 해당 지역 상세 가이드도 함께 안내됩니다.</div>
   <p class="rl">관련 페이지: <a href="index.html#regions">지역별 과외 전체보기</a> · <a href="index.html#apply">무료 상담 신청</a></p>
 </div></div>
 
@@ -132,44 +141,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--s);outline-offset:2
 </div>
 <script>document.getElementById('tg').addEventListener('click',function(){document.getElementById('mp').classList.toggle('on');});</script>
 
+<script src="schools-data.js"></script>
 <script>
-var SCHOOLS = [
-  {name:'휘문고등학교', lv:'고등학교', region:'서울 강남구 대치동', page:'gangnam.html'},
-  {name:'경기고등학교', lv:'고등학교', region:'서울 강남구 삼성동', page:'gangnam.html'},
-  {name:'중동고등학교', lv:'고등학교', region:'서울 강남구 일원동', page:'gangnam.html'},
-  {name:'숙명여자고등학교', lv:'고등학교', region:'서울 강남구 도곡동', page:'gangnam.html'},
-  {name:'반포고등학교', lv:'고등학교', region:'서울 서초구 반포동', page:'seocho.html'},
-  {name:'세화고등학교', lv:'고등학교', region:'서울 서초구 방배동', page:'seocho.html'},
-  {name:'서초고등학교', lv:'고등학교', region:'서울 서초구 서초동', page:'seocho.html'},
-  {name:'잠실고등학교', lv:'고등학교', region:'서울 송파구 잠실동', page:'songpa.html'},
-  {name:'잠일중학교', lv:'중학교', region:'서울 송파구 잠실동', page:'songpa.html'},
-  {name:'보인고등학교', lv:'고등학교', region:'서울 송파구 문정동', page:'songpa.html'},
-  {name:'위례고등학교', lv:'고등학교', region:'서울 송파구 위례동', page:'songpa.html'},
-  {name:'목운고등학교', lv:'고등학교', region:'서울 양천구 목동', page:'mokdong.html'},
-  {name:'양정고등학교', lv:'고등학교', region:'서울 양천구 목동', page:'mokdong.html'},
-  {name:'진명여자고등학교', lv:'고등학교', region:'서울 양천구 목동', page:'mokdong.html'},
-  {name:'상명중학교', lv:'중학교', region:'서울 노원구 중계동', page:'junggye.html'},
-  {name:'중계중학교', lv:'중학교', region:'서울 노원구 중계동', page:'junggye.html'},
-  {name:'청원중학교', lv:'중학교', region:'서울 노원구 중계동', page:'junggye.html'},
-  {name:'불암고등학교', lv:'고등학교', region:'서울 노원구 중계동', page:'junggye.html'},
-  {name:'대진고등학교', lv:'고등학교', region:'서울 노원구 중계동', page:'junggye.html'},
-  {name:'용산고등학교', lv:'고등학교', region:'서울 용산구 이촌동', page:'yongsan.html'},
-  {name:'분당중앙고등학교', lv:'고등학교', region:'경기 성남시 분당구', page:'bundang.html'},
-  {name:'낙생고등학교', lv:'고등학교', region:'경기 성남시 분당구', page:'bundang.html'},
-  {name:'서현고등학교', lv:'고등학교', region:'경기 성남시 분당구 서현동', page:'bundang.html'},
-  {name:'이매고등학교', lv:'고등학교', region:'경기 성남시 분당구 이매동', page:'bundang.html'},
-  {name:'수원고등학교', lv:'고등학교', region:'경기 수원시', page:'suwon.html'},
-  {name:'수원외국어고등학교', lv:'고등학교', region:'경기 수원시', page:'suwon.html'},
-  {name:'권선고등학교', lv:'고등학교', region:'경기 수원시 권선구', page:'suwon.html'},
-  {name:'영통고등학교', lv:'고등학교', region:'경기 수원시 영통구', page:'suwon.html'},
-  {name:'일산고등학교', lv:'고등학교', region:'경기 고양시 일산동구', page:'ilsan.html'},
-  {name:'백마고등학교', lv:'고등학교', region:'경기 고양시 일산동구', page:'ilsan.html'},
-  {name:'대화고등학교', lv:'고등학교', region:'경기 고양시 일산서구', page:'ilsan.html'},
-  {name:'인천고등학교', lv:'고등학교', region:'인천광역시', page:'incheon.html'},
-  {name:'인천외국어고등학교', lv:'고등학교', region:'인천광역시', page:'incheon.html'},
-  {name:'대전과학고등학교', lv:'고등학교', region:'대전광역시 유성구', page:'daejeon.html'},
-  {name:'대전외국어고등학교', lv:'고등학교', region:'대전광역시', page:'daejeon.html'}
-];
+/* SCHOOLS_FULL: [학교명, 학교급, 지역] — 공공데이터포털 전국초중등학교위치표준데이터 기반, 전국 12,000여 개 */
 
 (function(){
   var grid = document.getElementById('schoolGrid');
@@ -178,24 +152,46 @@ var SCHOOLS = [
   var search = document.getElementById('schoolSearch');
   var tabs = Array.from(document.querySelectorAll('.sc-tab'));
   var activeLv = '전체';
+  var MAX = 100;
 
   function render(){
     var q = search.value.trim().toLowerCase();
-    var list = SCHOOLS.filter(function(s){
-      var lvMatch = activeLv === '전체' || s.lv === activeLv;
-      var qMatch = !q || s.name.toLowerCase().indexOf(q) > -1 || s.region.toLowerCase().indexOf(q) > -1;
-      return lvMatch && qMatch;
-    });
-    grid.innerHTML = list.map(function(s){
-      return '<a class="sc-card" href="' + s.page + '">' +
-        '<span class="sc-card__lv">' + s.lv + '</span>' +
-        '<div class="sc-card__name">' + s.name + '</div>' +
-        '<div class="sc-card__region">' + s.region + '</div>' +
-        '<div class="sc-card__cta">' + s.region.split(' ')[0] + ' ' + s.region.split(' ')[1] + ' 과외 정보 보기 →</div>' +
+    empty.style.display = 'none';
+
+    if (!q && activeLv === '전체') {
+      grid.innerHTML = '';
+      count.textContent = '전국 ' + SCHOOLS_FULL.length.toLocaleString() + '개 학교 · 학교 이름이나 지역을 입력해 검색해보세요';
+      return;
+    }
+
+    var matched = [];
+    for (var i = 0; i < SCHOOLS_FULL.length; i++){
+      var s = SCHOOLS_FULL[i];
+      if (activeLv !== '전체' && s[1] !== activeLv) continue;
+      if (q && s[0].toLowerCase().indexOf(q) === -1 && s[2].toLowerCase().indexOf(q) === -1) continue;
+      matched.push(s);
+      if (matched.length >= MAX) break;
+    }
+
+    var lvClass = { '초등학교':'lv-el', '중학교':'lv-mid', '고등학교':'lv-hi' };
+    grid.innerHTML = matched.map(function(s){
+      var href = 'school.html?n=' + encodeURIComponent(s[0]) + '&l=' + encodeURIComponent(s[1]) + '&r=' + encodeURIComponent(s[2]);
+      return '<a class="sc-card ' + (lvClass[s[1]] || '') + '" href="' + href + '">' +
+        '<span class="sc-card__lv">' + s[1] + '</span>' +
+        '<div class="sc-card__name">' + s[0] + '</div>' +
+        '<div class="sc-card__region">' + s[2] + '</div>' +
+        '<div class="sc-card__cta">과외 정보 보기 →</div>' +
       '</a>';
     }).join('');
-    count.textContent = list.length + '개 학교';
-    empty.style.display = list.length ? 'none' : 'block';
+
+    if (matched.length === 0) {
+      empty.style.display = 'block';
+      count.textContent = '';
+    } else if (matched.length >= MAX) {
+      count.textContent = MAX + '개 이상 검색됨 · 학교 이름을 더 정확히 입력하면 좁혀집니다';
+    } else {
+      count.textContent = matched.length + '개 학교';
+    }
   }
 
   search.addEventListener('input', render);
