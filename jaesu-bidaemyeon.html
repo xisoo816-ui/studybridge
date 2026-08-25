@@ -103,7 +103,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--color-signal);outli
 </head>
 <body>
 
-<div class="top-bar">📞 전화 상담: <a href="tel:010-2039-4111">010-2039-4111</a> &nbsp;·&nbsp; 카카오톡 상담 가능 &nbsp;·&nbsp; 매일 10:00 ~ 20:00</div>
+<div class="top-bar" id="topBar" style="transition:opacity .35s">📞 전화 상담: <a href="tel:010-2039-4111">010-2039-4111</a> &nbsp;·&nbsp; 카카오톡 상담 가능 &nbsp;·&nbsp; 매일 10:00 ~ 20:00</div>
+<script>(function(){var m=['📞 전화 상담: <a href="tel:010-2039-4111">010-2039-4111</a> · 카카오톡 상담 가능 · 매일 10:00 ~ 20:00','🎓 누적 수업 12,000건 · 등록 검증 교사 4,000명 돌파','⭐ 학부모·학생 누적 후기 312건 등록되어 있습니다','🗺️ 전국 17개 시·도, 어디서나 방문·화상 과외 연결'];var el=document.getElementById('topBar'),i=0;if(el){setInterval(function(){i=(i+1)%m.length;el.style.opacity=0;setTimeout(function(){el.innerHTML=m[i];el.style.opacity=1;},350);},4000);}})();</script>
 
 <header class="nav" id="nav">
   <div class="container nav__inner">

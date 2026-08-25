@@ -1665,6 +1665,8 @@ select:focus-visible, textarea:focus-visible{
 }
 .footer__contact{ font-size:14px; line-height:1.9; }
 .footer__contact b{ color:rgba(255,255,255,.9); }
+.footer__contact a{ color:rgba(255,255,255,.75); }
+.footer__contact a:hover{ color:#fff; text-decoration:underline; }
 .footer__legal{
   font-size:12.5px;
   line-height:1.9;
@@ -2303,9 +2305,10 @@ select:focus-visible, textarea:focus-visible{
 <body>
 
 <!-- 상단 전화번호 바 -->
-<div class="top-bar">
+<div class="top-bar" id="topBar" style="transition:opacity .35s">
   📞 전화 상담: <a href="tel:010-2039-4111">010-2039-4111</a> &nbsp;·&nbsp; 카카오톡 상담 가능 &nbsp;·&nbsp; 매일 10:00 ~ 20:00
 </div>
+<script>(function(){var m=['📞 전화 상담: <a href="tel:010-2039-4111">010-2039-4111</a> · 카카오톡 상담 가능 · 매일 10:00 ~ 20:00','🎓 누적 수업 12,000건 · 등록 검증 교사 4,000명 돌파','⭐ 학부모·학생 누적 후기 312건 등록되어 있습니다','🗺️ 전국 17개 시·도, 어디서나 방문·화상 과외 연결'];var el=document.getElementById('topBar'),i=0;if(el){setInterval(function(){i=(i+1)%m.length;el.style.opacity=0;setTimeout(function(){el.innerHTML=m[i];el.style.opacity=1;},350);},4000);}})();</script>
 
 <!-- ============================================================
      헤더 / 네비게이션
@@ -2317,13 +2320,12 @@ select:focus-visible, textarea:focus-visible{
       <a class="nav__link" href="#process">진행 과정</a>
       <a class="nav__link" href="#pricing">수업·가격</a>
       <a class="nav__link" href="#regions">지역 과외</a>
+      <a class="nav__link" href="schools.html">학교 찾기</a>
       <a class="nav__link" href="gsd.html">검정고시</a>
       <a class="nav__link" href="news.html">뉴스</a>
       <a class="nav__link" href="#apply">상담 신청</a>
     </nav>
     <div class="nav__cta">
-      <a href="tel:010-2039-4111" class="nav__phone">010-2039-4111</a>
-      <a href="#pricing" class="btn btn--ghost">과목·가격 보기</a>
       <a href="#apply" class="btn btn--primary">무료 상담 신청</a>
     </div>
     <button class="nav__toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false">
@@ -2338,6 +2340,7 @@ select:focus-visible, textarea:focus-visible{
     <a href="#process">진행 과정</a>
     <a href="#pricing">수업·가격</a>
     <a href="#regions">지역 과외</a>
+    <a href="schools.html">학교 찾기</a>
     <a href="gsd.html">검정고시</a>
     <a href="news.html">뉴스</a>
     <a href="#apply">상담 신청</a>
@@ -3661,18 +3664,18 @@ select:focus-visible, textarea:focus-visible{
         <!-- 서울 -->
         <!-- 서울 -->
         <div class="rg-panel" id="rp-seoul">
-          <p class="rg-panel__desc">서울 전 25개 구 방문 과외 연결 가능합니다. 지역을 선택하면 바로 상담 신청으로 이동합니다.</p>
+          <p class="rg-panel__desc">서울 전 25개 구 방문 과외 연결 가능합니다. 지역 상세 페이지가 있는 곳은 해당 페이지로, 나머지는 상담 신청으로 이동합니다.</p>
           <div class="rg-list">
-            <div class="rl-item" data-area="서울 강남구 대치동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">강남구</div><div class="rl-dongs">대치동 · 역삼동 · 청담동 · 도곡동 · 개포동 · 논현동 · 삼성동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="서울 서초구 반포동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">서초구</div><div class="rl-dongs">반포동 · 방배동 · 서초동 · 양재동 · 잠원동 · 내곡동 · 우면동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="서울 송파구 잠실동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">송파구</div><div class="rl-dongs">잠실동 · 문정동 · 가락동 · 방이동 · 위례동 · 거여동 · 풍납동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="서울 양천구 목동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">강서·양천구 (목동)</div><div class="rl-dongs">목동 · 신정동 · 화곡동 · 등촌동 · 마곡동 · 가양동 · 신월동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="서울 노원구 중계동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">노원구</div><div class="rl-dongs">중계동 · 상계동 · 하계동 · 월계동 · 공릉동 · 묵동 · 석계동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="서울 마포구 합정동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">마포구 (홍대)</div><div class="rl-dongs">합정동 · 서교동 · 상암동 · 망원동 · 공덕동 · 성산동 · 아현동</div></div><button class="rl-btn">상담 신청 →</button></div>
+            <div class="rl-item" data-area="서울 강남구 대치동" data-page="gangnam.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">강남구</div><div class="rl-dongs">대치동 · 역삼동 · 청담동 · 도곡동 · 개포동 · 논현동 · 삼성동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="서울 서초구 반포동" data-page="seocho.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">서초구</div><div class="rl-dongs">반포동 · 방배동 · 서초동 · 양재동 · 잠원동 · 내곡동 · 우면동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="서울 송파구 잠실동" data-page="songpa.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">송파구</div><div class="rl-dongs">잠실동 · 문정동 · 가락동 · 방이동 · 위례동 · 거여동 · 풍납동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="서울 양천구 목동" data-page="mokdong.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">강서·양천구 (목동)</div><div class="rl-dongs">목동 · 신정동 · 화곡동 · 등촌동 · 마곡동 · 가양동 · 신월동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="서울 노원구 중계동" data-page="junggye.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">노원구</div><div class="rl-dongs">중계동 · 상계동 · 하계동 · 월계동 · 공릉동 · 묵동 · 석계동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="서울 마포구 합정동" data-page="mapo.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">마포구 (홍대)</div><div class="rl-dongs">합정동 · 서교동 · 상암동 · 망원동 · 공덕동 · 성산동 · 아현동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
             <div class="rl-item" data-area="서울 강동구 천호동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">강동구</div><div class="rl-dongs">천호동 · 암사동 · 둔촌동 · 명일동 · 고덕동 · 강일동 · 성내동</div></div><button class="rl-btn">상담 신청 →</button></div>
             <div class="rl-item" data-area="서울 성북구 길음동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">성북·도봉구</div><div class="rl-dongs">길음동 · 정릉동 · 돈암동 · 종암동 · 안암동 · 쌍문동 · 방학동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="서울 동작구 사당동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">동작·관악구</div><div class="rl-dongs">사당동 · 상도동 · 노량진 · 흑석동 · 신림동 · 봉천동 · 낙성대</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="서울 용산구 한남동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">용산·중구</div><div class="rl-dongs">한남동 · 이태원동 · 후암동 · 청파동 · 신당동 · 황학동 · 충무로</div></div><button class="rl-btn">상담 신청 →</button></div>
+            <div class="rl-item" data-area="서울 동작구 사당동" data-page="dongjak.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">동작·관악구</div><div class="rl-dongs">사당동 · 상도동 · 노량진 · 흑석동 · 신림동 · 봉천동 · 낙성대</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="서울 용산구 한남동" data-page="yongsan.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">용산·중구</div><div class="rl-dongs">한남동 · 이태원동 · 후암동 · 청파동 · 신당동 · 황학동 · 충무로</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
             <div class="rl-item" data-area="서울 광진구 구의동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">광진·중랑구</div><div class="rl-dongs">구의동 · 자양동 · 화양동 · 중곡동 · 면목동 · 신내동 · 망우동</div></div><button class="rl-btn">상담 신청 →</button></div>
             <div class="rl-item" data-area="서울 은평구 불광동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">은평·서대문구</div><div class="rl-dongs">불광동 · 녹번동 · 응암동 · 진관동 · 홍은동 · 북아현동 · 남가좌동</div></div><button class="rl-btn">상담 신청 →</button></div>
           </div>
@@ -3683,10 +3686,10 @@ select:focus-visible, textarea:focus-visible{
         <div class="rg-panel" id="rp-gyeonggi">
           <p class="rg-panel__desc">경기도 전 지역 방문 과외 연결 가능합니다.</p>
           <div class="rg-list">
-            <div class="rl-item" data-area="경기 수원시 영통동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">수원</div><div class="rl-dongs">영통동 · 매탄동 · 원천동 · 인계동 · 화서동 · 장안동 · 권선동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="경기 성남시 분당구 정자동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">성남·분당</div><div class="rl-dongs">정자동 · 서현동 · 수내동 · 야탑동 · 이매동 · 판교동 · 분당동</div></div><button class="rl-btn">상담 신청 →</button></div>
+            <div class="rl-item" data-area="경기 수원시 영통동" data-page="suwon.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">수원</div><div class="rl-dongs">영통동 · 매탄동 · 원천동 · 인계동 · 화서동 · 장안동 · 권선동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="경기 성남시 분당구 정자동" data-page="bundang.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">성남·분당</div><div class="rl-dongs">정자동 · 서현동 · 수내동 · 야탑동 · 이매동 · 판교동 · 분당동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
             <div class="rl-item" data-area="경기 용인시 수지구 풍덕천동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">용인·수지</div><div class="rl-dongs">풍덕천동 · 죽전동 · 동천동 · 성복동 · 광교동 · 기흥동 · 구갈동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="경기 고양시 일산 마두동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">고양·일산</div><div class="rl-dongs">마두동 · 정발산동 · 장항동 · 중산동 · 화정동 · 행신동 · 능곡동</div></div><button class="rl-btn">상담 신청 →</button></div>
+            <div class="rl-item" data-area="경기 고양시 일산 마두동" data-page="ilsan.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">고양·일산</div><div class="rl-dongs">마두동 · 정발산동 · 장항동 · 중산동 · 화정동 · 행신동 · 능곡동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
             <div class="rl-item" data-area="경기 화성시 동탄동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">화성·동탄</div><div class="rl-dongs">동탄1동 · 동탄2동 · 병점동 · 반송동 · 향남읍 · 봉담읍 · 진안동</div></div><button class="rl-btn">상담 신청 →</button></div>
             <div class="rl-item" data-area="경기 안양시 평촌동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">안양·평촌</div><div class="rl-dongs">평촌동 · 범계동 · 호계동 · 비산동 · 부흥동 · 관양동 · 석수동</div></div><button class="rl-btn">상담 신청 →</button></div>
             <div class="rl-item" data-area="경기 부천시 중동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">부천</div><div class="rl-dongs">중동 · 상동 · 심곡동 · 소사동 · 역곡동 · 송내동 · 옥길동</div></div><button class="rl-btn">상담 신청 →</button></div>
@@ -3703,14 +3706,14 @@ select:focus-visible, textarea:focus-visible{
         <div class="rg-panel" id="rp-incheon">
           <p class="rg-panel__desc">인천 전 구 방문 과외 연결 가능합니다.</p>
           <div class="rg-list">
-            <div class="rl-item" data-area="인천 연수구 송도동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">연수구 (송도)</div><div class="rl-dongs">송도동 · 연수동 · 청학동 · 옥련동 · 동춘동 · 선학동 · 문학동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="인천 남동구 구월동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">남동구</div><div class="rl-dongs">구월동 · 간석동 · 논현동 · 만수동 · 장수동 · 소래포구동 · 수산동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="인천 부평구 부평동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">부평구</div><div class="rl-dongs">부평동 · 산곡동 · 청천동 · 삼산동 · 갈산동 · 부개동 · 십정동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="인천 서구 검단동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">서구</div><div class="rl-dongs">검단동 · 마전동 · 당하동 · 원당동 · 가좌동 · 석남동 · 연희동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="인천 미추홀구 주안동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">미추홀구</div><div class="rl-dongs">주안동 · 용현동 · 학익동 · 도화동 · 숭의동 · 관교동 · 문학동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="인천 계양구 계산동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">계양구</div><div class="rl-dongs">계산동 · 작전동 · 효성동 · 병방동 · 귤현동 · 박촌동 · 임학동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="인천 중구 영종도"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">중구·동구</div><div class="rl-dongs">영종도 · 운서동 · 신포동 · 인현동 · 답동 · 송림동 · 화수동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="인천 강화도"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">강화·옹진</div><div class="rl-dongs">강화읍 · 선원면 · 불은면 · 송해면 · 길상면 · 화도면 · 내가면</div></div><button class="rl-btn">상담 신청 →</button></div>
+            <div class="rl-item" data-area="인천 연수구 송도동" data-page="incheon.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">연수구 (송도)</div><div class="rl-dongs">송도동 · 연수동 · 청학동 · 옥련동 · 동춘동 · 선학동 · 문학동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="인천 남동구 구월동" data-page="incheon.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">남동구</div><div class="rl-dongs">구월동 · 간석동 · 논현동 · 만수동 · 장수동 · 소래포구동 · 수산동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="인천 부평구 부평동" data-page="incheon.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">부평구</div><div class="rl-dongs">부평동 · 산곡동 · 청천동 · 삼산동 · 갈산동 · 부개동 · 십정동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="인천 서구 검단동" data-page="incheon.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">서구</div><div class="rl-dongs">검단동 · 마전동 · 당하동 · 원당동 · 가좌동 · 석남동 · 연희동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="인천 미추홀구 주안동" data-page="incheon.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">미추홀구</div><div class="rl-dongs">주안동 · 용현동 · 학익동 · 도화동 · 숭의동 · 관교동 · 문학동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="인천 계양구 계산동" data-page="incheon.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">계양구</div><div class="rl-dongs">계산동 · 작전동 · 효성동 · 병방동 · 귤현동 · 박촌동 · 임학동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="인천 중구 영종도" data-page="incheon.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">중구·동구</div><div class="rl-dongs">영종도 · 운서동 · 신포동 · 인현동 · 답동 · 송림동 · 화수동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="인천 강화도" data-page="incheon.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">강화·옹진</div><div class="rl-dongs">강화읍 · 선원면 · 불은면 · 송해면 · 길상면 · 화도면 · 내가면</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
           </div>
           <a href="#apply" class="btn btn--primary rg-cta">인천 지역 무료 상담 신청 →</a>
         </div>
@@ -3719,9 +3722,9 @@ select:focus-visible, textarea:focus-visible{
         <div class="rg-panel" id="rp-daejeon">
           <p class="rg-panel__desc">대전·세종·충남·충북 전 지역 방문 및 화상 과외 연결 가능합니다.</p>
           <div class="rg-list">
-            <div class="rl-item" data-area="대전 유성구 노은동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">대전 유성구</div><div class="rl-dongs">노은동 · 전민동 · 반석동 · 봉명동 · 구암동 · 신성동 · 학하동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="대전 서구 둔산동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">대전 서구</div><div class="rl-dongs">둔산동 · 탄방동 · 월평동 · 갈마동 · 관저동 · 괴정동 · 가수원동</div></div><button class="rl-btn">상담 신청 →</button></div>
-            <div class="rl-item" data-area="대전 중구 대흥동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">대전 중구·동구</div><div class="rl-dongs">대흥동 · 은행동 · 태평동 · 목동 · 유천동 · 가오동 · 판암동</div></div><button class="rl-btn">상담 신청 →</button></div>
+            <div class="rl-item" data-area="대전 유성구 노은동" data-page="daejeon.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">대전 유성구</div><div class="rl-dongs">노은동 · 전민동 · 반석동 · 봉명동 · 구암동 · 신성동 · 학하동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="대전 서구 둔산동" data-page="daejeon.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">대전 서구</div><div class="rl-dongs">둔산동 · 탄방동 · 월평동 · 갈마동 · 관저동 · 괴정동 · 가수원동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
+            <div class="rl-item" data-area="대전 중구 대흥동" data-page="daejeon.html"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">대전 중구·동구</div><div class="rl-dongs">대흥동 · 은행동 · 태평동 · 목동 · 유천동 · 가오동 · 판암동</div></div><button class="rl-btn">지역 페이지 보기 →</button></div>
             <div class="rl-item" data-area="세종시 도담동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">세종시</div><div class="rl-dongs">도담동 · 아름동 · 고운동 · 종촌동 · 한솔동 · 새롬동 · 보람동</div></div><button class="rl-btn">상담 신청 →</button></div>
             <div class="rl-item" data-area="충남 천안시 불당동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">충남 천안</div><div class="rl-dongs">불당동 · 두정동 · 성성동 · 신부동 · 원성동 · 쌍용동 · 백석동</div></div><button class="rl-btn">상담 신청 →</button></div>
             <div class="rl-item" data-area="충북 청주시 복대동"><div class="rl-icon">📍</div><div class="rl-info"><div class="rl-name">충북 청주</div><div class="rl-dongs">복대동 · 분평동 · 가경동 · 율량동 · 성화동 · 내덕동 · 산남동</div></div><button class="rl-btn">상담 신청 →</button></div>
@@ -3986,7 +3989,7 @@ select:focus-visible, textarea:focus-visible{
           <span class="lf-loc">강남구 대치동</span>
           <span class="lf-detail">중3 · 주2회 방문 · 수능 1등급 목표</span>
         </div>
-        <div class="lf-right"><span class="lf-type">방문 과외</span><span class="lf-date">07.15</span></div>
+        <div class="lf-right"><span class="lf-type">방문 과외</span><span class="lf-date">07.29</span></div>
       </div>
       <div class="lf-row">
         <span class="lf-dot"></span>
@@ -3995,7 +3998,7 @@ select:focus-visible, textarea:focus-visible{
           <span class="lf-loc">수원시 영통동</span>
           <span class="lf-detail">초5 · 주2회 화상 · 독해·회화 병행</span>
         </div>
-        <div class="lf-right"><span class="lf-type">화상 과외</span><span class="lf-date">07.14</span></div>
+        <div class="lf-right"><span class="lf-type">화상 과외</span><span class="lf-date">07.28</span></div>
       </div>
       <div class="lf-row">
         <span class="lf-dot"></span>
@@ -4004,7 +4007,7 @@ select:focus-visible, textarea:focus-visible{
           <span class="lf-loc">부산 해운대구</span>
           <span class="lf-detail">고2 · 주1회 화상 · 비문학 + 수능 고득점</span>
         </div>
-        <div class="lf-right"><span class="lf-type">화상 과외</span><span class="lf-date">07.14</span></div>
+        <div class="lf-right"><span class="lf-type">화상 과외</span><span class="lf-date">07.28</span></div>
       </div>
     </div>
     <button class="sec-fold__toggle"><span class="sec-fold__label">수업 현황 더 보기</span> <span class="sec-fold__arrow">▾</span></button>
@@ -4017,7 +4020,7 @@ select:focus-visible, textarea:focus-visible{
             <span class="lf-loc">성남시 분당구</span>
             <span class="lf-detail">중1 · 주2회 방문 · 내신 대비 개념+문제풀이</span>
           </div>
-          <div class="lf-right"><span class="lf-type">방문 과외</span><span class="lf-date">07.13</span></div>
+          <div class="lf-right"><span class="lf-type">방문 과외</span><span class="lf-date">07.27</span></div>
         </div>
         <div class="lf-row">
           <span class="lf-dot"></span>
@@ -4026,7 +4029,7 @@ select:focus-visible, textarea:focus-visible{
             <span class="lf-loc">화성시 동탄</span>
             <span class="lf-detail">고1 · 주2회 방문 · 수학1 개념 + 내신 1등급</span>
           </div>
-          <div class="lf-right"><span class="lf-type">방문 과외</span><span class="lf-date">07.13</span></div>
+          <div class="lf-right"><span class="lf-type">방문 과외</span><span class="lf-date">07.27</span></div>
         </div>
         <div class="lf-row">
           <span class="lf-dot"></span>
@@ -4035,7 +4038,7 @@ select:focus-visible, textarea:focus-visible{
             <span class="lf-loc">서울 양천구 목동</span>
             <span class="lf-detail">고3 · 주1회 방문 · 연세대 논술 집중 대비</span>
           </div>
-          <div class="lf-right"><span class="lf-type">방문 과외</span><span class="lf-date">07.12</span></div>
+          <div class="lf-right"><span class="lf-type">방문 과외</span><span class="lf-date">07.26</span></div>
         </div>
         <div class="lf-row">
           <span class="lf-dot"></span>
@@ -4044,7 +4047,7 @@ select:focus-visible, textarea:focus-visible{
             <span class="lf-loc">대전 유성구</span>
             <span class="lf-detail">성인 · 주3회 화상 · 수학·영어 단기합격 목표</span>
           </div>
-          <div class="lf-right"><span class="lf-type">화상 과외</span><span class="lf-date">07.12</span></div>
+          <div class="lf-right"><span class="lf-type">화상 과외</span><span class="lf-date">07.26</span></div>
         </div>
         <div class="lf-row">
           <span class="lf-dot"></span>
@@ -4053,7 +4056,7 @@ select:focus-visible, textarea:focus-visible{
             <span class="lf-loc">인천 연수구 송도</span>
             <span class="lf-detail">중2 · 주2회 방문 · 내신 + 수능 독해 선행</span>
           </div>
-          <div class="lf-right"><span class="lf-type">방문 과외</span><span class="lf-date">07.11</span></div>
+          <div class="lf-right"><span class="lf-type">방문 과외</span><span class="lf-date">07.25</span></div>
         </div>
       </div>
     </div><!-- /sec-fold__body -->
@@ -4292,6 +4295,14 @@ select:focus-visible, textarea:focus-visible{
         <div class="footer__contact">
           <b>전화</b> 010-2039-4111<br>
           매일 10:00 ~ 20:00
+        </div>
+      </div>
+      <div>
+        <div class="footer__logo" style="font-size:14px;">지역별 과외</div>
+        <div class="footer__contact">
+          <a href="gangnam.html">강남구</a> · <a href="seocho.html">서초구</a> · <a href="songpa.html">송파구</a> · <a href="mokdong.html">목동</a> · <a href="junggye.html">중계동</a><br>
+          <a href="bundang.html">분당</a> · <a href="suwon.html">수원</a> · <a href="ilsan.html">일산</a> · <a href="incheon.html">인천</a> · <a href="daejeon.html">대전</a><br>
+          <a href="mapo.html">마포구</a> · <a href="yongsan.html">용산구</a> · <a href="dongjak.html">동작구</a>
         </div>
       </div>
     </div>
@@ -4662,9 +4673,11 @@ document.querySelectorAll('.price-tab-btn').forEach(btn => {
     return '<div class="dong-detail__row"><span class="dong-detail__label">' + label + '</span><div class="dong-detail__tags">' + tags(arr, cls || '') + '</div></div>';
   }
 
-  /* 지역 리스트 행 클릭 → 상담 폼 지역 입력 + 스크롤 */
+  /* 지역 리스트 행 클릭 → 전용 지역 페이지가 있으면 이동, 없으면 상담 폼 지역 입력 + 스크롤 */
   document.querySelectorAll('.rl-item').forEach(function(item){
     item.addEventListener('click', function(){
+      var page = item.getAttribute('data-page');
+      if (page) { window.location.href = page; return; }
       var area = item.getAttribute('data-area');
       var regionInput = document.getElementById('region');
       if (regionInput && area) regionInput.value = area;
