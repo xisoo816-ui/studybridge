@@ -2311,6 +2311,14 @@ select:focus-visible, textarea:focus-visible{
 .nav__phone::before{ content:"📞"; font-size:13px; }
 .nav__phone:hover{ color:var(--color-signal); }
 @media(max-width:880px){ .nav__phone{ display:none; } }
+/* MOBILE-POLISH */
+@media (max-width:640px){
+  .tc-filters, .review-filters{ flex-wrap:nowrap; justify-content:flex-start; overflow-x:auto; scrollbar-width:none; margin-left:-16px; margin-right:-16px; padding:0 16px 6px; }
+  .tc-filters::-webkit-scrollbar, .review-filters::-webkit-scrollbar{ display:none; }
+  .tc-filter, .rv-filter{ flex:0 0 auto; white-space:nowrap; }
+  #teachers .section-head, #reviews .section-head{ display:none; }
+  .section{ padding:40px 0 56px; }
+}
 </style>
 </head>
 <body>
@@ -2735,7 +2743,7 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
         io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0, rootMargin: "0px 0px -40px 0px" });
   revealEls.forEach(el => io.observe(el));
 } else {
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));

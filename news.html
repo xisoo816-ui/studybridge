@@ -155,6 +155,24 @@ a:focus-visible,button:focus-visible{ outline:3px solid var(--color-signal); out
 .action-bar__item--kakao:hover{ background:#FFD700; color:#3C2200; }
 .action-bar__item--primary{ background:var(--color-signal); color:#fff; }
 .action-bar__item--primary:hover{ background:var(--color-signal-dark); }
+/* MOBILE-POLISH */
+@media (max-width:640px){
+  .container{ padding:0 16px; }
+  .news-hero{ padding:40px 0 34px; }
+  .news-hero h1{ font-size:28px; }
+  .news-hero p{ font-size:15px; }
+  .news-section{ padding:26px 0 56px; }
+  .news-list{ gap:14px; }
+  .news-card__inner{ flex-direction:column; min-height:0; }
+  .news-card__thumb{ width:100%; min-height:0; height:60px; }
+  .news-card__icon{ font-size:30px; }
+  .news-card__body{ padding:16px 18px 18px; gap:8px; }
+  .news-card__title{ font-size:17px; }
+  .news-card__desc{ font-size:14px; line-height:1.65; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
+  .news-card__tag:nth-child(n+4){ display:none; }
+  .cta-section{ padding:48px 0; }
+  .apply-form{ padding:22px 18px; }
+}
 </style>
 </head>
 <body>

@@ -2345,6 +2345,34 @@ select:focus-visible, textarea:focus-visible{
 .nav__phone::before{ content:"📞"; font-size:13px; }
 .nav__phone:hover{ color:var(--color-signal); }
 @media(max-width:880px){ .nav__phone{ display:none; } }
+/* MOBILE-POLISH */
+@media (max-width:880px){
+  .nav__toggle{ margin-left:auto; }
+}
+@media (max-width:640px){
+  .section{ padding:56px 0; }
+  .section-head{ margin-bottom:26px; }
+  .section-head h2{ font-size:24px; line-height:1.35; }
+  .section-head p{ font-size:15px; }
+  .nav__inner{ height:60px; }
+  .hero{ padding:22px 0 36px; }
+  .hero__inner{ gap:18px; }
+  .radar-wrap{ order:2; margin:0; }
+  .radar-wrap svg{ width:100%; max-width:270px; margin:0 auto; }
+  .hero h1{ font-size:27px; }
+  .hero__sub{ font-size:15px; }
+  .vid-section{ padding:48px 0; }
+  #teachers .teachers2{ display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding:0 16px; margin:0 -16px; padding:4px 16px 14px; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  #teachers .teachers2::-webkit-scrollbar{ display:none; }
+  #teachers .teachers2 > .tc-card{ flex:0 0 80%; max-width:300px; scroll-snap-align:start; }
+  .shortcut-grid{ grid-template-columns:repeat(2,1fr); gap:10px; }
+  .shortcut-card{ padding:16px 10px; }
+  .shortcut-card__icon{ font-size:24px; margin-bottom:6px; }
+  .shortcut-card h4{ font-size:14.5px; }
+  .shortcut-card p{ font-size:12px; line-height:1.5; }
+  .shortcut-card:last-child:nth-child(odd){ grid-column:1/-1; }
+  .subject-grid{ grid-template-columns:repeat(3,1fr); gap:10px; margin-top:24px; }
+}
 </style>
 </head>
 <body>
@@ -3634,7 +3662,7 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
         io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0, rootMargin: "0px 0px -40px 0px" });
   revealEls.forEach(el => io.observe(el));
 } else {
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
