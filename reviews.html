@@ -151,6 +151,9 @@
   --color-warm:#FF9D4D;       /* 포인트 웜 컬러 (뱃지/포인트) */
   --color-warm-soft:#FFEEDD;  /* 연한 웜 배경 */
   --color-mint:#22C3A6;       /* 보조 포인트 (체크/성공) */
+  --color-blue:#3B82F6;
+  --color-navy:#1A2B52;
+  --color-text-sub:#707E97;
 
   --font-display:'Jua','Pretendard Variable','Pretendard',sans-serif;
   --font-body:'Pretendard Variable','Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
@@ -2365,7 +2368,7 @@ select:focus-visible, textarea:focus-visible{
 <!-- ============================================================
      학부모 · 학생 후기
 ============================================================ -->
-<section class="section section--mist sec-fold" id="reviews">
+<section class="section section--mist" id="reviews">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">REVIEWS</span>
@@ -2386,8 +2389,9 @@ select:focus-visible, textarea:focus-visible{
       <button class="rv-filter" data-filter="과학">과학</button>
       <button class="rv-filter" data-filter="검정고시">검정고시</button>
     </div>
+    <p class="rv-shown" id="rvShown" style="margin:0 0 14px;font-size:13.5px;color:var(--color-slate);"></p>
 
-    <div class="reviews reveal">
+    <div class="reviews reveal" id="reviewGrid">
       <div class="review-card" data-subject="수학" data-level="고등">
         <div class="review-card__meta"><span class="rv-badge">수학</span><span class="rv-location">서울 서초구 서초동 · 고2</span><span class="rv-date">2026.08.29</span></div>
         <p class="review-card__rating">★★★★★</p>
@@ -2496,10 +2500,6 @@ select:focus-visible, textarea:focus-visible{
         <p class="review-card__quote">"지방이라 좋은 선생님 구하기 힘들었는데, 화상 수업으로 전공자 선생님께 배울 수 있어서 정말 만족스러워요. 내신 영어 1등급 받았어요!"</p>
         <div class="review-card__who"><span class="review-card__avatar">👨</span><div><div class="review-card__name">한OO 학부모님</div><div class="review-card__tag">고1 자녀 · 영어 비대면 수업</div></div></div>
       </div>
-    </div>
-    <button class="sec-fold__toggle"><span class="sec-fold__label">후기 전체 보기</span> <span class="sec-fold__arrow">▾</span></button>
-    <div class="sec-fold__body">
-    <div class="reviews reveal" id="reviewGrid">
       <div class="review-card" data-subject="국어" data-level="고등">
         <div class="review-card__meta"><span class="rv-badge rv-badge--kor">국어</span><span class="rv-location">서울 노원구 중계동 · 고3</span><span class="rv-date">2026.06.15</span></div>
         <p class="review-card__rating">★★★★★</p>
@@ -3065,7 +3065,6 @@ select:focus-visible, textarea:focus-visible{
     <div class="review-more reveal">
       <button class="btn btn--ghost" id="reviewMoreBtn">후기 더보기 ↓</button>
     </div>
-    </div><!-- /sec-fold__body -->
   </div>
 </section>
 <!-- ============================================================
@@ -3188,7 +3187,7 @@ const formResetBtn = document.getElementById('formResetBtn');
 /* 마지막 제출 시각 — 60초 쿨다운 */
 let lastSubmitTime = 0;
 
-consultForm.addEventListener('submit', async function (e) {
+if (consultForm) consultForm.addEventListener('submit', async function (e) {
   e.preventDefault();
 
   /* 60초 이내 재제출 차단 */
@@ -3236,7 +3235,7 @@ consultForm.addEventListener('submit', async function (e) {
   }
 });
 
-formResetBtn.addEventListener('click', function () {
+if (formResetBtn) formResetBtn.addEventListener('click', function () {
   consultForm.reset();
   consultForm.classList.remove('is-submitted');
   formSuccess.classList.remove('is-visible');
@@ -3249,9 +3248,10 @@ formResetBtn.addEventListener('click', function () {
   var allCards = Array.from(grid.querySelectorAll('.review-card'));
   var filters = Array.from(document.querySelectorAll('.rv-filter'));
   var moreBtn = document.getElementById('reviewMoreBtn');
-  var LIMIT = 6;
+  var shownEl = document.getElementById('rvShown');
+  var PAGE = 12;
   var currentFilter = 'all';
-  var showAll = false;
+  var shown = PAGE;
 
   function render() {
     var matching = allCards.filter(function (c) {
@@ -3259,12 +3259,15 @@ formResetBtn.addEventListener('click', function () {
     });
     allCards.forEach(function (card) {
       var idx = matching.indexOf(card);
-      var visible = idx !== -1 && (showAll || idx < LIMIT);
-      card.style.display = visible ? '' : 'none';
+      card.style.display = (idx !== -1 && idx < shown) ? '' : 'none';
     });
+    var remain = matching.length - shown;
     if (moreBtn) {
-      moreBtn.style.display = matching.length > LIMIT ? '' : 'none';
-      moreBtn.textContent = showAll ? '후기 접기 ↑' : '후기 더보기 ↓';
+      moreBtn.style.display = remain > 0 ? '' : 'none';
+      moreBtn.textContent = '후기 더보기 ↓ (' + Math.min(PAGE, remain) + '개 더 보기 · 남은 ' + remain + '개)';
+    }
+    if (shownEl) {
+      shownEl.textContent = '최신순 · ' + matching.length + '건 중 ' + Math.min(shown, matching.length) + '건 표시';
     }
   }
 
@@ -3273,14 +3276,14 @@ formResetBtn.addEventListener('click', function () {
       filters.forEach(function (b) { b.classList.remove('is-active'); });
       btn.classList.add('is-active');
       currentFilter = btn.getAttribute('data-filter');
-      showAll = false;
+      shown = PAGE;
       render();
     });
   });
 
   if (moreBtn) {
     moreBtn.addEventListener('click', function () {
-      showAll = !showAll;
+      shown += PAGE;
       render();
     });
   }

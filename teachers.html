@@ -151,6 +151,9 @@
   --color-warm:#FF9D4D;       /* 포인트 웜 컬러 (뱃지/포인트) */
   --color-warm-soft:#FFEEDD;  /* 연한 웜 배경 */
   --color-mint:#22C3A6;       /* 보조 포인트 (체크/성공) */
+  --color-blue:#3B82F6;
+  --color-navy:#1A2B52;
+  --color-text-sub:#707E97;
 
   --font-display:'Jua','Pretendard Variable','Pretendard',sans-serif;
   --font-body:'Pretendard Variable','Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
@@ -2367,7 +2370,7 @@ select:focus-visible, textarea:focus-visible{
 <!-- ============================================================
      선생님 소개
 ============================================================ -->
-<section class="section sec-fold" id="teachers">
+<section class="section" id="teachers">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">TEACHERS</span>
@@ -2461,10 +2464,6 @@ select:focus-visible, textarea:focus-visible{
         </div>
       </div>
 
-    </div><!-- /teachers2 preview -->
-    <button class="sec-fold__toggle"><span class="sec-fold__label">선생님 더 보기</span> <span class="sec-fold__arrow">▾</span></button>
-    <div class="sec-fold__body">
-    <div class="teachers2 reveal">
 
       <!-- 3 국어 -->
       <div class="tc-card" data-tf="korean">
@@ -2623,7 +2622,6 @@ select:focus-visible, textarea:focus-visible{
       </div>
 
     </div><!-- /.teachers2 -->
-    </div><!-- /sec-fold__body -->
 
     <div class="teachers-cta reveal">
       <p class="tc-cta-sub">지금 바로 무료 상담 신청 → 당일 맞춤 선생님 제안</p>
@@ -2753,7 +2751,7 @@ const formResetBtn = document.getElementById('formResetBtn');
 /* 마지막 제출 시각 — 60초 쿨다운 */
 let lastSubmitTime = 0;
 
-consultForm.addEventListener('submit', async function (e) {
+if (consultForm) consultForm.addEventListener('submit', async function (e) {
   e.preventDefault();
 
   /* 60초 이내 재제출 차단 */
@@ -2801,7 +2799,7 @@ consultForm.addEventListener('submit', async function (e) {
   }
 });
 
-formResetBtn.addEventListener('click', function () {
+if (formResetBtn) formResetBtn.addEventListener('click', function () {
   consultForm.reset();
   consultForm.classList.remove('is-submitted');
   formSuccess.classList.remove('is-visible');
