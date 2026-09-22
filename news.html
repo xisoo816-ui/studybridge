@@ -116,6 +116,12 @@ a:focus-visible,button:focus-visible{ outline:3px solid var(--color-signal); out
 
 /* ---- HIDDEN for filter ---- */
 .news-card.is-hidden{ display:none; }
+.news-pagination{ display:flex; justify-content:center; align-items:center; gap:6px; margin-top:36px; flex-wrap:wrap; }
+.page-btn{ min-width:38px; height:38px; padding:0 6px; border-radius:10px; border:1.5px solid var(--color-line); background:#fff; font-size:14px; font-weight:700; color:var(--color-ink); transition:all .15s; }
+.page-btn:hover{ border-color:var(--color-signal); color:var(--color-signal); }
+.page-btn.is-active{ background:var(--color-signal); color:#fff; border-color:var(--color-signal); }
+.page-btn:disabled{ opacity:.35; cursor:default; }
+.page-btn:disabled:hover{ border-color:var(--color-line); color:var(--color-ink); }
 
 /* ---- CTA SECTION ---- */
 .cta-section{ background:var(--color-mist); padding:80px 0; }
@@ -193,7 +199,6 @@ a:focus-visible,button:focus-visible{ outline:3px solid var(--color-signal); out
       <a class="nav__link" href="index.html#pricing">과외 안내</a>
       <a class="nav__link" href="gsd.html">검정고시</a>
       <a class="nav__link is-active" href="news.html">뉴스</a>
-      <a class="nav__link" href="index.html#apply">상담 신청</a>
     </nav>
     <div class="nav__cta">
       <a href="tel:010-2039-4111" class="nav__phone">010-2039-4111</a>
@@ -210,7 +215,6 @@ a:focus-visible,button:focus-visible{ outline:3px solid var(--color-signal); out
     <a href="index.html#pricing">과외 안내</a>
     <a href="gsd.html">검정고시</a>
     <a href="news.html" style="color:var(--color-signal);font-weight:700;">뉴스</a>
-    <a href="index.html#apply">상담 신청</a>
     <a href="index.html#apply" class="btn btn--primary" style="margin-top:10px;text-align:center;border-radius:10px;">무료 상담 신청</a>
   </div>
 </header>
@@ -1154,6 +1158,7 @@ a:focus-visible,button:focus-visible{ outline:3px solid var(--color-signal); out
       </article>
 
     </div><!-- /news-list -->
+    <div class="news-pagination" id="newsPagination"></div>
   </div>
 </section>
 
@@ -1260,24 +1265,65 @@ a:focus-visible,button:focus-visible{ outline:3px solid var(--color-signal); out
   });
 })();
 
-/* Category filter */
+/* Category filter + pagination (5개씩) */
 (function(){
-  var btns = document.querySelectorAll('.cat-btn');
-  var cards = document.querySelectorAll('.news-card');
+  var btns = Array.from(document.querySelectorAll('.cat-btn'));
+  var cards = Array.from(document.querySelectorAll('.news-card'));
+  var pager = document.getElementById('newsPagination');
+  var listEl = document.getElementById('newsList');
+  var PER_PAGE = 5;
+  var currentCat = '전체';
+  var currentPage = 1;
+
+  function filtered(){
+    return cards.filter(function(c){ return currentCat === '전체' || c.dataset.cat === currentCat; });
+  }
+
+  function render(){
+    var list = filtered();
+    var totalPages = Math.max(1, Math.ceil(list.length / PER_PAGE));
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    cards.forEach(function(c){ c.classList.add('is-hidden'); });
+    list.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE).forEach(function(c){
+      c.classList.remove('is-hidden');
+    });
+
+    var html = '';
+    html += '<button class="page-btn" id="pagePrev"' + (currentPage === 1 ? ' disabled' : '') + ' aria-label="이전 페이지">‹</button>';
+    for (var p = 1; p <= totalPages; p++){
+      html += '<button class="page-btn' + (p === currentPage ? ' is-active' : '') + '" data-page="' + p + '">' + p + '</button>';
+    }
+    html += '<button class="page-btn" id="pageNext"' + (currentPage === totalPages ? ' disabled' : '') + ' aria-label="다음 페이지">›</button>';
+    pager.innerHTML = html;
+    pager.style.display = totalPages <= 1 ? 'none' : 'flex';
+
+    Array.from(pager.querySelectorAll('[data-page]')).forEach(function(b){
+      b.addEventListener('click', function(){ goTo(parseInt(b.dataset.page, 10)); });
+    });
+    var prevBtn = document.getElementById('pagePrev');
+    var nextBtn = document.getElementById('pageNext');
+    if (prevBtn) prevBtn.addEventListener('click', function(){ goTo(currentPage - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function(){ goTo(currentPage + 1); });
+  }
+
+  function goTo(page){
+    currentPage = page;
+    render();
+    listEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   btns.forEach(function(btn){
     btn.addEventListener('click', function(){
       btns.forEach(function(b){ b.classList.remove('is-active'); });
       btn.classList.add('is-active');
-      var cat = btn.dataset.cat;
-      cards.forEach(function(card){
-        if(cat === '전체' || card.dataset.cat === cat){
-          card.classList.remove('is-hidden');
-        } else {
-          card.classList.add('is-hidden');
-        }
-      });
+      currentCat = btn.dataset.cat;
+      currentPage = 1;
+      render();
     });
   });
+
+  render();
 })();
 </script>
 </body>
